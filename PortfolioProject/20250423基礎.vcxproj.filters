@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{b479dca5-84cd-40ed-85ee-9358afed14f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile">
+      <UniqueIdentifier>{ce3087bc-9a90-4802-ae7d-07a3c62dab53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\Field">
+      <UniqueIdentifier>{669de01d-e65e-447e-b839-72c5330b2e93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\VertexLighting">
+      <UniqueIdentifier>{a47a7656-31c0-4c22-accf-6b8bbac7e376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\UnlitTexture">
+      <UniqueIdentifier>{9b271752-effd-4ae6-bda9-a7fba411b32e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork">
+      <UniqueIdentifier>{28df0cdd-d7d6-4fbc-9db6-a838e05976cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject">
+      <UniqueIdentifier>{0d28ec7d-6a9c-4016-b6ad-08c709cbcc7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Input">
+      <UniqueIdentifier>{668ba0da-20a6-4a24-88f9-ac79485918c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Scene">
+      <UniqueIdentifier>{55e0542b-0937-4859-a12a-387f37b4d16a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Vector3">
+      <UniqueIdentifier>{3573226a-231f-4906-b7e1-2755861d8041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Scene\Game">
+      <UniqueIdentifier>{345dda42-9444-4858-999c-9fa8587bd7e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Scene\Result">
+      <UniqueIdentifier>{8495df01-576a-47dc-8a08-b931ab200fb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Scene\Title">
+      <UniqueIdentifier>{9c29376b-920f-473e-a41e-6e1017e6c7dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Bullet">
+      <UniqueIdentifier>{1d3b9ec8-8c11-4934-a8ab-246137f0e66f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Effect">
+      <UniqueIdentifier>{e1b5bcb5-c931-4329-a117-0f7f334b9259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Enemy">
+      <UniqueIdentifier>{37f5c16b-ea24-4eb5-add8-08ce2aa860a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Field">
+      <UniqueIdentifier>{9de8b5f8-5cbd-46a9-83b1-b6214e96e741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Grass">
+      <UniqueIdentifier>{b41b9351-8e0d-4667-ae26-0f8448953b5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Player">
+      <UniqueIdentifier>{4e0a0a10-a353-4ade-a193-633c5363d3dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Rock">
+      <UniqueIdentifier>{e9c75fd9-08f2-4ed9-9651-d2c264f873e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Score">
+      <UniqueIdentifier>{b4b33346-6a03-47c7-bee4-82b545dc4af5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\SkyDorm">
+      <UniqueIdentifier>{bfe770ee-8d64-4e25-a61e-b6aa07d05ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Tree">
+      <UniqueIdentifier>{997ce532-4a9f-4e3f-a51c-36fe85161967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Wave">
+      <UniqueIdentifier>{d706299e-7cd0-4c81-89ac-fd59e921b862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Effect\Explosion">
+      <UniqueIdentifier>{6e6c94f7-dc48-454e-a22f-d17cfbc8a139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Effect\Heart">
+      <UniqueIdentifier>{f7ae5018-07c2-4fb8-a49a-74b4ffdf8dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Field\MeshField">
+      <UniqueIdentifier>{e6a873f1-6a89-4a0a-ae31-5dd6e7108b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Player\PlayerModel">
+      <UniqueIdentifier>{c8cb3be8-673a-4c7b-9790-b394695384e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Audio">
+      <UniqueIdentifier>{2d8b0e87-14c6-4b60-997f-24f2dd936d47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Camera">
+      <UniqueIdentifier>{913c9f51-fbcd-4e7b-be03-75131cb82256}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Component">
+      <UniqueIdentifier>{39b29c0b-6857-4322-b17f-a29c81c2ac34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Fade">
+      <UniqueIdentifier>{6d8c1ca2-0bea-4adb-89bf-2780e1053160}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Manager">
+      <UniqueIdentifier>{d954252d-da28-4a74-9d8c-6c1fe9177ab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Render">
+      <UniqueIdentifier>{d211f532-7528-4593-aeaa-7d1a6d5b9da9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Texture">
+      <UniqueIdentifier>{7dbb44b7-5998-49a1-9807-0c37d93aae00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Manager\SceneManager">
+      <UniqueIdentifier>{087de73d-09ca-4bc8-8106-74f782289470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Manager\AudioManager">
+      <UniqueIdentifier>{9e43e619-b34b-479a-884f-fdff7afd5967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\Wave">
+      <UniqueIdentifier>{a8ace257-e134-42ac-88f4-5c8c379efd16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\AnimationModel">
+      <UniqueIdentifier>{0cb2760f-1df0-4a6f-9caa-1fd12ba7ee42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Render\ModelRenderer">
+      <UniqueIdentifier>{cf9ce7c3-1f30-43e1-8dbc-bb947612f4e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Render\Polygon2D">
+      <UniqueIdentifier>{14fdefb4-e6fb-40cd-b333-b7f7ffb78413}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\Field\FieldPS.hlsl">
+      <Filter>Shader\Field</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\Field\FieldVS.hlsl">
+      <Filter>Shader\Field</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\UnlitTexture\UnlitTexturePS.hlsl">
+      <Filter>Shader\UnlitTexture</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\UnlitTexture\UnlitTextureVS.hlsl">
+      <Filter>Shader\UnlitTexture</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\VertexLighting\VertexLightingPS.hlsl">
+      <Filter>Shader\VertexLighting</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\VertexLighting\VertexLightingVS.hlsl">
+      <Filter>Shader\VertexLighting</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\Wave\WavePS.hlsl">
+      <Filter>Shader\Wave</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\Wave\WaveVS.hlsl">
+      <Filter>Shader\Wave</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\Common.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SourceFile\Main.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Scene\Scene.cpp">
+      <Filter>SourceFile\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Scene\Result\Result.cpp">
+      <Filter>SourceFile\Scene\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Scene\Title\Title.cpp">
+      <Filter>SourceFile\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Scene\Game\Game.cpp">
+      <Filter>SourceFile\Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Input\Input.cpp">
+      <Filter>SourceFile\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Input\Keyboard.cpp">
+      <Filter>SourceFile\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Bullet\Bullet.cpp">
+      <Filter>SourceFile\GameObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Effect\Explosion\Explosion.cpp">
+      <Filter>SourceFile\GameObject\Effect\Explosion</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Effect\Heart\Heart.cpp">
+      <Filter>SourceFile\GameObject\Effect\Heart</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Enemy\Enemy.cpp">
+      <Filter>SourceFile\GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Field\Field.cpp">
+      <Filter>SourceFile\GameObject\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Field\MeshField\MeshField.cpp">
+      <Filter>SourceFile\GameObject\Field\MeshField</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Grass\Grass.cpp">
+      <Filter>SourceFile\GameObject\Grass</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Player\Player.cpp">
+      <Filter>SourceFile\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Rock\Rock.cpp">
+      <Filter>SourceFile\GameObject\Rock</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Score\Score.cpp">
+      <Filter>SourceFile\GameObject\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\SkyDorm\Skydorm.cpp">
+      <Filter>SourceFile\GameObject\SkyDorm</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Tree\Tree.cpp">
+      <Filter>SourceFile\GameObject\Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Wave\Wave.cpp">
+      <Filter>SourceFile\GameObject\Wave</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Player\PlayerModel\PlayerModel.cpp">
+      <Filter>SourceFile\GameObject\Player\PlayerModel</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Audio\Audio.cpp">
+      <Filter>SourceFile\FrameWork\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Camera\Camera.cpp">
+      <Filter>SourceFile\FrameWork\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Fade\FadeQuad.cpp">
+      <Filter>SourceFile\FrameWork\Fade</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Render\Renderer.cpp">
+      <Filter>SourceFile\FrameWork\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Texture\Texture.cpp">
+      <Filter>SourceFile\FrameWork\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\AnimationModel\AnimationModel.cpp">
+      <Filter>SourceFile\FrameWork\AnimationModel</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.cpp">
+      <Filter>SourceFile\FrameWork\Manager\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Component\Component.cpp">
+      <Filter>SourceFile\FrameWork\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.cpp">
+      <Filter>SourceFile\FrameWork\Manager\AudioManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Vector3\Vector3.cpp">
+      <Filter>SourceFile\Vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Render\ModelRenderer.cpp">
+      <Filter>SourceFile\FrameWork\Render\ModelRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Render\Polygon2D.cpp">
+      <Filter>SourceFile\FrameWork\Render\Polygon2D</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SourceFile\Main.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\Vector3\Vector3.h">
+      <Filter>SourceFile\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\Scene\Scene.h">
+      <Filter>SourceFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\Scene\Result\Result.h">
+      <Filter>SourceFile\Scene\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\Scene\Title\Title.h">
+      <Filter>SourceFile\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\Scene\Game\Game.h">
+      <Filter>SourceFile\Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\Input\Input.h">
+      <Filter>SourceFile\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\Input\Keyboard.h">
+      <Filter>SourceFile\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Bullet\Bullet.h">
+      <Filter>SourceFile\GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Effect\Explosion\Explosion.h">
+      <Filter>SourceFile\GameObject\Effect\Explosion</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Effect\Heart\Heart.h">
+      <Filter>SourceFile\GameObject\Effect\Heart</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Enemy\Enemy.h">
+      <Filter>SourceFile\GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Field\Field.h">
+      <Filter>SourceFile\GameObject\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Field\MeshField\MeshField.h">
+      <Filter>SourceFile\GameObject\Field\MeshField</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Grass\Grass.h">
+      <Filter>SourceFile\GameObject\Grass</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Player\Player.h">
+      <Filter>SourceFile\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Rock\Rock.h">
+      <Filter>SourceFile\GameObject\Rock</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Score\Score.h">
+      <Filter>SourceFile\GameObject\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\SkyDorm\Skydorm.h">
+      <Filter>SourceFile\GameObject\SkyDorm</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Tree\Tree.h">
+      <Filter>SourceFile\GameObject\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Wave\Wave.h">
+      <Filter>SourceFile\GameObject\Wave</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Player\PlayerModel\PlayerModel.h">
+      <Filter>SourceFile\GameObject\Player\PlayerModel</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\DebugPrintf.h">
+      <Filter>SourceFile\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameObject.h">
+      <Filter>SourceFile\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Audio\Audio.h">
+      <Filter>SourceFile\FrameWork\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Camera\Camera.h">
+      <Filter>SourceFile\FrameWork\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Component\Component.h">
+      <Filter>SourceFile\FrameWork\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Fade\FadeQuad.h">
+      <Filter>SourceFile\FrameWork\Fade</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Render\Renderer.h">
+      <Filter>SourceFile\FrameWork\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Texture\DirectXTex.h">
+      <Filter>SourceFile\FrameWork\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Texture\Texture.h">
+      <Filter>SourceFile\FrameWork\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\AnimationModel\AnimationModel.h">
+      <Filter>SourceFile\FrameWork\AnimationModel</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.h">
+      <Filter>SourceFile\FrameWork\Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.h">
+      <Filter>SourceFile\FrameWork\Manager\AudioManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Render\ModelRenderer.h">
+      <Filter>SourceFile\FrameWork\Render\ModelRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Render\Polygon2D.h">
+      <Filter>SourceFile\FrameWork\Render\Polygon2D</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
