@@ -1,6 +1,6 @@
 #include	"Main.h"
 #include	"Manager/SceneManager/SceneManager.h"
-#include	"Render/Renderer.h"
+#include	"Renderer/Renderer.h"
 #include	"Texture/Texture.h"
 
 std::unordered_map<std::string, ID3D11ShaderResourceView*>Texture::m_TexturePool;

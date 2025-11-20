@@ -2,7 +2,7 @@
 #define		MESHFIELD_H
 
 #include	"GameObject.h"
-#include	"Render/Renderer.h"
+#include	"Renderer/Renderer.h"
 
 class MeshField : public GameObject
 {

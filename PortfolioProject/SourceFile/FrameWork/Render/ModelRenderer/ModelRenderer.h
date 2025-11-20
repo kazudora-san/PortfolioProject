@@ -2,6 +2,7 @@
 #define MODELRENDERER_H
 
 #include "Component/Component.h"
+#include "Renderer/Renderer.h"
 #include <string>
 #include <unordered_map>
 

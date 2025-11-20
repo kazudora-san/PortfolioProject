@@ -1,9 +1,10 @@
 #include	"Main.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Player/Player.h"
+#include	"Manager/AudioManager/AudioManager.h"
 #include	"Camera/Camera.h"
-#include	"Render/Renderer.h"
-#include	"Render/ModelRenderer.h"
+#include	"Renderer/Renderer.h"
+#include	"ModelRenderer/ModelRenderer.h"
 #include	"Input/Input.h"
 #include	"Bullet/Bullet.h"
 #include	"Enemy/Enemy.h"
@@ -13,8 +14,6 @@
 #include	"Effect/Explosion/Explosion.h"
 #include	"Score/Score.h"
 #include	"Effect/Heart/Heart.h"
-#include	"Audio/Audio.h"
-
 
 void Player::Init()
 {
@@ -130,7 +129,7 @@ void Player::Update()
 			float length = d.length();
 			if (length < 1.0f && !particle)
 			{
-				SceneManager::GetScene()->AddGameObject<Exprosion>(1)->
+				SceneManager::GetScene()->AddGameObject<Explosion>(1)->
 					SetPosition(enemy->GetPosition() + Vector3(0.0f, 1.0f, 0.0f));
 
 				Heart* particle = SceneManager::GetScene()->AddGameObject<Heart>(1);

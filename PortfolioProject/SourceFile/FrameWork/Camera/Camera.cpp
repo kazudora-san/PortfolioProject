@@ -2,7 +2,7 @@
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Scene/Scene.h"
 #include	"Camera/Camera.h"
-#include	"Render/Renderer.h"
+#include	"Renderer/Renderer.h"
 #include	"Player/Player.h"
 #include	"Input/Keyboard.h"
 #include	"Input/Input.h"

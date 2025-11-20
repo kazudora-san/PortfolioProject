@@ -2,7 +2,8 @@
 #define		BULLET_H
 
 #include	"GameObject.h"
-#include	"Audio/Audio.h"
+
+class AudioManager;
 
 class Bullet : public GameObject
 {
@@ -24,7 +25,7 @@ private:
 
 	float					m_Time;
 
-	AudioManager*			m_Audio;
+	AudioManager*			m_Audio = nullptr;
 public:
 	void	Init();
 	void	Uninit();

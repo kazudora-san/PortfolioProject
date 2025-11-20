@@ -1,7 +1,7 @@
 #include	"Main.h"
 #include	"GameObject.h"
 #include	"Manager/SceneManager/SceneManager.h"
-#include	"Render/Renderer.h"
+#include	"Renderer/Renderer.h"
 #include	"Scene/Scene.h"
 #include	"Camera/Camera.h"
 #include	"Scene/Title/Title.h"

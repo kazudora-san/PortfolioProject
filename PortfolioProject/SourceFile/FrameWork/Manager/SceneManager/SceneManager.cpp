@@ -1,6 +1,6 @@
 #include	"Main.h"
 #include	"Manager/SceneManager/SceneManager.h"
-#include	"Render/Renderer.h"
+#include	"Renderer/Renderer.h"
 #include	"Input/Input.h"
 #include	"Scene/Scene.h"
 #include	"Scene/Game/Game.h"

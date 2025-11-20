@@ -2,7 +2,7 @@
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Camera/Camera.h"
 #include	"Effect/Explosion/Explosion.h"
-#include	"Render/Renderer.h"
+#include	"Renderer/Renderer.h"
 #include	"Texture/Texture.h"
 #include	"Scene/Scene.h"
 

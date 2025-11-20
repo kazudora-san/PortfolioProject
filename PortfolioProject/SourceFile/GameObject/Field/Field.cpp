@@ -1,7 +1,7 @@
-#include "main.h"
-#include "field.h"
-#include "renderer.h"
-#include "texture.h"
+#include "Main.h"
+#include "Field.h"
+#include "Renderer/Renderer.h"
+#include "Texture/Texture.h"
 
 void Field::Init()
 {

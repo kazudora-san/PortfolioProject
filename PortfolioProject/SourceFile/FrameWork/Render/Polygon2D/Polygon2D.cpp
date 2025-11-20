@@ -1,6 +1,6 @@
 #include	"Main.h"
-#include	"Render/Polygon2D.h"
-#include	"Render/Renderer.h"
+#include	"Polygon2D/Polygon2D.h"
+#include	"Renderer/Renderer.h"
 #include	"Texture/Texture.h"
 
 

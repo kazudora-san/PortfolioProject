@@ -3,8 +3,8 @@
 #include <shlwapi.h>
 
 #include "main.h"
-#include "renderer.h"
-#include "modelRenderer.h"
+#include "Renderer/Renderer.h"
+#include "ModelRenderer.h"
 
 #pragma comment(lib, "shlwapi.lib")
 

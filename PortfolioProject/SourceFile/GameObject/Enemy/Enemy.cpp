@@ -2,8 +2,8 @@
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Enemy/Enemy.h"
 #include	"Camera/Camera.h"
-#include	"Render/Renderer.h"
-#include	"Render/ModelRenderer.h"
+#include	"Renderer/Renderer.h"
+#include	"ModelRenderer/ModelRenderer.h"
 #include	"Scene/Scene.h"
 #include	"Input/Input.h"
 

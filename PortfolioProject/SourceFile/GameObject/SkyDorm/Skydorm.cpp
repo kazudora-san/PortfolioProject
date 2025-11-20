@@ -1,6 +1,6 @@
 #include	"Main.h"
-#include	"Render/Renderer.h"
-#include	"Render/ModelRenderer.h"
+#include	"Renderer/Renderer.h"
+#include	"ModelRenderer/ModelRenderer.h"
 #include	"Skydorm/Skydorm.h"
 #include	"Input/Input.h"
 #include	"Camera/Camera.h"

@@ -1,5 +1,5 @@
 #include	"Main.h"
-#include	"Render/Renderer.h"
+#include	"Renderer/Renderer.h"
 #include	"Wave/Wave.h"
 #include	"Texture/Texture.h"
 

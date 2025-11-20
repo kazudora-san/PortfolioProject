@@ -2,8 +2,8 @@
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Bullet/Bullet.h"
 #include	"Camera/Camera.h"
-#include	"Render/Renderer.h"
-#include	"Render/ModelRenderer.h"
+#include	"Renderer/Renderer.h"
+#include	"ModelRenderer/ModelRenderer.h"
 #include	"Input/Input.h"
 #include	"Player/Player.h"
 #include	"Enemy/Enemy.h"
@@ -11,6 +11,7 @@
 #include	"Effect/Heart/Heart.h"
 #include	"Scene/Scene.h"
 #include	"Score/Score.h"
+#include	"Manager/AudioManager/AudioManager.h"
 
 
 void Bullet::Init()
@@ -59,7 +60,7 @@ void Bullet::Update()
 	//	+ m_StartVector * (i * i * i - 2.0f * i * i + i)
 	//	+ m_EndVector * (i * i * i - i * i);
 
-	auto particleS = SceneManager::GetScene()->AddGameObject<Exprosion>(1);
+	auto particleS = SceneManager::GetScene()->AddGameObject<Explosion>(1);
 	particleS->SetPosition(m_Position + Vector3(0.0f, 0.0f, 0.0f));
 
 	if (m_Position.length() > 20.0f)
@@ -79,10 +80,10 @@ void Bullet::Update()
 		float length = d.length();
 		if (length < 1.0f && !particle)
 		{
-			SceneManager::GetScene()->AddGameObject<Exprosion>(1)->
+			SceneManager::GetScene()->AddGameObject<Explosion>(1)->
 				SetPosition(enemy->GetPosition() + Vector3(0.0f,1.0f,0.0f));
 
-			ParticleKadaiHeart* particle = SceneManager::GetScene()->AddGameObject<ParticleKadaiHeart>(1);
+			Heart* particle = SceneManager::GetScene()->AddGameObject<Heart>(1);
 			particle->SetPosition(enemy->GetPosition());
 
 			enemy->SetDestroy();
@@ -90,7 +91,7 @@ void Bullet::Update()
 			m_Audio->Play("EnemyDestroy");
 
 			Score* score = SceneManager::GetScene()->GetGameObject<Score>();
-			score->Add(100);
+			score->AddScore(100);
 		}
 	}
 }
