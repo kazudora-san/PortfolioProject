@@ -41,13 +41,13 @@ public:
 
 
 
-	Vector3 GetPosition() { return m_Position; }
+	Vector3 GetPosition() const { return m_Position; }
 	void SetPosition(Vector3 Position) { m_Position = Position; }
 
-	Vector3 GetRotation() { return m_Rotation; }
+	Vector3 GetRotation() const { return m_Rotation; }
 	void SetRotation(Vector3 Rotation) { m_Rotation = Rotation; }
 
-	Vector3 GetScale() { return m_Scale; }
+	Vector3 GetScale() const { return m_Scale; }
 	void SetScale(Vector3 Scale) { m_Scale = Scale; }
 
 
