@@ -98,9 +98,9 @@
     <ClCompile Include="SourceFile\FrameWork\Fade\FadeQuad.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.cpp" />
-    <ClCompile Include="SourceFile\FrameWork\Render\ModelRenderer.cpp" />
-    <ClCompile Include="SourceFile\FrameWork\Render\Polygon2D.cpp" />
-    <ClCompile Include="SourceFile\FrameWork\Render\Renderer.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\Render\ModelRenderer\ModelRenderer.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\Render\Polygon2D\Polygon2D.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\Render\Renderer\Renderer.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Texture\Texture.cpp" />
     <ClCompile Include="SourceFile\GameObject\Bullet\Bullet.cpp" />
     <ClCompile Include="SourceFile\GameObject\Effect\Explosion\Explosion.cpp" />
@@ -135,9 +135,9 @@
     <ClInclude Include="SourceFile\FrameWork\GameObject.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.h" />
-    <ClInclude Include="SourceFile\FrameWork\Render\ModelRenderer.h" />
-    <ClInclude Include="SourceFile\FrameWork\Render\Polygon2D.h" />
-    <ClInclude Include="SourceFile\FrameWork\Render\Renderer.h" />
+    <ClInclude Include="SourceFile\FrameWork\Render\ModelRenderer\ModelRenderer.h" />
+    <ClInclude Include="SourceFile\FrameWork\Render\Polygon2D\Polygon2D.h" />
+    <ClInclude Include="SourceFile\FrameWork\Render\Renderer\Renderer.h" />
     <ClInclude Include="SourceFile\FrameWork\Texture\DirectXTex.h" />
     <ClInclude Include="SourceFile\FrameWork\Texture\Texture.h" />
     <ClInclude Include="SourceFile\GameObject\Bullet\Bullet.h" />
@@ -255,13 +255,17 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)/Shader;$(ProjectDir)/SourceFile/;$(ProjectDir)/SourceFile/FrameWork/;$(ProjectDir)/SourceFile/GameObject/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/;$(ProjectDir)/Shader;$(ProjectDir)/SourceFile/;$(ProjectDir)/SourceFile/FrameWork/;$(ProjectDir)/SourceFile/FrameWork/Render/;$(ProjectDir)/SourceFile/GameObject/</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>WinMain</EntryPointSymbol>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -274,7 +278,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)/Shader;$(ProjectDir)/SourceFile/;$(ProjectDir)/SourceFile/FrameWork/;$(ProjectDir)/SourceFile/GameObject/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/;$(ProjectDir)/Shader;$(ProjectDir)/SourceFile/;$(ProjectDir)/SourceFile/FrameWork/;$(ProjectDir)/SourceFile/FrameWork/Render/;$(ProjectDir)/SourceFile/GameObject/</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -283,6 +287,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>WinMain</EntryPointSymbol>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,7 +1,7 @@
 #ifndef POLYGON2D_H
 #define POLYGON2D_H
 
-#include "GameObject.h"
+#include	"GameObject.h"
 
 class Polygon2D : public GameObject
 {

@@ -124,6 +124,9 @@
     <Filter Include="SourceFile\FrameWork\Render\Polygon2D">
       <UniqueIdentifier>{14fdefb4-e6fb-40cd-b333-b7f7ffb78413}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\FrameWork\Render\Renderer">
+      <UniqueIdentifier>{67e83b19-609c-4973-9609-b4b806f196e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\Field\FieldPS.hlsl">
@@ -227,9 +230,6 @@
     <ClCompile Include="SourceFile\FrameWork\Fade\FadeQuad.cpp">
       <Filter>SourceFile\FrameWork\Fade</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\Render\Renderer.cpp">
-      <Filter>SourceFile\FrameWork\Render</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\Texture\Texture.cpp">
       <Filter>SourceFile\FrameWork\Texture</Filter>
     </ClCompile>
@@ -248,11 +248,14 @@
     <ClCompile Include="SourceFile\Vector3\Vector3.cpp">
       <Filter>SourceFile\Vector3</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\Render\ModelRenderer.cpp">
-      <Filter>SourceFile\FrameWork\Render\ModelRenderer</Filter>
+    <ClCompile Include="SourceFile\FrameWork\Render\Renderer\Renderer.cpp">
+      <Filter>SourceFile\FrameWork\Render\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\Render\Polygon2D.cpp">
+    <ClCompile Include="SourceFile\FrameWork\Render\Polygon2D\Polygon2D.cpp">
       <Filter>SourceFile\FrameWork\Render\Polygon2D</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\Render\ModelRenderer\ModelRenderer.cpp">
+      <Filter>SourceFile\FrameWork\Render\ModelRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -340,9 +343,6 @@
     <ClInclude Include="SourceFile\FrameWork\Fade\FadeQuad.h">
       <Filter>SourceFile\FrameWork\Fade</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\Render\Renderer.h">
-      <Filter>SourceFile\FrameWork\Render</Filter>
-    </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\Texture\DirectXTex.h">
       <Filter>SourceFile\FrameWork\Texture</Filter>
     </ClInclude>
@@ -358,11 +358,14 @@
     <ClInclude Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.h">
       <Filter>SourceFile\FrameWork\Manager\AudioManager</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\Render\ModelRenderer.h">
-      <Filter>SourceFile\FrameWork\Render\ModelRenderer</Filter>
+    <ClInclude Include="SourceFile\FrameWork\Render\Renderer\Renderer.h">
+      <Filter>SourceFile\FrameWork\Render\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\Render\Polygon2D.h">
+    <ClInclude Include="SourceFile\FrameWork\Render\Polygon2D\Polygon2D.h">
       <Filter>SourceFile\FrameWork\Render\Polygon2D</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\Render\ModelRenderer\ModelRenderer.h">
+      <Filter>SourceFile\FrameWork\Render\ModelRenderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #include	"Main.h"
 #include	"Renderer/Renderer.h"
-#include	"AnimationModel.h"
+#include	"AnimationModel/AnimationModel.h"
 
 void AnimationModel::Draw()
 {
