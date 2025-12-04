@@ -1,7 +1,8 @@
 #ifndef		WAVE_H
 #define		WAVE_H
 
-#include	"gameObject.h"
+#include	"GameObject.h"
+#include	"Renderer/Renderer.h"
 
 class Wave : public GameObject
 {

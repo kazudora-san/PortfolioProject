@@ -1,8 +1,8 @@
 #include	"Main.h"
-#include	"Render/Renderer/Renderer.h"
+#include	"Renderer/Renderer.h"
 #include	"Fade/FadeQuad.h"
 #include	"Texture/Texture.h"
-#include	"Render/Polygon2D/Polygon2D.h"
+#include	"Renderer/Polygon2D/Polygon2D.h"
 #include	<algorithm>
 #include	<cmath>
 

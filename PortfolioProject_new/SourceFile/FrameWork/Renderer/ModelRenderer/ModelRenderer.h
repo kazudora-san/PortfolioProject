@@ -1,10 +1,10 @@
-#ifndef MODELRENDERER_H
-#define MODELRENDERER_H
+#ifndef		MODELRENDERER_H
+#define		MODELRENDERER_H
 
-#include "Component/Component.h"
-#include "Render/Renderer/Renderer.h"
-#include <string>
-#include <unordered_map>
+#include	"Component/Component.h"
+#include	"Renderer/Renderer.h"
+#include	<string>
+#include	<unordered_map>
 
 // マテリアル構造体
 struct MODEL_MATERIAL

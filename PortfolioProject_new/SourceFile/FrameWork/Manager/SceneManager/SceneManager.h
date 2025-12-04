@@ -1,5 +1,5 @@
-#ifndef SCENEMANAGER_H
-#define SCENEMANAGER_H
+#ifndef		SCENEMANAGER_H
+#define		SCENEMANAGER_H
 
 class SceneManager
 {

@@ -1,7 +1,8 @@
-#pragma once
+#ifndef		TITLE_H
+#define		TITLE_H
 
-#include "Scene/Scene.h"
-#include <string>
+#include	"Scene/Scene.h"
+#include	<string>
 
 class AudioManager;
 class AnimationModel;
@@ -36,3 +37,5 @@ public:
 	void	Update()	override;
 
 };
+
+#endif // !TITLE_H

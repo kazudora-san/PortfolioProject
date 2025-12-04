@@ -1,10 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <shlwapi.h>
+#define		_CRT_SECURE_NO_WARNINGS
+#include	<stdio.h>
+#include	<shlwapi.h>
 
-#include "main.h"
-#include "Render/Renderer/Renderer.h"
-#include "ModelRenderer.h"
+#include	"main.h"
+#include	"Renderer/Renderer.h"
+#include	"ModelRenderer.h"
 
 #pragma comment(lib, "shlwapi.lib")
 

@@ -1,12 +1,12 @@
-#ifndef AUDIO_H
-#define AUDIO_H
+#ifndef		AUDIO_H
+#define		AUDIO_H
 
 
 
-#include "Component/Component.h"
-#include <xaudio2.h>
-#include <unordered_map>
-#include <string>
+#include	"Component/Component.h"
+#include	<xaudio2.h>
+#include	<unordered_map>
+#include	<string>
 
 
 class Audio : public Component

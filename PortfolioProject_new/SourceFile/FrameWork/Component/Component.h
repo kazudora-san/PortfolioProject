@@ -1,5 +1,5 @@
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#ifndef		COMPONENT_H
+#define		COMPONENT_H
 
 class GameObject;
 

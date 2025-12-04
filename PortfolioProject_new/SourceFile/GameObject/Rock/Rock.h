@@ -1,7 +1,7 @@
 #ifndef		ROCK_H
 #define		ROCK_H
 
-#include "GameObject.h"
+#include	"GameObject.h"
 
 class Rock :public GameObject
 {

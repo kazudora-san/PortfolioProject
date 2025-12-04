@@ -232,6 +232,9 @@
     <ClInclude Include="SourceFile\FrameWork\AnimationModel\AnimationModel.h">
       <Filter>SourceFile\FrameWork\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="SourceFile\Scene\Scene.h">
+      <Filter>SourceFile\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.inl" />
@@ -361,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\AnimationModel\AnimationModel.cpp">
       <Filter>SourceFile\FrameWork\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Scene\Scene.cpp">
+      <Filter>SourceFile\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

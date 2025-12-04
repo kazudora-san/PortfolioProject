@@ -1,5 +1,5 @@
-#ifndef POLYGON2D_H
-#define POLYGON2D_H
+#ifndef		POLYGON2D_H
+#define		POLYGON2D_H
 
 #include	"GameObject.h"
 

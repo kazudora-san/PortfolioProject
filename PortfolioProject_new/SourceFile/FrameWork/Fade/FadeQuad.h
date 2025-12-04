@@ -1,5 +1,5 @@
-﻿#ifndef FADEQUAD_H
-#define FADEQUAD_H
+﻿#ifndef		FADEQUAD_H
+#define		FADEQUAD_H
 
 #include	"GameObject.h"
 #include	<functional>

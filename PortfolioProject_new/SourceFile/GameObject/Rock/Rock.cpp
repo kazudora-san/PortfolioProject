@@ -2,8 +2,8 @@
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Rock/Rock.h"
 #include	"Camera/Camera.h"
-#include	"Render/Renderer/Renderer.h"
-#include	"Render/ModelRenderer/ModelRenderer.h"
+#include	"Renderer/Renderer.h"
+#include	"Renderer/ModelRenderer/ModelRenderer.h"
 #include	"Scene/Scene.h"
 #include	"Input/Input.h"
 

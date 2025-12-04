@@ -1,7 +1,7 @@
 #ifndef		FIELD_H
 #define		FIELD_H
 
-#include "GameObject.h"
+#include	"GameObject.h"
 
 class Field: public GameObject
 {

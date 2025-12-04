@@ -24,7 +24,9 @@
     <ClInclude Include="SourceFile\FrameWork\Audio\Audio.h" />
     <ClInclude Include="SourceFile\FrameWork\Camera\Camera.h" />
     <ClInclude Include="SourceFile\FrameWork\Component\Component.h" />
-    <ClInclude Include="SourceFile\FrameWork\DebugPrintf.h" />
+    <ClInclude Include="SourceFile\FrameWork\DebugPrintf.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\Fade\FadeQuad.h" />
     <ClInclude Include="SourceFile\FrameWork\GameObject.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.h" />
@@ -53,6 +55,7 @@
     <ClInclude Include="SourceFile\Main.h" />
     <ClInclude Include="SourceFile\Scene\Game\Game.h" />
     <ClInclude Include="SourceFile\Scene\Result\Result.h" />
+    <ClInclude Include="SourceFile\Scene\Scene.h" />
     <ClInclude Include="SourceFile\Scene\Title\Title.h" />
     <ClInclude Include="SourceFile\Vector3\Vector3.h" />
   </ItemGroup>
@@ -60,15 +63,41 @@
     <None Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.inl" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shader\Common.hlsl" />
-    <FxCompile Include="Shader\Field\FieldPS.hlsl" />
-    <FxCompile Include="Shader\Field\FieldVS.hlsl" />
-    <FxCompile Include="Shader\UnlitTexture\UnlitTexturePS.hlsl" />
-    <FxCompile Include="Shader\UnlitTexture\UnlitTextureVS.hlsl" />
-    <FxCompile Include="Shader\VertexLighting\VertexLightingPS.hlsl" />
-    <FxCompile Include="Shader\VertexLighting\VertexLightingVS.hlsl" />
-    <FxCompile Include="Shader\Wave\WavePS.hlsl" />
-    <FxCompile Include="Shader\Wave\WaveVS.hlsl" />
+    <FxCompile Include="Shader\Common.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shader\Field\FieldPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\Field\FieldVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\UnlitTexture\UnlitTexturePS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\UnlitTexture\UnlitTextureVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\VertexLighting\VertexLightingPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\VertexLighting\VertexLightingVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\Wave\WavePS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\Wave\WaveVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFile\FrameWork\AnimationModel\AnimationModel.cpp" />
@@ -101,6 +130,7 @@
     <ClCompile Include="SourceFile\Main.cpp" />
     <ClCompile Include="SourceFile\Scene\Game\Game.cpp" />
     <ClCompile Include="SourceFile\Scene\Result\Result.cpp" />
+    <ClCompile Include="SourceFile\Scene\Scene.cpp" />
     <ClCompile Include="SourceFile\Scene\Title\Title.cpp" />
     <ClCompile Include="SourceFile\Vector3\Vector3.cpp" />
   </ItemGroup>
@@ -189,18 +219,22 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)SourceFile;$(ProjectDir)SourceFile\FrameWork;$(ProjectDir)SourceFile\Manager;$(ProjectDir)SourceFile\Render;$(ProjectDir)SourceFile\GameObjec;$(ProjectDir)assimp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SourceFile;$(ProjectDir)SourceFile\FrameWork;$(ProjectDir)SourceFile\Manager;$(ProjectDir)SourceFile\Render;$(ProjectDir)SourceFile\GameObject;$(ProjectDir)assimp</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(ProjectDir)Libs\DirectXTex_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
       <ObjectFileOutput>$(OutDir)Shader\CSOFile\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
+    <PostBuildEvent>
+      <Command>copy /Y "$(ProjectDir)Dlls\assimp-vc143-mt.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -220,6 +254,9 @@
       <ShaderModel>5.0</ShaderModel>
       <ObjectFileOutput>$(OutDir)Shader\CSOFile\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
+    <PostBuildEvent>
+      <Command>copy /Y "$(ProjectDir)Dlls\assimp-vc143-mt.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

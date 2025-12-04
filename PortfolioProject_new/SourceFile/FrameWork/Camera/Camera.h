@@ -1,7 +1,7 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef		CAMERA_H
+#define		CAMERA_H
 
-#include "GameObject.h"
+#include	"GameObject.h"
 
 class Camera : public GameObject
 {

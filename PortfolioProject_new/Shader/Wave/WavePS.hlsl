@@ -1,4 +1,3 @@
-
 #include "../Common.hlsl"
 
 Texture2D		g_Texture : register(t0);
