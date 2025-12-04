@@ -10,16 +10,16 @@ private:
 protected:
 	bool		m_Destroy	= false;
 
-	Vector3		m_Position	{ 0.0f,0.0f,0.0f };
-	Vector3		m_Rotation	{ 0.0f,0.0f,0.0f };
-	Vector3		m_Scale		{ 1.0f,1.0f,1.0f };
-	Vector3		m_Velocity	{ 0.0f, 0.98f, 0.0f };
+	Vector3		m_Position	= { 0.0f,0.0f,0.0f };
+	Vector3		m_Rotation	= { 0.0f,0.0f,0.0f };
+	Vector3		m_Scale		= { 1.0f,1.0f,1.0f };
+	Vector3		m_Velocity	= { 0.0f, 0.98f, 0.0f };
 
 public:
-	virtual void Init() {}
-	virtual void Uninit() {}
-	virtual void Update() {}
-	virtual void Draw() {}
+	virtual void Init()		= 0;
+	virtual void Uninit()	= 0;
+	virtual void Update()	= 0;
+	virtual void Draw()		= 0;
 
 	void SetDestroy() { m_Destroy = true; }
 

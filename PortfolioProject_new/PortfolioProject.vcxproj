@@ -28,6 +28,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\Fade\FadeQuad.h" />
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\GameCharacter.h" />
     <ClInclude Include="SourceFile\FrameWork\GameObject.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="SourceFile\FrameWork\Camera\Camera.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Component\Component.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Fade\FadeQuad.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\GameCharacter.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Renderer\ModelRenderer\ModelRenderer.cpp" />

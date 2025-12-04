@@ -124,6 +124,9 @@
     <Filter Include="SourceFile\FrameWork\Renderer\Polygon2D">
       <UniqueIdentifier>{f6a191df-24e3-414d-aaaa-fa57c7f5a798}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter">
+      <UniqueIdentifier>{7559cca8-d995-466d-b702-7be4b10da4b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -234,6 +237,9 @@
     </ClInclude>
     <ClInclude Include="SourceFile\Scene\Scene.h">
       <Filter>SourceFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\GameCharacter.h">
+      <Filter>SourceFile\FrameWork\GameCharacter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +373,9 @@
     </ClCompile>
     <ClCompile Include="SourceFile\Scene\Scene.cpp">
       <Filter>SourceFile\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\GameCharacter.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

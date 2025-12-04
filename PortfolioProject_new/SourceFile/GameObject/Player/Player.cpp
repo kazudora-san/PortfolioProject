@@ -17,12 +17,7 @@
 
 void Player::Init()
 {
-	//m_ModelRenderer = new ModelRenderer();
-	//m_ModelRenderer->Load("Asset\\model\\player.obj");
-
-	//m_ModelRendererChild = new ModelRenderer();
-	//m_ModelRendererChild->Load("Asset\\model\\player.obj");
-	
+	GameCharacter::Init();
 
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\model\\OtamesiModel.fbx");
@@ -47,46 +42,61 @@ void Player::Init()
 	//m_Audio->Play("GameBGM", true);
 	m_Audio->Load("Asset\\Audio\\Shot.wav", "ShotSE");
 	m_Audio->Load("Asset\\Audio\\Run.wav", "RunSE");
+
+	Scene* scene = SceneManager::GetScene();
+	if (!scene)
+	{
+		return;
+	}
+
+	m_Camera = scene->GetGameObject<Camera>();
+	if (!m_Camera)
+	{
+		return;
+	}
+
+	MeshField* meshField = scene->GetGameObject<MeshField>();
+	if (!meshField)
+	{
+		return;
+	}
 }
 
 void Player::Uninit()
 {
-	//delete m_ModelRenderer;
-	//delete m_ModelRendererChild;
-	m_Audio->Uninit();
+	if (m_Audio)
+	{
+		m_Audio->Uninit();
+	}
 
-	m_AnimationModel->Uninit();
-	delete m_AnimationModel;
-
-	m_VertexLayOut->Release();
-	m_VertexShader->Release();
-	m_PixelShader->Release();
-
+	GameCharacter::Uninit();
 }
 
 void Player::Update()
 {
-	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
-
-	Vector3 rotation = camera->GetRotation();
+	if (!m_Camera)
+	{
+		return;
+	}
+	Vector3 rotation = m_Camera->GetRotation();
 
 	bool move = false;
 
 	if (Input::GetKeyPress('A'))
 	{
-		m_Position += camera->GetRight() * -0.1f;
+		m_Position += m_Camera->GetRight() * -0.1f;
 		m_Rotation.y = rotation.y - XM_PIDIV2;
 		move = true;
 	}
 	if (Input::GetKeyPress('D'))
 	{
-		m_Position += camera->GetRight() * 0.1f;
+		m_Position += m_Camera->GetRight() * 0.1f;
 		m_Rotation.y = rotation.y + XM_PIDIV2;
 		move = true;
 	}
 	if (Input::GetKeyPress('W'))
 	{
-		Vector3 forward = camera->GetForward();
+		Vector3 forward = m_Camera->GetForward();
 		forward.y = 0.0f;
 		forward.normalize();
 		m_Position += forward * 0.1f;
@@ -95,7 +105,7 @@ void Player::Update()
 	}
 	if (Input::GetKeyPress('S'))
 	{
-		Vector3 forward = camera->GetForward();
+		Vector3 forward = m_Camera->GetForward();
 		forward.y = 0.0f;
 		forward.normalize();
 
@@ -105,8 +115,7 @@ void Player::Update()
 	}
 
 
-	MeshField* meshField = SceneManager::GetScene()->GetGameObject<MeshField>();
-	float groundY = meshField->GetHeight(m_Position);
+	float groundY = m_MeshField->GetHeight(m_Position);
 
 	// ƒWƒƒƒ“ƒvˆ—
 	if (Input::GetKeyTrigger('F') && !m_IsJump)
