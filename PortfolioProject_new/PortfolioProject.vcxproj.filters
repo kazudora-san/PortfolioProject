@@ -127,6 +127,9 @@
     <Filter Include="SourceFile\FrameWork\GameCharacter">
       <UniqueIdentifier>{7559cca8-d995-466d-b702-7be4b10da4b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\EnemyBase">
+      <UniqueIdentifier>{ba071dfb-5a4d-4104-a00a-ab47512f8d33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -240,6 +243,9 @@
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\GameCharacter.h">
       <Filter>SourceFile\FrameWork\GameCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\EnemyBase\EnemyBase.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\EnemyBase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +382,9 @@
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\GameCharacter.cpp">
       <Filter>SourceFile\FrameWork\GameCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\EnemyBase\EnemyBase.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\EnemyBase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

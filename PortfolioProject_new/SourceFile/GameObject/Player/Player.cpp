@@ -74,6 +74,8 @@ void Player::Uninit()
 
 void Player::Update()
 {
+	GameCharacter::Update();
+
 	if (!m_Camera)
 	{
 		return;
@@ -82,19 +84,19 @@ void Player::Update()
 
 	bool move = false;
 
-	if (Input::GetKeyPress('A'))
+	if (Input::GetKeyPress(KEY_A))
 	{
 		m_Position += m_Camera->GetRight() * -0.1f;
 		m_Rotation.y = rotation.y - XM_PIDIV2;
 		move = true;
 	}
-	if (Input::GetKeyPress('D'))
+	if (Input::GetKeyPress(KEY_D))
 	{
 		m_Position += m_Camera->GetRight() * 0.1f;
 		m_Rotation.y = rotation.y + XM_PIDIV2;
 		move = true;
 	}
-	if (Input::GetKeyPress('W'))
+	if (Input::GetKeyPress(KEY_W))
 	{
 		Vector3 forward = m_Camera->GetForward();
 		forward.y = 0.0f;
@@ -103,7 +105,7 @@ void Player::Update()
 		m_Rotation.y = rotation.y;
 		move = true;
 	}
-	if (Input::GetKeyPress('S'))
+	if (Input::GetKeyPress(KEY_S))
 	{
 		Vector3 forward = m_Camera->GetForward();
 		forward.y = 0.0f;
@@ -118,7 +120,7 @@ void Player::Update()
 	float groundY = m_MeshField->GetHeight(m_Position);
 
 	// ジャンプ処理
-	if (Input::GetKeyTrigger('F') && !m_IsJump)
+	if (Input::GetKeyTrigger(KEY_F) && !m_IsJump)
 	{
 		m_JumpTime = 0.0f;
 		m_IsJump = true;
@@ -230,6 +232,8 @@ void Player::Update()
 
 void Player::Draw()
 {
+	GameCharacter::Draw();
+
 	//入力レイアウト
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);
 

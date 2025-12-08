@@ -1,10 +1,31 @@
 #include	"Main.h"
 #include	"Input/Input.h"
 
+#define	TRUEINPUT	(0x80)
 
 BYTE Input::m_OldKeyState[256];
 BYTE Input::m_KeyState[256];
 
+
+bool Input::CommandLeft()
+{
+	return GetKeyTrigger(VK_LEFT);
+}
+
+bool Input::CommandRight()
+{
+	return GetKeyTrigger(VK_RIGHT);
+}
+
+bool Input::CommandUp()
+{
+	return GetKeyTrigger(VK_UP);
+}
+
+bool Input::CommandDown()
+{
+	return GetKeyTrigger(VK_DOWN);
+}
 
 void Input::Init()
 {
@@ -50,4 +71,22 @@ void Input::OnMouseMove(LONG dx, LONG dy)
 {
 	mouseDX = dx;
 	mouseDY = dy;
+}
+
+bool Input::Decision()
+{
+	return GetKeyTrigger(VK_RETURN);
+}
+
+bool Input::FieldMenuDisp()
+{
+	return	(	GetKeyTrigger(KEY_M)||
+				CommandUp()			|| CommandDown()	||
+				CommandRight()		|| CommandLeft());
+}
+
+bool Input::CommandMove()
+{
+	return (CommandUp() || CommandDown() ||
+			CommandRight() || CommandLeft());
 }

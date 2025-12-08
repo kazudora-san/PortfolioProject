@@ -9,6 +9,8 @@
 
 void Enemy::Init()
 {
+	EnemyBase::Init();
+
 	m_ModelRenderer = new ModelRenderer();
 	m_ModelRenderer->Load("Asset\\model\\Player.obj");
 
@@ -25,10 +27,7 @@ void Enemy::Uninit()
 {
 	delete m_ModelRenderer;
 
-	m_VertexLayOut->Release();
-	m_VertexShader->Release();
-	m_PixelShader->Release();
-
+	EnemyBase::Uninit();
 }
 
 void Enemy::Update()

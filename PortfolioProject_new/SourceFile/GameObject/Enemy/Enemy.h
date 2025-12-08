@@ -1,9 +1,9 @@
 #ifndef		ENEMY_H
 #define		ENEMY_H
 
-#include	"GameObject.h"
+#include	"GameCharacter/EnemyBase/EnemyBase.h"
 
-class Enemy :public GameObject
+class Enemy :public EnemyBase
 {
 private:
 
