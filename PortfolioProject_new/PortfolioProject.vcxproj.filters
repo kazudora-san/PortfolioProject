@@ -130,6 +130,18 @@
     <Filter Include="SourceFile\FrameWork\GameCharacter\EnemyBase">
       <UniqueIdentifier>{ba071dfb-5a4d-4104-a00a-ab47512f8d33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine">
+      <UniqueIdentifier>{1e74ff96-2129-4b97-be2d-f03f737037cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState">
+      <UniqueIdentifier>{a3f7a896-517f-4c17-b439-26105b8a8417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine\IdleState">
+      <UniqueIdentifier>{2292e756-4fcd-4026-a444-ba9bf104eb00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine\AttackState">
+      <UniqueIdentifier>{44e7a822-2328-4e3f-a94f-77f9f5c73fbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -246,6 +258,18 @@
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\EnemyBase\EnemyBase.h">
       <Filter>SourceFile\FrameWork\GameCharacter\EnemyBase</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\StateMachine.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\AttackState\AttackState.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\AttackState</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\IdleState\IdleState.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\IdleState</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState\MoveState.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\MoveState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -385,6 +409,18 @@
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\EnemyBase\EnemyBase.cpp">
       <Filter>SourceFile\FrameWork\GameCharacter\EnemyBase</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\StateMachine.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\AttackState\AttackState.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\AttackState</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\IdleState\IdleState.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\IdleState</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState\MoveState.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\MoveState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

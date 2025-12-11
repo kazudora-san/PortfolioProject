@@ -26,7 +26,6 @@ public:
 	void Uninit();
 	void Update();
 	void Draw();
-
 };
 
 #endif // PLAYER_H

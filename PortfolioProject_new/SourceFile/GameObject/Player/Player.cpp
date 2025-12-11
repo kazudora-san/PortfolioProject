@@ -55,8 +55,8 @@ void Player::Init()
 		return;
 	}
 
-	MeshField* meshField = scene->GetGameObject<MeshField>();
-	if (!meshField)
+	m_MeshField = scene->GetGameObject<MeshField>();
+	if (!m_MeshField)
 	{
 		return;
 	}
@@ -116,6 +116,20 @@ void Player::Update()
 		move = true;
 	}
 
+	if (!m_MeshField)
+	{
+		Scene* scene = SceneManager::GetScene();
+		if (!scene)
+		{
+			return;
+		}
+
+		MeshField* meshField = scene->GetGameObject<MeshField>();
+		if (!m_MeshField)
+		{
+			return;
+		}
+	}
 
 	float groundY = m_MeshField->GetHeight(m_Position);
 
