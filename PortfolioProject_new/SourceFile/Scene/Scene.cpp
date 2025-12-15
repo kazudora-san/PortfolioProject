@@ -4,7 +4,6 @@
 #include	"Renderer/Renderer.h"
 #include	"Scene/Scene.h"
 #include	"Camera/Camera.h"
-#include	"Scene/Title/Title.h"
 
 void Scene::Init()
 {

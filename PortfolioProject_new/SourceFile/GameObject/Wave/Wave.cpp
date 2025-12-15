@@ -6,25 +6,26 @@
 
 void Wave::Init()
 {
-
 	// 頂点バッファ生成
 	{
 		for (int x = 0; x < 21; x++)
 		{
+			float indexX = static_cast<float>(x);
+
 			for (int z = 0; z < 21; z++)
 			{
-				m_Vertex[x][z].Position =
-					XMFLOAT3((x - 10) * 5.0f, 4.0f, (z - 10) * -5.0f);
-				m_Vertex[x][z].Normal = XMFLOAT3(0.0f, 1.0f, 0.0f);
-				m_Vertex[x][z].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
-				m_Vertex[x][z].TexCoord = XMFLOAT2(x, z);
+				float indexZ = static_cast<float>(z);
+
+				m_Vertex[x][z].Position	= XMFLOAT3((indexX - 10) * 5.0f, 
+													4.0f, 
+													(indexZ - 10) * -5.0f);
+				m_Vertex[x][z].Normal	= XMFLOAT3(0.0f, 1.0f, 0.0f);
+				m_Vertex[x][z].Diffuse	= XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+				m_Vertex[x][z].TexCoord	= XMFLOAT2(indexX, indexZ);
 			}
 		}
 
-
 		//法線ベクトル算出
-
-
 
 		D3D11_BUFFER_DESC bd;
 		ZeroMemory(&bd, sizeof(bd));

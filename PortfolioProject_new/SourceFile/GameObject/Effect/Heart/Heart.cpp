@@ -1,14 +1,12 @@
 #include	"Main.h"
 #include	"Renderer/Renderer.h"
 #include	"Effect/Heart/Heart.h"
-#include	"Renderer/ModelRenderer/ModelRenderer.h"
 #include	"Input/Input.h"
 #include	"Camera/Camera.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Scene/Scene.h"
-#include	"Enemy/Enemy.h"
 #include	"Texture/Texture.h"
-#include	<cmath>
+
 
 Vector3 HSVtoRGB(float h, float s, float v);
 
@@ -50,14 +48,6 @@ void Heart::Init()
 
 	Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 
-	//// テクスチャ読み込み
-	//TexMetadata metadata;
-	//ScratchImage image;
-	//LoadFromWICFile(L"Asset\\Texture\\Heart.png", WIC_FLAGS_NONE, &metadata, image); // 画像ファイルを読み込む
-	//CreateShaderResourceView(Renderer::GetDevice(), image.GetImages(),
-	//	image.GetImageCount(), metadata, &m_Texture); // 画像ファイルをセット
-	//assert(m_Texture);
-
 	m_Texture = Texture::Load("Asset\\Texture\\Particle.png");
 
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
@@ -66,7 +56,7 @@ void Heart::Init()
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\CSOFile\\UnlitTexturePS.cso");
 
-	for (int i = 0; i < PARTICLE_HEART_MAX; i++)
+	for (int i = 0; i < ParticleHeartMax; i++)
 	{
 		m_ParticleHeartStart[i].Enable = false;
 		m_ParticleHeartEnd[i].Enable = false;
@@ -129,7 +119,7 @@ void Heart::Update()
 
 	// 使われていない場所を探す
 	// 同じ個数なので、まとめて処理してる
-	for (int i = 0; i < PARTICLE_HEART_MAX; i++)
+	for (int i = 0; i < ParticleHeartMax; i++)
 	{
 		// 使われていないところを探す
 		if (m_ParticleHeartStart[i].Enable == false)
@@ -152,7 +142,7 @@ void Heart::Update()
 	}
 
 	// パーティクルの移動
-	for (int i = 0; i < PARTICLE_HEART_MAX; i++)
+	for (int i = 0; i < ParticleHeartMax; i++)
 	{
 		if (m_ParticleHeartStart[i].Enable == true)
 		{
@@ -214,7 +204,7 @@ void Heart::Draw()
 	Renderer::SetAddEnable(true);
 
 	// パーティクルの描画
-	for (int i = 0; i < PARTICLE_HEART_MAX; i++)
+	for (int i = 0; i < ParticleHeartMax; i++)
 	{
 		// 虹色にする
 		// 左の値を大きくしすぎると、値が少ししか変わらなくて

@@ -1,13 +1,13 @@
 #include	"Main.h"
-#include	"Manager/SceneManager/SceneManager.h"
+#include	"Renderer/Renderer.h"
 #include	"Player/Player.h"
+#include	"Renderer/ModelRenderer/ModelRenderer.h"
+#include	"Manager/SceneManager/SceneManager.h"
 #include	"Manager/AudioManager/AudioManager.h"
 #include	"Camera/Camera.h"
-#include	"Renderer/Renderer.h"
-#include	"Renderer/ModelRenderer/ModelRenderer.h"
 #include	"Input/Input.h"
 #include	"Bullet/Bullet.h"
-#include	"Enemy/Enemy.h"
+#include	"Enemy/FighterEnemy/FighterEnemy.h"
 #include	"Scene/Scene.h"
 #include	"AnimationModel/AnimationModel.h"
 #include	"Field/MeshField/MeshField.h"
@@ -115,6 +115,12 @@ void Player::Update()
 		m_Rotation.y = rotation.y + XM_PI;
 		move = true;
 	}
+	if (Input::GetKeyTrigger(VK_SPACE))
+	{
+		Bullet* bullet = SceneManager::GetScene()->AddGameObject<Bullet>(1);
+		bullet->SetPosition(m_Position);
+		bullet->SetVelocity(GetForward() * 0.5f);
+	}
 
 	if (!m_MeshField)
 	{
@@ -144,7 +150,7 @@ void Player::Update()
 	if (m_IsJump)
 	{
 		//Õ“Ë”»’è
-		auto enemies = SceneManager::GetScene()->GetGameObjects<Enemy>();
+		auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
 		bool particle = false;
 
 		// “–‚½‚è”»’èˆ—

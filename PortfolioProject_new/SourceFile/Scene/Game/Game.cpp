@@ -2,15 +2,14 @@
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Renderer/Renderer.h"
 
-#include	"Scene/Game/Game.h"
+#include	"Game.h"
 #include	"Camera/Camera.h"
 #include	"Field/Field.h"
 #include	"Player/Player.h"
 #include	"Renderer/Polygon2D/Polygon2D.h"
-#include	"Enemy/Enemy.h"
+#include	"Enemy/FighterEnemy/FighterEnemy.h"
 #include	"Scene/Scene.h"
 #include	"Input/Input.h"
-#include	"Scene/Title/Title.h"
 #include	"Field/MeshField/MeshField.h"
 #include	"Score/Score.h"
 #include	"Skydorm/Skydorm.h"
@@ -67,12 +66,6 @@ void Game::Init()
 		tree->SetScale(scale);
 	}
 
-	//AddGameObject<Enemy>(2)->SetPosition({ 2.0f,0.0f,3.0f });
-	//AddGameObject<Enemy>(2)->SetPosition({ 0.0f,0.0f,3.0f });
-	//AddGameObject<Enemy>(2)->SetPosition({ -2.0f,0.0f,3.0f });
-	//AddGameObject<spiralParticle>(2);
-	
-	//AddGameObject<Bullet>();
 	auto* fade = AddGameObject<FadeQuad>(2);
 	fade->FadeIn(3.0f);
 	AddGameObject<Score>(2);
@@ -82,7 +75,7 @@ void Game::Update()
 {
 	Scene::Update();
 
-	auto enemies = SceneManager::GetScene()->GetGameObjects<Enemy>();
+	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
 	
 	if (Input::GetKeyTrigger(VK_RETURN) || (m_NowFrame > m_StopFrame))
 	{

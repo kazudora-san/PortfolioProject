@@ -23,7 +23,7 @@ void Title::Init()
 	AddGameObject<Polygon2D>(2)->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "Asset\\Texture\\Title.png");
 	// âÊëúÉTÉCÉYÅ@ÇQÇRÇRÅ~ÇUÇO
 	AddGameObject<Polygon2D>(2)->Init(SCREEN_WIDTH - 233, SCREEN_HEIGHT - 60, 233, 60, "Asset\\Texture\\PlessEnter.png");
-	AddGameObject<PlayerModel>(3);
+	AddGameObject<Player>(3);
 	//m_Audio->Load();
 	m_Audio->Init();
 	m_Audio->Load("Asset\\Audio\\TitleBGM.wav", "TitleBGM");

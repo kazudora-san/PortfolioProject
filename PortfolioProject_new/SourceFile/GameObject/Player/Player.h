@@ -2,9 +2,7 @@
 #define		PLAYER_H
 
 #include	"GameCharacter/GameCharacter.h"
-#include	<string>
 
-class AnimationModel;
 class AudioManager;
 class Camera;
 class MeshField;
@@ -12,13 +10,13 @@ class MeshField;
 class Player : public GameCharacter
 {
 private:
-	Camera*			m_Camera		= nullptr;
-	AudioManager*	m_Audio			= nullptr;
-	MeshField*		m_MeshField		= nullptr;
+	Camera*			m_Camera		= {};
+	AudioManager*	m_Audio			= {};
+	MeshField*		m_MeshField		= {};
 
-	float m_Jump = 0.0f;
-	bool m_IsJump = false;
-	float m_JumpTime = 0.0f;
+	float			m_Jump			= {};
+	bool			m_IsJump		= {};
+	float			m_JumpTime		= {};
 
 public:
 	void Init();

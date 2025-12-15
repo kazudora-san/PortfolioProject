@@ -1,12 +1,9 @@
 #include	"Main.h"
 #include	"Renderer/Renderer.h"
 #include	"Tree/Tree.h"
-#include	"Renderer/ModelRenderer/ModelRenderer.h"
-#include	"Input/Input.h"
 #include	"Camera/Camera.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Scene/Scene.h"
-#include	"Enemy/Enemy.h"
 #include	"Texture/Texture.h"
 
 

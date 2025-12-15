@@ -1,18 +1,16 @@
 #include	"Main.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Bullet/Bullet.h"
-#include	"Camera/Camera.h"
 #include	"Renderer/Renderer.h"
+#include	"Bullet/Bullet.h"
+#include	"Scene/Scene.h"
+#include	"Manager/SceneManager/SceneManager.h"
+#include	"Camera/Camera.h"
 #include	"Renderer/ModelRenderer/ModelRenderer.h"
-#include	"Input/Input.h"
 #include	"Player/Player.h"
-#include	"Enemy/Enemy.h"
+#include	"Enemy/FighterEnemy/FighterEnemy.h"
 #include	"Effect/Explosion/Explosion.h"
 #include	"Effect/Heart/Heart.h"
-#include	"Scene/Scene.h"
 #include	"Score/Score.h"
 #include	"Manager/AudioManager/AudioManager.h"
-
 
 void Bullet::Init()
 {
@@ -70,7 +68,7 @@ void Bullet::Update()
 
 	
 	//Õ“Ë”»’è
-	auto enemies = SceneManager::GetScene()->GetGameObjects<Enemy>();
+	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
 	bool particle = false;
 
 	// “–‚½‚è”»’èˆ—

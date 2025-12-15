@@ -1,13 +1,12 @@
 #include	"Main.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Enemy/Enemy.h"
-#include	"Camera/Camera.h"
 #include	"Renderer/Renderer.h"
+#include	"FighterEnemy.h"
+#include	"Manager/SceneManager/SceneManager.h"
+#include	"Camera/Camera.h"
 #include	"Renderer/ModelRenderer/ModelRenderer.h"
 #include	"Scene/Scene.h"
-#include	"Input/Input.h"
 
-void Enemy::Init()
+void FighterEnemy::Init()
 {
 	EnemyBase::Init();
 
@@ -23,14 +22,14 @@ void Enemy::Init()
 
 }
 
-void Enemy::Uninit()
+void FighterEnemy::Uninit()
 {
 	delete m_ModelRenderer;
 
 	EnemyBase::Uninit();
 }
 
-void Enemy::Update()
+void FighterEnemy::Update()
 {
 	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
 
@@ -57,7 +56,7 @@ void Enemy::Update()
 	}
 }
 
-void Enemy::Draw()
+void FighterEnemy::Draw()
 {
 	//入力レイアウト
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);

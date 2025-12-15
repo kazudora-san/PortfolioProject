@@ -9,7 +9,7 @@
 #pragma comment(lib, "shlwapi.lib")
 
 
-std::unordered_map<std::string, MODEL*> ModelRenderer::m_ModelPool;
+std::unordered_map<std::string, MODEL*> ModelRenderer::m_ModelPool	= {};
 
 
 void ModelRenderer::Draw()

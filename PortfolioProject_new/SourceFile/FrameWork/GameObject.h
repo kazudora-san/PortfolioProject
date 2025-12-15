@@ -5,13 +5,11 @@
 
 class GameObject
 {
-private:
-
 protected:
 	bool		m_Destroy	= false;
 
-	Vector3		m_Position	= { 0.0f,0.0f,0.0f };
-	Vector3		m_Rotation	= { 0.0f,0.0f,0.0f };
+	Vector3		m_Position	= {};
+	Vector3		m_Rotation	= {};
 	Vector3		m_Scale		= { 1.0f,1.0f,1.0f };
 	Vector3		m_Velocity	= { 0.0f, 0.98f, 0.0f };
 
@@ -23,23 +21,7 @@ public:
 
 	void SetDestroy() { m_Destroy = true; }
 
-	bool Destroy()
-	{
-		if (m_Destroy)
-		{
-			Uninit();
-			delete this;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-
-	}
-
-
+	bool Destroy();
 
 	Vector3 GetPosition() const { return m_Position; }
 	void SetPosition(Vector3 Position) { m_Position = Position; }
@@ -51,39 +33,11 @@ public:
 	void SetScale(Vector3 Scale) { m_Scale = Scale; }
 
 
-	Vector3 GetRight()
-	{
-		XMMATRIX matrix;
-		matrix = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);
+	Vector3 GetRight();
+	virtual Vector3 GetForward();
 
-		Vector3 right;
-		XMStoreFloat3((XMFLOAT3*)&right, matrix.r[0]);
-
-		return right;
-	}
-
-	virtual Vector3 GetForward()
-	{
-		XMMATRIX matrix;
-		matrix = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);
-
-		Vector3 forward;
-		XMStoreFloat3((XMFLOAT3*)&forward, matrix.r[2]);
-
-		return forward;
-	}
-
-	float GetDistance(Vector3 Position)
-	{
-		Vector3 direction = m_Position - Position;
-		return (m_Position - Position).length();
-	}
-
-	float GetZ(Vector3 Position, Vector3 Forward)
-	{
-		Vector3 direction = m_Position - Position;
-		return Vector3::dot(direction, Forward);
-	}
+	float GetDistance(Vector3 Position);
+	float GetZ(Vector3 Position, Vector3 Forward);
 
 };
 

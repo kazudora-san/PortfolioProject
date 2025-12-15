@@ -7,7 +7,7 @@
 #include	"Renderer/ModelRenderer/ModelRenderer.h"
 #include	"Input/Input.h"
 #include	"Bullet/Bullet.h"
-#include	"Enemy/Enemy.h"
+#include	"Enemy/FighterEnemy/FighterEnemy.h"
 #include	"Scene/Scene.h"
 #include	"AnimationModel/AnimationModel.h"
 #include	"Field/MeshField/MeshField.h"

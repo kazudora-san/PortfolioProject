@@ -11,6 +11,9 @@ protected:
 	std::string			m_StateName		= {};
 
 public:
+	StateMachine() = default;
+	StateMachine(GameCharacter* ownerObject);
+
 	virtual void	Init()		;
 	virtual void	Uninit()	;
 	virtual void	Update()	;

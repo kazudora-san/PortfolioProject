@@ -3,18 +3,20 @@
 
 #include	"GameObject.h"
 
+class ModelRenderer;
+
 class Rock :public GameObject
 {
 private:
 
-	ID3D11InputLayout*		m_VertexLayOut;
-	ID3D11PixelShader*		m_PixelShader;
-	ID3D11VertexShader*		m_VertexShader;
+	ID3D11InputLayout*		m_VertexLayOut	= {};
+	ID3D11PixelShader*		m_PixelShader	= {};
+	ID3D11VertexShader*		m_VertexShader	= {};
 
 
-	class ModelRenderer*	m_ModelRenderer;
+	ModelRenderer*			m_ModelRenderer	= {};
 
-	unsigned int			m_Frame;
+	unsigned int			m_Frame			= {};
 
 public:
 	void	Init();

@@ -5,21 +5,11 @@
 #include	"Renderer/Renderer.h"
 #include	"Renderer/ModelRenderer/ModelRenderer.h"
 #include	"Input/Input.h"
-#include	"Bullet/Bullet.h"
-#include	"Enemy/Enemy.h"
 #include	"Scene/Scene.h"
 #include	"AnimationModel/AnimationModel.h"
-#include	"Field/MeshField/MeshField.h"
 
 void PlayerModel::Init()
 {
-	//m_ModelRenderer = new ModelRenderer();
-	//m_ModelRenderer->Load("Asset\\model\\PlayerModel.obj");
-
-	//m_ModelRendererChild = new ModelRenderer();
-	//m_ModelRendererChild->Load("Asset\\model\\PlayerModel.obj");
-
-
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\model\\OtamesiModel.fbx");
 
@@ -41,9 +31,6 @@ void PlayerModel::Init()
 
 void PlayerModel::Uninit()
 {
-	//delete m_ModelRenderer;
-	//delete m_ModelRendererChild;
-
 	m_AnimationModel->Uninit();
 	delete m_AnimationModel;
 
@@ -55,77 +42,9 @@ void PlayerModel::Uninit()
 
 void PlayerModel::Update()
 {
-	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
+	
 
-	Vector3 rotation = camera->GetRotation();
-
-	bool move = false;
-
-	if (Input::GetKeyPress('A'))
-	{
-		m_Position += camera->GetRight() * -0.1f;
-		m_Rotation.y = rotation.y - XM_PIDIV2;
-		move = true;
-	}
-	if (Input::GetKeyPress('D'))
-	{
-		m_Position += camera->GetRight() * 0.1f;
-		m_Rotation.y = rotation.y + XM_PIDIV2;
-		move = true;
-	}
-	if (Input::GetKeyPress('W'))
-	{
-		Vector3 forward = camera->GetForward();
-		forward.y = 0.0f;
-		forward.normalize();
-		m_Position += forward * 0.1f;
-		m_Rotation.y = rotation.y;
-		move = true;
-	}
-	if (Input::GetKeyPress('S'))
-	{
-		Vector3 forward = camera->GetForward();
-		forward.y = 0.0f;
-		forward.normalize();
-
-		m_Position += forward * -0.1f;
-		m_Rotation.y = rotation.y + XM_PI;
-		move = true;
-	}
-
-
-	if (Input::GetKeyTrigger(VK_SPACE))
-	{
-		Bullet* bullet = SceneManager::GetScene()->AddGameObject<Bullet>(1);
-		bullet->SetPosition(m_Position);
-		bullet->SetVelocity(GetForward() * 0.5f);
-
-		//Enemy* enemy = Manager::GetGameObject<Enemy>();
-		//bullet->Shot(m_Position, enemy->GetPosition());
-	}
-
-	if (move)
-	{
-		// プレイヤーが動くとき、Runのアニメーションか？
-		if (m_AnimationNameNext != "Run")
-		{
-			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
-			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = "Run";
-			m_AnimationBlend = 0.0f;
-		}
-	}
-	else
-	{
-		// プレイヤーが止まる時、Idleのアニメーションか？
-		if (m_AnimationNameNext != "Idle")
-		{
-			// Idle以外が入ってれば、Idleのアニメーションを入れて、Blendを0.0fにする
-			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = "Idle";
-			m_AnimationBlend = 0.0f;
-		}
-	}
+	
 
 	// std::string型には、c_str()というconst char*型に変換してくれる！
 	// 二つ入れることで、合成（ブレンド）をしてくれる！（処理は中身を参照）

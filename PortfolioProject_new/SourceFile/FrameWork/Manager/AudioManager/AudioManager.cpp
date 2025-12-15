@@ -2,7 +2,7 @@
 #include	"Audio/Audio.h"
 #include	"Manager/AudioManager/AudioManager.h"
 
-std::unordered_map<std::string, Audio*> AudioManager::m_Audios;
+std::unordered_map<std::string, Audio*> AudioManager::m_Audios	= {};
 
 void AudioManager::Init()
 {

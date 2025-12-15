@@ -142,6 +142,9 @@
     <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine\AttackState">
       <UniqueIdentifier>{44e7a822-2328-4e3f-a94f-77f9f5c73fbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\GameObject\Enemy\FighterEnemy">
+      <UniqueIdentifier>{d2a3c27c-4fb7-49cd-9241-276ce58457ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -195,9 +198,6 @@
     </ClInclude>
     <ClInclude Include="SourceFile\GameObject\Field\MeshField\MeshField.h">
       <Filter>SourceFile\GameObject\Field\MeshField</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceFile\GameObject\Enemy\Enemy.h">
-      <Filter>SourceFile\GameObject\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="SourceFile\GameObject\Effect\Heart\Heart.h">
       <Filter>SourceFile\GameObject\Effect\Heart</Filter>
@@ -270,6 +270,9 @@
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState\MoveState.h">
       <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\MoveState</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.h">
+      <Filter>SourceFile\GameObject\Enemy\FighterEnemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -356,9 +359,6 @@
     <ClCompile Include="SourceFile\GameObject\Field\MeshField\MeshField.cpp">
       <Filter>SourceFile\GameObject\Field\MeshField</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\GameObject\Enemy\Enemy.cpp">
-      <Filter>SourceFile\GameObject\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFile\GameObject\Effect\Heart\Heart.cpp">
       <Filter>SourceFile\GameObject\Effect\Heart</Filter>
     </ClCompile>
@@ -421,6 +421,12 @@
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState\MoveState.cpp">
       <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\MoveState</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.cpp">
+      <Filter>SourceFile\GameObject\Enemy\FighterEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameObject.cpp">
+      <Filter>SourceFile\FrameWork</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

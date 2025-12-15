@@ -10,7 +10,7 @@ class GameObject;
 class Scene
 {
 private:
-	std::list<GameObject*>	m_GameObject[LAYER_MAX];//X層のレイヤー
+	std::list<GameObject*>	m_GameObject[LAYER_MAX] = {};//X層のレイヤー
 
 public:
 	virtual	void	Init();

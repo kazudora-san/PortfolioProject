@@ -9,9 +9,9 @@
 #include	"Fade/FadeQuad.h"
 
 
-Scene*		SceneManager::m_Scene		= nullptr;
-Scene*		SceneManager::m_SceneNext	= nullptr;
-FadeQuad*	SceneManager::m_Fader		= nullptr;
+Scene*		SceneManager::m_Scene		= {};
+Scene*		SceneManager::m_SceneNext	= {};
+FadeQuad*	SceneManager::m_Fader		= {};
 
 void SceneManager::Init()
 {

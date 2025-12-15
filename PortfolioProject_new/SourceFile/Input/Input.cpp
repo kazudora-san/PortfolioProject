@@ -3,8 +3,8 @@
 
 #define	TRUEINPUT	(0x80)
 
-BYTE Input::m_OldKeyState[256];
-BYTE Input::m_KeyState[256];
+BYTE Input::m_OldKeyState[256]	= {};
+BYTE Input::m_KeyState[256]		= {};
 
 
 bool Input::CommandLeft()

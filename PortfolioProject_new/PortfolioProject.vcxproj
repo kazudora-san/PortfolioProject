@@ -45,7 +45,7 @@
     <ClInclude Include="SourceFile\GameObject\Bullet\Bullet.h" />
     <ClInclude Include="SourceFile\GameObject\Effect\Explosion\Explosion.h" />
     <ClInclude Include="SourceFile\GameObject\Effect\Heart\Heart.h" />
-    <ClInclude Include="SourceFile\GameObject\Enemy\Enemy.h" />
+    <ClInclude Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.h" />
     <ClInclude Include="SourceFile\GameObject\Field\Field.h" />
     <ClInclude Include="SourceFile\GameObject\Field\MeshField\MeshField.h" />
     <ClInclude Include="SourceFile\GameObject\Grass\Grass.h" />
@@ -117,6 +117,7 @@
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\IdleState\IdleState.cpp" />
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState\MoveState.cpp" />
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\StateMachine.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\GameObject.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Renderer\ModelRenderer\ModelRenderer.cpp" />
@@ -126,7 +127,7 @@
     <ClCompile Include="SourceFile\GameObject\Bullet\Bullet.cpp" />
     <ClCompile Include="SourceFile\GameObject\Effect\Explosion\Explosion.cpp" />
     <ClCompile Include="SourceFile\GameObject\Effect\Heart\Heart.cpp" />
-    <ClCompile Include="SourceFile\GameObject\Enemy\Enemy.cpp" />
+    <ClCompile Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.cpp" />
     <ClCompile Include="SourceFile\GameObject\Field\Field.cpp" />
     <ClCompile Include="SourceFile\GameObject\Field\MeshField\MeshField.cpp" />
     <ClCompile Include="SourceFile\GameObject\Grass\Grass.cpp" />

@@ -47,8 +47,8 @@ private:
 	static BYTE m_OldKeyState[256];
 	static BYTE m_KeyState[256];
 
-	static inline LONG mouseDX = 0;
-	static inline LONG mouseDY = 0;
+	static inline LONG mouseDX = {};
+	static inline LONG mouseDY = {};
 
 private:
 	static bool	CommandLeft();
