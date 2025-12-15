@@ -54,8 +54,12 @@
     <ClInclude Include="SourceFile\GameObject\Rock\Rock.h" />
     <ClInclude Include="SourceFile\GameObject\Score\Score.h" />
     <ClInclude Include="SourceFile\GameObject\SkyDorm\Skydorm.h" />
+    <ClInclude Include="SourceFile\GameObject\Title\TitleCamera\TitleCamera.h" />
+    <ClInclude Include="SourceFile\GameObject\Title\TitleMeshField\TitleMeshField.h" />
+    <ClInclude Include="SourceFile\GameObject\Title\TitlePlayer\TitlePlayer.h" />
     <ClInclude Include="SourceFile\GameObject\Tree\Tree.h" />
     <ClInclude Include="SourceFile\GameObject\Wave\Wave.h" />
+    <ClInclude Include="SourceFile\GameObject\Window\Window.h" />
     <ClInclude Include="SourceFile\Input\Input.h" />
     <ClInclude Include="SourceFile\Input\Keyboard.h" />
     <ClInclude Include="SourceFile\Main.h" />
@@ -136,8 +140,12 @@
     <ClCompile Include="SourceFile\GameObject\Rock\Rock.cpp" />
     <ClCompile Include="SourceFile\GameObject\Score\Score.cpp" />
     <ClCompile Include="SourceFile\GameObject\SkyDorm\Skydorm.cpp" />
+    <ClCompile Include="SourceFile\GameObject\Title\TitleCamera\TitleCamera.cpp" />
+    <ClCompile Include="SourceFile\GameObject\Title\TitleMeshField\TitleMeshField.cpp" />
+    <ClCompile Include="SourceFile\GameObject\Title\TitlePlayer\TitlePlayer.cpp" />
     <ClCompile Include="SourceFile\GameObject\Tree\Tree.cpp" />
     <ClCompile Include="SourceFile\GameObject\Wave\Wave.cpp" />
+    <ClCompile Include="SourceFile\GameObject\Window\Window.cpp" />
     <ClCompile Include="SourceFile\Input\Input.cpp" />
     <ClCompile Include="SourceFile\Input\Keyboard.cpp" />
     <ClCompile Include="SourceFile\Main.cpp" />
@@ -234,6 +242,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SourceFile;$(ProjectDir)SourceFile\FrameWork;$(ProjectDir)SourceFile\Manager;$(ProjectDir)SourceFile\Render;$(ProjectDir)SourceFile\GameObject;$(ProjectDir)assimp</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -258,6 +267,7 @@
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

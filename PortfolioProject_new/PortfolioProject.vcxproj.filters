@@ -145,6 +145,21 @@
     <Filter Include="SourceFile\GameObject\Enemy\FighterEnemy">
       <UniqueIdentifier>{d2a3c27c-4fb7-49cd-9241-276ce58457ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\GameObject\Window">
+      <UniqueIdentifier>{d78e728b-be63-46d5-86d2-927b1cb7c759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Title">
+      <UniqueIdentifier>{d53b433c-b052-4618-a817-67541f702e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Title\TitleCamera">
+      <UniqueIdentifier>{be74024b-f08d-47e3-a0a5-18fe3957db66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Title\TitlePlayer">
+      <UniqueIdentifier>{8e0c2853-7169-43bf-ac7b-2165c9c28b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Title\TitleMeshField">
+      <UniqueIdentifier>{28590473-72b6-40f1-bcdf-d183e1b0120c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -273,6 +288,18 @@
     </ClInclude>
     <ClInclude Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.h">
       <Filter>SourceFile\GameObject\Enemy\FighterEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Window\Window.h">
+      <Filter>SourceFile\GameObject\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Title\TitleCamera\TitleCamera.h">
+      <Filter>SourceFile\GameObject\Title\TitleCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Title\TitlePlayer\TitlePlayer.h">
+      <Filter>SourceFile\GameObject\Title\TitlePlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Title\TitleMeshField\TitleMeshField.h">
+      <Filter>SourceFile\GameObject\Title\TitleMeshField</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +454,18 @@
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\GameObject.cpp">
       <Filter>SourceFile\FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Window\Window.cpp">
+      <Filter>SourceFile\GameObject\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Title\TitleCamera\TitleCamera.cpp">
+      <Filter>SourceFile\GameObject\Title\TitleCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Title\TitlePlayer\TitlePlayer.cpp">
+      <Filter>SourceFile\GameObject\Title\TitlePlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Title\TitleMeshField\TitleMeshField.cpp">
+      <Filter>SourceFile\GameObject\Title\TitleMeshField</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

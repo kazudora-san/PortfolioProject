@@ -13,52 +13,43 @@
 #include	"Audio/Audio.h"
 #include	"Manager/AudioManager/AudioManager.h"
 #include	"AnimationModel/AnimationModel.h"
+#include	"Field/MeshField/MeshField.h"
 
 void Title::Init()
 {
+	Scene::Init();
+
 	AddGameObject<Camera>(0);
+	AddGameObject<MeshField>(0);
 
 	auto* fade = AddGameObject<FadeQuad>(2);
 	fade->FadeIn(3.0f);
-	AddGameObject<Polygon2D>(2)->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "Asset\\Texture\\Title.png");
+	//AddGameObject<Polygon2D>(2)->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "Asset\\Texture\\Title.png");
 	// âÊëúÉTÉCÉYÅ@ÇQÇRÇRÅ~ÇUÇO
-	AddGameObject<Polygon2D>(2)->Init(SCREEN_WIDTH - 233, SCREEN_HEIGHT - 60, 233, 60, "Asset\\Texture\\PlessEnter.png");
+	//AddGameObject<Polygon2D>(2)->Init(SCREEN_WIDTH - 233, SCREEN_HEIGHT - 60, 233, 60, "Asset\\Texture\\PlessEnter.png");
 	AddGameObject<Player>(3);
 	//m_Audio->Load();
-	m_Audio->Init();
-	m_Audio->Load("Asset\\Audio\\TitleBGM.wav", "TitleBGM");
-	m_Audio->Load("Asset\\Audio\\PushSE.wav", "PushSE");
-	m_Audio->Play("TitleBGM", true);
+	//m_Audio->Init();
+	//m_Audio->Load("Asset\\Audio\\TitleBGM.wav", "TitleBGM");
+	//m_Audio->Load("Asset\\Audio\\PushSE.wav", "PushSE");
+	//m_Audio->Play("TitleBGM", true);
 }
 
 
 void Title::Update()
 {
+	Scene::Update();
+
 	if (Input::GetKeyTrigger(VK_RETURN) && !m_IsNextScene)
 	{
 		m_Frame = 0;
 		m_IsNextScene = true;
-		m_Audio->Stop("TitleBGM");
-		m_Audio->Play("PushSE");
+		//m_Audio->Stop("TitleBGM");
+		//m_Audio->Play("PushSE");
 	}
 	else
 	{
-		std::vector<Polygon2D*> pressEnters = SceneManager::GetScene()->GetGameObjects<Polygon2D>();
-
-		if (m_Frame > 60)
-		{
-			pressEnters[1]->Render();
-		}
-		else
-		{
-
-			pressEnters[1]->NotRender();
-		}
-
-		if (m_Frame > 120)
-		{
-			m_Frame = 0;
-		}
+		
 	}
 
 	m_Frame++;
@@ -74,7 +65,7 @@ void Title::Update()
 				});
 		}
 
-		m_Audio->Uninit();
+		//m_Audio->Uninit();
 	}
 }
 
