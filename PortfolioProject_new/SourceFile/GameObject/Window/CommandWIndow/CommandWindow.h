@@ -1,13 +1,15 @@
-#ifndef		GRASS_H
-#define		GRASS_H
+#ifndef		COMMANDWINDOW_H
+#define		COMMANDWINDOW_H
 
 #include	"GameObject.h"
 
-class Grass : public GameObject // Œp³
+class Polygon2D;
+
+class CommandWindow : public GameObject // Œp³
 {
 private:
 
-	int							m_Frame			= {};
+	std::vector<Polygon2D>		UITexture		= {};
 
 	// ƒ|ƒŠƒSƒ“‚ğ•`‰æ‚·‚é‚Ì‚É•K—v‚È‚S‚ÂI
 

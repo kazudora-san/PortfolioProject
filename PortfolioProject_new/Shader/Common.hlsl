@@ -1,71 +1,77 @@
 cbuffer WorldBuffer : register(b0)
 {
-    matrix World;
+	matrix World;
 }
 cbuffer ViewBuffer : register(b1)
 {
-    matrix View;
+	matrix View;
 }
 cbuffer ProjectionBuffer : register(b2)
 {
-    matrix Projection;
+	matrix Projection;
 }
-
 
 struct MATERIAL
 {
-    float4 Ambient;
-    float4 Diffuse;
-    float4 Specular;
-    float4 Emission;
-    float Shininess;
-    bool TextureEnable;
-    float2 Dummy;
+	float4	Ambient;
+	float4	Diffuse;
+	float4	Specular;
+	float4	Emission;
+	float	Shininess;
+	bool	TextureEnable;
+	float2	Dummy;
 };
 
 cbuffer MaterialBuffer : register(b3)
 {
-    MATERIAL Material;
+	MATERIAL Material;
 }
 
 struct LIGHT
 {
-    bool Enable;
-    bool3 Dummy;
-    float4 Direction;
-    float4 Diffuse;
-    float4 Ambient;
-
-    float4 Position;
-    float4 PointLightParam;
+    bool	Enable;
+    bool3	Dummy;
+    float4	Direction;
+    float4	Diffuse;
+    float4	Ambient;
+    float4	Position;
+    float4	PointLightParam;
+    float4	SkyColor;
+    float4	GroundColor;
+    float4	GroundNormal;
+    float4	Angle;
 };
 
 cbuffer LightBuffer : register(b4)
 {
-    LIGHT Light;
+	LIGHT Light;
 }
-
-cbuffer CameraBuffer : register(b5) // バッファの5番とする
-{
-    float4 CameraPosition; // カメラ座標を受け取る変数
-}
-
-
 
 struct VS_IN
 {
-    float4 Position : POSITION0;
-    float3 Normal : NORMAL0;
-    float4 Diffuse : COLOR0;
-    float2 TexCoord : TEXCOORD0;
+	float4	Position	: POSITION0;
+	float4	Normal		: NORMAL0;
+	float4	Diffuse		: COLOR0;
+	float2	TexCoord	: TEXCOORD0;
+    uint	InstanceId	: SV_InstanceID;
 };
-
 
 struct PS_IN
 {
-    float4 Position : SV_POSITION;
-    float4 WorldPosition : POSITIONO;
-    float3 Normal : NORMALO;
-    float4 Diffuse : COLOR0;
-    float2 TexCoord : TEXCOORD0;
+	float4	Position		: SV_POSITION;
+	float4	Diffuse			: COLOR0;
+	float2	TexCoord		: TEXCOORD0;
+    float4	Normal			: NORMAL0;
+    float4	WorldPosition	: POSITION0;
+    float	Depth			: DEPTH0;
 };
+
+cbuffer CameraBuffer : register(b5)
+{
+    float4 CameraPosition;
+}
+
+cbuffer ParameterBuffer : register(b6)
+{
+    float4 Parameter;
+}

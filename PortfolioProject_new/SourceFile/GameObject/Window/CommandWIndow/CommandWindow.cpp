@@ -1,13 +1,13 @@
 #include	"Main.h"
 #include	"Renderer/Renderer.h"
-#include	"Grass/Grass.h"
+#include	"CommandWindow/CommandWindow.h"
 #include	"Camera/Camera.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Scene/Scene.h"
 #include	"Texture/Texture.h"
 
 
-void Grass::Init()
+void CommandWindow::Init()
 {
 	// 頂点バッファの情報を作る
 	// 今回は四角形なので４つの頂点情報を入力する必要がある！
@@ -46,7 +46,7 @@ void Grass::Init()
 	Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 
 
-	m_Texture = Texture::Load("Asset\\Texture\\Grass.png");
+	m_Texture = Texture::Load("Asset\\Texture\\CommandWindow.png");
 
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
 		"shader\\CSOFile\\UnlitTextureVS.cso");
@@ -54,10 +54,9 @@ void Grass::Init()
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\CSOFile\\UnlitTexturePS.cso");
 
-	m_Frame = 0;
 }
 
-void Grass::Uninit()
+void CommandWindow::Uninit()
 {
 	//m_Texture->Release();
 
@@ -68,11 +67,11 @@ void Grass::Uninit()
 	m_PixelShader->Release();
 }
 
-void Grass::Update()
+void CommandWindow::Update()
 {
 }
 
-void Grass::Draw()
+void CommandWindow::Draw()
 {
 
 	//入力レイアウト設定

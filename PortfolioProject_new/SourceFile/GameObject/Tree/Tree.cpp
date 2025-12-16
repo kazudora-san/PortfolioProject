@@ -49,10 +49,10 @@ void Tree::Init()
 	m_Texture = Texture::Load("Asset\\Texture\\Tree.png");
 
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
-		"shader\\CSOFile\\UnlitTextureVS.cso");
+		"Shader\\CSOFile\\UnlitTextureVS.cso");
 
 	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\CSOFile\\UnlitTexturePS.cso");
+		"Shader\\CSOFile\\UnlitTexturePS.cso");
 
 	m_Frame = 0;
 }

@@ -102,3 +102,36 @@ void Title::Update()
 	}
 }
 
+void Title::Draw()
+{
+	//Zソート
+	TitleCamera* camera = GetGameObject<TitleCamera>();
+
+	if (!camera)
+	{
+		return;
+	}
+
+	Vector3 cameraPosition = camera->GetPosition();
+	Vector3 cameraForward = camera->GetForward();
+
+	m_GameObject[1].sort([&](GameObject* object1, GameObject* object2)
+		{
+			return object1->GetZ(cameraPosition, cameraForward) >
+				object2->GetZ(cameraPosition, cameraForward);
+		});
+
+	for (int i = 0; i < LAYER_MAX; i++)
+	{
+		for (auto gameObject : m_GameObject[i])//範囲forループ
+		{
+			if (!gameObject)
+			{
+				continue;
+			}
+
+			gameObject->Draw();//ポリモーフィズム
+		}
+	}
+}
+

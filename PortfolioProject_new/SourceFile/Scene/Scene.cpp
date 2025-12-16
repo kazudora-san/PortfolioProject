@@ -17,14 +17,17 @@ void Scene::Uninit()
 	{
 		for (auto gameObject : m_GameObject[i])//範囲forループ
 		{
+			if (!gameObject)
+			{
+				continue;
+			}
+
 			gameObject->Uninit();//ポリモーフィズム
 			delete gameObject;
-
 		}
 
 		m_GameObject[i].clear();
 	}
-
 }
 
 void Scene::Update()
@@ -33,6 +36,11 @@ void Scene::Update()
 	{
 		for (auto gameObject : m_GameObject[i])//範囲forループ
 		{
+			if (!gameObject)
+			{
+				continue;
+			}
+
 			gameObject->Update();//ポリモフィズム
 		}
 	}
@@ -53,23 +61,29 @@ void Scene::Draw()
 	//Zソート
 	Camera* camera = GetGameObject<Camera>();
 
-	if (camera != nullptr)
+	if (!camera)
 	{
-		Vector3 cameraPosition = camera->GetPosition();
-		Vector3 cameraForward = camera->GetForward();
-
-
-		m_GameObject[1].sort([&](GameObject* object1, GameObject* object2)
-			{
-				return object1->GetZ(cameraPosition, cameraForward)
-						> object2->GetZ(cameraPosition, cameraForward);
-			});
+		return;
 	}
+
+	Vector3 cameraPosition = camera->GetPosition();
+	Vector3 cameraForward = camera->GetForward();
+
+	m_GameObject[1].sort([&](GameObject* object1, GameObject* object2)
+		{
+			return object1->GetZ(cameraPosition, cameraForward) > 
+					object2->GetZ(cameraPosition, cameraForward);
+		});
 
 	for (int i = 0; i < LAYER_MAX; i++)
 	{
 		for (auto gameObject : m_GameObject[i])//範囲forループ
 		{
+			if (!gameObject)
+			{
+				continue;
+			}
+
 			gameObject->Draw();//ポリモーフィズム
 		}
 	}

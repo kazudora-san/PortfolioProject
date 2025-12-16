@@ -17,9 +17,9 @@ private:
 	AudioManager*		m_Audio				= {};
 
 public:
-	void	Init()		override;
-	void	Update()	override;
-
+	virtual void	Init()		override;
+	virtual void	Update()	override;
+	virtual void	Draw()		override;
 };
 
 #endif // !TITLE_H

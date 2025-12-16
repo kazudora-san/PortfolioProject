@@ -163,6 +163,18 @@
     <Filter Include="SourceFile\GameObject\TitleObject\TitleEnemy">
       <UniqueIdentifier>{736dad7d-5f81-46ed-998b-95e97cd448dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\GameObject\Window\MainWindow">
+      <UniqueIdentifier>{b3ab6f0e-b4bb-440c-8148-8a0e72edded8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Window\CommandWindow">
+      <UniqueIdentifier>{de3a2ddb-2a44-43d9-be60-b693af599d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\Grass">
+      <UniqueIdentifier>{99c0d76b-7328-471f-b74d-b6c480049bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Grass\GrassInstance">
+      <UniqueIdentifier>{a739da79-97ad-44ac-8c14-684d3d20aacf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -307,6 +319,12 @@
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.h">
       <Filter>SourceFile\GameObject\TitleObject\TitlePlayer</Filter>
     </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Grass\GrassInstance\GrassInstance.h">
+      <Filter>SourceFile\GameObject\Grass\GrassInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Window\CommandWindow\CommandWindow.h">
+      <Filter>SourceFile\GameObject\Window\CommandWindow</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.inl" />
@@ -335,6 +353,12 @@
     </FxCompile>
     <FxCompile Include="Shader\Wave\WaveVS.hlsl">
       <Filter>Shader\Wave</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\Grass\GrassPS.hlsl">
+      <Filter>Shader\Grass</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\Grass\GrassVS.hlsl">
+      <Filter>Shader\Grass</Filter>
     </FxCompile>
     <FxCompile Include="Shader\Common.hlsl">
       <Filter>Shader</Filter>
@@ -475,6 +499,12 @@
     </ClCompile>
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.cpp">
       <Filter>SourceFile\GameObject\TitleObject\TitlePlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Grass\GrassInstance\GrassInstance.cpp">
+      <Filter>SourceFile\GameObject\Grass\GrassInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Window\CommandWindow\CommandWindow.cpp">
+      <Filter>SourceFile\GameObject\Window\CommandWindow</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

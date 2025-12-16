@@ -156,6 +156,11 @@ void Player::Update()
 		// “–‚½‚è”»’èˆ—
 		for (auto enemy : enemies)
 		{
+			if (!enemy)
+			{
+				continue;
+			}
+
 			Vector3 d = enemy->GetPosition() - m_Position;
 			float length = d.length();
 			if (length < 1.0f && !particle)

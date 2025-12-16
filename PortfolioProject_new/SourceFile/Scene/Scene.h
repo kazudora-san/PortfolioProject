@@ -5,11 +5,13 @@
 
 #define		LAYER_MAX (4)
 
+// 初期シーンの設定は、Framework→Manager→SceneManager.cppにある
+
 class GameObject;
 
 class Scene
 {
-private:
+protected:
 	std::list<GameObject*>	m_GameObject[LAYER_MAX] = {};//X層のレイヤー
 
 public:
