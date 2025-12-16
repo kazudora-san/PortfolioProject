@@ -88,9 +88,6 @@
     <Filter Include="SourceFile\GameObject\Player\PlayerModel">
       <UniqueIdentifier>{8b2ee116-e3c8-44b0-bc47-a10c56c1b74f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SourceFile\FrameWork\Animation">
-      <UniqueIdentifier>{c0739c7d-debf-4d3f-a071-14a2d542ef3c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SourceFile\FrameWork\Audio">
       <UniqueIdentifier>{1dfe1f06-0d7b-4094-8fb5-49df42a8e565}</UniqueIdentifier>
     </Filter>
@@ -144,6 +141,27 @@
     </Filter>
     <Filter Include="SourceFile\GameObject\Enemy\FighterEnemy">
       <UniqueIdentifier>{d2a3c27c-4fb7-49cd-9241-276ce58457ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Window">
+      <UniqueIdentifier>{d78e728b-be63-46d5-86d2-927b1cb7c759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\AnimationModel">
+      <UniqueIdentifier>{c0739c7d-debf-4d3f-a071-14a2d542ef3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject">
+      <UniqueIdentifier>{d53b433c-b052-4618-a817-67541f702e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject\TitleCamera">
+      <UniqueIdentifier>{be74024b-f08d-47e3-a0a5-18fe3957db66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject\TitlePlayer">
+      <UniqueIdentifier>{8e0c2853-7169-43bf-ac7b-2165c9c28b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject\TitleMeshField">
+      <UniqueIdentifier>{28590473-72b6-40f1-bcdf-d183e1b0120c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject\TitleEnemy">
+      <UniqueIdentifier>{736dad7d-5f81-46ed-998b-95e97cd448dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -248,7 +266,7 @@
       <Filter>SourceFile\FrameWork\Audio</Filter>
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\AnimationModel\AnimationModel.h">
-      <Filter>SourceFile\FrameWork\Animation</Filter>
+      <Filter>SourceFile\FrameWork\AnimationModel</Filter>
     </ClInclude>
     <ClInclude Include="SourceFile\Scene\Scene.h">
       <Filter>SourceFile\Scene</Filter>
@@ -273,6 +291,21 @@
     </ClInclude>
     <ClInclude Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.h">
       <Filter>SourceFile\GameObject\Enemy\FighterEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Window\Window.h">
+      <Filter>SourceFile\GameObject\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitleCamera\TitleCamera.h">
+      <Filter>SourceFile\GameObject\TitleObject\TitleCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitleEnemy\TitleEnemy.h">
+      <Filter>SourceFile\GameObject\TitleObject\TitleEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.h">
+      <Filter>SourceFile\GameObject\TitleObject\TitleMeshField</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.h">
+      <Filter>SourceFile\GameObject\TitleObject\TitlePlayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -399,7 +432,7 @@
       <Filter>SourceFile\FrameWork\Audio</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\AnimationModel\AnimationModel.cpp">
-      <Filter>SourceFile\FrameWork\Animation</Filter>
+      <Filter>SourceFile\FrameWork\AnimationModel</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\Scene\Scene.cpp">
       <Filter>SourceFile\Scene</Filter>
@@ -427,6 +460,21 @@
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\GameObject.cpp">
       <Filter>SourceFile\FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Window\Window.cpp">
+      <Filter>SourceFile\GameObject\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitleCamera\TitleCamera.cpp">
+      <Filter>SourceFile\GameObject\TitleObject\TitleCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitleEnemy\TitleEnemy.cpp">
+      <Filter>SourceFile\GameObject\TitleObject\TitleEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.cpp">
+      <Filter>SourceFile\GameObject\TitleObject\TitleMeshField</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.cpp">
+      <Filter>SourceFile\GameObject\TitleObject\TitlePlayer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

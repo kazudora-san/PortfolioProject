@@ -1,9 +1,9 @@
-#ifndef		POLYGON2D_H
-#define		POLYGON2D_H
+#ifndef		WINDOW_H
+#define		WINDOW_H
 
 #include	"GameObject.h"
 
-class Polygon2D : public GameObject
+class Window : public GameObject
 {
 private:
 	ID3D11Buffer*				m_VertexBuffer	= {};
@@ -12,7 +12,7 @@ private:
 	ID3D11PixelShader*			m_PixelShader	= {};
 	ID3D11VertexShader*			m_VertexShader	= {};
 
-	ID3D11ShaderResourceView*	m_Texture		= {};
+	ID3D11ShaderResourceView* m_Texture			= {};
 
 
 public:
@@ -25,4 +25,4 @@ public:
 	void	NotRender	() { m_Scale = {}; }
 };
 
-#endif // POLYGON2D_H
+#endif // WINDOW_H

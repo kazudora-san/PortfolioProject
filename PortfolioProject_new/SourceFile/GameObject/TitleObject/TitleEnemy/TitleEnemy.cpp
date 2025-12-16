@@ -1,15 +1,13 @@
 #include	"Main.h"
 #include	"Renderer/Renderer.h"
-#include	"FighterEnemy.h"
+#include	"TitleEnemy.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Camera/Camera.h"
-#include	"Scene/Scene.h"
 #include	"AnimationModel/AnimationModel.h"
+#include	"Scene/Scene.h"
 
-void FighterEnemy::Init()
+void TitleEnemy::Init()
 {
-	EnemyBase::Init();
-
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\model\\Player.obj");
 
@@ -19,44 +17,18 @@ void FighterEnemy::Init()
 
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\CSOFile\\UnlitTexturePS.cso");
-
 }
 
-void FighterEnemy::Uninit()
+void TitleEnemy::Uninit()
 {
 	delete m_AnimationModel;
-
-	EnemyBase::Uninit();
 }
 
-void FighterEnemy::Update()
+void TitleEnemy::Update()
 {
-	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
-
-	Vector3 rotation = camera->GetRotation();
-
-	if (m_Frame > 60)
-	{
-		m_Position += GetRight() * 0.01f;
-	}
-	else
-	{
-		m_Position -= GetRight() * 0.01f;
-	}
-
-	m_Rotation.y = rotation.y;
-
-	if (m_Frame > 120)
-	{
-		m_Frame = 0;
-	}
-	else
-	{
-		m_Frame++;
-	}
 }
 
-void FighterEnemy::Draw()
+void TitleEnemy::Draw()
 {
 	//入力レイアウト
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);

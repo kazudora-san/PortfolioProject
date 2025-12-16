@@ -22,6 +22,8 @@
 
 void Game::Init()
 {
+	Scene::Init();
+
 	AddGameObject<Camera>(0);
 
 	MeshField* meshField = AddGameObject<MeshField>(0);

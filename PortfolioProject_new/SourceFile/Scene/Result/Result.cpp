@@ -17,12 +17,12 @@ void Result::Init()
 	fade->FadeIn(3.0f);
 	AddGameObject<Polygon2D>(2)->Init(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, "Asset\\Texture\\Result.png");
 	// âÊëúÉTÉCÉYÅ@ÇQÇRÇRÅ~ÇUÇO
-	AddGameObject<Polygon2D>(2)->Init(SCREEN_WIDTH - 233, SCREEN_HEIGHT - 60, 233, 60, "Asset\\Texture\\PlessEnter.png");
+	AddGameObject<Polygon2D>(2)->Init(SCREEN_WIDTH - 233, SCREEN_HEIGHT - 60, 233, 60, "Asset\\Texture\\PressEnter.png");
 	// âÊëúÉTÉCÉYÅ@ÇRÇOÇQÅ~ÇTÇV
 	AddGameObject<Polygon2D>(2)->Init(SCREEN_WIDTH / 2 - 302 / 2, SCREEN_HEIGHT / 2 - 57 / 2, 302, 57, "Asset\\Texture\\RankS!.png");
-	m_Audio->Init();
-	m_Audio->Load("Asset\\Audio\\ResultBGM.wav", "ResultBGM");
-	m_Audio->Play("ResultBGM");
+	//m_Audio->Init();
+	//m_Audio->Load("Asset\\Audio\\ResultBGM.wav", "ResultBGM");
+	//m_Audio->Play("ResultBGM");
 }
 
 void Result::Update()
@@ -36,7 +36,7 @@ void Result::Update()
 					g->FadeIn(0.6f, { 0,0,0 });
 				}
 				});
-			m_Audio->Uninit();
+			//m_Audio->Uninit();
 		}
 	}
 
@@ -44,12 +44,12 @@ void Result::Update()
 
 	if (m_Frame > 60)
 	{
-		pressEnters[1]->Render();
+		//pressEnters[1]->Render();
 	}
 	else
 	{
 
-		pressEnters[1]->NotRender();
+		//pressEnters[1]->NotRender();
 	}
 
 	if (m_Frame > 120)

@@ -1,11 +1,11 @@
-#ifndef		FIGHTERENEMY_H
-#define		FIGHTERENEMY_H
+#ifndef		TITLEENEMY_H
+#define		TITLEENEMY_H
 
-#include	"GameCharacter/EnemyBase/EnemyBase.h"
+#include	"GameObject.h"
 
 class AnimationModel;
 
-class FighterEnemy :public EnemyBase
+class TitleEnemy :public GameObject
 {
 private:
 
