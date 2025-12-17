@@ -40,7 +40,6 @@
 #define		KEY_8	(0x38)
 #define		KEY_9	(0x39)
 
-
 class Input
 {
 private:
@@ -50,28 +49,40 @@ private:
 	static inline LONG mouseDX = {};
 	static inline LONG mouseDY = {};
 
-private:
-	static bool	CommandLeft();
-	static bool	CommandRight();
-	static bool	CommandUp();
-	static bool	CommandDown();
-
 public:
 	static void Init();
 	static void Uninit();
 	static void Update();
 
-	static bool GetKeyPress( BYTE KeyCode );
-	static bool GetKeyTrigger( BYTE KeyCode );
+private:
+	static bool GetKeyPress(BYTE KeyCode);
+	static bool GetKeyTrigger(BYTE KeyCode);
+	
+
+public:
+	// プレイヤーの移動
+	static bool	MoveLeft();
+	static bool	MoveRight();
+	static bool	MoveFront();
+	static bool	MoveBack();
+
+	// コマンドの移動
+	static bool	CommandLeft();
+	static bool	CommandRight();
+	static bool	CommandUp();
+	static bool	CommandDown();
+
+	static bool	CommandAction();	 // 攻撃
+	static bool	CommandJump();		 // ジャンプ
+	static bool	CommandDecision();	 // 決定
+	static bool CommandCancel();	 // 一つ前に戻る
+	static bool CommandDisp();		 // メニューコマンド表示
+
 
 	static void OnMouseMove(LONG dx, LONG dy);
 
 	static LONG GetMouseDX() { return mouseDX; };
 	static LONG GetMouseDY() { return mouseDY; };
-
-	static bool	Decision();
-	static bool	FieldMenuDisp();
-	static bool	CommandMove();
 };
 
 #endif // INPUT_H

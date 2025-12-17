@@ -24,8 +24,8 @@ void Bullet::Init()
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\CSOFile\\UnlitTexturePS.cso");
 
-	m_Audio->Init();
-	m_Audio->Load("Asset\\Audio\\EnemyDestroy.wav", "EnemyDestroy");
+	//m_Audio->Init();
+	//m_Audio->Load("Asset\\Audio\\EnemyDestroy.wav", "EnemyDestroy");
 }
 
 void Bullet::Uninit()
@@ -58,17 +58,14 @@ void Bullet::Update()
 	//	+ m_StartVector * (i * i * i - 2.0f * i * i + i)
 	//	+ m_EndVector * (i * i * i - i * i);
 
-	auto particleS = SceneManager::GetScene()->AddGameObject<Explosion>(1);
-	particleS->SetPosition(m_Position + Vector3(0.0f, 0.0f, 0.0f));
-
 	if (m_Position.length() > 20.0f)
 	{
 		SetDestroy();
 	}
-
 	
 	//Õ“Ë”»’è
 	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
+
 	bool particle = false;
 
 	// “–‚½‚è”»’èˆ—
@@ -86,7 +83,7 @@ void Bullet::Update()
 
 			enemy->SetDestroy();
 			SetDestroy();
-			m_Audio->Play("EnemyDestroy");
+			//m_Audio->Play("EnemyDestroy");
 
 			Score* score = SceneManager::GetScene()->GetGameObject<Score>();
 			score->AddScore(100);

@@ -29,8 +29,12 @@ void GameCharacter::Init()
 
 void GameCharacter::Uninit()
 {
-	m_AnimationModel->Uninit();
-	delete m_AnimationModel;
+	if (m_AnimationModel)
+	{
+		m_AnimationModel->Uninit();
+		delete m_AnimationModel;
+		m_AnimationModel = nullptr;
+	}
 
 	m_VertexLayOut->Release();
 	m_VertexShader->Release();
@@ -44,5 +48,31 @@ void GameCharacter::Update()
 
 void GameCharacter::Draw()
 {
-	
+	//入力レイアウト
+	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);
+
+	//シェーダー設定
+	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
+	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
+
+	//XMMATRIX parentMatrix;
+
+	//マトリクス設定
+	XMMATRIX world, scale, rot, trans;
+	scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
+	rot = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);
+	trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
+	world = scale * rot * trans;
+
+	//parentMatrix = world;
+	Renderer::SetWorldMatrix(world);
+
+	//マテリアル設定
+	MATERIAL material{};
+	material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
+	material.TextureEnable = true;
+	Renderer::SetMaterial(material);
+
+
+	//m_ModelRenderer->Draw();
 }

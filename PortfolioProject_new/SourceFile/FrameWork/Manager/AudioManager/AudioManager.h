@@ -1,6 +1,9 @@
 #ifndef		AUDIOMANAGER_H
 #define		AUDIOMANAGER_H
 
+#include	<unordered_map>
+#include	<string>
+
 class Audio;
 
 class AudioManager

@@ -142,9 +142,6 @@
     <Filter Include="SourceFile\GameObject\Enemy\FighterEnemy">
       <UniqueIdentifier>{d2a3c27c-4fb7-49cd-9241-276ce58457ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SourceFile\GameObject\Window">
-      <UniqueIdentifier>{d78e728b-be63-46d5-86d2-927b1cb7c759}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SourceFile\FrameWork\AnimationModel">
       <UniqueIdentifier>{c0739c7d-debf-4d3f-a071-14a2d542ef3c}</UniqueIdentifier>
     </Filter>
@@ -163,17 +160,26 @@
     <Filter Include="SourceFile\GameObject\TitleObject\TitleEnemy">
       <UniqueIdentifier>{736dad7d-5f81-46ed-998b-95e97cd448dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SourceFile\GameObject\Window\MainWindow">
-      <UniqueIdentifier>{b3ab6f0e-b4bb-440c-8148-8a0e72edded8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SourceFile\GameObject\Window\CommandWindow">
-      <UniqueIdentifier>{de3a2ddb-2a44-43d9-be60-b693af599d69}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Shader\Grass">
       <UniqueIdentifier>{99c0d76b-7328-471f-b74d-b6c480049bc9}</UniqueIdentifier>
     </Filter>
     <Filter Include="SourceFile\GameObject\Grass\GrassInstance">
       <UniqueIdentifier>{a739da79-97ad-44ac-8c14-684d3d20aacf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\Manager\UIManager">
+      <UniqueIdentifier>{558d8656-3604-4289-bc96-ecff4f57e0cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\UI">
+      <UniqueIdentifier>{d78e728b-be63-46d5-86d2-927b1cb7c759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\UI\MoneyWindow">
+      <UniqueIdentifier>{b3ab6f0e-b4bb-440c-8148-8a0e72edded8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\UI\CommandWindow">
+      <UniqueIdentifier>{de3a2ddb-2a44-43d9-be60-b693af599d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\UI\Cursor">
+      <UniqueIdentifier>{9a51c637-4772-4d03-a5da-b3f798f188e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -304,9 +310,6 @@
     <ClInclude Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.h">
       <Filter>SourceFile\GameObject\Enemy\FighterEnemy</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\GameObject\Window\Window.h">
-      <Filter>SourceFile\GameObject\Window</Filter>
-    </ClInclude>
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitleCamera\TitleCamera.h">
       <Filter>SourceFile\GameObject\TitleObject\TitleCamera</Filter>
     </ClInclude>
@@ -322,8 +325,20 @@
     <ClInclude Include="SourceFile\GameObject\Grass\GrassInstance\GrassInstance.h">
       <Filter>SourceFile\GameObject\Grass\GrassInstance</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\GameObject\Window\CommandWindow\CommandWindow.h">
-      <Filter>SourceFile\GameObject\Window\CommandWindow</Filter>
+    <ClInclude Include="SourceFile\FrameWork\Manager\UIManager\UIManager.h">
+      <Filter>SourceFile\FrameWork\Manager\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\UI\UI.h">
+      <Filter>SourceFile\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\UI\MoneyWindow\MoneyWindow.h">
+      <Filter>SourceFile\GameObject\UI\MoneyWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.h">
+      <Filter>SourceFile\GameObject\UI\CommandWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\Cursor.h">
+      <Filter>SourceFile\GameObject\UI\Cursor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -485,9 +500,6 @@
     <ClCompile Include="SourceFile\FrameWork\GameObject.cpp">
       <Filter>SourceFile\FrameWork</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\GameObject\Window\Window.cpp">
-      <Filter>SourceFile\GameObject\Window</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitleCamera\TitleCamera.cpp">
       <Filter>SourceFile\GameObject\TitleObject\TitleCamera</Filter>
     </ClCompile>
@@ -503,8 +515,20 @@
     <ClCompile Include="SourceFile\GameObject\Grass\GrassInstance\GrassInstance.cpp">
       <Filter>SourceFile\GameObject\Grass\GrassInstance</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\GameObject\Window\CommandWindow\CommandWindow.cpp">
-      <Filter>SourceFile\GameObject\Window\CommandWindow</Filter>
+    <ClCompile Include="SourceFile\FrameWork\Manager\UIManager\UIManager.cpp">
+      <Filter>SourceFile\FrameWork\Manager\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\UI\UI.cpp">
+      <Filter>SourceFile\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\UI\MoneyWindow\MoneyWindow.cpp">
+      <Filter>SourceFile\GameObject\UI\MoneyWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.cpp">
+      <Filter>SourceFile\GameObject\UI\CommandWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\Cursor.cpp">
+      <Filter>SourceFile\GameObject\UI\Cursor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

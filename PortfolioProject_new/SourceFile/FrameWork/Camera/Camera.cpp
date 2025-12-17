@@ -36,14 +36,14 @@ void Camera::Update()
 
 	Input::OnMouseMove(0, 0);
 
-	if (Input::GetKeyPress(VK_LEFT))
-	{
-		m_Rotation.y -= 0.1f;
-	}
-	if (Input::GetKeyPress(VK_RIGHT))
-	{
-		m_Rotation.y += 0.1f;
-	}
+	//if (Input::CommandLeft())
+	//{
+	//	m_Rotation.y -= 0.1f;
+	//}
+	//if (Input::CommandRight())
+	//{
+	//	m_Rotation.y += 0.1f;
+	//}
 
 	Player* player = SceneManager::GetScene()->GetGameObject<Player>();
 

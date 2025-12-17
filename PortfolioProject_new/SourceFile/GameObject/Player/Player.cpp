@@ -15,27 +15,39 @@
 #include	"Score/Score.h"
 #include	"Effect/Heart/Heart.h"
 
+enum AnimatyonKey
+{
+	Idle = 0,
+	Run,
+	Attack,
+};
+const char* AnimationKeyName[] = { "Idle", "Run", "Attack" };
+
 void Player::Init()
 {
 	GameCharacter::Init();
 
+	m_Money = new Score();
+	m_Money->Init();
+
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\model\\OtamesiModel.fbx");
 
-	m_AnimationModel->LoadAnimation("Asset\\model\\OtamesiRun.fbx", "Run");
-	m_AnimationModel->LoadAnimation("Asset\\model\\OtamesiIdle.fbx", "Idle");
 
-	m_AnimationName = "Idle";
-	m_AnimationNameNext = "Idle";
+	m_AnimationModel->LoadAnimation("Asset\\model\\OtamesiIdle.fbx",	AnimationKeyName[Idle]);
+	m_AnimationModel->LoadAnimation("Asset\\model\\OtamesiRun.fbx",		AnimationKeyName[Run]);
+
+	m_AnimationName = AnimationKeyName[Idle];
+	m_AnimationNameNext = AnimationKeyName[Idle];
 	m_AnimationBlend = 0.0f;
 	m_Frame = 0;
 
 	//シェーダー読み込み
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
-		"shader\\CSOFile\\UnlitTextureVS.cso");
+		"Shader\\CSOFile\\UnlitTextureVS.cso");
 
 	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\CSOFile\\UnlitTexturePS.cso");
+		"Shader\\CSOFile\\UnlitTexturePS.cso");
 	
 	m_Audio->Init();
 	m_Audio->Load("Asset\\Audio\\GameBGM.wav", "GameBGM");
@@ -69,6 +81,13 @@ void Player::Uninit()
 		m_Audio->Uninit();
 	}
 
+	if (m_Money)
+	{
+		m_Money->Uninit();
+		delete m_Money;
+		m_Money = nullptr;
+	}
+
 	GameCharacter::Uninit();
 }
 
@@ -84,19 +103,19 @@ void Player::Update()
 
 	bool move = false;
 
-	if (Input::GetKeyPress(KEY_A))
+	if (Input::MoveLeft())
 	{
 		m_Position += m_Camera->GetRight() * -0.1f;
 		m_Rotation.y = rotation.y - XM_PIDIV2;
 		move = true;
 	}
-	if (Input::GetKeyPress(KEY_D))
+	if (Input::MoveRight())
 	{
 		m_Position += m_Camera->GetRight() * 0.1f;
 		m_Rotation.y = rotation.y + XM_PIDIV2;
 		move = true;
 	}
-	if (Input::GetKeyPress(KEY_W))
+	if (Input::MoveFront())
 	{
 		Vector3 forward = m_Camera->GetForward();
 		forward.y = 0.0f;
@@ -105,7 +124,7 @@ void Player::Update()
 		m_Rotation.y = rotation.y;
 		move = true;
 	}
-	if (Input::GetKeyPress(KEY_S))
+	if (Input::MoveBack())
 	{
 		Vector3 forward = m_Camera->GetForward();
 		forward.y = 0.0f;
@@ -115,9 +134,15 @@ void Player::Update()
 		m_Rotation.y = rotation.y + XM_PI;
 		move = true;
 	}
-	if (Input::GetKeyTrigger(VK_SPACE))
+	if (Input::CommandAction())
 	{
-		Bullet* bullet = SceneManager::GetScene()->AddGameObject<Bullet>(1);
+		Scene* scene = SceneManager::GetScene();
+		if (!scene)
+		{
+			return;
+		}
+
+		Bullet* bullet = scene->AddGameObject<Bullet>(1);
 		bullet->SetPosition(m_Position);
 		bullet->SetVelocity(GetForward() * 0.5f);
 	}
@@ -140,7 +165,7 @@ void Player::Update()
 	float groundY = m_MeshField->GetHeight(m_Position);
 
 	// ジャンプ処理
-	if (Input::GetKeyTrigger(KEY_F) && !m_IsJump)
+	if (Input::CommandJump() && !m_IsJump)
 	{
 		m_JumpTime = 0.0f;
 		m_IsJump = true;
@@ -205,7 +230,7 @@ void Player::Update()
 	} 
 
 
-	if (Input::GetKeyTrigger(VK_SPACE))
+	if (Input::CommandAction())
 	{
 		Bullet* bullet = SceneManager::GetScene()->AddGameObject<Bullet>(1);
 		bullet->SetPosition(m_Position);
@@ -218,11 +243,11 @@ void Player::Update()
 	if (move)
 	{
 		// プレイヤーが動くとき、Runのアニメーションか？
-		if (m_AnimationNameNext != "Run")
+		if (m_AnimationNameNext != AnimationKeyName[Run])
 		{
 			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = "Run";
+			m_AnimationNameNext = AnimationKeyName[Run];
 			m_AnimationBlend = 0.0f;
 			//m_Audio->Play("RunSE", true);
 		}
@@ -230,11 +255,11 @@ void Player::Update()
 	else
 	{
 		// プレイヤーが止まる時、Idleのアニメーションか？
-		if (m_AnimationNameNext != "Idle")
+		if (m_AnimationNameNext != AnimationKeyName[Idle])
 		{
 			// Idle以外が入ってれば、Idleのアニメーションを入れて、Blendを0.0fにする
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = "Idle";
+			m_AnimationNameNext = AnimationKeyName[Idle];
 			m_AnimationBlend = 0.0f;
 			m_Audio->Stop("RunSE");
 		}
@@ -259,38 +284,7 @@ void Player::Draw()
 {
 	GameCharacter::Draw();
 
-	//入力レイアウト
-	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);
-
-	//シェーダー設定
-	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
-	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
-
-	//XMMATRIX parentMatrix;
-
-	//親
-	{
-		//マトリクス設定
-		XMMATRIX world, scale, rot, trans;
-		scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-		rot = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);
-		trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
-		world = scale * rot * trans;
-
-		//parentMatrix = world;
-		Renderer::SetWorldMatrix(world);
-
-		//マテリアル設定
-		MATERIAL material{};
-		material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
-		material.TextureEnable = true;
-		Renderer::SetMaterial(material);
-
-
-		//m_ModelRenderer->Draw();
-
-		m_AnimationModel->Draw();
-	}
+	m_AnimationModel->Draw();
 
 	////子
 	//{
@@ -312,4 +306,12 @@ void Player::Draw()
 	//	//m_ModelRendererChild->Draw();
 	//}
 
+}
+
+void Player::Attack()
+{
+	if (Input::CommandAction())
+	{
+
+	}
 }

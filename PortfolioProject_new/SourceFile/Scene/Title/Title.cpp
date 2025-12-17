@@ -73,7 +73,7 @@ void Title::Update()
 {
 	Scene::Update();
 
-	if (Input::GetKeyTrigger(VK_RETURN) && !m_IsNextScene)
+	if (Input::CommandDecision() && !m_IsNextScene)
 	{
 		m_Frame = 0;
 		m_IsNextScene = true;

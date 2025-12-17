@@ -27,7 +27,7 @@ void Result::Init()
 
 void Result::Update()
 {
-	if (Input::GetKeyTrigger(VK_RETURN))
+	if (Input::CommandDecision())
 	{
 		if (auto* f = SceneManager::GetFade(); f && !f->IsBusy()) {
 			f->FadeOut(0.6f, { 0,0,0 }, []() {

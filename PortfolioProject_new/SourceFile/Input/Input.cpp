@@ -6,6 +6,44 @@
 BYTE Input::m_OldKeyState[256]	= {};
 BYTE Input::m_KeyState[256]		= {};
 
+void Input::Init()
+{
+	memset(m_OldKeyState, 0, 256);
+	memset(m_KeyState, 0, 256);
+
+	mouseDX = 0;
+	mouseDY = 0;
+}
+
+void Input::Uninit()
+{
+
+
+}
+
+void Input::Update()
+{
+
+	memcpy(m_OldKeyState, m_KeyState, 256);
+
+	(void)GetKeyboardState(m_KeyState);
+
+	if (GetActiveWindow() != GetWindow())
+	{
+		mouseDX = 0;
+		mouseDY = 0;
+	}
+}
+
+bool Input::GetKeyPress(BYTE KeyCode)
+{
+	return (m_KeyState[KeyCode] & 0x80);
+}
+
+bool Input::GetKeyTrigger(BYTE KeyCode)
+{
+	return ((m_KeyState[KeyCode] & 0x80) && !(m_OldKeyState[KeyCode] & 0x80));
+}
 
 bool Input::CommandLeft()
 {
@@ -27,66 +65,53 @@ bool Input::CommandDown()
 	return GetKeyTrigger(VK_DOWN);
 }
 
-void Input::Init()
+bool Input::CommandAction()
 {
-
-	memset( m_OldKeyState, 0, 256 );
-	memset( m_KeyState, 0, 256 );
-
-	mouseDX = 0;
-	mouseDY = 0;
+	return GetKeyTrigger(VK_SPACE);
 }
 
-void Input::Uninit()
+bool Input::CommandJump()
 {
-
-
+	return GetKeyTrigger(KEY_F);
 }
 
-void Input::Update()
+bool Input::CommandDecision()
 {
-
-	memcpy( m_OldKeyState, m_KeyState, 256 );
-
-	GetKeyboardState( m_KeyState );
-
-	if (GetActiveWindow() != GetWindow())
-	{
-		mouseDX = 0;
-		mouseDY = 0;
-	}
+	return GetKeyTrigger(VK_RETURN);
 }
 
-bool Input::GetKeyPress(BYTE KeyCode)
+bool Input::CommandCancel()
 {
-	return (m_KeyState[KeyCode] & 0x80);
+	return GetKeyTrigger(VK_BACK);
 }
 
-bool Input::GetKeyTrigger(BYTE KeyCode)
+bool Input::CommandDisp()
 {
-	return ((m_KeyState[KeyCode] & 0x80) && !(m_OldKeyState[KeyCode] & 0x80));
+	return GetKeyTrigger(KEY_M);
+}
+
+bool Input::MoveLeft()
+{
+	return GetKeyPress(KEY_A);
+}
+
+bool Input::MoveRight()
+{
+	return GetKeyPress(KEY_D);
+}
+
+bool Input::MoveFront()
+{
+	return GetKeyPress(KEY_W);
+}
+
+bool Input::MoveBack()
+{
+	return GetKeyPress(KEY_S);
 }
 
 void Input::OnMouseMove(LONG dx, LONG dy)
 {
 	mouseDX = dx;
 	mouseDY = dy;
-}
-
-bool Input::Decision()
-{
-	return GetKeyTrigger(VK_RETURN);
-}
-
-bool Input::FieldMenuDisp()
-{
-	return	(	GetKeyTrigger(KEY_M)||
-				CommandUp()			|| CommandDown()	||
-				CommandRight()		|| CommandLeft());
-}
-
-bool Input::CommandMove()
-{
-	return (CommandUp() || CommandDown() ||
-			CommandRight() || CommandLeft());
 }

@@ -19,6 +19,7 @@
 #include	"Tree/Tree.h"
 #include	"Grass/Grass.h"
 #include	"Rock/Rock.h"
+#include	"CommandWindow/CommandWindow.h"
 
 void Game::Init()
 {
@@ -30,7 +31,8 @@ void Game::Init()
 	AddGameObject<SkyDorm>(0);
 	
 	// ÉåÉCÉÑÅ[î‘çÜÇP
-	AddGameObject<Rock>(1);
+	//AddGameObject<Rock>(1);
+	AddGameObject<FighterEnemy>(1);
 	AddGameObject<Player>(1);
 
 	for (int i = 0; i < 1; i++)
@@ -55,6 +57,7 @@ void Game::Init()
 	auto* fade = AddGameObject<FadeQuad>(2);
 	fade->FadeIn(3.0f);
 	AddGameObject<Score>(2);
+	AddGameObject<CommandWindow>(2);
 }
 
 void Game::Update()
@@ -63,7 +66,7 @@ void Game::Update()
 
 	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
 	
-	if (Input::GetKeyTrigger(VK_RETURN) || (m_NowFrame > m_StopFrame))
+	if (Input::CommandDecision() || (m_NowFrame > m_StopFrame))
 	{
 		if (auto* f = SceneManager::GetFade(); f && !f->IsBusy()) {
 			f->FadeOut(0.6f, { 0,0,0 }, []() {

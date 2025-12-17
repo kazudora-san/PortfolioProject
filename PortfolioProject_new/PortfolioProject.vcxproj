@@ -37,6 +37,7 @@
     <ClInclude Include="SourceFile\FrameWork\GameObject.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.h" />
+    <ClInclude Include="SourceFile\FrameWork\Manager\UIManager\UIManager.h" />
     <ClInclude Include="SourceFile\FrameWork\Renderer\ModelRenderer\ModelRenderer.h" />
     <ClInclude Include="SourceFile\FrameWork\Renderer\Polygon2D\Polygon2D.h" />
     <ClInclude Include="SourceFile\FrameWork\Renderer\Renderer.h" />
@@ -60,9 +61,11 @@
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.h" />
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.h" />
     <ClInclude Include="SourceFile\GameObject\Tree\Tree.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\Cursor.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\MoneyWindow\MoneyWindow.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\UI.h" />
     <ClInclude Include="SourceFile\GameObject\Wave\Wave.h" />
-    <ClInclude Include="SourceFile\GameObject\Window\CommandWindow\CommandWindow.h" />
-    <ClInclude Include="SourceFile\GameObject\Window\Window.h" />
     <ClInclude Include="SourceFile\Input\Input.h" />
     <ClInclude Include="SourceFile\Input\Keyboard.h" />
     <ClInclude Include="SourceFile\Main.h" />
@@ -136,6 +139,7 @@
     <ClCompile Include="SourceFile\FrameWork\GameObject.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\Manager\UIManager\UIManager.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Renderer\ModelRenderer\ModelRenderer.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Renderer\Polygon2D\Polygon2D.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Renderer\Renderer.cpp" />
@@ -158,9 +162,11 @@
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.cpp" />
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.cpp" />
     <ClCompile Include="SourceFile\GameObject\Tree\Tree.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\Cursor.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\MoneyWindow\MoneyWindow.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\UI.cpp" />
     <ClCompile Include="SourceFile\GameObject\Wave\Wave.cpp" />
-    <ClCompile Include="SourceFile\GameObject\Window\CommandWindow\CommandWindow.cpp" />
-    <ClCompile Include="SourceFile\GameObject\Window\Window.cpp" />
     <ClCompile Include="SourceFile\Input\Input.cpp" />
     <ClCompile Include="SourceFile\Input\Keyboard.cpp" />
     <ClCompile Include="SourceFile\Main.cpp" />
@@ -255,7 +261,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SourceFile;$(ProjectDir)SourceFile\FrameWork;$(ProjectDir)SourceFile\Manager;$(ProjectDir)SourceFile\Render;$(ProjectDir)SourceFile\GameObject;$(ProjectDir)assimp;$(ProjectDir)SourceFile\GameObject\TitleObject;$(ProjectDir)SourceFile\GameObject\Window</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SourceFile;$(ProjectDir)SourceFile\FrameWork;$(ProjectDir)SourceFile\Manager;$(ProjectDir)SourceFile\Render;$(ProjectDir)SourceFile\GameObject;$(ProjectDir)assimp;$(ProjectDir)SourceFile\GameObject\TitleObject;$(ProjectDir)SourceFile\GameObject\UI</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -283,11 +289,14 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SourceFile;$(ProjectDir)SourceFile\FrameWork;$(ProjectDir)SourceFile\Manager;$(ProjectDir)SourceFile\Render;$(ProjectDir)SourceFile\GameObject;$(ProjectDir)assimp;$(ProjectDir)SourceFile\GameObject\TitleObject;$(ProjectDir)SourceFile\GameObject\Window</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SourceFile;$(ProjectDir)SourceFile\FrameWork;$(ProjectDir)SourceFile\Manager;$(ProjectDir)SourceFile\Render;$(ProjectDir)SourceFile\GameObject;$(ProjectDir)assimp;$(ProjectDir)SourceFile\GameObject\TitleObject;$(ProjectDir)SourceFile\GameObject\UI</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)Libs\DirectXTex_Release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
