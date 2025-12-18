@@ -9,7 +9,15 @@
 void TitleEnemy::Init()
 {
 	m_AnimationModel = new AnimationModel();
-	m_AnimationModel->Load("Asset\\model\\Player.obj");
+	m_AnimationModel->Load("Asset\\model\\Enemy_Model.fbx");
+	m_AnimationModel->LoadAnimation("Asset\\model\\Enemy_Idle.fbx", "EnemyIdle");
+	if (m_AnimationNameNext != "EnemyIdle")
+	{
+		// Idle以外が入ってれば、Idleのアニメーションを入れて、Blendを0.0fにする
+		m_AnimationName = "EnemyIdle";
+		m_AnimationNameNext = "EnemyIdle";
+		m_AnimationBlend = 0.0f;
+	}
 
 	//シェーダー読み込み
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
@@ -17,6 +25,8 @@ void TitleEnemy::Init()
 
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\CSOFile\\UnlitTexturePS.cso");
+
+	m_Scale = {0.01f, 0.01f, 0.01f};
 }
 
 void TitleEnemy::Uninit()
@@ -26,6 +36,19 @@ void TitleEnemy::Uninit()
 
 void TitleEnemy::Update()
 {
+	// std::string型には、c_str()というconst char*型に変換してくれる！
+	// 二つ入れることで、合成（ブレンド）をしてくれる！（処理は中身を参照）
+	m_AnimationModel->Update(m_AnimationName.c_str(), m_Frame,
+		m_AnimationNameNext.c_str(), m_Frame,
+		m_AnimationBlend);
+	m_Frame++;
+
+	m_AnimationBlend += 0.007f;
+	if (m_AnimationBlend > 1.0f)
+	{
+		// 線形補間
+		m_AnimationBlend = 1.0f;
+	}
 }
 
 void TitleEnemy::Draw()

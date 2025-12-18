@@ -68,7 +68,7 @@ void Game::Update()
 
 	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
 	
-	if (Input::CommandDecision() || (m_NowFrame > m_StopFrame))
+	if ((m_NowFrame > m_StopFrame))
 	{
 		if (auto* f = SceneManager::GetFade(); f && !f->IsBusy()) {
 			f->FadeOut(0.6f, { 0,0,0 }, []() {

@@ -5,14 +5,12 @@
 #include	"Input/Input.h"
 
 // ScaleÇÕ.hÇ…íuÇ´Ç‹ÇµÇΩ Å¶CommandWindowÇ≈égÇ§ÇΩÇﬂ
-constexpr XMFLOAT2	CmdCursorPosition		= { 70.0f, 50.0f};
 constexpr XMFLOAT2	CmdCursorMove			= { 130.0f, 50.0f};
-constexpr XMFLOAT2	BattleCursorPosition	= { 150.0f, 500.0f };
-constexpr XMFLOAT2	BattleCursorMove		= { 0.0f, 50.0f };
 
 void CursorBase::Init()
 {
-	m_CursorFileName = { "Asset\\Texture\\Cursor.png" };
+	m_CursorFileName	= { "Asset\\Texture\\Cursor.png" };
+	m_SelectIndex		= 0;
 	UI::Init();
 }
 

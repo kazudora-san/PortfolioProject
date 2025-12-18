@@ -210,7 +210,7 @@ void Player::Update()
 			//m_Audio->Play("RunSE", true);
 		}
 
-		if (m_Frame >= 80)
+		if (m_Frame >= 120)
 		{
 			m_IsAttack = false;
 		}
@@ -265,7 +265,7 @@ void Player::Draw()
 void Player::Attack()
 {
 	Scene* scene = SceneManager::GetScene();
-	if (!scene)
+	if (!scene || m_IsAttack)
 	{
 		return;
 	}
@@ -306,4 +306,14 @@ void Player::Attack()
 			enemy->SetHealth(hp);
 		}
 	}
+
+	if (m_AnimationNameNext != AnimationKeyName[Player_Attack])
+	{
+		m_Frame = 0;
+		m_AnimationName = m_AnimationNameNext;
+		m_AnimationNameNext = AnimationKeyName[Player_Attack];
+		m_AnimationBlend = 0.0f;
+	}
+
+	m_IsAttack = true;
 }

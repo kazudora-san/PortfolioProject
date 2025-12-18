@@ -8,8 +8,9 @@ constexpr XMFLOAT2	CursorScale = { 50.0f, 50.0f };
 class CursorBase : public UI // åpè≥
 {
 protected:
-	const char* m_CursorFileName	= {};
-
+	const char*		m_CursorFileName	= {};
+	unsigned int	m_SelectIndex		= {};
+	
 public:
 	virtual void	Init()		override;
 	virtual void	Uninit()	override;

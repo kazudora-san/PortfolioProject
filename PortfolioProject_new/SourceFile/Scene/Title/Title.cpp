@@ -40,7 +40,6 @@ void Title::Init()
 	{
 		return;
 	}
-	titleEnemy->SetScale({ 0.5f, 0.5f, 0.5f });
 	titleEnemy->SetRotation({ 0.0f, 90.0f, 0.0f });
 	titleEnemy->SetPosition({ -2.0f, 0.0f, -1.0f });
 
@@ -49,7 +48,6 @@ void Title::Init()
 	{
 		return;
 	}
-	titleEnemy->SetScale({ 0.5f, 0.5f, 0.5f });
 	titleEnemy->SetRotation({ 0.0f, 90.0f, 0.0f });
 	titleEnemy->SetPosition({ -1.5f, 0.0f, 0.0f });
 

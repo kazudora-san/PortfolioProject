@@ -4,12 +4,12 @@
 #include	"UI.h"
 #include	<vector>
 
-class CursorBase;
+class CommandCursor;
 
 class CommandWindow : public UI // åpè≥
 {
 private:
-	CursorBase*	m_Cursor	= nullptr;
+	CommandCursor*	m_Cursor	= nullptr;
 
 public:
 	virtual void	Init()		override;

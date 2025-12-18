@@ -2,6 +2,7 @@
 #define		TITLEENEMY_H
 
 #include	"GameObject.h"
+#include	<string>
 
 class AnimationModel;
 
@@ -15,6 +16,9 @@ private:
 
 
 	AnimationModel*			m_AnimationModel	= {};
+	std::string				m_AnimationNameNext	= {};
+	std::string				m_AnimationName		= {};
+	float					m_AnimationBlend	= {};
 
 	unsigned int			m_Frame				= {};
 
