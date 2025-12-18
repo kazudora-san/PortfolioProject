@@ -6,15 +6,16 @@
 
 class EnemyBase : public GameCharacter
 {
-private:
+protected:
 
 
 public:
-	void Init();
-	void Uninit();
-	void Update();
-	void Draw();
+	virtual void	Init()		override;
+	virtual void	Uninit()	override;
+	virtual void	Update()	override;
+	virtual void	Draw()		override;
 
+	virtual void	Attack() = 0;
 };
 
 #endif // PLAYER_H

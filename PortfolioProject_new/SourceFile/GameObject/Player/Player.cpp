@@ -14,31 +14,46 @@
 #include	"Effect/Explosion/Explosion.h"
 #include	"Score/Score.h"
 #include	"Effect/Heart/Heart.h"
+#include	<random>
 
-enum AnimatyonKey
+enum PlayerAnimatyonKey
 {
-	Idle = 0,
-	Run,
-	Attack,
+	Player_Idle = 0,
+	Player_Run,
+	Player_Attack,
+	Player_Jump,
 };
-const char* AnimationKeyName[] = { "Idle", "Run", "Attack" };
+
+const char*	AnimationKeyName[]	= { "Idle", "Run", "Attack", "Jump"};
 
 void Player::Init()
 {
 	GameCharacter::Init();
 
+	// 初期ステータス
+	m_Health		= 100;
+	m_MaxHealth		= 100;
+	m_MasicPower	= 60;
+	m_MaxMasicPower	= 60;
+	m_Attack		= 20;
+	m_Defense		= 10;
+	m_Agility		= 5;
+	m_Luck			= 5;
+
 	m_Money = new Score();
 	m_Money->Init();
 
 	m_AnimationModel = new AnimationModel();
-	m_AnimationModel->Load("Asset\\model\\OtamesiModel.fbx");
+	m_AnimationModel->Load("Asset\\Model\\Player\\Player_Model.fbx");
 
 
-	m_AnimationModel->LoadAnimation("Asset\\model\\OtamesiIdle.fbx",	AnimationKeyName[Idle]);
-	m_AnimationModel->LoadAnimation("Asset\\model\\OtamesiRun.fbx",		AnimationKeyName[Run]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Idle.fbx",	AnimationKeyName[Player_Idle]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Run.fbx",		AnimationKeyName[Player_Run]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Attack.fbx",	AnimationKeyName[Player_Attack]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Jump.fbx",	AnimationKeyName[Player_Jump]);
 
-	m_AnimationName = AnimationKeyName[Idle];
-	m_AnimationNameNext = AnimationKeyName[Idle];
+	m_AnimationName = AnimationKeyName[Player_Idle];
+	m_AnimationNameNext = AnimationKeyName[Player_Idle];
 	m_AnimationBlend = 0.0f;
 	m_Frame = 0;
 
@@ -72,6 +87,8 @@ void Player::Init()
 	{
 		return;
 	}
+
+	m_Scale = {0.01f,0.01f,0.01f };
 }
 
 void Player::Uninit()
@@ -134,18 +151,20 @@ void Player::Update()
 		m_Rotation.y = rotation.y + XM_PI;
 		move = true;
 	}
-	if (Input::CommandAction())
+	/*if (Input::CommandAction())
 	{
-		Scene* scene = SceneManager::GetScene();
-		if (!scene)
+		m_Frame = 0;
+
+		if (m_AnimationNameNext != AnimationKeyName[Player_Attack])
 		{
-			return;
+			m_AnimationName = m_AnimationNameNext;
+			m_AnimationNameNext = AnimationKeyName[Player_Attack];
+			m_AnimationBlend = 0.0f;
 		}
 
-		Bullet* bullet = scene->AddGameObject<Bullet>(1);
-		bullet->SetPosition(m_Position);
-		bullet->SetVelocity(GetForward() * 0.5f);
-	}
+		Attack();
+		m_IsAttack = true;
+	}*/
 
 	if (!m_MeshField)
 	{
@@ -167,87 +186,43 @@ void Player::Update()
 	// ジャンプ処理
 	if (Input::CommandJump() && !m_IsJump)
 	{
-		m_JumpTime = 0.0f;
-		m_IsJump = true;
-	}
+		m_Frame = 0;
 
-	// ジャンプ中
-	if (m_IsJump)
-	{
-		//衝突判定
-		auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
-		bool particle = false;
-
-		// 当たり判定処理
-		for (auto enemy : enemies)
+		if (m_AnimationNameNext != AnimationKeyName[Player_Jump])
 		{
-			if (!enemy)
-			{
-				continue;
-			}
-
-			Vector3 d = enemy->GetPosition() - m_Position;
-			float length = d.length();
-			if (length < 1.0f && !particle)
-			{
-				SceneManager::GetScene()->AddGameObject<Explosion>(1)->
-					SetPosition(enemy->GetPosition() + Vector3(0.0f, 1.0f, 0.0f));
-
-				Heart* particle = SceneManager::GetScene()->AddGameObject<Heart>(1);
-				particle->SetPosition(enemy->GetPosition());
-
-				enemy->SetDestroy();
-
-				Score* score = SceneManager::GetScene()->GetGameObject<Score>();
-				score->AddScore(1);
-			}
-		}
-
-		m_JumpTime += 0.016f;          // 1フレーム時間
-		float t = m_JumpTime / 2.0f;   // 2秒間でジャンプ
-		if (t > 1.0f)
-		{
-			t = 1.0f;
-		}
-
-		// 放物線で高さ計算
-		float jumpHeight = 3.0f * 4.0f * t * (1.0f - t);
-
-		// 地形の高さを基準にする
-		m_Position.y = groundY + jumpHeight;
-
-		// 地面に到達したら止める
-		if (m_Position.y <= groundY)
-		{
-			m_Position.y = groundY;
-			m_IsJump = false;
+			m_AnimationName = m_AnimationNameNext;
+			m_AnimationNameNext = AnimationKeyName[Player_Jump];
+			m_AnimationBlend = 0.0f;
 		}
 	}
-	else
-	{
-		// 通常時は地形に沿う
-		m_Position.y = groundY;
-	} 
 
+	// 通常時は地形に沿う
+	m_Position.y = groundY;
 
-	if (Input::CommandAction())
+	if (m_IsAttack)
 	{
-		Bullet* bullet = SceneManager::GetScene()->AddGameObject<Bullet>(1);
-		bullet->SetPosition(m_Position);
-		bullet->SetVelocity(GetForward() * 0.5f);
-		//m_Audio->Play("ShotSE", false);
-		//Enemy* enemy = Manager::GetGameObject<Enemy>();
-		//bullet->Shot(m_Position, enemy->GetPosition());
-	}
-
-	if (move)
-	{
-		// プレイヤーが動くとき、Runのアニメーションか？
-		if (m_AnimationNameNext != AnimationKeyName[Run])
+		if (m_AnimationNameNext != AnimationKeyName[Player_Attack])
 		{
 			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[Run];
+			m_AnimationNameNext = AnimationKeyName[Player_Attack];
+			m_AnimationBlend = 0.0f;
+			//m_Audio->Play("RunSE", true);
+		}
+
+		if (m_Frame >= 80)
+		{
+			m_IsAttack = false;
+		}
+	}
+	else if (move)
+	{
+		// プレイヤーが動くとき、Runのアニメーションか？
+		if (m_AnimationNameNext != AnimationKeyName[Player_Run])
+		{
+			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
+			m_AnimationName = m_AnimationNameNext;
+			m_AnimationNameNext = AnimationKeyName[Player_Run];
 			m_AnimationBlend = 0.0f;
 			//m_Audio->Play("RunSE", true);
 		}
@@ -255,11 +230,11 @@ void Player::Update()
 	else
 	{
 		// プレイヤーが止まる時、Idleのアニメーションか？
-		if (m_AnimationNameNext != AnimationKeyName[Idle])
+		if (m_AnimationNameNext != AnimationKeyName[Player_Idle])
 		{
 			// Idle以外が入ってれば、Idleのアニメーションを入れて、Blendを0.0fにする
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[Idle];
+			m_AnimationNameNext = AnimationKeyName[Player_Idle];
 			m_AnimationBlend = 0.0f;
 			m_Audio->Stop("RunSE");
 		}
@@ -285,33 +260,50 @@ void Player::Draw()
 	GameCharacter::Draw();
 
 	m_AnimationModel->Draw();
-
-	////子
-	//{
-	//	//マトリクス設定
-	//	XMMATRIX world, scale, rot, trans;
-	//	scale = XMMatrixScaling(1.0f, 1.0f, 1.0f);
-	//	rot = XMMatrixRotationRollPitchYaw(1.0f, 0.0f, 0.0f);
-	//	trans = XMMatrixTranslation(0.0f, 2.0f, 0.0f);
-	//	world = scale * rot * trans * parentMatrix;
-	//	Renderer::SetWorldMatrix(world);
-
-	//	//マテリアル設定
-	//	MATERIAL material{};
-	//	material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
-	//	material.TextureEnable = true;
-	//	Renderer::SetMaterial(material);
-
-
-	//	//m_ModelRendererChild->Draw();
-	//}
-
 }
 
 void Player::Attack()
 {
-	if (Input::CommandAction())
+	Scene* scene = SceneManager::GetScene();
+	if (!scene)
 	{
+		return;
+	}
 
+	auto enemies = scene->GetGameObjects<FighterEnemy>();
+
+	for (FighterEnemy* enemy : enemies)
+	{
+		if (!enemy)
+		{
+			continue;
+		}
+
+		Vector3 d = enemy->GetPosition() - m_Position;
+		float dist = d.length();
+
+		if (dist <= SearchRadius)
+		{
+			int hp = enemy->GetHealth();
+
+			// ダメージ計算処理
+			// 会心の一撃
+			if (IsCritical())
+			{
+				hp -= m_Attack * 2;
+			}
+
+			unsigned int enemyDefense = enemy->GetDefense();
+			unsigned int damage = m_Attack - enemyDefense / 2;
+			hp -= damage;
+
+			if (hp <= 0)
+			{
+				hp = 0;
+				enemy->SetDestroy();
+			}
+
+			enemy->SetHealth(hp);
+		}
 	}
 }

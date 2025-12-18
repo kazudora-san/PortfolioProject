@@ -1,6 +1,6 @@
 #include	"Main.h"
 #include	"Renderer/Renderer.h"
-#include	"MoneyWindow/MoneyWindow.h"
+#include	"MoneyWindow.h"
 #include	"Camera/Camera.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Scene/Scene.h"

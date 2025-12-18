@@ -1,16 +1,14 @@
-#ifndef		CURSOR_H
-#define		CURSOR_H
+#ifndef		CURSORBASE_H
+#define		CURSORBASE_H
 
 #include	"UI.h"
-#include	<vector>
-
-class Polygon2D;
 
 constexpr XMFLOAT2	CursorScale = { 50.0f, 50.0f };
 
-class Cursor : public UI // åpè≥
+class CursorBase : public UI // åpè≥
 {
-private:
+protected:
+	const char* m_CursorFileName	= {};
 
 public:
 	virtual void	Init()		override;

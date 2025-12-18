@@ -24,6 +24,7 @@ public:
 	virtual void	Update()	override;
 	virtual void	Draw()		override;
 
+	virtual void	Attack()		override;
 };
 
 #endif

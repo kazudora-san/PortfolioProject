@@ -61,8 +61,11 @@
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.h" />
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.h" />
     <ClInclude Include="SourceFile\GameObject\Tree\Tree.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\BattleWindow\BattleWindow.h" />
     <ClInclude Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.h" />
-    <ClInclude Include="SourceFile\GameObject\UI\Cursor\Cursor.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor\BattleCommandCursor.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\CommandCursor\CommandCursor.h" />
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\CursorBase.h" />
     <ClInclude Include="SourceFile\GameObject\UI\MoneyWindow\MoneyWindow.h" />
     <ClInclude Include="SourceFile\GameObject\UI\UI.h" />
     <ClInclude Include="SourceFile\GameObject\Wave\Wave.h" />
@@ -162,8 +165,11 @@
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.cpp" />
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.cpp" />
     <ClCompile Include="SourceFile\GameObject\Tree\Tree.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\BattleWindow\BattleWindow.cpp" />
     <ClCompile Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.cpp" />
-    <ClCompile Include="SourceFile\GameObject\UI\Cursor\Cursor.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor\BattleCommandCursor.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\CommandCursor\CommandCursor.cpp" />
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\CursorBase.cpp" />
     <ClCompile Include="SourceFile\GameObject\UI\MoneyWindow\MoneyWindow.cpp" />
     <ClCompile Include="SourceFile\GameObject\UI\UI.cpp" />
     <ClCompile Include="SourceFile\GameObject\Wave\Wave.cpp" />

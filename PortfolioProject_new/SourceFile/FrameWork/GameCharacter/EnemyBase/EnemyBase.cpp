@@ -17,14 +17,7 @@
 
 void EnemyBase::Init()
 {
-	m_Frame = 0;
-
-	//シェーダー読み込み
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
-		"shader\\CSOFile\\UnlitTextureVS.cso");
-
-	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\CSOFile\\UnlitTexturePS.cso");
+	GameCharacter::Init();
 }
 
 void EnemyBase::Uninit()

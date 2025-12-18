@@ -1,8 +1,9 @@
 #include	"Main.h"
 #include	"Renderer/Renderer.h"
-#include	"CommandWindow/CommandWindow.h"
+#include	"CommandWindow.h"
 #include	"Renderer/Polygon2D/Polygon2D.h"
-#include	"Cursor/Cursor.h"
+#include	"Cursor/CursorBase.h"
+#include	"Cursor/CommandCursor/CommandCursor.h"
 #include	"Input/Input.h"
 
 // V‚µ‚­•\Ž¦‚ð’Ç‰Á‚·‚éê‡‚ÍAMaxFieldCommand‚ð{‚P‚µ‚ÄA
@@ -33,7 +34,7 @@ void CommandWindow::Init()
 		m_UIWindows.push_back(UIWindow);
 	}
 
-	m_Cursor = new Cursor();
+	m_Cursor = new CommandCursor();
 	m_Cursor->Init();
 }
 

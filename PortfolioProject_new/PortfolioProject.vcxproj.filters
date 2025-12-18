@@ -181,6 +181,18 @@
     <Filter Include="SourceFile\GameObject\UI\Cursor">
       <UniqueIdentifier>{9a51c637-4772-4d03-a5da-b3f798f188e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\GameObject\UI\HealthBar">
+      <UniqueIdentifier>{e6860f1c-7915-47cb-8c56-9130f071edba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\UI\BattleWindow">
+      <UniqueIdentifier>{4db0ad94-753d-41f9-b0bd-68be8a710da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\UI\Cursor\CommandCursor">
+      <UniqueIdentifier>{0d94261c-3238-4d82-abab-6598d5af37cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor">
+      <UniqueIdentifier>{0b9c926f-ef4d-490a-9b66-cc70a8a55c6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -337,8 +349,17 @@
     <ClInclude Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.h">
       <Filter>SourceFile\GameObject\UI\CommandWindow</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\GameObject\UI\Cursor\Cursor.h">
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\CursorBase.h">
       <Filter>SourceFile\GameObject\UI\Cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\UI\BattleWindow\BattleWindow.h">
+      <Filter>SourceFile\GameObject\UI\BattleWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\CommandCursor\CommandCursor.h">
+      <Filter>SourceFile\GameObject\UI\Cursor\CommandCursor</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor\BattleCommandCursor.h">
+      <Filter>SourceFile\GameObject\UI\Cursor\BattleCommandCursor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -527,8 +548,17 @@
     <ClCompile Include="SourceFile\GameObject\UI\CommandWindow\CommandWindow.cpp">
       <Filter>SourceFile\GameObject\UI\CommandWindow</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\GameObject\UI\Cursor\Cursor.cpp">
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\CursorBase.cpp">
       <Filter>SourceFile\GameObject\UI\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\UI\BattleWindow\BattleWindow.cpp">
+      <Filter>SourceFile\GameObject\UI\BattleWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\CommandCursor\CommandCursor.cpp">
+      <Filter>SourceFile\GameObject\UI\Cursor\CommandCursor</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor\BattleCommandCursor.cpp">
+      <Filter>SourceFile\GameObject\UI\Cursor\BattleCommandCursor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

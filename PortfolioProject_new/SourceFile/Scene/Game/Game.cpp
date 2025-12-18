@@ -20,6 +20,7 @@
 #include	"Grass/Grass.h"
 #include	"Rock/Rock.h"
 #include	"CommandWindow/CommandWindow.h"
+#include	"BattleWindow/BattleWindow.h"
 
 void Game::Init()
 {
@@ -58,6 +59,7 @@ void Game::Init()
 	fade->FadeIn(3.0f);
 	AddGameObject<Score>(2);
 	AddGameObject<CommandWindow>(2);
+	AddGameObject<BattleWindow>(2);
 }
 
 void Game::Update()

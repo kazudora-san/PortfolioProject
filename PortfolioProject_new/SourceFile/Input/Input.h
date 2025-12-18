@@ -72,12 +72,12 @@ public:
 	static bool	CommandUp();
 	static bool	CommandDown();
 
-	static bool	CommandAction();	 // 攻撃
-	static bool	CommandJump();		 // ジャンプ
-	static bool	CommandDecision();	 // 決定
-	static bool CommandCancel();	 // 一つ前に戻る
-	static bool CommandDisp();		 // メニューコマンド表示
-
+	static bool	CommandAction();	// 攻撃
+	static bool	CommandJump();		// ジャンプ
+	static bool	CommandDecision();	// 決定
+	static bool CommandCancel();	// 一つ前に戻る
+	static bool CommandDisp();		// メニューコマンド表示
+	static bool	BattleWindow();		// バトルコマンド表示
 
 	static void OnMouseMove(LONG dx, LONG dy);
 

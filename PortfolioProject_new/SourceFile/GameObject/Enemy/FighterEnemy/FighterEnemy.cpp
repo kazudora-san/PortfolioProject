@@ -6,13 +6,24 @@
 #include	"Scene/Scene.h"
 #include	"AnimationModel/AnimationModel.h"
 #include	"Input/Input.h"
+#include	"Player/Player.h"
 
 void FighterEnemy::Init()
 {
 	EnemyBase::Init();
 
+	// 初期ステータス
+	m_Health = 100;
+	m_MaxHealth = 100;
+	m_MasicPower = 60;
+	m_MaxMasicPower = 60;
+	m_Attack = 20;
+	m_Defense = 10;
+	m_Agility = 5;
+	m_Luck = 5;
+
 	m_AnimationModel = new AnimationModel();
-	m_AnimationModel->Load("Asset\\Model\\Enemy_Tpose.fbx");
+	m_AnimationModel->Load("Asset\\Model\\Enemy_Model.fbx");
 
 	m_AnimationModel->LoadAnimation("Asset\\Model\\Enemy_Idle.fbx", "Idle");
 	m_AnimationModel->LoadAnimation("Asset\\Model\\Enemy_Attack.fbx", "Attack");
@@ -41,11 +52,24 @@ void FighterEnemy::Uninit()
 
 void FighterEnemy::Update()
 {
-	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
+	Scene* scene = SceneManager::GetScene();
+	if (!scene)
+	{
+		return;
+	}
 
-	Vector3 rotation = camera->GetRotation();
+	Player* player = scene->GetGameObject<Player>();
+	if (!player)
+	{
+		return;
+	}
+	// エネミー → プレイヤー の方向ベクトル
+	Vector3 dir = player->GetPosition() - m_Position;
+	dir.y = 0.0f;       // 高さは無視してXZ平面だけで向き
+	dir.normalize();
 
-	m_Rotation.y = rotation.y;
+	// Y軸回転（Yaw）を計算
+	m_Rotation.y = atan2f(dir.x, dir.z);  // 左手座標系
 
 	if (m_AnimationNameNext != "Idle")
 	{
@@ -62,7 +86,10 @@ void FighterEnemy::Update()
 			m_AnimationName = m_AnimationNameNext;
 			m_AnimationNameNext = "Attack";
 			m_AnimationBlend = 0.0f;
+			m_Frame = 0;
 		}
+
+		Attack();
 	}
 
 	// std::string型には、c_str()というconst char*型に変換してくれる！
@@ -85,4 +112,46 @@ void FighterEnemy::Draw()
 	EnemyBase::Draw();
 
 	m_AnimationModel->Draw();
+}
+
+void FighterEnemy::Attack()
+{
+	Scene* scene = SceneManager::GetScene();
+	if (!scene)
+	{
+		return;
+	}
+
+	Player* player = scene->GetGameObject<Player>();
+	if (!player)
+	{
+		return;
+	}
+
+	Vector3 d = player->GetPosition() - m_Position;
+	float dist = d.length();
+
+	if (dist <= SearchRadius)
+	{
+		int hp = player->GetHealth();
+
+		// ダメージ計算処理
+		// 会心の一撃
+		if (IsCritical())
+		{
+			hp -= m_Attack * 2;
+		}
+
+		unsigned int enemyDefense = player->GetDefense();
+		unsigned int damage = m_Attack * 4 - enemyDefense / 2;
+		hp -= damage;
+
+		if (hp <= 0)
+		{
+			hp = 0;
+			player->SetDestroy();
+		}
+
+		player->SetHealth(hp);
+	}
 }

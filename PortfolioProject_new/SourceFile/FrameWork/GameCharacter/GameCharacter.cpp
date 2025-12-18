@@ -25,6 +25,8 @@ void GameCharacter::Init()
 
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\CSOFile\\UnlitTexturePS.cso");
+
+	m_Enable = true;
 }
 
 void GameCharacter::Uninit()
@@ -35,6 +37,8 @@ void GameCharacter::Uninit()
 		delete m_AnimationModel;
 		m_AnimationModel = nullptr;
 	}
+
+	m_Enable = false;
 
 	m_VertexLayOut->Release();
 	m_VertexShader->Release();
@@ -48,6 +52,11 @@ void GameCharacter::Update()
 
 void GameCharacter::Draw()
 {
+	if (!m_Enable)
+	{
+		return;
+	}
+
 	//入力レイアウト
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);
 
@@ -75,4 +84,9 @@ void GameCharacter::Draw()
 
 
 	//m_ModelRenderer->Draw();
+}
+
+bool GameCharacter::IsCritical()
+{
+	return (m_Luck > static_cast<unsigned int>(rand() % 100));
 }

@@ -11,6 +11,8 @@ class Score;
 class Player : public GameCharacter
 {
 private:
+	unsigned int	m_CurrentLevel	= {};
+	unsigned int	m_CurrentExp	= {};
 	Camera*			m_Camera		= {};
 	AudioManager*	m_Audio			= {};
 	MeshField*		m_MeshField		= {};
@@ -18,14 +20,15 @@ private:
 	float			m_Jump			= {};
 	bool			m_IsJump		= {};
 	float			m_JumpTime		= {};
+	bool			m_IsAttack		= {};
 
 public:
-	virtual void	Init()		override;
-	virtual void	Uninit()	override;
-	virtual void	Update()	override;
-	virtual void	Draw()		override;
+	virtual void	Init()			override;
+	virtual void	Uninit()		override;
+	virtual void	Update()		override;
+	virtual void	Draw()			override;
 
-	void			Attack();
+	virtual void	Attack()		override;
 };
 
 #endif // PLAYER_H

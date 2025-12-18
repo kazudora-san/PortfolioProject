@@ -1,15 +1,15 @@
-#ifndef		COMMANDWINDOW_H
-#define		COMMANDWINDOW_H
+#ifndef		BATTLEWINDOW_H
+#define		BATTLEWINDOW_H
 
 #include	"UI.h"
 #include	<vector>
 
-class CursorBase;
+class BattleCommandCursor;
 
-class CommandWindow : public UI // åpè≥
+class BattleWindow : public UI // åpè≥
 {
 private:
-	CursorBase*	m_Cursor	= nullptr;
+	BattleCommandCursor*	m_Cursor	= nullptr;
 
 public:
 	virtual void	Init()		override;

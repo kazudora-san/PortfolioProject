@@ -90,6 +90,11 @@ bool Input::CommandDisp()
 	return GetKeyTrigger(KEY_M);
 }
 
+bool Input::BattleWindow()
+{
+	return GetKeyTrigger(KEY_B);
+}
+
 bool Input::MoveLeft()
 {
 	return GetKeyPress(KEY_A);
