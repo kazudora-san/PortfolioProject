@@ -24,8 +24,6 @@ void TitlePlayer::Init()
 	Renderer::CreatePixelShader(&m_PixelShader,
 		"shader\\CSOFile\\UnlitTexturePS.cso");
 
-	m_Position.x = 1.5f;
-	m_Position.z = -1.0f;
 	m_Rotation.y = -90.0f;
 
 	m_AnimationModel = new AnimationModel();

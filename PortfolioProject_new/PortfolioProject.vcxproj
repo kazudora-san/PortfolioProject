@@ -57,7 +57,9 @@
     <ClInclude Include="SourceFile\GameObject\Score\Score.h" />
     <ClInclude Include="SourceFile\GameObject\SkyDorm\Skydorm.h" />
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitleCamera\TitleCamera.h" />
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitleEffect\TitleHeart\TitleHeart.h" />
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitleEnemy\TitleEnemy.h" />
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitleLogo\TitleLogo.h" />
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.h" />
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.h" />
     <ClInclude Include="SourceFile\GameObject\Tree\Tree.h" />
@@ -161,7 +163,9 @@
     <ClCompile Include="SourceFile\GameObject\Score\Score.cpp" />
     <ClCompile Include="SourceFile\GameObject\SkyDorm\Skydorm.cpp" />
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitleCamera\TitleCamera.cpp" />
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitleEffect\TitleHeart\TitleHeart.cpp" />
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitleEnemy\TitleEnemy.cpp" />
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitleLogo\TitleLogo.cpp" />
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitleMeshField\TitleMeshField.cpp" />
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitlePlayer\TitlePlayer.cpp" />
     <ClCompile Include="SourceFile\GameObject\Tree\Tree.cpp" />

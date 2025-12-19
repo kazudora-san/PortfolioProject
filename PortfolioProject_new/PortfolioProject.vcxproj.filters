@@ -193,6 +193,15 @@
     <Filter Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor">
       <UniqueIdentifier>{0b9c926f-ef4d-490a-9b66-cc70a8a55c6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject\TitleEffect">
+      <UniqueIdentifier>{e5726b17-6905-4528-bdac-d6ac973216c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject\TitleEffect\TitleHeart">
+      <UniqueIdentifier>{15c0285c-477c-4db9-9efc-b56dbeebc737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\TitleObject\TitleLogo">
+      <UniqueIdentifier>{effc3dff-236c-404d-8758-f93c88e54a60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
@@ -360,6 +369,12 @@
     </ClInclude>
     <ClInclude Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor\BattleCommandCursor.h">
       <Filter>SourceFile\GameObject\UI\Cursor\BattleCommandCursor</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitleEffect\TitleHeart\TitleHeart.h">
+      <Filter>SourceFile\GameObject\TitleObject\TitleEffect\TitleHeart</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\TitleObject\TitleLogo\TitleLogo.h">
+      <Filter>SourceFile\GameObject\TitleObject\TitleLogo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -559,6 +574,12 @@
     </ClCompile>
     <ClCompile Include="SourceFile\GameObject\UI\Cursor\BattleCommandCursor\BattleCommandCursor.cpp">
       <Filter>SourceFile\GameObject\UI\Cursor\BattleCommandCursor</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitleEffect\TitleHeart\TitleHeart.cpp">
+      <Filter>SourceFile\GameObject\TitleObject\TitleEffect\TitleHeart</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\TitleObject\TitleLogo\TitleLogo.cpp">
+      <Filter>SourceFile\GameObject\TitleObject\TitleLogo</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

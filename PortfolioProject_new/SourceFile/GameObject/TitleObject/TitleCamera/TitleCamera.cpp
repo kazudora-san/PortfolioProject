@@ -9,7 +9,7 @@
 
 void TitleCamera::Init()
 {
-	m_Position = { 0.0f,1.0f,-5.0f };
+	m_Position = { 0.0f,3.0f,-5.0f };
 }
 
 void TitleCamera::Uninit()

@@ -17,6 +17,9 @@
 #include	"TitlePlayer/TitlePlayer.h"
 #include	"TitleEnemy/TitleEnemy.h"
 #include	"SkyDorm/Skydorm.h"
+#include	"Wave/Wave.h"
+#include	"TitleEffect/TitleHeart/TitleHeart.h"
+#include	"TitleLogo/TitleLogo.h"
 
 constexpr float TitleTextureWidth = 378.0f;
 constexpr float TitleTextureHeight = 378.0f;
@@ -26,14 +29,26 @@ void Title::Init()
 	Scene::Init();
 
 	AddGameObject<TitleCamera>(0);
-	AddGameObject<TitleMeshField>(0);
+	TitleMeshField* titleMeshField = AddGameObject<TitleMeshField>(0);
+	if (!titleMeshField)
+	{
+		return;
+	}
+
 	SkyDorm* skyDorm = AddGameObject<SkyDorm>(0);
 	skyDorm->SetPosition({ 0.0f, 0.0f, 0.0f });
 
 	auto* fade = AddGameObject<FadeQuad>(2);
-	fade->FadeIn(3.0f);
+	fade->FadeIn(0.0f);
 	
-	AddGameObject<TitlePlayer>(2);
+	TitlePlayer* titlePlayer = AddGameObject<TitlePlayer>(2);
+	if (!titlePlayer)
+	{
+		return;
+	}
+	Vector3 position = { 1.5f, 0.0f, -1.0f};
+	position.y = titleMeshField->GetHeight(position);
+	titlePlayer->SetPosition(position);
 
 	TitleEnemy* titleEnemy = AddGameObject<TitleEnemy>(2);
 	if(!titleEnemy)
@@ -41,20 +56,27 @@ void Title::Init()
 		return;
 	}
 	titleEnemy->SetRotation({ 0.0f, 90.0f, 0.0f });
-	titleEnemy->SetPosition({ -2.0f, 0.0f, -1.0f });
+	position = { -2.0f, 0.0f, -1.0f };
+	position.y = titleMeshField->GetHeight(position);
+	titleEnemy->SetPosition(position);
 
 	titleEnemy = AddGameObject<TitleEnemy>(2);
 	if (!titleEnemy)
 	{
 		return;
 	}
-	titleEnemy->SetRotation({ 0.0f, 90.0f, 0.0f });
-	titleEnemy->SetPosition({ -1.5f, 0.0f, 0.0f });
+	titleEnemy->SetRotation({ 0.0f, 90.0f, 0.0f }); 
+	position = { -1.5f, 0.0f, 0.0f };
+	position.y = titleMeshField->GetHeight(position);
+	titleEnemy->SetPosition(position);
+
+	AddGameObject<Wave>(2);
+	AddGameObject<TitleHeart>(2);
+	AddGameObject<TitleLogo>(3)->Init(SCREEN_WIDTH / 2.0f - TitleTextureWidth, -TitleTextureHeight / 2.0f,
+										TitleTextureWidth * 2.0f, TitleTextureHeight * 2.0f,
+										"Asset\\Texture\\Title.png");
 
 	// 2DÉ|ÉäÉSÉìÇÕÉåÉCÉÑÅ[î‘çÜÇÕàÍî‘å„ÇÎÇ≈Ç®äËÇ¢ÇµÇ‹Ç∑
-	AddGameObject<Polygon2D>(3)->Init(SCREEN_WIDTH / 2.0f - TitleTextureWidth, -TitleTextureHeight / 2.0f, 
-										TitleTextureWidth * 2.0f, TitleTextureHeight * 2.0f, 
-										"Asset\\Texture\\Title.png");
 	AddGameObject<Polygon2D>(3)->Init(SCREEN_WIDTH / 2.0f - TitleTextureWidth / 2.0f, TitleTextureHeight,
 										TitleTextureWidth, TitleTextureHeight,
 										"Asset\\Texture\\PressEnter.png");
