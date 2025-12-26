@@ -13,9 +13,9 @@ enum BattleCommandKey
 	Battle_Escape,
 };
 
-constexpr	XMFLOAT2		BattleCmdCursorPosition		= { 100.0f, 420.0f };
-constexpr	XMFLOAT2		BattleCmdCursorMove			= { 0.0f, 50.0f };
-constexpr	unsigned int	MaxBattleCmdIndex			= { 3 };
+constexpr	XMFLOAT2		BattleCmdCursorPosition	= { 100.0f, 420.0f };
+constexpr	XMFLOAT2		BattleCmdCursorMove		= { 0.0f, 50.0f };
+constexpr	unsigned int	MaxBattleCmdIndex		= { 3 };	// コマンドによって選択番号を割り振る
 
 void BattleCommandCursor::Init()
 {
@@ -33,13 +33,24 @@ void BattleCommandCursor::Init()
 
 void BattleCommandCursor::Uninit()
 {
-	UI::Uninit();
+	CursorBase::Uninit();
 }
 
 void BattleCommandCursor::Update()
 {
-	UI::Update();
+	CursorBase::Update();
 
+	CursorMove();
+	Select();
+}
+
+void BattleCommandCursor::Draw()
+{
+	CursorBase::Draw();
+}
+
+void BattleCommandCursor::CursorMove()
+{
 	if (Input::CommandUp())
 	{
 		m_SelectIndex--;
@@ -58,11 +69,13 @@ void BattleCommandCursor::Update()
 			m_SelectIndex = MaxBattleCmdIndex;
 		}
 	}
+}
 
+void BattleCommandCursor::Select()
+{
 	if (Input::CommandDecision())
 	{
 		// コマンド決定
-
 		switch (static_cast<BattleCommandKey>(m_SelectIndex))
 		{
 		case Battle_Attack:	// こうげき
@@ -71,11 +84,11 @@ void BattleCommandCursor::Update()
 
 			break;
 		}
-		case Battle_Skill:		// とくぎ
+		case Battle_Skill:	// とくぎ
 		{
 			break;
 		}
-		case Battle_Guard:		// ぼうぎょ
+		case Battle_Guard:	// ぼうぎょ
 		{
 			break;
 		}
@@ -89,20 +102,4 @@ void BattleCommandCursor::Update()
 
 		SetIsDisp(false);
 	}
-
-	for (Polygon2D* battlecommandcursor : m_UIWindows)
-	{
-		if (!battlecommandcursor)
-		{
-			continue;
-		}
-
-		m_Position.y = BattleCmdCursorMove.y * m_SelectIndex;
-		battlecommandcursor->SetPosition({ m_Position });
-	}
-}
-
-void BattleCommandCursor::Draw()
-{
-	UI::Draw();
 }

@@ -8,10 +8,12 @@ class BattleCommandCursor : public CursorBase // åpè≥
 private:
 	
 public:
-	virtual void	Init()		override;
-	virtual void	Uninit()	override;
-	virtual void	Update()	override;
-	virtual void	Draw()		override;
+	virtual void	Init()			override;
+	virtual void	Uninit()		override;
+	virtual void	Update()		override;
+	virtual void	Draw()			override;
+	virtual void	CursorMove()	override;
+	virtual void	Select()		override;
 };
 
 #endif

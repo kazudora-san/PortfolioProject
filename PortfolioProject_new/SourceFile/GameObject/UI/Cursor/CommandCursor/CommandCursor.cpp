@@ -10,27 +10,31 @@ constexpr XMFLOAT2	CmdCursorMove			= { 130.0f, 50.0f};
 
 void CommandCursor::Init()
 {
+	m_CursorPosition	= CmdCursorPosition;
+	m_CursorMove		= CmdCursorMove;
 	CursorBase::Init();
-	
-	Polygon2D* UIWindow = new Polygon2D();
-	UIWindow->Init(	CmdCursorPosition.x - CursorScale.x / 2.0f, 
-					CmdCursorPosition.y - CursorScale.y / 2.0f,
-					CursorScale.x, 
-					CursorScale.y,
-					m_CursorFileName);
-
-	m_UIWindows.push_back(UIWindow);
 }
 
 void CommandCursor::Uninit()
 {
-	UI::Uninit();
+	CursorBase::Uninit();
 }
 
 void CommandCursor::Update()
 {
-	UI::Update();
+	CursorBase::Update();
 
+	CursorMove();
+	Select();
+}
+
+void CommandCursor::Draw()
+{
+	CursorBase::Draw();
+}
+
+void CommandCursor::CursorMove()
+{
 	if (Input::CommandLeft())
 	{
 		if (m_Position.x > CmdCursorPosition.x)
@@ -59,19 +63,8 @@ void CommandCursor::Update()
 			m_Position.y += CmdCursorMove.y;
 		}
 	}
-
-	for (Polygon2D* cursor : m_UIWindows)
-	{
-		if (!cursor)
-		{
-			continue;
-		}
-
-		cursor->SetPosition({ m_Position });
-	}
 }
 
-void CommandCursor::Draw()
+void CommandCursor::Select()
 {
-	UI::Draw();
 }
