@@ -9,10 +9,9 @@ protected:
 	
 
 public:
-	virtual void	Init()		override;
-	virtual void	Uninit()	override;
+	virtual void	Enter()		override;
 	virtual void	Update()	override;
-	virtual void	Draw()		override;
+	virtual void	Exit()		override;
 
 	virtual bool	IsActive()	const	override;
 };

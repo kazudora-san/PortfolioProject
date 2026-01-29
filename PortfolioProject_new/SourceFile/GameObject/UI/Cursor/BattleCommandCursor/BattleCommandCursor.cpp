@@ -11,11 +11,12 @@ enum BattleCommandKey
 	Battle_Skill,
 	Battle_Guard,
 	Battle_Escape,
+	Battle_Max,
 };
 
 constexpr	XMFLOAT2		BattleCmdCursorPosition	= { 100.0f, 420.0f };
 constexpr	XMFLOAT2		BattleCmdCursorMove		= { 0.0f, 50.0f };
-constexpr	unsigned int	MaxBattleCmdIndex		= { 3 };	// コマンドによって選択番号を割り振る
+constexpr	unsigned int	MaxBattleCmdIndex		= { Battle_Max };	// コマンドによって選択番号を割り振る
 
 void BattleCommandCursor::Init()
 {

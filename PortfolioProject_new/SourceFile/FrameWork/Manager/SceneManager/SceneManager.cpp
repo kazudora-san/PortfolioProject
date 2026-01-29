@@ -22,7 +22,7 @@ void SceneManager::Init()
 	m_Fader->Init();
 	m_Fader->FadeIn();
 
-	m_Scene = new Title();
+	m_Scene = new Game();
 	m_Scene->Init();
 }
 
@@ -31,6 +31,7 @@ void SceneManager::Uninit()
 {
 	m_Scene->Uninit();
 	delete m_Scene;
+
 	if (m_Fader)
 	{
 		m_Fader->Uninit();

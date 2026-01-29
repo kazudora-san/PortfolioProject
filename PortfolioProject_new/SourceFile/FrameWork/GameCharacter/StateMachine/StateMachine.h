@@ -1,10 +1,11 @@
 #ifndef		STATEMACHINE_H
 #define		STATEMACHINE_H
 
-#include	"GameCharacter/GameCharacter.h"
 #include	<string>
 
-class StateMachine : public GameCharacter
+class GameCharacter;
+
+class StateMachine
 {
 protected:
 	GameCharacter*		m_OwnerObject	= nullptr;
@@ -14,10 +15,11 @@ public:
 	StateMachine() = default;
 	StateMachine(GameCharacter* ownerObject);
 
-	virtual void	Init()		;
-	virtual void	Uninit()	;
-	virtual void	Update()	;
-	virtual void	Draw()		;
+	virtual ~StateMachine();
+
+	virtual void	Enter();
+	virtual void	Update();
+	virtual void	Exit();
 
 	virtual bool	IsActive()	const = 0;
 };
