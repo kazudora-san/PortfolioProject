@@ -8,19 +8,23 @@
 #include	"Input/Input.h"
 #include	"Player/Player.h"
 
+const CharacterStatus FighterEnemyStatus(
+	100,	// HP
+	100,	// MaxHP
+	60,		// MP
+	60,		// MaxMP
+	20,		// 攻撃力
+	10,		// 守備力
+	5,		// 素早さ
+	5		// 運
+);
+
 void FighterEnemy::Init()
 {
 	EnemyBase::Init();
 
 	// 初期ステータス
-	m_Health = 100;
-	m_MaxHealth = 100;
-	m_MasicPower = 60;
-	m_MaxMasicPower = 60;
-	m_Attack = 20;
-	m_Defense = 10;
-	m_Agility = 5;
-	m_Luck = 5;
+	m_CharacterStatus.InitCharacterStatus(FighterEnemyStatus);
 
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\Model\\Enemy_Model.fbx");
@@ -31,13 +35,6 @@ void FighterEnemy::Init()
 	m_AnimationNameNext = "Idle";
 	m_AnimationBlend = 0.0f;
 	m_Frame = 0;
-
-	//シェーダー読み込み
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
-		"Shader\\CSOFile\\UnlitTextureVS.cso");
-
-	Renderer::CreatePixelShader(&m_PixelShader,
-		"Shader\\CSOFile\\UnlitTexturePS.cso");
 
 	m_Scale = { 0.01f, 0.01f, 0.01f };
 	m_Position.y += 1.0f;
@@ -133,17 +130,19 @@ void FighterEnemy::Attack()
 
 	if (dist <= SearchRadius)
 	{
-		int hp = player->GetHealth();
+		CharacterStatus& characterStatus = player->GetCharacterStatus();
+
+		int hp = characterStatus.GetHealth();
 
 		// ダメージ計算処理
 		// 会心の一撃
 		if (IsCritical())
 		{
-			hp -= m_Attack * 2;
+			hp -= m_CharacterStatus.GetAttack() * 2;
 		}
 
-		unsigned int enemyDefense = player->GetDefense();
-		unsigned int damage = m_Attack * 4 - enemyDefense / 2;
+		unsigned int enemyDefense = characterStatus.GetDefense();
+		unsigned int damage = m_CharacterStatus.GetAttack() * 4 - enemyDefense / 2;
 		hp -= damage;
 
 		if (hp <= 0)
@@ -152,6 +151,14 @@ void FighterEnemy::Attack()
 			player->SetDestroy();
 		}
 
-		player->SetHealth(hp);
+		characterStatus.SetHealth(hp);
 	}
+}
+
+void FighterEnemy::Idle()
+{
+}
+
+void FighterEnemy::Move()
+{
 }

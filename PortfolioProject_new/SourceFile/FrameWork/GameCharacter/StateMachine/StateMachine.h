@@ -8,7 +8,7 @@ class GameCharacter;
 class StateMachine
 {
 protected:
-	GameCharacter*		m_OwnerObject	= nullptr;
+	GameCharacter*		m_OwnerObject	= {};
 	std::string			m_StateName		= {};
 
 public:

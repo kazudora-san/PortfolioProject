@@ -15,7 +15,7 @@ bool GameObject::Destroy()
 	}
 }
 
-Vector3 GameObject::GetRight() const
+const Vector3& GameObject::GetRight() const
 {
 	XMMATRIX matrix;
 	matrix = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);

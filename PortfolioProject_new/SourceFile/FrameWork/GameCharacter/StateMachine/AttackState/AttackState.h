@@ -5,10 +5,13 @@
 
 class AttackState : public StateMachine
 {
-protected:
-	
+private:
+	std::string m_AttackStateName	= {};	// •¶Žš—ñ"Attack"‚ðŠi”[—p
 
 public:
+	AttackState() = default;
+	AttackState(GameCharacter* ownerObject);
+
 	virtual void	Enter()		override;
 	virtual void	Update()	override;
 	virtual void	Exit()		override;

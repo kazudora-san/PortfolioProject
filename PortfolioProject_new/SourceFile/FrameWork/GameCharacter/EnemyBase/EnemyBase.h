@@ -15,7 +15,9 @@ public:
 	virtual void	Update()	override;
 	virtual void	Draw()		override;
 
-	virtual void	Attack() = 0;
+	virtual void	Attack()	= 0;
+	virtual void	Idle()		= 0;
+	virtual void	Move()		= 0;
 };
 
 #endif // PLAYER_H

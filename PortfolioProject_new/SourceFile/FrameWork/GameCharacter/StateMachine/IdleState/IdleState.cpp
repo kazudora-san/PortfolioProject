@@ -1,5 +1,13 @@
 #include	"IdleState.h"
 
+IdleState::IdleState(GameCharacter* ownerObject)
+{
+	m_OwnerObject = ownerObject;
+	
+	// m_StateNameに入れる時は、m_IdleStateNameを使うこと
+	m_StateName = m_IdleStateName = "Idle";
+}
+
 void IdleState::Enter()
 {
 }
@@ -14,5 +22,8 @@ void IdleState::Exit()
 
 bool IdleState::IsActive() const
 {
-	return false;
+	// プレイヤーが生きてるとき
+	// プレイヤーが何も捜査してない時
+
+	return true;
 }

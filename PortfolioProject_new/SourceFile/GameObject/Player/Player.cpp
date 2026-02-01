@@ -26,19 +26,23 @@ enum PlayerAnimatyonKey
 
 const char*	AnimationKeyName[]	= { "Idle", "Run", "Attack", "Jump"};
 
+const CharacterStatus PlayerStatus(
+	1000,	// HP
+	1000,	// MaxHP
+	60,		// MP
+	60,		// MaxMP
+	20,		// 攻撃力
+	10,		// 守備力
+	5,		// 素早さ
+	5		// 運
+);
+
 void Player::Init()
 {
 	GameCharacter::Init();
 
 	// 初期ステータス
-	m_Health		= 100;
-	m_MaxHealth		= 100;
-	m_MasicPower	= 60;
-	m_MaxMasicPower	= 60;
-	m_Attack		= 20;
-	m_Defense		= 10;
-	m_Agility		= 5;
-	m_Luck			= 5;
+	m_CharacterStatus.InitCharacterStatus(PlayerStatus);
 
 	m_Money = new Score();
 	m_Money->Init();
@@ -271,7 +275,6 @@ void Player::Attack()
 	}
 
 	auto enemies = scene->GetGameObjects<FighterEnemy>();
-
 	for (FighterEnemy* enemy : enemies)
 	{
 		if (!enemy)
@@ -279,22 +282,24 @@ void Player::Attack()
 			continue;
 		}
 
+		CharacterStatus& characterStatus = enemy->GetCharacterStatus();
+
 		Vector3 d = enemy->GetPosition() - m_Position;
 		float dist = d.length();
 
 		if (dist <= SearchRadius)
 		{
-			int hp = enemy->GetHealth();
+			int hp = characterStatus.GetHealth();
 
 			// ダメージ計算処理
 			// 会心の一撃
 			if (IsCritical())
 			{
-				hp -= m_Attack * 2;
+				hp -= m_CharacterStatus.GetAttack() * 2;
 			}
 
-			unsigned int enemyDefense = enemy->GetDefense();
-			unsigned int damage = m_Attack - enemyDefense / 2;
+			unsigned int enemyDefense = characterStatus.GetDefense();
+			unsigned int damage = m_CharacterStatus.GetAttack() - enemyDefense / 2;
 			hp -= damage;
 
 			if (hp <= 0)
@@ -303,7 +308,7 @@ void Player::Attack()
 				enemy->SetDestroy();
 			}
 
-			enemy->SetHealth(hp);
+			characterStatus.SetHealth(hp);
 		}
 	}
 
@@ -316,4 +321,12 @@ void Player::Attack()
 	}
 
 	m_IsAttack = true;
+}
+
+void Player::Idle()
+{
+}
+
+void Player::Move()
+{
 }

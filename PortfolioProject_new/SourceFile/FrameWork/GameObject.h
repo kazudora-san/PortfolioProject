@@ -22,21 +22,17 @@ public:
 	void	SetDestroy() { m_Destroy = true; }
 	bool	Destroy();
 
-	void	SetEnable(bool enable = true)			{ m_Enable = enable; }
-	void	SetPosition(const Vector3& Position)	{ m_Position = Position; }
-	void	SetRotation(const Vector3& Rotation)	{ m_Rotation = Rotation; }
-	void	SetScale(const Vector3& Scale)			{ m_Scale = Scale; }
+	void	SetEnable	(bool enable = true)		{ m_Enable		= enable; }
+	void	SetPosition	(const Vector3& Position)	{ m_Position	= Position; }
+	void	SetRotation	(const Vector3& Rotation)	{ m_Rotation	= Rotation; }
+	void	SetScale	(const Vector3& Scale)		{ m_Scale		= Scale; }
 
-	bool	GetEnable()		const { return m_Enable; }
-	Vector3	GetPosition()	const { return m_Position; }
-	Vector3	GetRotation()	const { return m_Rotation; }
-	Vector3	GetScale()		const { return m_Scale; }
-	Vector3	GetRight()		const;
-	virtual	Vector3 GetForward();
-
-
-
-
+	bool					GetEnable()		const { return m_Enable; }
+	const Vector3&			GetPosition()	const { return m_Position; }
+	const Vector3&			GetRotation()	const { return m_Rotation; }
+	const Vector3&			GetScale()		const { return m_Scale; }
+	const Vector3&			GetRight()		const;
+	virtual Vector3	GetForward();
 
 	float	GetDistance(Vector3 Position);
 	float	GetZ(Vector3 Position, Vector3 Forward);
