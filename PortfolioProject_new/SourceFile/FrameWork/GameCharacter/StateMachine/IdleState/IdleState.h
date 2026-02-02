@@ -6,7 +6,6 @@
 class IdleState : public StateMachine
 {
 private:
-	std::string	m_IdleStateName	= {};	// •¶Žš—ñ"Idle"‚ðŠi”[—p
 
 public:
 	IdleState() = default;

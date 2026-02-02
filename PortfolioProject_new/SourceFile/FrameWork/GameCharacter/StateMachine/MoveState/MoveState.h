@@ -6,7 +6,6 @@
 class MoveState : public StateMachine
 {
 private:
-	std::string	m_MoveStateName	= {};	// •¶Žš—ñ"Move"‚ðŠi”[—p
 
 public:
 	MoveState() = default;

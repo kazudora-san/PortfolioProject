@@ -42,17 +42,6 @@ void CursorBase::Update()
 
 		cursor->SetPosition({ m_Position });
 	}
-
-	//for (Polygon2D* battlecommandcursor : m_UIWindows)
-	//{
-	//	if (!battlecommandcursor)
-	//	{
-	//		continue;
-	//	}
-	//
-	//	m_Position.y = BattleCmdCursorMove.y * m_SelectIndex;
-	//	battlecommandcursor->SetPosition({ m_Position });
-	//}
 }
 
 void CursorBase::Draw()

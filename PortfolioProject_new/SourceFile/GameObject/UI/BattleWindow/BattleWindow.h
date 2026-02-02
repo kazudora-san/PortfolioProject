@@ -2,7 +2,6 @@
 #define		BATTLEWINDOW_H
 
 #include	"UI.h"
-#include	<vector>
 
 class BattleCommandCursor;
 

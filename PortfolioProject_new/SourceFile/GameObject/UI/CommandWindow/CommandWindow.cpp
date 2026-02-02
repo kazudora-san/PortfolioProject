@@ -6,6 +6,10 @@
 #include	"Cursor/CommandCursor/CommandCursor.h"
 #include	"Input/Input.h"
 
+//---------------------------------------
+// フィールドの時のメニューコマンドの処理
+//---------------------------------------
+
 // 新しく表示を追加する場合は、MaxFieldCommandを＋１して、
 // 座標、画像サイズ、ファイルパスを追加してください
 constexpr int		MaxFieldCommand							= 2;

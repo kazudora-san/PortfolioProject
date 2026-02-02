@@ -11,7 +11,7 @@ class UI : public GameObject
 {
 protected:
 	Player*					m_OwnerObject	= {};
-	std::vector<Polygon2D*>	m_UIWindows		= {};
+	std::vector<Polygon2D*>	m_UIWindows		= {};	// カーソルやテクスチャ格納用
 	bool					m_IsDisp		= {};
 
 public:

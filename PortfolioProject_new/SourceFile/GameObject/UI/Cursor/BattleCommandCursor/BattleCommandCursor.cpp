@@ -22,6 +22,7 @@ void BattleCommandCursor::Init()
 {
 	CursorBase::Init();
 
+	// eƒNƒ‰ƒX‚Ådelete‚·‚é
 	Polygon2D* UIWindow = new Polygon2D();
 	UIWindow->Init(	BattleCmdCursorPosition.x - CursorScale.x / 2.0f, 
 					BattleCmdCursorPosition.y - CursorScale.y / 2.0f,

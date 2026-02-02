@@ -95,9 +95,8 @@ void Grass::Draw()
 	invView.r[3].m128_f32[2] = 0.0f;
 
 	// 3Dマトリクス設定
-	XMMATRIX world, scale, rot, trans;
+	XMMATRIX world, scale, trans;
 	scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-	//rot = XMMatrixRotationRollPitchYaw(0.0f, 0.0f, 0.0f);
 	trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
 	world = scale * invView * trans;
 	Renderer::SetWorldMatrix(world);

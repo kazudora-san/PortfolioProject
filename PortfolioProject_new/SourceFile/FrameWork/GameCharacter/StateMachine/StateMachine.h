@@ -1,6 +1,7 @@
 #ifndef		STATEMACHINE_H
 #define		STATEMACHINE_H
 
+#include	<vector>
 #include	<string>
 
 class GameCharacter;
@@ -8,8 +9,9 @@ class GameCharacter;
 class StateMachine
 {
 protected:
-	GameCharacter*		m_OwnerObject	= {};
-	std::string			m_StateName		= {};
+	GameCharacter*				m_OwnerObject	= {};
+	std::vector<StateMachine*>	m_States		= {};
+	std::string					m_StateName		= {};
 
 public:
 	StateMachine() = default;
@@ -22,6 +24,7 @@ public:
 	virtual void	Exit();
 
 	virtual bool	IsActive()	const = 0;
+	const std::string&	GetStateName() const { return m_StateName; }
 };
 
-#endif // PLAYER_H
+#endif // STATEMACHINE_H

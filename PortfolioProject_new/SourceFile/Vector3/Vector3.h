@@ -1,7 +1,7 @@
 #ifndef		VECTOR3_H
 #define		VECTOR3_H
 
-#include	<math.h>
+#include	<cmath>
 
 // Vector3クラスーーー簡単な３Dベクトルクラス
 

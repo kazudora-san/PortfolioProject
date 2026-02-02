@@ -6,7 +6,6 @@
 class AttackState : public StateMachine
 {
 private:
-	std::string m_AttackStateName	= {};	// •¶Žš—ñ"Attack"‚ðŠi”[—p
 
 public:
 	AttackState() = default;

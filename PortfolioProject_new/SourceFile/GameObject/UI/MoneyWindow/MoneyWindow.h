@@ -5,7 +5,7 @@
 
 class Polygon2D;
 
-class MoneyWindow : public UI // åpè≥
+class MoneyWindow : public UI
 {
 private:
 

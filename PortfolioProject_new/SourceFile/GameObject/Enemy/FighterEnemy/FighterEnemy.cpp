@@ -8,6 +8,7 @@
 #include	"Input/Input.h"
 #include	"Player/Player.h"
 
+const Vector3 FighterEnemyScale = { 0.01f, 0.01f, 0.01f };
 const CharacterStatus FighterEnemyStatus(
 	100,	// HP
 	100,	// MaxHP
@@ -23,7 +24,7 @@ void FighterEnemy::Init()
 {
 	EnemyBase::Init();
 
-	// 初期ステータス
+	// 初期ステータスを必ず入れる
 	m_CharacterStatus.InitCharacterStatus(FighterEnemyStatus);
 
 	m_AnimationModel = new AnimationModel();
@@ -36,7 +37,7 @@ void FighterEnemy::Init()
 	m_AnimationBlend = 0.0f;
 	m_Frame = 0;
 
-	m_Scale = { 0.01f, 0.01f, 0.01f };
+	m_Scale = FighterEnemyScale;
 	m_Position.y += 1.0f;
 }
 
