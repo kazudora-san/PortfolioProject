@@ -3,7 +3,7 @@
 
 #include	"Cursor/CursorBase.h"
 
-class BattleCommandCursor : public CursorBase // åpè≥
+class BattleCommandCursor : public CursorBase
 {
 private:
 	

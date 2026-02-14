@@ -1,39 +1,17 @@
 #include	"StateMachine.h"
-#include	"GameCharacter/GameCharacter.h"
+#include	"GameCharacter/State/State.h"
 
-StateMachine::StateMachine(GameCharacter* ownerObject)
+void StateMachine::StateChanege(State* state)
 {
-	m_OwnerObject = ownerObject;
-}
-
-StateMachine::~StateMachine()
-{
-	m_OwnerObject = nullptr;
-}
-
-void StateMachine::Enter()
-{
-}
-
-void StateMachine::Update()
-{
-	// ステート切り替えは親クラスでやる
-	for (auto state : m_States)
+	if (m_CurrentState)
 	{
-		if (!state)
-		{
-			continue;
-		}
-
-		if (state->IsActive())
-		{
-			// ステート
-			m_StateName = state->GetStateName();
-			break;
-		}
+		m_CurrentState->Exit();
 	}
-}
 
-void StateMachine::Exit()
-{
+	m_CurrentState = state;
+
+	if (m_CurrentState)
+	{
+		m_CurrentState->Enter();
+	}
 }

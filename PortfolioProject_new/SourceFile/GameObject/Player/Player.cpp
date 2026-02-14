@@ -2,6 +2,7 @@
 #include	"Renderer/Renderer.h"
 #include	"Player/Player.h"
 #include	"Renderer/ModelRenderer/ModelRenderer.h"
+#include	"GameCharacter/StateMachine/StateMachine.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Manager/AudioManager/AudioManager.h"
 #include	"Camera/Camera.h"
@@ -18,10 +19,10 @@
 
 enum PlayerAnimatyonKey
 {
-	Player_Idle = 0,
-	Player_Run,
-	Player_Attack,
-	Player_Jump,
+	PlayerIdle = 0,
+	PlayerRun,
+	PlayerAttack,
+	PlayerJump,
 };
 
 const char*	AnimationKeyName[]	= { "Idle", "Run", "Attack", "Jump"};
@@ -40,7 +41,8 @@ const CharacterStatus PlayerStatus(
 void Player::Init()
 {
 	GameCharacter::Init();
-
+	
+	
 	// 初期ステータス
 	m_CharacterStatus.InitCharacterStatus(PlayerStatus);
 
@@ -51,13 +53,13 @@ void Player::Init()
 	m_AnimationModel->Load("Asset\\Model\\Player\\Player_Model.fbx");
 
 
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Idle.fbx",	AnimationKeyName[Player_Idle]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Run.fbx",		AnimationKeyName[Player_Run]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Attack.fbx",	AnimationKeyName[Player_Attack]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Jump.fbx",	AnimationKeyName[Player_Jump]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Idle.fbx",	AnimationKeyName[PlayerIdle]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Run.fbx",		AnimationKeyName[PlayerRun]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Attack.fbx",	AnimationKeyName[PlayerAttack]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Jump.fbx",	AnimationKeyName[PlayerJump]);
 
-	m_AnimationName = AnimationKeyName[Player_Idle];
-	m_AnimationNameNext = AnimationKeyName[Player_Idle];
+	m_AnimationName = AnimationKeyName[PlayerIdle];
+	m_AnimationNameNext = AnimationKeyName[PlayerIdle];
 	m_AnimationBlend = 0.0f;
 	m_Frame = 0;
 
@@ -192,10 +194,10 @@ void Player::Update()
 	{
 		m_Frame = 0;
 
-		if (m_AnimationNameNext != AnimationKeyName[Player_Jump])
+		if (m_AnimationNameNext != AnimationKeyName[PlayerJump])
 		{
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[Player_Jump];
+			m_AnimationNameNext = AnimationKeyName[PlayerJump];
 			m_AnimationBlend = 0.0f;
 		}
 	}
@@ -205,11 +207,11 @@ void Player::Update()
 
 	if (m_IsAttack)
 	{
-		if (m_AnimationNameNext != AnimationKeyName[Player_Attack])
+		if (m_AnimationNameNext != AnimationKeyName[PlayerAttack])
 		{
 			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[Player_Attack];
+			m_AnimationNameNext = AnimationKeyName[PlayerAttack];
 			m_AnimationBlend = 0.0f;
 			//m_Audio->Play("RunSE", true);
 		}
@@ -222,11 +224,11 @@ void Player::Update()
 	else if (move)
 	{
 		// プレイヤーが動くとき、Runのアニメーションか？
-		if (m_AnimationNameNext != AnimationKeyName[Player_Run])
+		if (m_AnimationNameNext != AnimationKeyName[PlayerRun])
 		{
 			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[Player_Run];
+			m_AnimationNameNext = AnimationKeyName[PlayerRun];
 			m_AnimationBlend = 0.0f;
 			//m_Audio->Play("RunSE", true);
 		}
@@ -234,11 +236,11 @@ void Player::Update()
 	else
 	{
 		// プレイヤーが止まる時、Idleのアニメーションか？
-		if (m_AnimationNameNext != AnimationKeyName[Player_Idle])
+		if (m_AnimationNameNext != AnimationKeyName[PlayerIdle])
 		{
 			// Idle以外が入ってれば、Idleのアニメーションを入れて、Blendを0.0fにする
 			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[Player_Idle];
+			m_AnimationNameNext = AnimationKeyName[PlayerIdle];
 			m_AnimationBlend = 0.0f;
 			m_Audio->Stop("RunSE");
 		}
@@ -312,11 +314,11 @@ void Player::Attack()
 		}
 	}
 
-	if (m_AnimationNameNext != AnimationKeyName[Player_Attack])
+	if (m_AnimationNameNext != AnimationKeyName[PlayerAttack])
 	{
 		m_Frame = 0;
 		m_AnimationName = m_AnimationNameNext;
-		m_AnimationNameNext = AnimationKeyName[Player_Attack];
+		m_AnimationNameNext = AnimationKeyName[PlayerAttack];
 		m_AnimationBlend = 0.0f;
 	}
 

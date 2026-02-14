@@ -2,29 +2,27 @@
 #define		STATEMACHINE_H
 
 #include	<vector>
-#include	<string>
+#include	<memory>
 
-class GameCharacter;
+class State;
 
 class StateMachine
 {
-protected:
-	GameCharacter*				m_OwnerObject	= {};
-	std::vector<StateMachine*>	m_States		= {};
-	std::string					m_StateName		= {};
+private:
+	std::vector<std::unique_ptr<State>>	m_States		= {};
+	State*								m_CurrentState	= {};
 
 public:
-	StateMachine() = default;
-	StateMachine(GameCharacter* ownerObject);
+	template <typename T>
+	T* AddState(T, Args)
+	{
+		m_States.push_back();
 
-	virtual ~StateMachine();
+		return state;
+	}
 
-	virtual void	Enter();
-	virtual void	Update();
-	virtual void	Exit();
+	void	StateChanege(State* state);
 
-	virtual bool	IsActive()	const = 0;
-	const std::string&	GetStateName() const { return m_StateName; }
 };
 
 #endif // STATEMACHINE_H

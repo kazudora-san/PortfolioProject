@@ -1,9 +1,9 @@
 #ifndef		MOVESTATE_H
 #define		MOVESTATE_H
 
-#include	"GameCharacter/StateMachine/StateMachine.h"
+#include	"GameCharacter/State/State.h"
 
-class MoveState : public StateMachine
+class MoveState : public State
 {
 private:
 

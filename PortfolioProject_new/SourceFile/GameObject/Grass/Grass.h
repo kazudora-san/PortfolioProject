@@ -3,17 +3,13 @@
 
 #include	"GameObject.h"
 
-class Grass : public GameObject // 継承
+class Grass : public GameObject
 {
 private:
 
 	int							m_Frame			= {};
 
-	// ポリゴンを描画するのに必要な４つ！
-
-	// 頂点バッファ→GPUに送るためやつ
 	ID3D11Buffer*				m_VertexBuffer	= {};
-	// 
 	ID3D11InputLayout*			m_VertexLayout	= {};
 	ID3D11VertexShader*			m_VertexShader	= {};
 	ID3D11PixelShader*			m_PixelShader	= {};

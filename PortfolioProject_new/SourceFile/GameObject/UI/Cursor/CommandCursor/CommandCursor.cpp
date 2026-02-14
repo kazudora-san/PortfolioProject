@@ -5,13 +5,13 @@
 #include	"Input/Input.h"
 
 // Scale‚Í.h‚É’u‚«‚Ü‚µ‚½ ¦CommandWindow‚ÅŽg‚¤‚½‚ß
-constexpr XMFLOAT2	CmdCursorPosition		= { 70.0f, 50.0f};
-constexpr XMFLOAT2	CmdCursorMove			= { 130.0f, 50.0f};
+constexpr XMFLOAT2	CommandCursorPosition		= { 70.0f, 50.0f};
+constexpr XMFLOAT2	CommandCursorMove			= { 130.0f, 50.0f};
 
 void CommandCursor::Init()
 {
-	m_CursorPosition	= CmdCursorPosition;
-	m_CursorMove		= CmdCursorMove;
+	m_CursorPosition	= CommandCursorPosition;
+	m_CursorMove		= CommandCursorMove;
 	CursorBase::Init();
 }
 
@@ -37,30 +37,30 @@ void CommandCursor::CursorMove()
 {
 	if (Input::CommandLeft())
 	{
-		if (m_Position.x > CmdCursorPosition.x)
+		if (m_Position.x > CommandCursorPosition.x)
 		{
-			m_Position.x -= CmdCursorMove.x;
+			m_Position.x -= CommandCursorMove.x;
 		}
 	}
 	if (Input::CommandRight())
 	{
-		if (m_Position.x < CmdCursorMove.x)
+		if (m_Position.x < CommandCursorMove.x)
 		{
-			m_Position.x += CmdCursorMove.x;
+			m_Position.x += CommandCursorMove.x;
 		}
 	}
 	if (Input::CommandUp())
 	{
 		if (m_Position.y > 0.0f)
 		{
-			m_Position.y -= CmdCursorMove.y;
+			m_Position.y -= CommandCursorMove.y;
 		}
 	}
 	if (Input::CommandDown())
 	{
-		if (m_Position.y < CmdCursorPosition.y + CmdCursorMove.y)
+		if (m_Position.y < CommandCursorPosition.y + CommandCursorMove.y)
 		{
-			m_Position.y += CmdCursorMove.y;
+			m_Position.y += CommandCursorMove.y;
 		}
 	}
 }

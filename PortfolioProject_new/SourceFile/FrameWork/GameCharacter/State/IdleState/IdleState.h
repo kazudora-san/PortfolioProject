@@ -1,9 +1,9 @@
 #ifndef		IDLESTATE_H
 #define		IDLESTATE_H
 
-#include	"GameCharacter/StateMachine/StateMachine.h"
+#include	"GameCharacter/State/State.h"
 
-class IdleState : public StateMachine
+class IdleState : public State
 {
 private:
 

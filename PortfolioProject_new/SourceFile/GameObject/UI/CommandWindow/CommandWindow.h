@@ -6,7 +6,7 @@
 
 class CommandCursor;
 
-class CommandWindow : public UI // åpè≥
+class CommandWindow : public UI
 {
 private:
 	CommandCursor*	m_Cursor	= nullptr;

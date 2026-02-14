@@ -6,7 +6,7 @@
 
 constexpr int	ParticleHeartMax	= 10000;
 
-class Heart : public GameObject // åpè≥
+class Heart : public GameObject
 {
 private:
 	struct PARTICLE

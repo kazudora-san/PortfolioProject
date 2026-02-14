@@ -5,16 +5,18 @@ IdleState::IdleState(GameCharacter* ownerObject)
 {
 	m_OwnerObject	= ownerObject;
 	
-	// m_StateNameに入れる時は、m_IdleStateNameを使うこと
+	// m_StateNameに入れる時は、m_StateNameを使うこと
 	m_StateName		= "Idle";
 }
 
 void IdleState::Enter()
 {
+	SetStateName(m_StateName);
 }
 
 void IdleState::Update()
 {
+	m_OwnerObject->Idle();
 }
 
 void IdleState::Exit()
@@ -25,7 +27,7 @@ bool IdleState::IsActive() const
 {
 	if (!m_OwnerObject)
 	{
-		return;
+		return false;
 	}
 
 	// 要改善

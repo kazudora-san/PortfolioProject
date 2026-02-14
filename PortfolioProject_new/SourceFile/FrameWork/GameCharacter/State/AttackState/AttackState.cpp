@@ -1,19 +1,22 @@
 #include	"AttackState.h"
+#include	"GameCharacter/GameCharacter.h"
 
 AttackState::AttackState(GameCharacter* ownerObject)
 {
 	m_OwnerObject	= ownerObject;
 
-	// m_StateNameに入れる時は、m_AttackStateNameを使うこと
+	// m_StateNameに入れる時は、m_StateNameを使うこと
 	m_StateName		= "Attack";
 }
 
 void AttackState::Enter()
 {
+	SetStateName(m_StateName);
 }
 
 void AttackState::Update()
 {
+	m_OwnerObject->Attack();
 }
 
 void AttackState::Exit()

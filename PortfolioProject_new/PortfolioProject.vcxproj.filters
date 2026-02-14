@@ -91,9 +91,6 @@
     <Filter Include="SourceFile\FrameWork\Audio">
       <UniqueIdentifier>{1dfe1f06-0d7b-4094-8fb5-49df42a8e565}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SourceFile\FrameWork\Camera">
-      <UniqueIdentifier>{893ddff5-536b-469e-bc0d-4023cb06a78e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SourceFile\FrameWork\Component">
       <UniqueIdentifier>{8210611a-20df-43e5-8243-d5e6e3f4f536}</UniqueIdentifier>
     </Filter>
@@ -129,15 +126,6 @@
     </Filter>
     <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine">
       <UniqueIdentifier>{1e74ff96-2129-4b97-be2d-f03f737037cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState">
-      <UniqueIdentifier>{a3f7a896-517f-4c17-b439-26105b8a8417}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine\IdleState">
-      <UniqueIdentifier>{2292e756-4fcd-4026-a444-ba9bf104eb00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SourceFile\FrameWork\GameCharacter\StateMachine\AttackState">
-      <UniqueIdentifier>{44e7a822-2328-4e3f-a94f-77f9f5c73fbd}</UniqueIdentifier>
     </Filter>
     <Filter Include="SourceFile\GameObject\Enemy\FighterEnemy">
       <UniqueIdentifier>{d2a3c27c-4fb7-49cd-9241-276ce58457ae}</UniqueIdentifier>
@@ -201,6 +189,21 @@
     </Filter>
     <Filter Include="SourceFile\GameObject\TitleObject\TitleLogo">
       <UniqueIdentifier>{effc3dff-236c-404d-8758-f93c88e54a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject\Camera">
+      <UniqueIdentifier>{48ebc027-93c0-47ff-b893-415f373a481e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\State">
+      <UniqueIdentifier>{44aeb7d8-88ac-461e-908a-8d219e46a506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\State\IdleState">
+      <UniqueIdentifier>{f1936313-7fa3-41b2-bce3-07e1b82998e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\State\MoveState">
+      <UniqueIdentifier>{8b68bd9b-fd21-4761-8728-731b5f371454}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\State\AttackState">
+      <UniqueIdentifier>{46829e6c-cba6-4d31-8b1d-cfed558daa3d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -298,9 +301,6 @@
     <ClInclude Include="SourceFile\FrameWork\Component\Component.h">
       <Filter>SourceFile\FrameWork\Component</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\Camera\Camera.h">
-      <Filter>SourceFile\FrameWork\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\Audio\Audio.h">
       <Filter>SourceFile\FrameWork\Audio</Filter>
     </ClInclude>
@@ -318,15 +318,6 @@
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\StateMachine.h">
       <Filter>SourceFile\FrameWork\GameCharacter\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\AttackState\AttackState.h">
-      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\AttackState</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\IdleState\IdleState.h">
-      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\IdleState</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState\MoveState.h">
-      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\MoveState</Filter>
     </ClInclude>
     <ClInclude Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.h">
       <Filter>SourceFile\GameObject\Enemy\FighterEnemy</Filter>
@@ -375,6 +366,21 @@
     </ClInclude>
     <ClInclude Include="SourceFile\GameObject\TitleObject\TitleLogo\TitleLogo.h">
       <Filter>SourceFile\GameObject\TitleObject\TitleLogo</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\GameObject\Camera\Camera.h">
+      <Filter>SourceFile\GameObject\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\AttackState\AttackState.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\AttackState</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\IdleState\IdleState.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\IdleState</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\MoveState</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\State.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -500,9 +506,6 @@
     <ClCompile Include="SourceFile\FrameWork\Component\Component.cpp">
       <Filter>SourceFile\FrameWork\Component</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\Camera\Camera.cpp">
-      <Filter>SourceFile\FrameWork\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\Audio\Audio.cpp">
       <Filter>SourceFile\FrameWork\Audio</Filter>
     </ClCompile>
@@ -520,15 +523,6 @@
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\StateMachine.cpp">
       <Filter>SourceFile\FrameWork\GameCharacter\StateMachine</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\AttackState\AttackState.cpp">
-      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\AttackState</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\IdleState\IdleState.cpp">
-      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\IdleState</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\MoveState\MoveState.cpp">
-      <Filter>SourceFile\FrameWork\GameCharacter\StateMachine\MoveState</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\GameObject\Enemy\FighterEnemy\FighterEnemy.cpp">
       <Filter>SourceFile\GameObject\Enemy\FighterEnemy</Filter>
@@ -580,6 +574,21 @@
     </ClCompile>
     <ClCompile Include="SourceFile\GameObject\TitleObject\TitleLogo\TitleLogo.cpp">
       <Filter>SourceFile\GameObject\TitleObject\TitleLogo</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\GameObject\Camera\Camera.cpp">
+      <Filter>SourceFile\GameObject\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\AttackState\AttackState.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\AttackState</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\IdleState\IdleState.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\IdleState</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\MoveState</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\State.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\State</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

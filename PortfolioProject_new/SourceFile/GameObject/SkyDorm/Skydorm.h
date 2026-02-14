@@ -5,7 +5,7 @@
 
 class ModelRenderer;
 
-class SkyDorm : public GameObject // Œp³
+class SkyDorm : public GameObject
 {
 private:
 	// ƒ|ƒŠƒSƒ“‚ğ•`‰æ‚·‚é‚Ì‚É•K—v‚È‚S‚ÂI

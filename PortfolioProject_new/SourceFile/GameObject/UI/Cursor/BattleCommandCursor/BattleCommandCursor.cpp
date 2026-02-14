@@ -14,9 +14,9 @@ enum BattleCommandKey
 	Battle_Max,
 };
 
-constexpr	XMFLOAT2		BattleCmdCursorPosition	= { 100.0f, 420.0f };
-constexpr	XMFLOAT2		BattleCmdCursorMove		= { 0.0f, 50.0f };
-constexpr	unsigned int	MaxBattleCmdIndex		= { Battle_Max };	// コマンドによって選択番号を割り振る
+constexpr	XMFLOAT2		BattleCommandCursorPosition	= { 100.0f, 420.0f };
+constexpr	XMFLOAT2		BattleCommandCursorMove		= { 0.0f, 50.0f };
+constexpr	unsigned int	MaxBattleCmdIndex			= { Battle_Max };	// コマンドによって選択番号を割り振る
 
 void BattleCommandCursor::Init()
 {
@@ -24,8 +24,8 @@ void BattleCommandCursor::Init()
 
 	// 親クラスでdeleteする
 	Polygon2D* UIWindow = new Polygon2D();
-	UIWindow->Init(	BattleCmdCursorPosition.x - CursorScale.x / 2.0f, 
-					BattleCmdCursorPosition.y - CursorScale.y / 2.0f,
+	UIWindow->Init(	BattleCommandCursorPosition.x - CursorScale.x / 2.0f, 
+					BattleCommandCursorPosition.y - CursorScale.y / 2.0f,
 					CursorScale.x, 
 					CursorScale.y,
 					m_CursorFileName);

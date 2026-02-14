@@ -6,15 +6,15 @@
 
 constexpr int	TitleHeartMax	= 10000;
 
-class TitleHeart : public GameObject // åpè≥
+class TitleHeart : public GameObject
 {
 private:
 	struct PARTICLE
 	{
-		bool		Enable;		// égÇÌÇÍÇƒÇ¢ÇÈÇ©
-		int			Life;		// éıñΩ
-		Vector3		Position;	// ç¿ïW
-		Vector3		Velocity;	// ë¨ìx
+		bool		Enable;	
+		int			Life;	
+		Vector3		Position;
+		Vector3		Velocity;
 	};
 
 	PARTICLE					m_TitleHeartStart[TitleHeartMax]	= {};

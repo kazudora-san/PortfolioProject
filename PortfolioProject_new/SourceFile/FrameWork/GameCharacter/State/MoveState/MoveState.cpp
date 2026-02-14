@@ -6,16 +6,18 @@ MoveState::MoveState(GameCharacter* ownerObject)
 {
 	m_OwnerObject	= ownerObject;
 
-	// m_StateNameに入れる時は、m_MoveStateNameを使うこと
+	// m_StateNameに入れる時は、m_StateNameを使うこと
 	m_StateName		= "Move";
 }
 
 void MoveState::Enter()
 {
+	SetStateName(m_StateName);
 }
 
 void MoveState::Update()
 {
+	m_OwnerObject->Move();
 }
 
 void MoveState::Exit()

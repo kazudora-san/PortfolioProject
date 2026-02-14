@@ -5,7 +5,7 @@
 
 constexpr XMFLOAT2	CursorScale = { 50.0f, 50.0f };
 
-class CursorBase : public UI // åpè≥
+class CursorBase : public UI
 {
 protected:
 	XMFLOAT2		m_CursorPosition	= {};

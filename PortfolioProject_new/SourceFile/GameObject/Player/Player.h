@@ -18,9 +18,10 @@ private:
 	MeshField*		m_MeshField		= {};
 	Score*			m_Money			= {};
 	float			m_Jump			= {};
-	bool			m_IsJump		= {};
 	float			m_JumpTime		= {};
+	bool			m_IsJump		= {};
 	bool			m_IsAttack		= {};
+	
 
 public:
 	virtual void	Init()			override;

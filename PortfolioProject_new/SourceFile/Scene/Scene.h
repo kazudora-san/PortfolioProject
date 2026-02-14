@@ -20,8 +20,7 @@ public:
 	virtual	void	Update();
 	virtual	void	Draw();
 
-	template <typename T>//テンプレート
-
+	template <typename T>
 	T* AddGameObject(int Layer)
 	{
 		T* gameObject = new T();
@@ -32,7 +31,7 @@ public:
 	}
 
 
-	template <typename T>//テンプレート
+	template <typename T>
 
 	T* GetGameObject()
 	{
@@ -48,7 +47,7 @@ public:
 		return nullptr;
 	}
 
-	template <typename T>//テンプレート
+	template <typename T>
 	std::vector<T*> GetGameObjects()
 	{
 		std::vector<T*> finds;

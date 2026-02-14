@@ -5,7 +5,10 @@
 #include	"Main.h"
 #include	<string>
 
-constexpr float		SearchRadius	= 2.0f;
+constexpr float		SearchRadius = 2.0f;
+
+class StateMachine;
+class AnimationModel;
 
 class CharacterStatus
 {
@@ -44,18 +47,19 @@ public:
 class GameCharacter : public GameObject
 {
 protected:
-	CharacterStatus			m_CharacterStatus	= {};
+	CharacterStatus				m_CharacterStatus	= {};
+	std::vector<StateMachine*>	m_State				= {};
 
-	ID3D11InputLayout*		m_VertexLayOut		= {};
-	ID3D11PixelShader*		m_PixelShader		= {};
-	ID3D11VertexShader*		m_VertexShader		= {};
+	ID3D11InputLayout*			m_VertexLayOut		= {};
+	ID3D11PixelShader*			m_PixelShader		= {};
+	ID3D11VertexShader*			m_VertexShader		= {};
 
-	class AnimationModel*	m_AnimationModel	= {};
-	std::string				m_AnimationName		= {};
-	std::string				m_AnimationNameNext	= {};
-	float					m_AnimationBlend	= {};
+	AnimationModel*				m_AnimationModel	= {};
+	std::string					m_AnimationName		= {};
+	std::string					m_AnimationNameNext	= {};
+	float						m_AnimationBlend	= {};
 
-	unsigned int			m_Frame				= {};
+	unsigned int				m_Frame				= {};
 
 public:
 	virtual void	Init()		override;

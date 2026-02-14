@@ -1,9 +1,9 @@
 #ifndef		ATTACKSTATE_H
 #define		ATTACKSTATE_H
 
-#include	"GameCharacter/StateMachine/StateMachine.h"
+#include	"GameCharacter/State/State.h"
 
-class AttackState : public StateMachine
+class AttackState : public State
 {
 private:
 

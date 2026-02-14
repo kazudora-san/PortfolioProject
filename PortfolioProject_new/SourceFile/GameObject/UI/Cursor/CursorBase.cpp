@@ -5,7 +5,7 @@
 #include	"Input/Input.h"
 
 // Scale‚Í.h‚É’u‚«‚Ü‚µ‚½ ¦CommandWindow‚Åg‚¤‚½‚ß
-constexpr XMFLOAT2	CmdCursorMove			= { 130.0f, 50.0f};
+constexpr XMFLOAT2	CommandCursorMove			= { 130.0f, 50.0f};
 
 void CursorBase::Init()
 {

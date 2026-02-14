@@ -5,7 +5,7 @@
 
 class BattleCommandCursor;
 
-class BattleWindow : public UI // åpè≥
+class BattleWindow : public UI
 {
 private:
 	BattleCommandCursor*	m_Cursor	= nullptr;
