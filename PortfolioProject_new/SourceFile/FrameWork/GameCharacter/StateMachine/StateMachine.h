@@ -14,15 +14,15 @@ private:
 
 public:
 	template <typename T>
-	T* AddState(T, Args)
+	T* AddState(GameCharacter* owner)
 	{
 		m_States.push_back();
+		m_CurrentState = dynamic_cast<T>();
 
 		return state;
 	}
 
 	void	StateChanege(State* state);
-
 };
 
 #endif // STATEMACHINE_H

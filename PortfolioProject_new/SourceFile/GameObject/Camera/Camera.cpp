@@ -25,9 +25,9 @@ void Camera::Update()
 	if (dx != 0 || dy != 0)
 	{
 		
-		float sensitivity = 0.05f;		// カメラの基本速度
-		m_Rotation.y += dx * sensitivity; // 横回転
-		m_Rotation.x += dy * sensitivity; // 縦回転
+		float sensitivity = 0.05f;			// カメラの基本速度
+		m_Rotation.y += dx * sensitivity;	// 横回転
+		m_Rotation.x += dy * sensitivity;	// 縦回転
 
 		// ピッチ制限
 		if (m_Rotation.x > XM_PIDIV2)  m_Rotation.x = XM_PIDIV2;
@@ -45,13 +45,21 @@ void Camera::Update()
 	//	m_Rotation.y += 0.1f;
 	//}
 
-	Player* player = SceneManager::GetScene()->GetGameObject<Player>();
+	Scene* scene = SceneManager::GetScene();
+	if (!scene)
+	{
+		return;
+	}
+	Player* player = scene->GetGameObject<Player>();
+	if (!player)
+	{
+		return;
+	}
 
 	m_Target = player->GetPosition() + Vector3(0.0f, 1.0f, 0.0f);
 	//m_Target += GetRight() * 0.5f;
 
-	m_Position = m_Target
-		+ Vector3(-sinf(m_Rotation.y),0.5f,-cosf(m_Rotation.y)) * 5.0f;
+	m_Position = m_Target + Vector3(-sinf(m_Rotation.y),0.5f,-cosf(m_Rotation.y)) * 5.0f;
 }
 
 void Camera::Draw()
@@ -64,7 +72,8 @@ void Camera::Draw()
 
 	XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
 	m_MtxView = XMMatrixLookAtLH(XMLoadFloat3((XMFLOAT3*)&m_Position),
-		XMLoadFloat3((XMFLOAT3*)&m_Target), XMLoadFloat3(&up));
+									XMLoadFloat3((XMFLOAT3*)&m_Target),
+									XMLoadFloat3(&up));
 
 
 	// カメラ座標設定

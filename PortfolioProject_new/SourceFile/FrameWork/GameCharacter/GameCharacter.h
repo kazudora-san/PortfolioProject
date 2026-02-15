@@ -14,34 +14,34 @@ class CharacterStatus
 {
 private:
 	// ƒpƒ‰ƒ[ƒ^‚Ì”’lİ’è‚ÍAŒp³æ‚Ì"cpp"‚Åİ’è‚·‚é
-	unsigned	int			m_Health		= {};	// HP
-	unsigned	int			m_MaxHealth		= {};	// MaxHP
-	unsigned	int			m_MagicPower	= {};	// MP
-	unsigned	int			m_MaxMagicPower	= {};	// MaxMP
-	unsigned	int			m_Attack		= {};	// UŒ‚—Í
-	unsigned	int			m_Defense		= {};	// ç”õ—Í
-	unsigned	int			m_Agility		= {};	// ‘f‘‚³
-	unsigned	int			m_Luck			= {};	// ‰^
+	int		m_Health		= {};	// HP
+	int		m_MaxHealth		= {};	// MaxHP
+	int		m_MagicPower	= {};	// MP
+	int		m_MaxMagicPower	= {};	// MaxMP
+	int		m_Attack		= {};	// UŒ‚—Í
+	int		m_Defense		= {};	// ç”õ—Í
+	int		m_Agility		= {};	// ‘f‘‚³
+	int		m_Luck			= {};	// ‰^
 
 public:
 	CharacterStatus();
-	CharacterStatus(unsigned int health,		unsigned int maxHealth,
-					unsigned int magicPower,	unsigned int maxMagicPower,
-					unsigned int attack,		unsigned int defense,
-					unsigned int agility,		unsigned int luck);
+	CharacterStatus(int health,		int maxHealth,
+					int magicPower,	int maxMagicPower,
+					int attack,		int defense,
+					int agility,	int luck);
 
 	void	InitCharacterStatus(const CharacterStatus& CharacterStatus);
 
-	void	SetHealth(unsigned int health) { m_Health = health; }
+	void	SetHealth(int health) { m_Health = health; }
 
-	unsigned int	GetHealth()			const { return m_Health; }
-	unsigned int	GetMaxHealth()		const { return m_MaxHealth; }
-	unsigned int	GetMagicPower()		const { return m_MagicPower; }
-	unsigned int	GetMaxMagicPower()	const { return m_MaxMagicPower; }
-	unsigned int	GetAttack()			const { return m_Attack; }
-	unsigned int	GetDefense()		const { return m_Defense; }
-	unsigned int	GetAgility()		const { return m_Agility; }
-	unsigned int	GetLuck()			const { return m_Luck; }
+	int		GetHealth()			const { return m_Health; }
+	int		GetMaxHealth()		const { return m_MaxHealth; }
+	int		GetMagicPower()		const { return m_MagicPower; }
+	int		GetMaxMagicPower()	const { return m_MaxMagicPower; }
+	int		GetAttack()			const { return m_Attack; }
+	int		GetDefense()		const { return m_Defense; }
+	int		GetAgility()		const { return m_Agility; }
+	int		GetLuck()			const { return m_Luck; }
 };
 
 class GameCharacter : public GameObject

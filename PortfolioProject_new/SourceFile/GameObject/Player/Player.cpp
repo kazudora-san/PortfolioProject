@@ -41,17 +41,14 @@ const CharacterStatus PlayerStatus(
 void Player::Init()
 {
 	GameCharacter::Init();
-	
-	
+
 	// 初期ステータス
-	m_CharacterStatus.InitCharacterStatus(PlayerStatus);
 
 	m_Money = new Score();
 	m_Money->Init();
 
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\Model\\Player\\Player_Model.fbx");
-
 
 	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Idle.fbx",	AnimationKeyName[PlayerIdle]);
 	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Run.fbx",		AnimationKeyName[PlayerRun]);

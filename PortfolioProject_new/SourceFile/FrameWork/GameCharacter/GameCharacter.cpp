@@ -88,7 +88,7 @@ void GameCharacter::Draw()
 
 bool GameCharacter::IsCritical()
 {
-	return (m_CharacterStatus.GetLuck() > static_cast<unsigned int>(rand() % 100));
+	return (m_CharacterStatus.GetLuck() > rand() % 100);
 }
 
 // 初期ステータスを格納する用
@@ -108,10 +108,10 @@ CharacterStatus::CharacterStatus()
 {
 }
 
-CharacterStatus::CharacterStatus(	unsigned int health,		unsigned int maxHealth,
-											unsigned int magicPower,	unsigned int maxMagicPower,
-											unsigned int attack,		unsigned int defense,
-											unsigned int agility,		unsigned int luck)
+CharacterStatus::CharacterStatus(	int health,		int maxHealth,
+									int magicPower,	int maxMagicPower,
+									int attack,		int defense,
+									int agility,	int luck)
 {
 	m_Health		= health;
 	m_MaxHealth		= maxHealth;
