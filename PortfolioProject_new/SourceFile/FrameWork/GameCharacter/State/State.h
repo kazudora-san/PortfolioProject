@@ -24,7 +24,8 @@ public:
 
 	virtual bool	IsActive()	const = 0;
 
-	const void	SetStateName(const std::string& stateName) { m_StateName = stateName; }
+	void	SetStateOwner	(GameCharacter* ownerObject)	{ m_OwnerObject = ownerObject; }
+	void	SetStateName	(const std::string& stateName)	{ m_StateName = stateName; }
 
 	const std::string&	GetStateName() const { return m_StateName; }
 };

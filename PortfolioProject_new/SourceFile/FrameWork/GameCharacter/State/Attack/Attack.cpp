@@ -1,7 +1,7 @@
-#include	"AttackState.h"
+#include	"Attack.h"
 #include	"GameCharacter/GameCharacter.h"
 
-AttackState::AttackState(GameCharacter* ownerObject)
+Attack::Attack(GameCharacter* ownerObject)
 {
 	m_OwnerObject	= ownerObject;
 
@@ -9,21 +9,21 @@ AttackState::AttackState(GameCharacter* ownerObject)
 	m_StateName		= "Attack";
 }
 
-void AttackState::Enter()
+void Attack::Enter()
 {
 	SetStateName(m_StateName);
 }
 
-void AttackState::Update()
+void Attack::Update()
 {
 	m_OwnerObject->Attack();
 }
 
-void AttackState::Exit()
+void Attack::Exit()
 {
 }
 
-bool AttackState::IsActive() const
+bool Attack::IsActive() const
 {
 	
 	return false;

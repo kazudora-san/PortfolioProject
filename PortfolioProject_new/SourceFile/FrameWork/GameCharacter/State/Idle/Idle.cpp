@@ -1,7 +1,7 @@
-#include	"IdleState.h"
+#include	"Idle.h"
 #include	"GameCharacter/GameCharacter.h"
 
-IdleState::IdleState(GameCharacter* ownerObject)
+Idle::Idle(GameCharacter* ownerObject)
 {
 	m_OwnerObject	= ownerObject;
 	
@@ -9,21 +9,21 @@ IdleState::IdleState(GameCharacter* ownerObject)
 	m_StateName		= "Idle";
 }
 
-void IdleState::Enter()
+void Idle::Enter()
 {
 	SetStateName(m_StateName);
 }
 
-void IdleState::Update()
+void Idle::Update()
 {
 	m_OwnerObject->Idle();
 }
 
-void IdleState::Exit()
+void Idle::Exit()
 {
 }
 
-bool IdleState::IsActive() const
+bool Idle::IsActive() const
 {
 	if (!m_OwnerObject)
 	{

@@ -1,15 +1,15 @@
-#ifndef		ATTACKSTATE_H
-#define		ATTACKSTATE_H
+#ifndef		ATTACK_H
+#define		ATTACK_H
 
 #include	"GameCharacter/State/State.h"
 
-class AttackState : public State
+class Attack : public State
 {
 private:
 
 public:
-	AttackState() = default;
-	AttackState(GameCharacter* ownerObject);
+	Attack() = default;
+	Attack(GameCharacter* ownerObject);
 
 	virtual void	Enter()		override;
 	virtual void	Update()	override;

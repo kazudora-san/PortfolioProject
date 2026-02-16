@@ -1,15 +1,15 @@
-#ifndef		MOVESTATE_H
-#define		MOVESTATE_H
+#ifndef		IDLE_H
+#define		IDLE_H
 
 #include	"GameCharacter/State/State.h"
 
-class MoveState : public State
+class Idle : public State
 {
 private:
 
 public:
-	MoveState() = default;
-	MoveState(GameCharacter* ownerObject);
+	Idle() = default;
+	Idle(GameCharacter* ownerObject);
 
 	virtual void	Enter()		override;
 	virtual void	Update()	override;

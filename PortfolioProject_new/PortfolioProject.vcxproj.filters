@@ -196,14 +196,14 @@
     <Filter Include="SourceFile\FrameWork\GameCharacter\State">
       <UniqueIdentifier>{44aeb7d8-88ac-461e-908a-8d219e46a506}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SourceFile\FrameWork\GameCharacter\State\IdleState">
+    <Filter Include="SourceFile\FrameWork\GameCharacter\State\Attack">
+      <UniqueIdentifier>{46829e6c-cba6-4d31-8b1d-cfed558daa3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\FrameWork\GameCharacter\State\Idle">
       <UniqueIdentifier>{f1936313-7fa3-41b2-bce3-07e1b82998e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SourceFile\FrameWork\GameCharacter\State\MoveState">
+    <Filter Include="SourceFile\FrameWork\GameCharacter\State\Move">
       <UniqueIdentifier>{8b68bd9b-fd21-4761-8728-731b5f371454}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SourceFile\FrameWork\GameCharacter\State\AttackState">
-      <UniqueIdentifier>{46829e6c-cba6-4d31-8b1d-cfed558daa3d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -370,17 +370,17 @@
     <ClInclude Include="SourceFile\GameObject\Camera\Camera.h">
       <Filter>SourceFile\GameObject\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\AttackState\AttackState.h">
-      <Filter>SourceFile\FrameWork\GameCharacter\State\AttackState</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\IdleState\IdleState.h">
-      <Filter>SourceFile\FrameWork\GameCharacter\State\IdleState</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.h">
-      <Filter>SourceFile\FrameWork\GameCharacter\State\MoveState</Filter>
-    </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\State.h">
       <Filter>SourceFile\FrameWork\GameCharacter\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\Attack\Attack.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\Idle\Idle.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\Move\Move.h">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\Move</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -578,17 +578,17 @@
     <ClCompile Include="SourceFile\GameObject\Camera\Camera.cpp">
       <Filter>SourceFile\GameObject\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\AttackState\AttackState.cpp">
-      <Filter>SourceFile\FrameWork\GameCharacter\State\AttackState</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\IdleState\IdleState.cpp">
-      <Filter>SourceFile\FrameWork\GameCharacter\State\IdleState</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.cpp">
-      <Filter>SourceFile\FrameWork\GameCharacter\State\MoveState</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\State.cpp">
       <Filter>SourceFile\FrameWork\GameCharacter\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\Attack\Attack.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\Idle\Idle.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\Move\Move.cpp">
+      <Filter>SourceFile\FrameWork\GameCharacter\State\Move</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

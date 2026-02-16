@@ -3,6 +3,7 @@
 
 #include	<vector>
 #include	<memory>
+#include	"GameCharacter/GameCharacter.h"
 
 class State;
 
@@ -13,13 +14,24 @@ private:
 	State*								m_CurrentState	= {};
 
 public:
+
+	void Update();
+
+	// Å‰‚Í‰½‚à‘€ì‚ğ‚µ‚È‚¢‚Ì‚ÅAIdle‚ğˆê”Ôã‚ÅéŒ¾‚·‚é‚±‚Æ
 	template <typename T>
 	T* AddState(GameCharacter* owner)
 	{
-		m_States.push_back();
-		m_CurrentState = dynamic_cast<T>();
+		auto state = std::make_unique<T>(owner);
 
-		return state;
+		T* ptr = state.get();
+		m_States.push_back(std::move(state));
+
+		if (!m_CurrentState)
+		{
+			m_CurrentState = ptr;
+		}
+
+		return ptr;
 	}
 
 	void	StateChanege(State* state);

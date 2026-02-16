@@ -6,7 +6,7 @@
 class AudioManager;
 class Camera;
 class MeshField;
-class Score;
+class StateMachine;
 
 class Player : public GameCharacter
 {
@@ -16,11 +16,9 @@ private:
 	Camera*			m_Camera		= {};
 	AudioManager*	m_Audio			= {};
 	MeshField*		m_MeshField		= {};
-	Score*			m_Money			= {};
+	StateMachine*	m_StateMachine	= {};
 	float			m_Jump			= {};
 	float			m_JumpTime		= {};
-	bool			m_IsJump		= {};
-	bool			m_IsAttack		= {};
 	
 
 public:

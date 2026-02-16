@@ -42,10 +42,9 @@ void Player::Init()
 {
 	GameCharacter::Init();
 
-	// 初期ステータス
-
-	m_Money = new Score();
-	m_Money->Init();
+	m_CharacterStatus.InitCharacterStatus(PlayerStatus);
+	
+	m_StateMachine->AddState<Idle>(this);
 
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\Model\\Player\\Player_Model.fbx");
@@ -99,13 +98,6 @@ void Player::Uninit()
 	if (m_Audio)
 	{
 		m_Audio->Uninit();
-	}
-
-	if (m_Money)
-	{
-		m_Money->Uninit();
-		delete m_Money;
-		m_Money = nullptr;
 	}
 
 	GameCharacter::Uninit();
@@ -187,7 +179,7 @@ void Player::Update()
 	float groundY = m_MeshField->GetHeight(m_Position);
 
 	// ジャンプ処理
-	if (Input::CommandJump() && !m_IsJump)
+	if (Input::CommandJump())
 	{
 		m_Frame = 0;
 

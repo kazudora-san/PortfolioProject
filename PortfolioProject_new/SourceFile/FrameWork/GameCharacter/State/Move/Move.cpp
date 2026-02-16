@@ -1,8 +1,8 @@
-#include	"MoveState.h"
+#include	"Move.h"
 #include	"GameCharacter/GameCharacter.h"
 #include	"Input/Input.h"
 
-MoveState::MoveState(GameCharacter* ownerObject)
+Move::Move(GameCharacter* ownerObject)
 {
 	m_OwnerObject	= ownerObject;
 
@@ -10,21 +10,21 @@ MoveState::MoveState(GameCharacter* ownerObject)
 	m_StateName		= "Move";
 }
 
-void MoveState::Enter()
+void Move::Enter()
 {
 	SetStateName(m_StateName);
 }
 
-void MoveState::Update()
+void Move::Update()
 {
 	m_OwnerObject->Move();
 }
 
-void MoveState::Exit()
+void Move::Exit()
 {
 }
 
-bool MoveState::IsActive() const
+bool Move::IsActive() const
 {
 	if (!m_OwnerObject)
 	{
