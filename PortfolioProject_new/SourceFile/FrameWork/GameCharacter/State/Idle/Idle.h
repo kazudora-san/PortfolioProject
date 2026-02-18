@@ -3,13 +3,13 @@
 
 #include	"GameCharacter/State/State.h"
 
-class Idle : public State
+class IdleState : public State
 {
 private:
 
 public:
-	Idle() = default;
-	Idle(GameCharacter* ownerObject);
+	IdleState() = default;
+	IdleState(GameCharacter* ownerObject);
 
 	virtual void	Enter()		override;
 	virtual void	Update()	override;

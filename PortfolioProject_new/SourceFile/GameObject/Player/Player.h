@@ -6,7 +6,6 @@
 class AudioManager;
 class Camera;
 class MeshField;
-class StateMachine;
 
 class Player : public GameCharacter
 {
@@ -16,7 +15,6 @@ private:
 	Camera*			m_Camera		= {};
 	AudioManager*	m_Audio			= {};
 	MeshField*		m_MeshField		= {};
-	StateMachine*	m_StateMachine	= {};
 	float			m_Jump			= {};
 	float			m_JumpTime		= {};
 	

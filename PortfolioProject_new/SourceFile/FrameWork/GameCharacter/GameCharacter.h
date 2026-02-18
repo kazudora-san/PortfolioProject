@@ -4,10 +4,10 @@
 #include	"GameObject.h"
 #include	"Main.h"
 #include	<string>
+#include	"StateMachine/StateMachine.h"
 
 constexpr float		SearchRadius = 2.0f;
 
-class StateMachine;
 class AnimationModel;
 
 class CharacterStatus
@@ -48,7 +48,7 @@ class GameCharacter : public GameObject
 {
 protected:
 	CharacterStatus				m_CharacterStatus	= {};
-	std::vector<StateMachine*>	m_State				= {};
+	StateMachine*				m_StateMachine		= {};
 
 	ID3D11InputLayout*			m_VertexLayOut		= {};
 	ID3D11PixelShader*			m_PixelShader		= {};
@@ -75,4 +75,4 @@ public:
 	CharacterStatus&	GetCharacterStatus() { return m_CharacterStatus; }
 };
 
-#endif // PLAYER_H
+#endif // GAMECHARACTER_H

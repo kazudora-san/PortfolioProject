@@ -2,8 +2,9 @@
 #include	"Renderer/Renderer.h"
 #include	"Player/Player.h"
 #include	"Renderer/ModelRenderer/ModelRenderer.h"
-#include	"GameCharacter/StateMachine/StateMachine.h"
 #include	"Manager/SceneManager/SceneManager.h"
+#include	"GameCharacter/StateMachine/StateMachine.h"
+#include	"GameCharacter/State/Idle/Idle.h"
 #include	"Manager/AudioManager/AudioManager.h"
 #include	"Camera/Camera.h"
 #include	"Input/Input.h"
@@ -43,29 +44,24 @@ void Player::Init()
 	GameCharacter::Init();
 
 	m_CharacterStatus.InitCharacterStatus(PlayerStatus);
-	
-	m_StateMachine->AddState<Idle>(this);
 
+	m_StateMachine = new StateMachine();
+	m_StateMachine->AddState<IdleState>(this);
+	
+	// GameObjectを継承しているのでdeleteはNG
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\Model\\Player\\Player_Model.fbx");
 
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Idle.fbx",	AnimationKeyName[PlayerIdle]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Run.fbx",		AnimationKeyName[PlayerRun]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Attack.fbx",	AnimationKeyName[PlayerAttack]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Jump.fbx",	AnimationKeyName[PlayerJump]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Idle.fbx", AnimationKeyName[PlayerIdle]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Run.fbx", AnimationKeyName[PlayerRun]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Attack.fbx", AnimationKeyName[PlayerAttack]);
+	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Jump.fbx", AnimationKeyName[PlayerJump]);
 
 	m_AnimationName = AnimationKeyName[PlayerIdle];
 	m_AnimationNameNext = AnimationKeyName[PlayerIdle];
 	m_AnimationBlend = 0.0f;
 	m_Frame = 0;
 
-	//シェーダー読み込み
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
-		"Shader\\CSOFile\\UnlitTextureVS.cso");
-
-	Renderer::CreatePixelShader(&m_PixelShader,
-		"Shader\\CSOFile\\UnlitTexturePS.cso");
-	
 	m_Audio->Init();
 	m_Audio->Load("Asset\\Audio\\GameBGM.wav", "GameBGM");
 	//m_Audio->Play("GameBGM", true);
@@ -107,59 +103,7 @@ void Player::Update()
 {
 	GameCharacter::Update();
 
-	if (!m_Camera)
-	{
-		return;
-	}
-	Vector3 rotation = m_Camera->GetRotation();
-
-	bool move = false;
-
-	if (Input::MoveLeft())
-	{
-		m_Position += m_Camera->GetRight() * -0.1f;
-		m_Rotation.y = rotation.y - XM_PIDIV2;
-		move = true;
-	}
-	if (Input::MoveRight())
-	{
-		m_Position += m_Camera->GetRight() * 0.1f;
-		m_Rotation.y = rotation.y + XM_PIDIV2;
-		move = true;
-	}
-	if (Input::MoveFront())
-	{
-		Vector3 forward = m_Camera->GetForward();
-		forward.y = 0.0f;
-		forward.normalize();
-		m_Position += forward * 0.1f;
-		m_Rotation.y = rotation.y;
-		move = true;
-	}
-	if (Input::MoveBack())
-	{
-		Vector3 forward = m_Camera->GetForward();
-		forward.y = 0.0f;
-		forward.normalize();
-
-		m_Position += forward * -0.1f;
-		m_Rotation.y = rotation.y + XM_PI;
-		move = true;
-	}
-	/*if (Input::CommandAction())
-	{
-		m_Frame = 0;
-
-		if (m_AnimationNameNext != AnimationKeyName[Player_Attack])
-		{
-			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[Player_Attack];
-			m_AnimationBlend = 0.0f;
-		}
-
-		Attack();
-		m_IsAttack = true;
-	}*/
+	m_StateMachine->Update();
 
 	if (!m_MeshField)
 	{
@@ -191,55 +135,14 @@ void Player::Update()
 		}
 	}
 
-	// 通常時は地形に沿う
 	m_Position.y = groundY;
-
-	if (m_IsAttack)
-	{
-		if (m_AnimationNameNext != AnimationKeyName[PlayerAttack])
-		{
-			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
-			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[PlayerAttack];
-			m_AnimationBlend = 0.0f;
-			//m_Audio->Play("RunSE", true);
-		}
-
-		if (m_Frame >= 120)
-		{
-			m_IsAttack = false;
-		}
-	}
-	else if (move)
-	{
-		// プレイヤーが動くとき、Runのアニメーションか？
-		if (m_AnimationNameNext != AnimationKeyName[PlayerRun])
-		{
-			// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
-			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[PlayerRun];
-			m_AnimationBlend = 0.0f;
-			//m_Audio->Play("RunSE", true);
-		}
-	}
-	else
-	{
-		// プレイヤーが止まる時、Idleのアニメーションか？
-		if (m_AnimationNameNext != AnimationKeyName[PlayerIdle])
-		{
-			// Idle以外が入ってれば、Idleのアニメーションを入れて、Blendを0.0fにする
-			m_AnimationName = m_AnimationNameNext;
-			m_AnimationNameNext = AnimationKeyName[PlayerIdle];
-			m_AnimationBlend = 0.0f;
-			m_Audio->Stop("RunSE");
-		}
-	}
 	
 	// std::string型には、c_str()というconst char*型に変換してくれる！
 	// 二つ入れることで、合成（ブレンド）をしてくれる！（処理は中身を参照）
 	m_AnimationModel->Update(m_AnimationName.c_str(), m_Frame,
 								m_AnimationNameNext.c_str(), m_Frame,
 								m_AnimationBlend);
+
 	m_Frame++;
 
 	m_AnimationBlend += 0.15f;
@@ -257,10 +160,23 @@ void Player::Draw()
 	m_AnimationModel->Draw();
 }
 
+void Player::Idle()
+{
+	// プレイヤーが止まる時、Idleのアニメーションか？
+	if (m_AnimationNameNext != AnimationKeyName[PlayerIdle])
+	{
+		// Idle以外が入ってれば、Idleのアニメーションを入れて、Blendを0.0fにする
+		m_AnimationName = m_AnimationNameNext;
+		m_AnimationNameNext = AnimationKeyName[PlayerIdle];
+		m_AnimationBlend = 0.0f;
+		m_Audio->Stop("RunSE");
+	}
+}
+
 void Player::Attack()
 {
 	Scene* scene = SceneManager::GetScene();
-	if (!scene || m_IsAttack)
+	if (!scene)
 	{
 		return;
 	}
@@ -310,14 +226,48 @@ void Player::Attack()
 		m_AnimationNameNext = AnimationKeyName[PlayerAttack];
 		m_AnimationBlend = 0.0f;
 	}
-
-	m_IsAttack = true;
-}
-
-void Player::Idle()
-{
 }
 
 void Player::Move()
 {
+	Vector3 rotation = m_Camera->GetRotation();
+
+	if (Input::MoveLeft())
+	{
+		m_Position += m_Camera->GetRight() * -0.1f;
+		m_Rotation.y = rotation.y - XM_PIDIV2;
+	}
+	if (Input::MoveRight())
+	{
+		m_Position += m_Camera->GetRight() * 0.1f;
+		m_Rotation.y = rotation.y + XM_PIDIV2;
+	}
+	if (Input::MoveFront())
+	{
+		Vector3 forward = m_Camera->GetForward();
+		forward.y = 0.0f;
+		forward.normalize();
+
+		m_Position += forward * 0.1f;
+		m_Rotation.y = rotation.y;
+	}
+	if (Input::MoveBack())
+	{
+		Vector3 forward = m_Camera->GetForward();
+		forward.y = 0.0f;
+		forward.normalize();
+
+		m_Position += forward * -0.1f;
+		m_Rotation.y = rotation.y + XM_PI;
+	}
+
+	// プレイヤーが動くとき、Runのアニメーションか？
+	if (m_AnimationNameNext != AnimationKeyName[PlayerRun])
+	{
+		// Run以外が入ってれば、Runのアニメーションを入れて、Blendを0.0fにする
+		m_AnimationName = m_AnimationNameNext;
+		m_AnimationNameNext = AnimationKeyName[PlayerRun];
+		m_AnimationBlend = 0.0f;
+		//m_Audio->Play("RunSE", true);
+	}
 }

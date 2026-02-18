@@ -3,9 +3,9 @@
 
 #include	<vector>
 #include	<memory>
-#include	"GameCharacter/GameCharacter.h"
 
 class State;
+class GameCharacter;
 
 class StateMachine
 {

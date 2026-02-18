@@ -1,29 +1,29 @@
 #include	"Idle.h"
 #include	"GameCharacter/GameCharacter.h"
 
-Idle::Idle(GameCharacter* ownerObject)
+IdleState::IdleState(GameCharacter* ownerObject)
 {
-	m_OwnerObject	= ownerObject;
-	
+	m_OwnerObject = ownerObject;
+
 	// m_StateName‚É“ü‚ê‚é‚ÍAm_StateName‚ğg‚¤‚±‚Æ
-	m_StateName		= "Idle";
+	m_StateName = "Idle";
 }
 
-void Idle::Enter()
+void IdleState::Enter()
 {
 	SetStateName(m_StateName);
 }
 
-void Idle::Update()
+void IdleState::Update()
 {
 	m_OwnerObject->Idle();
 }
 
-void Idle::Exit()
+void IdleState::Exit()
 {
 }
 
-bool Idle::IsActive() const
+bool IdleState::IsActive() const
 {
 	if (!m_OwnerObject)
 	{
@@ -31,7 +31,10 @@ bool Idle::IsActive() const
 	}
 
 	// —v‰ü‘P
-	if(	m_OwnerObject->GetCharacterStatus().GetHealth() > 0)
+	if (m_OwnerObject->GetCharacterStatus().GetHealth() > 0)
+	{
+		return false;
+	}
 
 	return true;
 }
