@@ -14,7 +14,6 @@ private:
 	ID3D11PixelShader*		m_PixelShader	= {};
 	ID3D11VertexShader*		m_VertexShader	= {};
 
-
 	ModelRenderer*			m_ModelRenderer	= {};
 
 	Vector3					m_Velocity		= {};

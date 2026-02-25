@@ -9,8 +9,8 @@ class GameCharacter;
 class State
 {
 protected:
-	GameCharacter*				m_OwnerObject	= {};
-	std::string					m_StateName		= {};
+	GameCharacter*	m_OwnerObject	= {};
+	std::string		m_StateName		= {};
 
 public:
 	State() = default;
@@ -18,11 +18,11 @@ public:
 
 	virtual ~State();
 
-	virtual void	Enter()		= 0;
-	virtual void	Update()	= 0;
-	virtual void	Exit()		= 0;
+	virtual void	Enter()				= 0;
+	virtual void	Update()			= 0;
+	virtual void	Exit()				= 0;
 
-	virtual bool	IsActive()	const = 0;
+	virtual bool	IsActive()	const	= 0;
 
 	void	SetStateOwner	(GameCharacter* ownerObject)	{ m_OwnerObject = ownerObject; }
 	void	SetStateName	(const std::string& stateName)	{ m_StateName = stateName; }

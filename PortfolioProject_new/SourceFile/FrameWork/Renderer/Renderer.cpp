@@ -3,33 +3,32 @@
 #include	<io.h>
 
 
-D3D_FEATURE_LEVEL		Renderer::m_FeatureLevel		= D3D_FEATURE_LEVEL_11_0;
+D3D_FEATURE_LEVEL Renderer::m_FeatureLevel = D3D_FEATURE_LEVEL_11_0;
 
-ID3D11Device*			Renderer::m_Device				{};
-ID3D11DeviceContext*	Renderer::m_DeviceContext		{};
-IDXGISwapChain*			Renderer::m_SwapChain			{};
-ID3D11RenderTargetView*	Renderer::m_RenderTargetView	{};
-ID3D11DepthStencilView*	Renderer::m_DepthStencilView	{};
+ID3D11Device* Renderer::m_Device = {};
+ID3D11DeviceContext* Renderer::m_DeviceContext = {};
+IDXGISwapChain* Renderer::m_SwapChain = {};
+ID3D11RenderTargetView* Renderer::m_RenderTargetView = {};
+ID3D11DepthStencilView* Renderer::m_DepthStencilView = {};
+													
+ID3D11Buffer* Renderer::m_WorldBuffer = {};
+ID3D11Buffer* Renderer::m_ViewBuffer = {};
+ID3D11Buffer* Renderer::m_ProjectionBuffer = {};
+ID3D11Buffer* Renderer::m_MaterialBuffer = {};
+ID3D11Buffer* Renderer::m_LightBuffer = {};
+ID3D11Buffer* Renderer::m_CameraBuffer = {};
 
-ID3D11Buffer*			Renderer::m_WorldBuffer			{};
-ID3D11Buffer*			Renderer::m_ViewBuffer			{};
-ID3D11Buffer*			Renderer::m_ProjectionBuffer	{};
-ID3D11Buffer*			Renderer::m_MaterialBuffer		{};
-ID3D11Buffer*			Renderer::m_LightBuffer			{};
-ID3D11Buffer*			Renderer::m_CameraBuffer		{};
+ID3D11DepthStencilState* Renderer::m_DepthStateEnable = {};
+ID3D11DepthStencilState* Renderer::m_DepthStateDisable = {};
 
-ID3D11DepthStencilState* Renderer::m_DepthStateEnable	{};
-ID3D11DepthStencilState* Renderer::m_DepthStateDisable	{};
-
-ID3D11BlendState*		Renderer::m_BlendState			{};
-ID3D11BlendState*		Renderer::m_BlendStateATC		{};
-ID3D11BlendState*		Renderer::m_BlendStateAdd		{};
+ID3D11BlendState* Renderer::m_BlendState  = {};
+ID3D11BlendState* Renderer::m_BlendStateATC = {};
+ID3D11BlendState* Renderer::m_BlendStateAdd = {};
 
 
 void Renderer::Init()
 {
 	HRESULT hr = S_OK;
-
 
 	// デバイス、スワップチェーン作成
 	// DirectXをコントロールする”デバイス”※ハードウェアとかではない
@@ -59,11 +58,6 @@ void Renderer::Init()
 										&m_FeatureLevel,
 										&m_DeviceContext );
 
-
-
-
-
-
 	// レンダーターゲットビュー作成
 	// ポリゴンなどを書き込むところ
 	// m_RenderTargetViewに書き込む
@@ -71,7 +65,6 @@ void Renderer::Init()
 	m_SwapChain->GetBuffer( 0, __uuidof( ID3D11Texture2D ), ( LPVOID* )&renderTarget );
 	m_Device->CreateRenderTargetView( renderTarget, NULL, &m_RenderTargetView );
 	renderTarget->Release();
-
 
 	// デプスステンシルバッファ作成
 	// 奥行情報をバッファに書き込む
@@ -98,12 +91,7 @@ void Renderer::Init()
 	m_Device->CreateDepthStencilView(depthStencile, &depthStencilViewDesc, &m_DepthStencilView);
 	depthStencile->Release();
 
-
 	m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
-
-
-
-
 
 	// ビューポート設定
 	// 画面のどこに描画するか
@@ -115,8 +103,6 @@ void Renderer::Init()
 	viewport.TopLeftX = 0;
 	viewport.TopLeftY = 0;
 	m_DeviceContext->RSSetViewports( 1, &viewport );
-
-
 
 	// ラスタライザステート設定
 	// 塗りつぶしの処理
@@ -156,10 +142,6 @@ void Renderer::Init()
 	float blendFactor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
 	m_DeviceContext->OMSetBlendState(m_BlendState, blendFactor, 0xffffffff );
 
-
-
-
-
 	// デプスステンシルステート設定
 	D3D11_DEPTH_STENCIL_DESC depthStencilDesc{};
 	depthStencilDesc.DepthEnable = TRUE;
@@ -175,9 +157,6 @@ void Renderer::Init()
 
 	m_DeviceContext->OMSetDepthStencilState( m_DepthStateEnable, NULL );
 
-
-
-
 	// サンプラーステート設定
 	D3D11_SAMPLER_DESC samplerDesc{};
 	samplerDesc.Filter = D3D11_FILTER_ANISOTROPIC;
@@ -191,8 +170,6 @@ void Renderer::Init()
 	m_Device->CreateSamplerState( &samplerDesc, &samplerState );
 
 	m_DeviceContext->PSSetSamplers( 0, 1, &samplerState );
-
-
 
 	// 定数バッファ生成
 	D3D11_BUFFER_DESC bufferDesc{};
@@ -212,13 +189,11 @@ void Renderer::Init()
 	m_Device->CreateBuffer( &bufferDesc, NULL, &m_ProjectionBuffer );
 	m_DeviceContext->VSSetConstantBuffers( 2, 1, &m_ProjectionBuffer );
 
-
 	bufferDesc.ByteWidth = sizeof(MATERIAL);
 
 	m_Device->CreateBuffer( &bufferDesc, NULL, &m_MaterialBuffer );
 	m_DeviceContext->VSSetConstantBuffers( 3, 1, &m_MaterialBuffer );
 	m_DeviceContext->PSSetConstantBuffers( 3, 1, &m_MaterialBuffer );
-
 
 	bufferDesc.ByteWidth = sizeof(LIGHT);
 
@@ -230,8 +205,6 @@ void Renderer::Init()
 	m_Device->CreateBuffer(&bufferDesc, NULL, &m_CameraBuffer);
 	m_DeviceContext->PSSetConstantBuffers(5, 1, &m_CameraBuffer);
 
-
-
 	// ライト初期化
 	LIGHT light{};
 	light.Enable = true;
@@ -240,24 +213,17 @@ void Renderer::Init()
 	light.Diffuse = XMFLOAT4(1.5f, 1.5f, 1.5f, 1.0f);
 	SetLight(light);
 
-
-
 	// マテリアル初期化
 	MATERIAL material{};
 	material.Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	material.Ambient = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	SetMaterial(material);
-
-
-
-
 }
 
 
 
 void Renderer::Uninit()
 {
-
 	m_WorldBuffer->Release();
 	m_ViewBuffer->Release();
 	m_ProjectionBuffer->Release();
@@ -265,13 +231,11 @@ void Renderer::Uninit()
 	m_CameraBuffer->Release();
 	m_MaterialBuffer->Release();
 
-
 	m_DeviceContext->ClearState();
 	m_RenderTargetView->Release();
 	m_SwapChain->Release();
 	m_DeviceContext->Release();
 	m_Device->Release();
-
 }
 
 
@@ -296,11 +260,14 @@ void Renderer::End()
 
 void Renderer::SetDepthEnable( bool Enable )
 {
-	if( Enable )
-		m_DeviceContext->OMSetDepthStencilState( m_DepthStateEnable, NULL );
+	if (Enable)
+	{
+		m_DeviceContext->OMSetDepthStencilState(m_DepthStateEnable, NULL);
+	}
 	else
-		m_DeviceContext->OMSetDepthStencilState( m_DepthStateDisable, NULL );
-
+	{
+		m_DeviceContext->OMSetDepthStencilState(m_DepthStateDisable, NULL);
+	}
 }
 
 
@@ -310,10 +277,13 @@ void Renderer::SetATCEnable( bool Enable )
 	float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 
 	if (Enable)
+	{
 		m_DeviceContext->OMSetBlendState(m_BlendStateATC, blendFactor, 0xffffffff);
+	}
 	else
+	{
 		m_DeviceContext->OMSetBlendState(m_BlendState, blendFactor, 0xffffffff);
-
+	}
 }
 
 void Renderer::SetAddEnable(bool Enable)
@@ -321,10 +291,13 @@ void Renderer::SetAddEnable(bool Enable)
 	float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 
 	if (Enable)
+	{
 		m_DeviceContext->OMSetBlendState(m_BlendStateAdd, blendFactor, 0xffffffff);
+	}
 	else
+	{
 		m_DeviceContext->OMSetBlendState(m_BlendState, blendFactor, 0xffffffff);
-
+	}
 }
 
 void Renderer::SetWorldViewProjection2D()
@@ -333,7 +306,12 @@ void Renderer::SetWorldViewProjection2D()
 	SetViewMatrix(XMMatrixIdentity());
 
 	XMMATRIX projection;
-	projection = XMMatrixOrthographicOffCenterLH(0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f);
+	projection = XMMatrixOrthographicOffCenterLH(	0.0f,
+													SCREEN_WIDTH,
+													SCREEN_HEIGHT,
+													0.0f,
+													0.0f,
+													1.0f);
 	SetProjectionMatrix(projection);
 }
 
@@ -357,7 +335,6 @@ void Renderer::SetProjectionMatrix(XMMATRIX ProjectionMatrix)
 	XMFLOAT4X4 projectionf;
 	XMStoreFloat4x4(&projectionf, XMMatrixTranspose(ProjectionMatrix));
 	m_DeviceContext->UpdateSubresource(m_ProjectionBuffer, 0, NULL, &projectionf, 0, 0);
-
 }
 
 
@@ -383,13 +360,8 @@ void Renderer::SetCameraPosition(Vector3 CameraPosition)
 	m_DeviceContext->UpdateSubresource(m_CameraBuffer, 0, NULL, &cameraPos, 0, 0);
 }
 
-
-
-
-
 void Renderer::CreateVertexShader( ID3D11VertexShader** VertexShader, ID3D11InputLayout** VertexLayout, const char* FileName )
 {
-
 	FILE* file;
 	long int fsize;
 
@@ -406,7 +378,6 @@ void Renderer::CreateVertexShader( ID3D11VertexShader** VertexShader, ID3D11Inpu
 	fclose(file);
 
 	m_Device->CreateVertexShader(buffer, fsize, NULL, VertexShader);
-
 
 	D3D11_INPUT_ELEMENT_DESC layout[] =
 	{

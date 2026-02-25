@@ -4,7 +4,7 @@
 #include	"Renderer/ModelRenderer/ModelRenderer.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"GameCharacter/StateMachine/StateMachine.h"
-#include	"GameCharacter/State/Idle/Idle.h"
+#include	"GameCharacter/State/IdleState/IdleState.h"
 #include	"Manager/AudioManager/AudioManager.h"
 #include	"Camera/Camera.h"
 #include	"Input/Input.h"
@@ -27,7 +27,6 @@ enum PlayerAnimatyonKey
 };
 
 const char*	AnimationKeyName[]	= { "Idle", "Run", "Attack", "Jump"};
-
 const CharacterStatus PlayerStatus(
 	1000,	// HP
 	1000,	// MaxHP
@@ -69,10 +68,6 @@ void Player::Init()
 	m_Audio->Load("Asset\\Audio\\Run.wav", "RunSE");
 
 	Scene* scene = SceneManager::GetScene();
-	if (!scene)
-	{
-		return;
-	}
 
 	m_Camera = scene->GetGameObject<Camera>();
 	if (!m_Camera)
@@ -107,13 +102,7 @@ void Player::Update()
 
 	if (!m_MeshField)
 	{
-		Scene* scene = SceneManager::GetScene();
-		if (!scene)
-		{
-			return;
-		}
-
-		MeshField* meshField = scene->GetGameObject<MeshField>();
+		MeshField* meshField = SceneManager::GetScene()->GetGameObject<MeshField>();
 		if (!m_MeshField)
 		{
 			return;
@@ -175,13 +164,7 @@ void Player::Idle()
 
 void Player::Attack()
 {
-	Scene* scene = SceneManager::GetScene();
-	if (!scene)
-	{
-		return;
-	}
-
-	auto enemies = scene->GetGameObjects<FighterEnemy>();
+	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
 	for (FighterEnemy* enemy : enemies)
 	{
 		if (!enemy)
@@ -206,7 +189,7 @@ void Player::Attack()
 			}
 
 			unsigned int enemyDefense = characterStatus.GetDefense();
-			unsigned int damage = m_CharacterStatus.GetAttack() - enemyDefense / 2;
+			unsigned int damage = m_CharacterStatus.GetAttack() - enemyDefense * 0.5;
 			hp -= damage;
 
 			if (hp <= 0)

@@ -41,7 +41,6 @@ float FadeQuad::easeInOutSine(float x)
 
 void FadeQuad::Init()
 {
-	// ’¸“_ì¬
 	VERTEX_3D vertex[4]{};
 	vertex[0].Position = XMFLOAT3(0.0f, 0.0f, 0.0f);
 	vertex[1].Position = XMFLOAT3((float)SCREEN_WIDTH, 0.0f, 0.0f);
@@ -84,16 +83,19 @@ void FadeQuad::Uninit()
 		m_VertexBuffer->Release();
 		m_VertexBuffer = nullptr;
 	}
+
 	if (m_VertexLayout)
 	{
 		m_VertexLayout->Release();
 		m_VertexLayout = nullptr;
 	}
+
 	if (m_VertexShader)
 	{
 		m_VertexShader->Release();
 		m_VertexShader = nullptr;
 	}
+
 	if (m_PixelShader)
 	{
 		m_PixelShader->Release();
@@ -123,14 +125,24 @@ void FadeQuad::FadeOut(float duration, XMFLOAT3 color, std::function<void()> onD
 
 void FadeQuad::Update()
 {
-	if (m_Mode == FadeMode::None) return;
+	if (m_Mode == FadeMode::None)
+	{
+		return;
+	}
 
 	m_t += 1.0f / 60.0f;
 	float u = (std::min)(m_t / m_dur, 1.0f);
 	float e = easeInOutSine(u);
 
-	if (m_Mode == FadeMode::In) m_alpha = 1.0f - e;
-	if (m_Mode == FadeMode::Out) m_alpha = e;
+	if (m_Mode == FadeMode::In)
+	{
+		m_alpha = 1.0f - e;
+	}
+
+	if (m_Mode == FadeMode::Out)
+	{
+		m_alpha = e;
+	}
 
 	if (u >= 1.0f) {
 		auto cb = m_onDone; m_Mode = FadeMode::None;
@@ -140,6 +152,10 @@ void FadeQuad::Update()
 
 void FadeQuad::Draw()
 {
-	if (m_Mode == FadeMode::None || m_alpha <= 0.0f) return;
+	if (m_Mode == FadeMode::None || m_alpha <= 0.0f)
+	{
+		return;
+	}
+
 	drawFullScreen(m_alpha, m_color);
 }

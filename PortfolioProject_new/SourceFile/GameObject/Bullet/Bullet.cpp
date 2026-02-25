@@ -35,7 +35,6 @@ void Bullet::Uninit()
 	m_VertexLayOut->Release();
 	m_VertexShader->Release();
 	m_PixelShader->Release();
-
 }
 
 void Bullet::Update()
@@ -43,29 +42,19 @@ void Bullet::Update()
 	m_Position += m_Velocity;
 	auto player = SceneManager::GetScene()->GetGameObject<Player>();
 	
-	Vector3 rot = player->GetRotation(); // ← プレイヤーの回転（単位はラジアン）
+	Vector3 rot = player->GetRotation();
 
 	Vector3 direction;
-	direction.x = sinf(rot.y);  // Y軸回転で左右の方向を決める
-	direction.y = 0.0f;         // 水平射出ならY方向は0
-	direction.z = cosf(rot.y);  // 前後の方向
-
-	//m_Time += 0.01f;
-	//float i = m_Time;
-
-	//m_Position = m_StartPosition * (2.0f * i * i * i - 3.0f * i * i + 1.0f)
-	//	+ m_EndPosition * (-2.0f * i * i * i + 3.0f * i * i)
-	//	+ m_StartVector * (i * i * i - 2.0f * i * i + i)
-	//	+ m_EndVector * (i * i * i - i * i);
+	direction.x = sinf(rot.y);	// Y軸回転で左右の方向を決める
+	direction.y = 0.0f;			// 水平射出ならY方向は0
+	direction.z = cosf(rot.y);	// 前後の方向
 
 	if (m_Position.length() > 20.0f)
 	{
 		SetDestroy();
 	}
 	
-	//衝突判定
 	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
-
 	bool particle = false;
 
 	// 当たり判定処理
@@ -112,7 +101,6 @@ void Bullet::Draw()
 	material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
 	material.TextureEnable = true;
 	Renderer::SetMaterial(material);
-
 
 	m_ModelRenderer->Draw();
 }

@@ -1,13 +1,10 @@
 #ifndef		AUDIO_H
 #define		AUDIO_H
 
-
-
 #include	"Component/Component.h"
 #include	<xaudio2.h>
 #include	<unordered_map>
 #include	<string>
-
 
 class Audio : public Component
 {
@@ -31,29 +28,10 @@ public:
 
 	void	Load		(const char *FileName);
 	void	Play		(bool Loop = false);
+	void	Stop		();
 
-	// ストップの機能を追加
-	void	Stop		()
-	{
-		if (m_SourceVoice)
-		{
-			m_SourceVoice->Stop(0);
-			m_SourceVoice->FlushSourceBuffers();
-		}
-	}
-
-	// ボリューム調整を追加
-	void	SetVolume	(float volume)
-	{
-		if (m_SourceVoice)
-		{
-			m_SourceVoice->SetVolume(volume);
-		}
-	}
-
-	// 3Dサウンド（立体音響）
-	// 左から聞こえたり、右から聞こえたりなど
-
+	// ボリューム調整
+	void	SetVolume	(float volume);
 };
 
-#endif // !AUDIO_H
+#endif // AUDIO_H

@@ -4,10 +4,10 @@
 #include	"GameObject.h"
 #include	"Main.h"
 #include	<string>
-#include	"StateMachine/StateMachine.h"
 
 constexpr float		SearchRadius = 2.0f;
 
+class StateMachine;
 class AnimationModel;
 
 class CharacterStatus

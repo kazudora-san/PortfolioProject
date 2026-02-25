@@ -11,10 +11,10 @@ class Heart : public GameObject
 private:
 	struct PARTICLE
 	{
-		bool		Enable;		// égÇÌÇÍÇƒÇ¢ÇÈÇ©
-		int			Life;		// éıñΩ
-		Vector3		Position;	// ç¿ïW
-		Vector3		Velocity;	// ë¨ìx
+		bool		Enable;
+		int			Life;
+		Vector3		Position;
+		Vector3		Velocity;
 	};
 
 	PARTICLE					m_ParticleHeartStart[ParticleHeartMax]	= {};

@@ -30,9 +30,9 @@
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\EnemyBase\EnemyBase.h" />
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\GameCharacter.h" />
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\StateMachine\StateMachine.h" />
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\Attack\Attack.h" />
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\Idle\Idle.h" />
-    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\Move\Move.h" />
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\AttackState\AttackState.h" />
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\IdleState\IdleState.h" />
+    <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.h" />
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\State.h" />
     <ClInclude Include="SourceFile\FrameWork\GameObject.h" />
     <ClInclude Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.h" />
@@ -138,9 +138,9 @@
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\EnemyBase\EnemyBase.cpp" />
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\GameCharacter.cpp" />
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\StateMachine\StateMachine.cpp" />
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\Attack\Attack.cpp" />
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\Idle\Idle.cpp" />
-    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\Move\Move.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\AttackState\AttackState.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\IdleState\IdleState.cpp" />
+    <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.cpp" />
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\State.cpp" />
     <ClCompile Include="SourceFile\FrameWork\GameObject.cpp" />
     <ClCompile Include="SourceFile\FrameWork\Manager\AudioManager\AudioManager.cpp" />

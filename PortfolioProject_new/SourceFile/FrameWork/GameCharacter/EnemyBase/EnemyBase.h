@@ -2,13 +2,9 @@
 #define		ENEMYBASE_H
 
 #include	"GameCharacter/GameCharacter.h"
-#include	<string>
 
 class EnemyBase : public GameCharacter
 {
-protected:
-
-
 public:
 	virtual void	Init()		override;
 	virtual void	Uninit()	override;
@@ -20,4 +16,4 @@ public:
 	virtual void	Move()		= 0;
 };
 
-#endif // PLAYER_H
+#endif // ENEMYBASE_H

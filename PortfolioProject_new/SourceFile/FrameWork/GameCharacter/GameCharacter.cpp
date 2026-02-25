@@ -31,7 +31,6 @@ void GameCharacter::Uninit()
 	m_VertexLayOut->Release();
 	m_VertexShader->Release();
 	m_PixelShader->Release();
-
 }
 
 void GameCharacter::Update()
@@ -52,8 +51,6 @@ void GameCharacter::Draw()
 	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
 
-	//XMMATRIX parentMatrix;
-
 	//マトリクス設定
 	XMMATRIX world, scale, rot, trans;
 	scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
@@ -61,7 +58,6 @@ void GameCharacter::Draw()
 	trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
 	world = scale * rot * trans;
 
-	//parentMatrix = world;
 	Renderer::SetWorldMatrix(world);
 
 	//マテリアル設定
@@ -69,9 +65,6 @@ void GameCharacter::Draw()
 	material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
 	material.TextureEnable = true;
 	Renderer::SetMaterial(material);
-
-
-	//m_ModelRenderer->Draw();
 }
 
 bool GameCharacter::IsCritical()
@@ -82,31 +75,31 @@ bool GameCharacter::IsCritical()
 // 初期ステータスを格納する用
 void CharacterStatus::InitCharacterStatus(const CharacterStatus& characterStatus)
 {
-	m_Health		= characterStatus.m_Health;
-	m_MaxHealth		= characterStatus.m_MaxHealth;
-	m_MagicPower	= characterStatus.m_MagicPower;
-	m_MaxMagicPower	= characterStatus.m_MaxMagicPower;
-	m_Attack		= characterStatus.m_Attack;
-	m_Defense		= characterStatus.m_Defense;
-	m_Agility		= characterStatus.m_Agility;
-	m_Luck			= characterStatus.m_Luck;
+	m_Health = characterStatus.m_Health;
+	m_MaxHealth = characterStatus.m_MaxHealth;
+	m_MagicPower = characterStatus.m_MagicPower;
+	m_MaxMagicPower = characterStatus.m_MaxMagicPower;
+	m_Attack = characterStatus.m_Attack;
+	m_Defense = characterStatus.m_Defense;
+	m_Agility = characterStatus.m_Agility;
+	m_Luck = characterStatus.m_Luck;
 }
 
 CharacterStatus::CharacterStatus()
 {
 }
 
-CharacterStatus::CharacterStatus(	int health,		int maxHealth,
-									int magicPower,	int maxMagicPower,
-									int attack,		int defense,
-									int agility,	int luck)
+CharacterStatus::CharacterStatus(int health,	int maxHealth,
+								int magicPower,	int maxMagicPower,
+								int attack,		int defense,
+								int agility,	int luck)
 {
-	m_Health		= health;
-	m_MaxHealth		= maxHealth;
-	m_MagicPower	= magicPower;
-	m_MaxMagicPower	= maxMagicPower;
-	m_Attack		= attack;
-	m_Defense		= defense;
-	m_Agility		= agility;
-	m_Luck			= luck;
+	m_Health = health;
+	m_MaxHealth = maxHealth;
+	m_MagicPower = magicPower;
+	m_MaxMagicPower = maxMagicPower;
+	m_Attack = attack;
+	m_Defense = defense;
+	m_Agility = agility;
+	m_Luck = luck;
 }

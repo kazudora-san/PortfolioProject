@@ -27,16 +27,14 @@ public:
 	void	SetRotation	(const Vector3& Rotation)	{ m_Rotation	= Rotation; }
 	void	SetScale	(const Vector3& Scale)		{ m_Scale		= Scale; }
 
-	bool					GetEnable()		const { return m_Enable; }
-	const Vector3&			GetPosition()	const { return m_Position; }
-	const Vector3&			GetRotation()	const { return m_Rotation; }
-	const Vector3&			GetScale()		const { return m_Scale; }
-	const Vector3&			GetRight()		const;
-	virtual Vector3	GetForward();
-
-	float	GetDistance(Vector3 Position);
-	float	GetZ(Vector3 Position, Vector3 Forward);
-
+	bool				GetEnable()		const { return m_Enable; }
+	const	Vector3&	GetPosition()	const { return m_Position; }
+	const	Vector3&	GetRotation()	const { return m_Rotation; }
+	const	Vector3&	GetScale()		const { return m_Scale; }
+	const	Vector3&	GetRight()		const;
+	virtual	Vector3		GetForward();
+	float				GetDistance(Vector3 Position);
+	float				GetZ(Vector3 Position, Vector3 Forward);
 };
 
 #endif // GAMEOBJECT_H

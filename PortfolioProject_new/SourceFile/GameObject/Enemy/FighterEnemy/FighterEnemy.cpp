@@ -61,7 +61,7 @@ void FighterEnemy::Update()
 	{
 		return;
 	}
-	// エネミー → プレイヤー の方向ベクトル
+
 	Vector3 dir = player->GetPosition() - m_Position;
 	dir.y = 0.0f;       // 高さは無視してXZ平面だけで向き
 	dir.normalize();

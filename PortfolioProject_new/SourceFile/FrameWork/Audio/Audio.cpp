@@ -25,7 +25,6 @@ void Audio::UninitMaster()
 
 void Audio::Load(const char *FileName)
 {
-
 	// サウンドデータ読込
 	WAVEFORMATEX wfx = { 0 };
 
@@ -37,7 +36,6 @@ void Audio::Load(const char *FileName)
 		MMCKINFO mmckinfo = { 0 };
 		UINT32 buflen;
 		LONG readlen;
-
 
 		hmmio = mmioOpen((LPSTR)FileName, &mmioinfo, MMIO_READ);
 		assert(hmmio);
@@ -65,20 +63,15 @@ void Audio::Load(const char *FileName)
 		datachunkinfo.ckid = mmioFOURCC('d', 'a', 't', 'a');
 		mmioDescend(hmmio, &datachunkinfo, &riffchunkinfo, MMIO_FINDCHUNK);
 
-
-
 		buflen = datachunkinfo.cksize;
 		m_SoundData = new unsigned char[buflen];
 		readlen = mmioRead(hmmio, (HPSTR)m_SoundData, buflen);
 
-
 		m_Length = readlen;
 		m_PlayLength = readlen / wfx.nBlockAlign;
 
-
 		mmioClose(hmmio, 0);
 	}
-
 
 	// サウンドソース生成
 	m_Xaudio->CreateSourceVoice(&m_SourceVoice, &wfx);
@@ -97,7 +90,6 @@ void Audio::Play(bool Loop)
 {
 	m_SourceVoice->Stop();
 	m_SourceVoice->FlushSourceBuffers();
-
 
 	// バッファ設定
 	XAUDIO2_BUFFER bufinfo;
@@ -118,12 +110,24 @@ void Audio::Play(bool Loop)
 
 	m_SourceVoice->SubmitSourceBuffer(&bufinfo, NULL);
 
-/*
-	float outputMatrix[4] = { 0.0f , 0.0f, 1.0f , 0.0f };
-	m_SourceVoice->SetOutputMatrix(m_MasteringVoice, 2, 2, outputMatrix);
-	//m_SourceVoice->SetVolume(0.1f);
-*/
 	// 再生
 	m_SourceVoice->Start();
 
+}
+
+void Audio::Stop()
+{
+	if (m_SourceVoice)
+	{
+		m_SourceVoice->Stop(0);
+		m_SourceVoice->FlushSourceBuffers();
+	}
+}
+
+void Audio::SetVolume(float volume)
+{
+	if (m_SourceVoice)
+	{
+		m_SourceVoice->SetVolume(volume);
+	}
 }

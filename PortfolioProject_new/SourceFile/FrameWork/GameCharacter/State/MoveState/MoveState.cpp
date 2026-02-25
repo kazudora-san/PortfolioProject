@@ -1,8 +1,8 @@
-#include	"Move.h"
+#include	"MoveState.h"
 #include	"GameCharacter/GameCharacter.h"
 #include	"Input/Input.h"
 
-Move::Move(GameCharacter* ownerObject)
+MoveState::MoveState(GameCharacter* ownerObject)
 {
 	m_OwnerObject	= ownerObject;
 
@@ -10,21 +10,21 @@ Move::Move(GameCharacter* ownerObject)
 	m_StateName		= "Move";
 }
 
-void Move::Enter()
+void MoveState::Enter()
 {
 	SetStateName(m_StateName);
 }
 
-void Move::Update()
+void MoveState::Update()
 {
 	m_OwnerObject->Move();
 }
 
-void Move::Exit()
+void MoveState::Exit()
 {
 }
 
-bool Move::IsActive() const
+bool MoveState::IsActive() const
 {
 	if (!m_OwnerObject)
 	{
@@ -32,8 +32,10 @@ bool Move::IsActive() const
 	}
 	
 	if (m_OwnerObject->GetCharacterStatus().GetHealth() > 0 &&
-		Input::MoveBack() || Input::MoveFront() ||
-		Input::MoveLeft() || Input::MoveRight())
+											Input::MoveBack() ||
+											Input::MoveFront() ||
+											Input::MoveLeft() ||
+											Input::MoveRight())
 	{
 		return true;
 	}

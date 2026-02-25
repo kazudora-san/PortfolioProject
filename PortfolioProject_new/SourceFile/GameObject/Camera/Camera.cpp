@@ -36,14 +36,14 @@ void Camera::Update()
 
 	Input::OnMouseMove(0, 0);
 
-	//if (Input::CommandLeft())
-	//{
-	//	m_Rotation.y -= 0.1f;
-	//}
-	//if (Input::CommandRight())
-	//{
-	//	m_Rotation.y += 0.1f;
-	//}
+	if (Input::CommandLeft())
+	{
+		m_Rotation.y -= 0.1f;
+	}
+	if (Input::CommandRight())
+	{
+		m_Rotation.y += 0.1f;
+	}
 
 	Scene* scene = SceneManager::GetScene();
 	if (!scene)
@@ -57,7 +57,6 @@ void Camera::Update()
 	}
 
 	m_Target = player->GetPosition() + Vector3(0.0f, 1.0f, 0.0f);
-	//m_Target += GetRight() * 0.5f;
 
 	m_Position = m_Target + Vector3(-sinf(m_Rotation.y),0.5f,-cosf(m_Rotation.y)) * 5.0f;
 }

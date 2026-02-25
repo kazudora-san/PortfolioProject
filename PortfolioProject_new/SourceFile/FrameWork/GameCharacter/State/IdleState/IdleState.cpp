@@ -1,4 +1,4 @@
-#include	"Idle.h"
+#include	"IdleState.h"
 #include	"GameCharacter/GameCharacter.h"
 
 IdleState::IdleState(GameCharacter* ownerObject)

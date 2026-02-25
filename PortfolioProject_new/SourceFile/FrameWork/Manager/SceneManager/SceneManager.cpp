@@ -29,6 +29,11 @@ void SceneManager::Init()
 
 void SceneManager::Uninit()
 {
+	if (!m_Scene)
+	{
+		return;
+	}
+
 	m_Scene->Uninit();
 	delete m_Scene;
 
@@ -45,6 +50,11 @@ void SceneManager::Uninit()
 
 void SceneManager::Update()
 {
+	if (!m_Scene)
+	{
+		return;
+	}
+
 	Input::Update();
 
 	m_Scene->Update();
@@ -55,6 +65,11 @@ void SceneManager::Draw()
 {
 	Renderer::Begin();
 	
+	if (!m_Scene)
+	{
+		return;
+	}
+
 	m_Scene->Draw();
 	m_Fader->Draw();
 
