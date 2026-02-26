@@ -66,24 +66,17 @@ void Game::Update()
 {
 	Scene::Update();
 
-	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
-	
 	if ((m_NowFrame > m_StopFrame))
 	{
-		if (auto* f = SceneManager::GetFade(); f && !f->IsBusy()) {
+		if (auto* f = SceneManager::GetFade(); f && !f->IsBusy())
+		{
 			f->FadeOut(0.6f, { 0,0,0 }, []() {
 				SceneManager::SetScene<Result>();
-				if (auto* g = SceneManager::GetFade()) {
+				if (auto* g = SceneManager::GetFade())
+				{
 					g->FadeIn(0.6f, { 0,0,0 });
 				}
 				});
 		}
-
-		
 	}
-
-	//if (enemies.size() == 0)
-	//{
-	//	m_NowFrame++;
-	//}
 }

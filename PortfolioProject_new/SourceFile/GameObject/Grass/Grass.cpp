@@ -84,6 +84,10 @@ void Grass::Draw()
 
 	// マトリクス設定
 	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
+	if (!camera)
+	{
+		return;
+	}
 
 	XMMATRIX view = camera->GetViewMatrix();
 

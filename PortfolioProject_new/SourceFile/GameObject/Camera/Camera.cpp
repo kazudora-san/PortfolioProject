@@ -45,12 +45,7 @@ void Camera::Update()
 		m_Rotation.y += 0.1f;
 	}
 
-	Scene* scene = SceneManager::GetScene();
-	if (!scene)
-	{
-		return;
-	}
-	Player* player = scene->GetGameObject<Player>();
+	Player* player = SceneManager::GetScene()->GetGameObject<Player>();
 	if (!player)
 	{
 		return;

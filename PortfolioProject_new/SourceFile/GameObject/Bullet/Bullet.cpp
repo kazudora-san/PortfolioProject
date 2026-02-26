@@ -40,7 +40,9 @@ void Bullet::Uninit()
 void Bullet::Update()
 {
 	m_Position += m_Velocity;
-	auto player = SceneManager::GetScene()->GetGameObject<Player>();
+
+	Scene* scene = SceneManager::GetScene();
+	auto player = scene->GetGameObject<Player>();
 	
 	Vector3 rot = player->GetRotation();
 
@@ -54,27 +56,37 @@ void Bullet::Update()
 		SetDestroy();
 	}
 	
-	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
+	auto enemies = scene->GetGameObjects<FighterEnemy>();
 	bool particle = false;
 
 	// “–‚½‚è”»’èˆ—
 	for (auto enemy : enemies)
 	{
-		Vector3 d = enemy->GetPosition() - m_Position;
-		float length = d.length();
+		if(!enemy)
+		{
+			continue;
+		}
+
+		Vector3 direction = enemy->GetPosition() - m_Position;
+		float length = direction.length();
 		if (length < 1.0f && !particle)
 		{
-			SceneManager::GetScene()->AddGameObject<Explosion>(1)->
+			scene->AddGameObject<Explosion>(1)->
 				SetPosition(enemy->GetPosition() + Vector3(0.0f,1.0f,0.0f));
 
-			Heart* particle = SceneManager::GetScene()->AddGameObject<Heart>(1);
+			Heart* particle = scene->AddGameObject<Heart>(1);
 			particle->SetPosition(enemy->GetPosition());
 
 			enemy->SetDestroy();
 			SetDestroy();
 			//m_Audio->Play("EnemyDestroy");
 
-			Score* score = SceneManager::GetScene()->GetGameObject<Score>();
+			Score* score = scene->GetGameObject<Score>();
+			if (!score)
+			{
+				return;
+			}
+
 			score->AddScore(100);
 		}
 	}

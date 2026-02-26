@@ -7,13 +7,7 @@
 
 void UI::Init()
 {
-	Scene* scene = SceneManager::GetScene();
-	if (!scene)
-	{
-		return;
-	}
-
-	m_OwnerObject = scene->GetGameObject<Player>();
+	m_OwnerObject = SceneManager::GetScene()->GetGameObject<Player>();
 }
 
 void UI::Uninit()

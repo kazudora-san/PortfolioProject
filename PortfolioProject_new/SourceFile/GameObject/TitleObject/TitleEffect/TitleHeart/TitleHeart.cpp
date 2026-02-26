@@ -187,6 +187,10 @@ void TitleHeart::Draw()
 
 	// マトリクス設定
 	TitleCamera* titleCamera = SceneManager::GetScene()->GetGameObject<TitleCamera>();
+	if (!titleCamera)
+	{
+		return;
+	}
 
 	XMMATRIX view = titleCamera->GetViewMatrix();
 

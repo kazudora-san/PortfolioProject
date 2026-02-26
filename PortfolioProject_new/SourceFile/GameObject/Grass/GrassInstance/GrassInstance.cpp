@@ -49,6 +49,10 @@ void GrassInstance::Init()
 
 		Vector3* position = new Vector3[m_InstanceNum]{};
 		MeshField* field = SceneManager::GetScene()->GetGameObject<MeshField>();
+		if (!field)
+		{
+			return;
+		}
 
 		for (unsigned int i = 0; i < m_InstanceNum; i++)
 		{
@@ -110,11 +114,13 @@ void GrassInstance::Update()
 void GrassInstance::Draw()
 {
 	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
-
+	if (!camera)
+	{
+		return;
+	}
 	//視錐台カリング
 	//if (camera->CheckView(m_Position/*, 0.5f * m_Scale.x*/) == false)
 	//	return;
-
 
 	//距離カリング
 	Vector3 cameraPos = camera->GetPosition();
@@ -135,7 +141,6 @@ void GrassInstance::Draw()
 
 	// マトリクス設定
 	XMMATRIX view = camera->GetViewMatrix();
-
 
 	//ビューの逆行列
 	XMMATRIX invView;
@@ -170,11 +175,6 @@ void GrassInstance::Draw()
 	// ブリミティブトボロジ設定
 	Renderer::GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-	//Renderer : :Set DepthEnable(false);
 	//ボリゴン描画
 	Renderer::GetDeviceContext()->DrawInstanced(4, m_InstanceNum, 0, 0);
-
-	//頂点バッファ設定
-
-	//Renderer :: SetDepthEnable(true);
 }

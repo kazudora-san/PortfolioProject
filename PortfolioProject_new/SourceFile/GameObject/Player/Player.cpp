@@ -68,18 +68,8 @@ void Player::Init()
 	m_Audio->Load("Asset\\Audio\\Run.wav", "RunSE");
 
 	Scene* scene = SceneManager::GetScene();
-
 	m_Camera = scene->GetGameObject<Camera>();
-	if (!m_Camera)
-	{
-		return;
-	}
-
 	m_MeshField = scene->GetGameObject<MeshField>();
-	if (!m_MeshField)
-	{
-		return;
-	}
 
 	m_Scale = {0.01f,0.01f,0.01f };
 }

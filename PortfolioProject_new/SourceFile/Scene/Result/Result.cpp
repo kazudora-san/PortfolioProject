@@ -40,7 +40,7 @@ void Result::Update()
 		}
 	}
 
-	std::vector<Polygon2D*> pressEnters = SceneManager::GetScene()->GetGameObjects<Polygon2D>();
+	auto pressEnters = SceneManager::GetScene()->GetGameObjects<Polygon2D>();
 
 	if (m_Frame > 60)
 	{

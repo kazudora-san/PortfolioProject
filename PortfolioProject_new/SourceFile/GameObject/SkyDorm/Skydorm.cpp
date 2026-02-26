@@ -31,13 +31,7 @@ void SkyDorm::Uninit()
 
 void SkyDorm::Update()
 {
-	Scene* scene = SceneManager::GetScene();
-	if (!scene)
-	{
-		return;
-	}
-
-	Camera* camera = scene->GetGameObject<Camera>();
+	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
 	if (!camera)
 	{
 		return;

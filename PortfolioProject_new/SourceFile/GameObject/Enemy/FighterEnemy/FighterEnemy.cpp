@@ -50,13 +50,7 @@ void FighterEnemy::Uninit()
 
 void FighterEnemy::Update()
 {
-	Scene* scene = SceneManager::GetScene();
-	if (!scene)
-	{
-		return;
-	}
-
-	Player* player = scene->GetGameObject<Player>();
+	Player* player = SceneManager::GetScene()->GetGameObject<Player>();
 	if (!player)
 	{
 		return;
@@ -114,13 +108,7 @@ void FighterEnemy::Draw()
 
 void FighterEnemy::Attack()
 {
-	Scene* scene = SceneManager::GetScene();
-	if (!scene)
-	{
-		return;
-	}
-
-	Player* player = scene->GetGameObject<Player>();
+	Player* player = SceneManager::GetScene()->GetGameObject<Player>();
 	if (!player)
 	{
 		return;
