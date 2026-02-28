@@ -100,12 +100,10 @@ void AnimationModel::Load( const char *FileName )
 			ZeroMemory(&sd, sizeof(sd));
 			sd.pSysMem = vertex;
 
-			Renderer::GetDevice()->CreateBuffer(&bd, &sd,
-											&m_VertexBuffer[m]);
+			Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer[m]);
 
 			delete[] vertex;
 		}
-
 
 		// インデックスバッファ生成
 		{
@@ -138,8 +136,6 @@ void AnimationModel::Load( const char *FileName )
 			delete[] index;
 		}
 
-
-
 		//変形後頂点データ初期化
 		for (unsigned int v = 0; v < mesh->mNumVertices; v++)
 		{
@@ -156,7 +152,6 @@ void AnimationModel::Load( const char *FileName )
 
 			m_DeformVertex[m].push_back(deformVertex);
 		}
-
 
 		//ボーンデータ初期化
 		for (unsigned int b = 0; b < mesh->mNumBones; b++)
@@ -181,7 +176,10 @@ void AnimationModel::Load( const char *FileName )
 		}
 	}
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 8ef757c420c5ac5b200ac7520caa1b280dd02eb3
 	//テクスチャ読み込み
 	for(int i = 0; i < m_AiScene->mNumTextures; i++)
 	{
