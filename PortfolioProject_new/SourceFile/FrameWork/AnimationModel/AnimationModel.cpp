@@ -20,7 +20,6 @@ void AnimationModel::Draw()
 	{
 		aiMesh* mesh = m_AiScene->mMeshes[m];
 
-
 		// マテリアル設定
 		aiString texture;
 		aiColor3D diffuse;
@@ -45,7 +44,6 @@ void AnimationModel::Draw()
 		material.Ambient = material.Diffuse;
 		Renderer::SetMaterial(material);
 
-
 		// 頂点バッファ設定
 		UINT stride = sizeof(VERTEX_3D);
 		UINT offset = 0;
@@ -69,14 +67,11 @@ void AnimationModel::Load( const char *FileName )
 	m_VertexBuffer = new ID3D11Buffer*[m_AiScene->mNumMeshes];
 	m_IndexBuffer = new ID3D11Buffer*[m_AiScene->mNumMeshes];
 
-
 	//変形後頂点配列生成
 	m_DeformVertex = new std::vector<DEFORM_VERTEX>[m_AiScene->mNumMeshes];
 
 	//再帰的にボーン生成
 	CreateBone(m_AiScene->mRootNode);
-
-
 
 	for (unsigned int m = 0; m < m_AiScene->mNumMeshes; m++)
 	{
@@ -187,7 +182,6 @@ void AnimationModel::Load( const char *FileName )
 	}
 
 
-
 	//テクスチャ読み込み
 	for(int i = 0; i < m_AiScene->mNumTextures; i++)
 	{
@@ -204,19 +198,14 @@ void AnimationModel::Load( const char *FileName )
 
 		m_Texture[aitexture->mFilename.data] = texture;
 	}
-
-
-
 }
 
 
 
 void AnimationModel::LoadAnimation( const char *FileName, const char *Name )
 {
-
 	m_Animation[Name] = aiImportFile(FileName, aiProcess_ConvertToLeftHanded);
 	assert(m_Animation[Name]);
-
 }
 
 
@@ -230,7 +219,6 @@ void AnimationModel::CreateBone(aiNode* node)
 	{
 		CreateBone(node->mChildren[n]);
 	}
-
 }
 
 
@@ -244,25 +232,19 @@ void AnimationModel::Uninit()
 
 	delete[] m_VertexBuffer;
 	delete[] m_IndexBuffer;
-
 	delete[] m_DeformVertex;
-
 
 	for (std::pair<const std::string, ID3D11ShaderResourceView*> pair : m_Texture)
 	{
 		pair.second->Release();
 	}
 
-
-
 	aiReleaseImport(m_AiScene);
-
 
 	for (std::pair<const std::string, const aiScene*> pair : m_Animation)
 	{
 		aiReleaseImport(pair.second);
 	}
-
 }
 
 
@@ -273,16 +255,24 @@ void AnimationModel::Update(const char *AnimationName1, int Frame1,
 							const char* AnimationName2, int Frame2, float BlendRate)
 {
 	if (m_Animation.count(AnimationName1) == 0)
+	{
 		return;
+	}
 
 	if (!m_Animation[AnimationName1]->HasAnimations())
+	{
 		return;
+	}
 
 	if (m_Animation.count(AnimationName2) == 0)
+	{
 		return;
+	}
 
 	if (!m_Animation[AnimationName2]->HasAnimations())
+	{
 		return;
+	}
 
 	//アニメーションデータからボーンマトリクス算出
 	aiAnimation* animation1 = m_Animation[AnimationName1]->mAnimations[0];
@@ -346,7 +336,6 @@ void AnimationModel::Update(const char *AnimationName1, int Frame1,
 		aiQuaternion::Interpolate(rot, rot1, rot2, BlendRate); // 球面線形補間
 
 		bone->AnimationMatrix = aiMatrix4x4(aiVector3D(1.0f, 1.0f, 1.0f), rot, pos);
-
 	}
 
 	//再帰的にボーンマトリクスを更新
@@ -390,7 +379,6 @@ void AnimationModel::Update(const char *AnimationName1, int Frame1,
 			outMatrix.b4 = 0.0f;
 			outMatrix.c4 = 0.0f;
 
-
 			deformVertex->Normal = mesh->mNormals[v];
 			deformVertex->Normal *= outMatrix;
 
@@ -411,8 +399,6 @@ void AnimationModel::Update(const char *AnimationName1, int Frame1,
 
 		Renderer::GetDeviceContext()->Unmap(m_VertexBuffer[m], 0);
 	}
-
-	
 }
 
 
@@ -429,6 +415,5 @@ void AnimationModel::UpdateBoneMatrix(aiNode* node, aiMatrix4x4 matrix)
 	{
 		UpdateBoneMatrix(node->mChildren[n], worldMatrix);
 	}
-
 }
 
