@@ -8,9 +8,12 @@ class GameCharacter;
 
 class State
 {
+private:
+
 protected:
 	GameCharacter*	m_OwnerObject	= {};
 	std::string		m_StateName		= {};
+	State*			m_NextState		= {};
 
 public:
 	State() = default;
@@ -28,6 +31,7 @@ public:
 	void	SetStateName	(const std::string& stateName)	{ m_StateName = stateName; }
 
 	const std::string&	GetStateName() const { return m_StateName; }
+	State*				GetNextState() const { return m_NextState; }
 };
 
 #endif // STATE_H

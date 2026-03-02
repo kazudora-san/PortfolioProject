@@ -17,6 +17,12 @@ void IdleState::Enter()
 void IdleState::Update()
 {
 	m_OwnerObject->Idle();
+
+	if (ChangeState() ? )
+	{
+		// —á‚¦‚ÎAMoveState‚É‘JˆÚ‚·‚éê‡
+		// m_StateMachine->ChangeState<MoveState>();
+	}
 }
 
 void IdleState::Exit()
@@ -31,7 +37,7 @@ bool IdleState::IsActive() const
 	}
 
 	// —v‰ü‘P
-	if (m_OwnerObject->GetCharacterStatus().GetHealth() > 0)
+	if (m_OwnerObject->GetCharacterStatus().GetHealth() < 0)
 	{
 		return false;
 	}

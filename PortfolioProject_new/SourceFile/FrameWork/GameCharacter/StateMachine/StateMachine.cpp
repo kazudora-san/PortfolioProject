@@ -4,6 +4,12 @@
 void StateMachine::Update()
 {
 	m_CurrentState->Update();
+
+	State* nextState = m_CurrentState->GetNextState();
+	if (nextState)
+	{
+		StateChanege(nextState);
+	}
 }
 
 void StateMachine::StateChanege(State* state)

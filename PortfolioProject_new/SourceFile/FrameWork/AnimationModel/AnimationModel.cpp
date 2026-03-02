@@ -176,10 +176,6 @@ void AnimationModel::Load( const char *FileName )
 		}
 	}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8ef757c420c5ac5b200ac7520caa1b280dd02eb3
 	//テクスチャ読み込み
 	for(int i = 0; i < m_AiScene->mNumTextures; i++)
 	{
