@@ -18,11 +18,6 @@ void IdleState::Update()
 {
 	m_OwnerObject->Idle();
 
-	if (ChangeState() ? )
-	{
-		// —á‚¦‚ÎAMoveState‚É‘JˆÚ‚·‚éê‡
-		// m_StateMachine->ChangeState<MoveState>();
-	}
 }
 
 void IdleState::Exit()

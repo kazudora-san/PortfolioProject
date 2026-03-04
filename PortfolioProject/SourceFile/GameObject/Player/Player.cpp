@@ -8,15 +8,10 @@
 #include	"Manager/AudioManager/AudioManager.h"
 #include	"Camera/Camera.h"
 #include	"Input/Input.h"
-#include	"Bullet/Bullet.h"
 #include	"Enemy/FighterEnemy/FighterEnemy.h"
 #include	"Scene/Scene.h"
 #include	"AnimationModel/AnimationModel.h"
 #include	"Field/MeshField/MeshField.h"
-#include	"Effect/Explosion/Explosion.h"
-#include	"Score/Score.h"
-#include	"Effect/Heart/Heart.h"
-#include	<random>
 
 enum PlayerAnimatyonKey
 {

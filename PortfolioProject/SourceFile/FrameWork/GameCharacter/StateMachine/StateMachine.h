@@ -34,7 +34,7 @@ public:
 		return ptr;
 	}
 
-	void	StateChanege(State* state);
+	void	ChangeState(State* state);
 };
 
 #endif // STATEMACHINE_H

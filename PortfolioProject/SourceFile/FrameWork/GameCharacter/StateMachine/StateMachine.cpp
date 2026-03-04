@@ -3,16 +3,23 @@
 
 void StateMachine::Update()
 {
+	if (!m_CurrentState)
+	{
+		return;
+	}
+
 	m_CurrentState->Update();
 
 	State* nextState = m_CurrentState->GetNextState();
-	if (nextState)
+	if (!nextState)
 	{
-		StateChanege(nextState);
+		return;
 	}
+
+	ChangeState(nextState);
 }
 
-void StateMachine::StateChanege(State* state)
+void StateMachine::ChangeState(State* state)
 {
 	if (m_CurrentState)
 	{
