@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DWSourceFile\DWBlock\DWBreakBlock\DWBreakBlock.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWBlock\DWNormalBlock\DWNormalBlock.cpp" />
+    <ClCompile Include="DWSourceFile\DWBullet\DWBullet.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWEnemy\DWEnemyGround\DWEnemyGround.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWBlockBase\DWBlockBase.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWCamera\DWCamera.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWComponent\DWBoxCollider\DWBoxCollider.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWComponent\DWComponent.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWComponent\DWStateMachine\DWStateMachine.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWEnemyBase\DWEnemyBase.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWGameObject.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWInGameCharacter.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWAudioManager\DWAudioManager.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWBlockManager\DWBlockManager.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWBulletManager\DWBulletManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWColliderManager\DWColliderManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWEnemyManager\DWEnemyManager.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWStageManager\DWStageManager.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerFall\DWPlayerFall.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerIdle\DWPlayerIdle.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerJump\DWPlayerJump.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerLand\DWPlayerLand.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerMove\DWPlayerMove.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerShot\DWPlayerShot.cpp" />
+    <ClCompile Include="DWSourceFile\DWFramework\DWState.cpp" />
+    <ClCompile Include="DWSourceFile\DWGoal\DWGoal.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWInput\DWInput.cpp" />
+    <ClCompile Include="DWSourceFile\DWMain.cpp" />
+    <ClCompile Include="DWSourceFile\DWPlayer\DWPlayer.cpp" />
+    <ClCompile Include="DWSourceFile\DWScene\DWGameScene\DWGameScene.cpp" />
+    <ClCompile Include="DWSourceFile\DWScene\DWScene.cpp" />
+    <ClCompile Include="DWSourceFile\DWScene\DWSceneManager.cpp" />
+    <ClCompile Include="DWSourceFile\DWScene\DWTitleScene\DWTitleScene.cpp" />
+    <ClCompile Include="DWSourceFile\DWSection\DWSection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWTitle\DWTitleButton\DWTitleButton.cpp" />
+    <ClCompile Include="DWSourceFile\DWTitle\DWTitleLogo\DWTitleLogo.cpp" />
+    <ClCompile Include="DWSourceFile\DWUI\DWPlayerUI\DWAmmoUI\DWAmmoUI.cpp" />
+    <ClCompile Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerHealthUI\DWPlayerHealthUI.cpp" />
+    <ClCompile Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerUI.cpp" />
+    <ClCompile Include="DWSourceFile\DWUI\DWUI.cpp" />
+    <ClCompile Include="DWSourceFile\DWUI\DWWSystemUI\DWCurrentStageUI\DWCurrentStageUI.cpp" />
+    <ClCompile Include="DWSourceFile\DWUI\DWWSystemUI\DWResultUI\DWResultUI.cpp" />
+    <ClCompile Include="DWSourceFile\DWVector2\DWVector2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DWSourceFile\DWBlock\DWBreakBlock\DWBreakBlock.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWBlock\DWNormalBlock\DWNormalBlock.h" />
+    <ClInclude Include="DWSourceFile\DWBullet\DWBullet.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWEnemy\DWEnemyGround\DWEnemyGround.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWBlockBase\DWBlockBase.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWCamera\DWCamera.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWComponent\DWBoxCollider\DWBoxCollider.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWComponent\DWComponent.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWComponent\DWStateMachine\DWStateMachine.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWEnemyBase\DWEnemyBase.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWGameObject.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWInGameCharacter.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWAudioManager\DWAudioManager.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWBlockManager\DWBlockManager.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWBulletManager\DWBulletManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWColliderManager\DWColliderManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWEnemyManager\DWEnemyManager.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWManager.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWStageManager\DWStageManager.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerFall\DWPlayerFall.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerIdle\DWPlayerIdle.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerJump\DWPlayerJump.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerLand\DWPlayerLand.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerMove\DWPlayerMove.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerShot\DWPlayerShot.h" />
+    <ClInclude Include="DWSourceFile\DWFramework\DWState.h" />
+    <ClInclude Include="DWSourceFile\DWGoal\DWGoal.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWInput\DWInput.h" />
+    <ClInclude Include="DWSourceFile\DWMain.h" />
+    <ClInclude Include="DWSourceFile\DWPlayer\DWPlayer.h" />
+    <ClInclude Include="DWSourceFile\DWScene\DWGameScene\DWGameScene.h" />
+    <ClInclude Include="DWSourceFile\DWScene\DWScene.h" />
+    <ClInclude Include="DWSourceFile\DWScene\DWSceneManager.h" />
+    <ClInclude Include="DWSourceFile\DWScene\DWTitleScene\DWTitleScene.h" />
+    <ClInclude Include="DWSourceFile\DWSection\DWSection.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWTitle\DWTitleButton\DWTitleButton.h" />
+    <ClInclude Include="DWSourceFile\DWTitle\DWTitleLogo\DWTitleLogo.h" />
+    <ClInclude Include="DWSourceFile\DWUI\DWPlayerUI\DWAmmoUI\DWAmmoUI.h" />
+    <ClInclude Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerHealthUI\DWPlayerHealthUI.h" />
+    <ClInclude Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerUI.h" />
+    <ClInclude Include="DWSourceFile\DWUI\DWUI.h" />
+    <ClInclude Include="DWSourceFile\DWUI\DWWSystemUI\DWCurrentStageUI\DWCurrentStageUI.h" />
+    <ClInclude Include="DWSourceFile\DWUI\DWWSystemUI\DWResultUI\DWResultUI.h" />
+    <ClInclude Include="DWSourceFile\DWVector2\DWVector2.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{d25846c6-e09d-4336-bd48-6762a3caa993}</ProjectGuid>
+    <RootNamespace>Downwell</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)DWSourceFile\DWFramework;$(ProjectDir)DWSourceFile</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)DWSourceFile\DWFramework;$(ProjectDir)DWSourceFile</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)DWSourceFile\DWFramework;$(ProjectDir)DWSourceFile</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)DWSourceFile\DWFramework;$(ProjectDir)DWSourceFile</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

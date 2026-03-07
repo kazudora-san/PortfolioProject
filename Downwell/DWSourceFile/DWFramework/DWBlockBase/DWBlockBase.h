@@ -1,0 +1,30 @@
+//-----------------------------
+//	BlockBase.h[ブロックの親クラス制御]
+//	千葉知輝
+//	作成日 2025/10/30
+//-----------------------------
+
+#ifndef DWBLOCKBASE_H
+#define DWBLOCKBASE_H
+
+#include "DWGameObject.h"
+#include "DWComponent/DWBoxCollider/DWBoxCollider.h"
+
+class DWBlockBase : public DWGameObject
+{
+protected:
+	DWBoxCollider* Collider = nullptr;
+
+public:
+	virtual	void	Init()			override = 0;
+	virtual	void	Uninit()		override;
+	virtual	void	Update()		override;
+	virtual	void	Draw()	const	override;
+
+	virtual void	SetEnable	(bool enable)	override;
+
+	virtual void	Reset()	override = 0;
+	virtual void OnCollision(DWGameObject* gameObject, const DWVector2& overlap) override = 0;
+};
+
+#endif // ENEMY_H

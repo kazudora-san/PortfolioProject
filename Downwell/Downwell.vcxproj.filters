@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="DWSourceFile">
+      <UniqueIdentifier>{b55a26ef-7c4c-4dba-a7c6-a70479f04394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework">
+      <UniqueIdentifier>{f1fe8252-bacf-44c4-b750-78ce8822bc6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWPlayer">
+      <UniqueIdentifier>{067a74c0-a4c8-43d8-b30c-5718ed63f7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWVector2">
+      <UniqueIdentifier>{268de8c4-56b9-4135-a2d4-5e48028223d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWComponent">
+      <UniqueIdentifier>{efc37d77-19ff-41a0-aef9-4ffb879602dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWPlayerState">
+      <UniqueIdentifier>{5857585f-7784-4748-ab9b-3ac378b59248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWComponent\DWStateMachine">
+      <UniqueIdentifier>{c4cc1295-cc7f-4d87-974e-67c2df395ab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerIdle">
+      <UniqueIdentifier>{16f10455-be7c-4d0c-9721-f30b46d66ef6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerMove">
+      <UniqueIdentifier>{c72b63be-bacd-415b-83d7-f17fca204bda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWScene">
+      <UniqueIdentifier>{169813ee-1e94-463b-8902-a4f67588da37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWScene\DWGameScene">
+      <UniqueIdentifier>{0a91a5c4-246b-4160-b2c3-d3d147e7b0eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerFall">
+      <UniqueIdentifier>{728af66a-0a23-43bd-a466-32ade7ee0708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerLand">
+      <UniqueIdentifier>{4b66e164-c202-49f7-b384-01a630df4445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerJump">
+      <UniqueIdentifier>{b0abccbe-eb21-4291-850a-35a8f3471135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerShot">
+      <UniqueIdentifier>{f6872054-0bcb-44b8-966f-938266d0637e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWComponent\DWBoxCollider">
+      <UniqueIdentifier>{63a4f9c2-1059-4204-961b-36efc8970e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWInput">
+      <UniqueIdentifier>{7fe309a3-96f3-473a-97c5-8a518ed62983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWBullet">
+      <UniqueIdentifier>{abf5d7ca-8eaa-4b71-a7d1-e851b572d93d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWManager">
+      <UniqueIdentifier>{5c40bf8a-0837-43f8-9fb5-0af3d180d9f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWManager\DWBulletManager">
+      <UniqueIdentifier>{702b9030-e927-41fa-b699-9ba98ad028ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWManager\DWEnemyManager">
+      <UniqueIdentifier>{f84e415a-16fb-476b-b854-fdf79048da6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWEnemyBase">
+      <UniqueIdentifier>{f5e25cde-f9c2-446c-bf6a-82878803e075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWEnemy">
+      <UniqueIdentifier>{5c3c71a2-4232-4a41-8c32-b62931ce1703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWEnemy\DWEnemyGround">
+      <UniqueIdentifier>{d26e9225-a56a-400d-9a9e-d89c1538662e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWSection">
+      <UniqueIdentifier>{1674c4a3-8672-4cf8-9516-8fbd27c7c5af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWManager\DWBlockManager">
+      <UniqueIdentifier>{ff4ce318-35c3-47ca-81dc-f1b125cac8c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWManager\DWStageManager">
+      <UniqueIdentifier>{e461e6de-5359-4506-999e-75c65394a2c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWCamera">
+      <UniqueIdentifier>{cd14261d-5c86-489d-98b7-2b9b16650498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWGoal">
+      <UniqueIdentifier>{827f4414-c69c-4296-9e7f-d9355d72891a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWUI">
+      <UniqueIdentifier>{e6e32261-489a-47c5-8dab-ea792e5262f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWUI\DWPlayerUI">
+      <UniqueIdentifier>{c831a314-e033-4dc2-97d3-0da5a1eee3c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerHealthUI">
+      <UniqueIdentifier>{abd43d20-d566-4f52-8917-715929d59c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWUI\DWPlayerUI\DWAmmoUI">
+      <UniqueIdentifier>{79f28795-621a-47db-843b-17921641bbca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWUI\DWSystemUI">
+      <UniqueIdentifier>{179670ad-fb6f-41e3-95a3-03fd32b6ae48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWUI\DWSystemUI\DWCurrentStageUI">
+      <UniqueIdentifier>{d34913d6-1e40-4f56-a11d-bae919cf9ebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWUI\DWSystemUI\DWResultUI">
+      <UniqueIdentifier>{0d3f72f6-e6b6-4dfe-bf55-c6cc1ae46445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWManager\DWColliderManager">
+      <UniqueIdentifier>{63c913d9-7f5f-47b7-884b-844b44f77011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWBlock">
+      <UniqueIdentifier>{3f88d101-baea-4696-b341-1b34fe8e650b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWBlock\DWNormalBlock">
+      <UniqueIdentifier>{a7d2b192-f2d9-4a5f-bd88-a2de30c16024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWBlockBase">
+      <UniqueIdentifier>{b14e0aa5-1c4c-4148-875c-d06aa960c534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWBlock\DWBreakBlock">
+      <UniqueIdentifier>{f30aac38-59dc-4546-9ab8-a2f9a12d1c90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWScene\DWTitleScene">
+      <UniqueIdentifier>{83868bd5-89b1-4ac2-8541-85b1aee6648d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWTitle">
+      <UniqueIdentifier>{7420dcd1-409a-4cc4-8800-c0511e6e6b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWTitle\DWTitleLogo">
+      <UniqueIdentifier>{ee44c3a8-60ee-42bc-b2ef-961441e2b0c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWTitle\DWTitleButton">
+      <UniqueIdentifier>{ba0a88ee-dbd9-44ef-9fbe-fcbc37aa5d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DWSourceFile\DWFramework\DWManager\DWAudioManager">
+      <UniqueIdentifier>{8746fc70-7ceb-4b09-96e2-d0dc0ce7d9da}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DWSourceFile\DWMain.cpp">
+      <Filter>DWSourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWVector2\DWVector2.cpp">
+      <Filter>DWSourceFile\DWVector2</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWPlayer\DWPlayer.cpp">
+      <Filter>DWSourceFile\DWPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWInGameCharacter.cpp">
+      <Filter>DWSourceFile\DWFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWComponent\DWStateMachine\DWStateMachine.cpp">
+      <Filter>DWSourceFile\DWFramework\DWComponent\DWStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWInput\DWInput.cpp">
+      <Filter>DWSourceFile\DWInput</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerIdle\DWPlayerIdle.cpp">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerIdle</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWComponent\DWComponent.cpp">
+      <Filter>DWSourceFile\DWFramework\DWComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerMove\DWPlayerMove.cpp">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerMove</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWScene\DWScene.cpp">
+      <Filter>DWSourceFile\DWScene</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWScene\DWGameScene\DWGameScene.cpp">
+      <Filter>DWSourceFile\DWScene\DWGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWScene\DWSceneManager.cpp">
+      <Filter>DWSourceFile\DWScene</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerFall\DWPlayerFall.cpp">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerFall</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerLand\DWPlayerLand.cpp">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerLand</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerJump\DWPlayerJump.cpp">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerJump</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerShot\DWPlayerShot.cpp">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerShot</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWComponent\DWBoxCollider\DWBoxCollider.cpp">
+      <Filter>DWSourceFile\DWFramework\DWComponent\DWBoxCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWGameObject.cpp">
+      <Filter>DWSourceFile\DWFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWState.cpp">
+      <Filter>DWSourceFile\DWFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWBullet\DWBullet.cpp">
+      <Filter>DWSourceFile\DWBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWBulletManager\DWBulletManager.cpp">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWBulletManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWColliderManager\DWColliderManager.cpp">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWColliderManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWEnemyManager\DWEnemyManager.cpp">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWEnemyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWEnemy\DWEnemyGround\DWEnemyGround.cpp">
+      <Filter>DWSourceFile\DWEnemy\DWEnemyGround</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWSection\DWSection.cpp">
+      <Filter>DWSourceFile\DWSection</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWBlockManager\DWBlockManager.cpp">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWBlockManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWEnemyBase\DWEnemyBase.cpp">
+      <Filter>DWSourceFile\DWFramework\DWEnemyBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWStageManager\DWStageManager.cpp">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWStageManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWCamera\DWCamera.cpp">
+      <Filter>DWSourceFile\DWFramework\DWCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWGoal\DWGoal.cpp">
+      <Filter>DWSourceFile\DWGoal</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWUI\DWUI.cpp">
+      <Filter>DWSourceFile\DWUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerUI.cpp">
+      <Filter>DWSourceFile\DWUI\DWPlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerHealthUI\DWPlayerHealthUI.cpp">
+      <Filter>DWSourceFile\DWUI\DWPlayerUI\DWPlayerHealthUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWUI\DWPlayerUI\DWAmmoUI\DWAmmoUI.cpp">
+      <Filter>DWSourceFile\DWUI\DWPlayerUI\DWAmmoUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWUI\DWWSystemUI\DWCurrentStageUI\DWCurrentStageUI.cpp">
+      <Filter>DWSourceFile\DWUI\DWSystemUI\DWCurrentStageUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWUI\DWWSystemUI\DWResultUI\DWResultUI.cpp">
+      <Filter>DWSourceFile\DWUI\DWSystemUI\DWResultUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWBlock\DWNormalBlock\DWNormalBlock.cpp">
+      <Filter>DWSourceFile\DWBlock\DWNormalBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWBlockBase\DWBlockBase.cpp">
+      <Filter>DWSourceFile\DWFramework\DWBlockBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWBlock\DWBreakBlock\DWBreakBlock.cpp">
+      <Filter>DWSourceFile\DWBlock\DWBreakBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWScene\DWTitleScene\DWTitleScene.cpp">
+      <Filter>DWSourceFile\DWScene\DWTitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWTitle\DWTitleButton\DWTitleButton.cpp">
+      <Filter>DWSourceFile\DWTitle\DWTitleButton</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWTitle\DWTitleLogo\DWTitleLogo.cpp">
+      <Filter>DWSourceFile\DWTitle\DWTitleLogo</Filter>
+    </ClCompile>
+    <ClCompile Include="DWSourceFile\DWFramework\DWManager\DWAudioManager\DWAudioManager.cpp">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWAudioManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DWSourceFile\DWMain.h">
+      <Filter>DWSourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWVector2\DWVector2.h">
+      <Filter>DWSourceFile\DWVector2</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWPlayer\DWPlayer.h">
+      <Filter>DWSourceFile\DWPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWGameObject.h">
+      <Filter>DWSourceFile\DWFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWInGameCharacter.h">
+      <Filter>DWSourceFile\DWFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWState.h">
+      <Filter>DWSourceFile\DWFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWComponent\DWComponent.h">
+      <Filter>DWSourceFile\DWFramework\DWComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWComponent\DWStateMachine\DWStateMachine.h">
+      <Filter>DWSourceFile\DWFramework\DWComponent\DWStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWInput\DWInput.h">
+      <Filter>DWSourceFile\DWInput</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerIdle\DWPlayerIdle.h">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerIdle</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerMove\DWPlayerMove.h">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerMove</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWScene\DWScene.h">
+      <Filter>DWSourceFile\DWScene</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWScene\DWGameScene\DWGameScene.h">
+      <Filter>DWSourceFile\DWScene\DWGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWScene\DWSceneManager.h">
+      <Filter>DWSourceFile\DWScene</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerFall\DWPlayerFall.h">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerFall</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerLand\DWPlayerLand.h">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerLand</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerJump\DWPlayerJump.h">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerJump</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWPlayerState\DWPlayerShot\DWPlayerShot.h">
+      <Filter>DWSourceFile\DWFramework\DWPlayerState\DWPlayerShot</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWComponent\DWBoxCollider\DWBoxCollider.h">
+      <Filter>DWSourceFile\DWFramework\DWComponent\DWBoxCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWBullet\DWBullet.h">
+      <Filter>DWSourceFile\DWBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWManager.h">
+      <Filter>DWSourceFile\DWFramework\DWManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWBulletManager\DWBulletManager.h">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWBulletManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWColliderManager\DWColliderManager.h">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWColliderManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWEnemyManager\DWEnemyManager.h">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWEnemyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWEnemy\DWEnemyGround\DWEnemyGround.h">
+      <Filter>DWSourceFile\DWEnemy\DWEnemyGround</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWSection\DWSection.h">
+      <Filter>DWSourceFile\DWSection</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWBlockManager\DWBlockManager.h">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWBlockManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWStageManager\DWStageManager.h">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWStageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWCamera\DWCamera.h">
+      <Filter>DWSourceFile\DWFramework\DWCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWEnemyBase\DWEnemyBase.h">
+      <Filter>DWSourceFile\DWFramework\DWEnemyBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWGoal\DWGoal.h">
+      <Filter>DWSourceFile\DWGoal</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWUI\DWUI.h">
+      <Filter>DWSourceFile\DWUI</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerUI.h">
+      <Filter>DWSourceFile\DWUI\DWPlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWUI\DWPlayerUI\DWPlayerHealthUI\DWPlayerHealthUI.h">
+      <Filter>DWSourceFile\DWUI\DWPlayerUI\DWPlayerHealthUI</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWUI\DWPlayerUI\DWAmmoUI\DWAmmoUI.h">
+      <Filter>DWSourceFile\DWUI\DWPlayerUI\DWAmmoUI</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWUI\DWWSystemUI\DWCurrentStageUI\DWCurrentStageUI.h">
+      <Filter>DWSourceFile\DWUI\DWSystemUI\DWCurrentStageUI</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWUI\DWWSystemUI\DWResultUI\DWResultUI.h">
+      <Filter>DWSourceFile\DWUI\DWSystemUI\DWResultUI</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWBlock\DWNormalBlock\DWNormalBlock.h">
+      <Filter>DWSourceFile\DWBlock\DWNormalBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWBlockBase\DWBlockBase.h">
+      <Filter>DWSourceFile\DWFramework\DWBlockBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWBlock\DWBreakBlock\DWBreakBlock.h">
+      <Filter>DWSourceFile\DWBlock\DWBreakBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWScene\DWTitleScene\DWTitleScene.h">
+      <Filter>DWSourceFile\DWScene\DWTitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWTitle\DWTitleButton\DWTitleButton.h">
+      <Filter>DWSourceFile\DWTitle\DWTitleButton</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWTitle\DWTitleLogo\DWTitleLogo.h">
+      <Filter>DWSourceFile\DWTitle\DWTitleLogo</Filter>
+    </ClInclude>
+    <ClInclude Include="DWSourceFile\DWFramework\DWManager\DWAudioManager\DWAudioManager.h">
+      <Filter>DWSourceFile\DWFramework\DWManager\DWAudioManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
