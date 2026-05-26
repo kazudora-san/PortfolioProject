@@ -1,40 +1,37 @@
-#ifndef		GAMEOBJECT_H
-#define		GAMEOBJECT_H
+#pragma once
 
 #include	"Vector3/Vector3.h"
 
 class GameObject
 {
 protected:
-	bool		m_Destroy	= false;
-	bool		m_Enable	= false;
-	Vector3		m_Position	= {};
-	Vector3		m_Rotation	= {};
-	Vector3		m_Scale		= { 1.0f,1.0f,1.0f };
-	Vector3		m_Velocity	= { 0.0f, 0.98f, 0.0f };
+	bool m_Destroy = false;
+	bool m_Enable = false;
+	Vector3 m_Position = {};
+	Vector3 m_Rotation = {};
+	Vector3 m_Scale = { 1.0f, 1.0f, 1.0f };
+	Vector3 m_Velocity = { 0.0f, 0.98f, 0.0f };
 
 public:
-	virtual void Init()		= 0;
-	virtual void Uninit()	= 0;
-	virtual void Update()	= 0;
-	virtual void Draw()		= 0;
+	virtual void Init() = 0;
+	virtual void Uninit() = 0;
+	virtual void Update() = 0;
+	virtual void Draw() = 0;
 
-	void	SetDestroy() { m_Destroy = true; }
-	bool	Destroy();
+	void SetDestroy() { m_Destroy = true; }
+	bool Destroy();
 
-	void	SetEnable	(bool enable = true)		{ m_Enable		= enable; }
-	void	SetPosition	(const Vector3& Position)	{ m_Position	= Position; }
-	void	SetRotation	(const Vector3& Rotation)	{ m_Rotation	= Rotation; }
-	void	SetScale	(const Vector3& Scale)		{ m_Scale		= Scale; }
+	void SetEnable(bool enable = true) { m_Enable = enable; }
+	void SetPosition(const Vector3& Position) { m_Position = Position; }
+	void SetRotation(const Vector3& Rotation) { m_Rotation = Rotation; }
+	void SetScale(const Vector3& Scale) { m_Scale = Scale; }
 
-	bool				GetEnable()		const { return m_Enable; }
-	const	Vector3&	GetPosition()	const { return m_Position; }
-	const	Vector3&	GetRotation()	const { return m_Rotation; }
-	const	Vector3&	GetScale()		const { return m_Scale; }
-	const	Vector3&	GetRight()		const;
-	virtual	Vector3		GetForward();
-	float				GetDistance(Vector3 Position);
-	float				GetZ(Vector3 Position, Vector3 Forward);
+	bool GetEnable() const { return m_Enable; }
+	const Vector3& GetPosition() const { return m_Position; }
+	const Vector3& GetRotation() const { return m_Rotation; }
+	const Vector3& GetScale() const { return m_Scale; }
+	const Vector3& GetRight() const;
+	virtual Vector3	GetForward();
+	float GetDistance(Vector3 Position);
+	float GetZ(Vector3 Position, Vector3 Forward);
 };
-
-#endif // GAMEOBJECT_H

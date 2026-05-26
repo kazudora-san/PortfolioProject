@@ -1,8 +1,7 @@
-#ifndef		AUDIOMANAGER_H
-#define		AUDIOMANAGER_H
+#pragma once
 
-#include	<unordered_map>
-#include	<string>
+#include <unordered_map>
+#include <string>
 
 class Audio;
 
@@ -12,11 +11,10 @@ private:
 	static std::unordered_map<std::string, Audio*> m_Audios;
 
 public:
-	static void Init	();
-	static void Uninit	();
-	static void Load	(const char*		fileName,	const std::string&	key);
-	static void Play	(const std::string&	ke,			bool				oop = false);
-	static void Stop	(const std::string&	key);
-};
+	static void Init();
+	static void Uninit();
 
-#endif // AUDIOMANAGER_H
+	static void Load(const char* fileName, const std::string& key);
+	static void Play(const std::string& key, bool loop = false);
+	static void Stop(const std::string& key);
+};

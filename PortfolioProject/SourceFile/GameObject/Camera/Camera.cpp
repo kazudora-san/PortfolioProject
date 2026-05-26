@@ -1,20 +1,19 @@
-#include	"Main.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Scene/Scene.h"
-#include	"Camera/Camera.h"
-#include	"Renderer/Renderer.h"
-#include	"Player/Player.h"
-#include	"Input/Keyboard.h"
-#include	"Input/Input.h"
+#include "Main.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Scene/Scene.h"
+#include "Camera/Camera.h"
+#include "Renderer/Renderer.h"
+#include "Player/Player.h"
+#include "Input/Keyboard.h"
+#include "Input/Input.h"
 
 void Camera::Init()
 {
-	m_Position = { 0.0f,1.0f,-5.0f };
+	m_Position = { 0.0f, 1.0f, -5.0f };
 }
 
 void Camera::Uninit()
 {
-
 }
 
 void Camera::Update()
@@ -24,14 +23,24 @@ void Camera::Update()
 
 	if (dx != 0 || dy != 0)
 	{
-		
-		float sensitivity = 0.05f;			// ÉJÉÅÉâÇÃäÓñ{ë¨ìx
-		m_Rotation.y += dx * sensitivity;	// â°âÒì]
-		m_Rotation.x += dy * sensitivity;	// ècâÒì]
+		float sensitivity = 0.05f;
+
+		// â°âÒì]
+		m_Rotation.y += dx * sensitivity;
+
+		// ècâÒì]
+		m_Rotation.x += dy * sensitivity;
 
 		// ÉsÉbÉ`êßå¿
-		if (m_Rotation.x > XM_PIDIV2)  m_Rotation.x = XM_PIDIV2;
-		if (m_Rotation.x < -XM_PIDIV2) m_Rotation.x = -XM_PIDIV2;
+		if (m_Rotation.x > XM_PIDIV2)
+		{
+			m_Rotation.x = XM_PIDIV2;
+		}
+
+		if (m_Rotation.x < -XM_PIDIV2)
+		{
+			m_Rotation.x = -XM_PIDIV2;
+		}
 	}
 
 	Input::OnMouseMove(0, 0);
@@ -40,12 +49,14 @@ void Camera::Update()
 	{
 		m_Rotation.y -= 0.1f;
 	}
+
 	if (Input::CommandRight())
 	{
 		m_Rotation.y += 0.1f;
 	}
 
 	Player* player = SceneManager::GetScene()->GetGameObject<Player>();
+
 	if (!player)
 	{
 		return;
@@ -53,22 +64,33 @@ void Camera::Update()
 
 	m_Target = player->GetPosition() + Vector3(0.0f, 1.0f, 0.0f);
 
-	m_Position = m_Target + Vector3(-sinf(m_Rotation.y),0.5f,-cosf(m_Rotation.y)) * 5.0f;
+	m_Position =
+		m_Target +
+		Vector3(
+			-sinf(m_Rotation.y),
+			0.5f,
+			-cosf(m_Rotation.y)
+		) * 5.0f;
 }
 
 void Camera::Draw()
 {
-	m_MtxPerspective = XMMatrixPerspectiveFovLH(1.0f,
+	m_MtxPerspective = XMMatrixPerspectiveFovLH(
+		1.0f,
 		(float)SCREEN_WIDTH / SCREEN_HEIGHT,
-		0.1f, 500.0f);
+		0.1f,
+		500.0f
+	);
 
 	Renderer::SetProjectionMatrix(m_MtxPerspective);
 
 	XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
-	m_MtxView = XMMatrixLookAtLH(XMLoadFloat3((XMFLOAT3*)&m_Position),
-									XMLoadFloat3((XMFLOAT3*)&m_Target),
-									XMLoadFloat3(&up));
 
+	m_MtxView = XMMatrixLookAtLH(
+		XMLoadFloat3((XMFLOAT3*)&m_Position),
+		XMLoadFloat3((XMFLOAT3*)&m_Target),
+		XMLoadFloat3(&up)
+	);
 
 	// ÉJÉÅÉâç¿ïWê›íË
 	Renderer::SetCameraPosition(m_Position);
@@ -79,6 +101,5 @@ Vector3 Camera::GetForward()
 {
 	Vector3 forward = m_Target - m_Position;
 	forward.normalize();
-
 	return forward;
 }

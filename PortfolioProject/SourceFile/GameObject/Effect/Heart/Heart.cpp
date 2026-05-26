@@ -36,7 +36,7 @@ void Heart::Init()
 	vertex[3].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	vertex[3].TexCoord = XMFLOAT2(1.0f, 1.0f);
 
-	//頂点バッファ生成
+	// 頂点バッファ生成
 	D3D11_BUFFER_DESC bd{};
 	bd.Usage = D3D11_USAGE_DEFAULT;
 	bd.ByteWidth = sizeof(VERTEX_3D) * 4;
@@ -50,7 +50,8 @@ void Heart::Init()
 
 	m_Texture = Texture::Load("Asset\\Texture\\Particle.png");
 
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
+	Renderer::CreateVertexShader(&m_VertexShader,
+		&m_VertexLayout,
 		"shader\\CSOFile\\UnlitTextureVS.cso");
 
 	Renderer::CreatePixelShader(&m_PixelShader,
@@ -66,9 +67,6 @@ void Heart::Init()
 	// ====================================================
 	// https://www.desmos.com/calculator/uzjjw5ouzt?lang=ja
 	// ====================================================
-	
-	
-
 
 	m_Scale = Vector3(0.2f, 0.2f, 0.2f);
 }
@@ -101,16 +99,18 @@ void Heart::Update()
 	m_Time += 0.01f;
 
 	float i = m_Time;
-	
+
 	// ベジェ曲線の計算
 	// 右側
-	m_StartPosition = (1.0f - i) * (1.0f - i) * (1.0f - i) * m_StartLine[0] +
+	m_StartPosition =
+		(1.0f - i) * (1.0f - i) * (1.0f - i) * m_StartLine[0] +
 		3.0f * (1.0f - i) * (1.0f - i) * i * m_StartLine[1] +
 		3.0f * (1.0f - i) * i * i * m_StartLine[2] +
 		i * i * i * m_StartLine[3];
 
 	// 左側
-	m_EndPosition = (1.0f - i) * (1.0f - i) * (1.0f - i) * m_EndLine[0] +
+	m_EndPosition =
+		(1.0f - i) * (1.0f - i) * (1.0f - i) * m_EndLine[0] +
 		3.0f * (1.0f - i) * (1.0f - i) * i * m_EndLine[1] +
 		3.0f * (1.0f - i) * i * i * m_EndLine[2] +
 		i * i * i * m_EndLine[3];
@@ -178,10 +178,10 @@ void Heart::Update()
 
 void Heart::Draw()
 {
-	//入力レイアウト設定
+	// 入力レイアウト設定
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayout);
 
-	//シェーダ設定
+	// シェーダ設定
 	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
 
@@ -196,12 +196,11 @@ void Heart::Draw()
 
 	// ビューの逆行列
 	XMMATRIX invView;
-	invView = XMMatrixInverse(nullptr, view); // 逆行列
+	invView = XMMatrixInverse(nullptr, view);
+
 	invView.r[3].m128_f32[0] = 0.0f;
 	invView.r[3].m128_f32[1] = 0.0f;
 	invView.r[3].m128_f32[2] = 0.0f;
-
-	
 
 	// 奥行処理をOFF
 	Renderer::SetDepthEnable(false);
@@ -214,25 +213,33 @@ void Heart::Draw()
 		// 左の値を大きくしすぎると、値が少ししか変わらなくて
 		// グラデーションに見えなくなる！
 		float hue = fmodf(static_cast<float>(i % 100) / 100.0f, 1.0f);
+
 		Vector3 rgb = HSVtoRGB(hue, 1.0f, 1.0f);
 
 		// マテリアル設定
 		MATERIAL material{};
 		material.Diffuse = { rgb.x, rgb.y, rgb.z, 1.0f };
 		material.TextureEnable = true;
+
 		Renderer::SetMaterial(material);
 
 		// 頂点バッファ設定
 		UINT stride = sizeof(VERTEX_3D);
 		UINT offset = 0;
+
 		// VertexBufferで生成した情報を使って下さいという意味
-		Renderer::GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
+		Renderer::GetDeviceContext()->IASetVertexBuffers(0,
+			1,
+			&m_VertexBuffer,
+			&stride,
+			&offset);
 
 		// テクスチャ設定
 		Renderer::GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture);
 
-		// ブリミティブトボロジ設定
-		Renderer::GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+		// ブリミティブトポロジ設定
+		Renderer::GetDeviceContext()->IASetPrimitiveTopology(
+			D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 		float offset_y = 1.0f;
 
@@ -240,14 +247,21 @@ void Heart::Draw()
 		{
 			// 3Dマトリクス設定
 			XMMATRIX world, scale, trans;
-			scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-			trans = XMMatrixTranslation(m_ParticleHeartStart[i].Position.x,
-										m_ParticleHeartStart[i].Position.y + offset_y,
-										m_ParticleHeartStart[i].Position.z);
+
+			scale = XMMatrixScaling(m_Scale.x,
+				m_Scale.y,
+				m_Scale.z);
+
+			trans = XMMatrixTranslation(
+				m_ParticleHeartStart[i].Position.x,
+				m_ParticleHeartStart[i].Position.y + offset_y,
+				m_ParticleHeartStart[i].Position.z);
+
 			world = scale * invView * trans;
+
 			Renderer::SetWorldMatrix(world);
 
-			// ボリゴン描画
+			// ポリゴン描画
 			Renderer::GetDeviceContext()->Draw(4, 0);
 		}
 
@@ -255,18 +269,27 @@ void Heart::Draw()
 		{
 			// 3Dマトリクス設定
 			XMMATRIX world, scale, trans;
-			scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-			trans = XMMatrixTranslation(m_ParticleHeartEnd[i].Position.x,
-										m_ParticleHeartEnd[i].Position.y + offset_y,
-										m_ParticleHeartEnd[i].Position.z);
+
+			scale = XMMatrixScaling(m_Scale.x,
+				m_Scale.y,
+				m_Scale.z);
+
+			trans = XMMatrixTranslation(
+				m_ParticleHeartEnd[i].Position.x,
+				m_ParticleHeartEnd[i].Position.y + offset_y,
+				m_ParticleHeartEnd[i].Position.z);
+
 			world = scale * invView * trans;
+
 			Renderer::SetWorldMatrix(world);
 
-			// ボリゴン描画
+			// ポリゴン描画
 			Renderer::GetDeviceContext()->Draw(4, 0);
 		}
 	}
+
 	Renderer::SetAddEnable(false);
+
 	// 奥行処理をON
 	Renderer::SetDepthEnable(true);
 }
@@ -283,17 +306,40 @@ Vector3 HSVtoRGB(float h, float s, float v)
 
 	switch (i % 6)
 	{
-	case 0: r = v; g = t; b = p;
+	case 0:
+		r = v;
+		g = t;
+		b = p;
 		break;
-	case 1: r = q; g = v; b = p; 
+
+	case 1:
+		r = q;
+		g = v;
+		b = p;
 		break;
-	case 2: r = p; g = v; b = t; 
+
+	case 2:
+		r = p;
+		g = v;
+		b = t;
 		break;
-	case 3: r = p; g = q; b = v; 
+
+	case 3:
+		r = p;
+		g = q;
+		b = v;
 		break;
-	case 4: r = t; g = p; b = v; 
+
+	case 4:
+		r = t;
+		g = p;
+		b = v;
 		break;
-	case 5: r = v; g = p; b = q; 
+
+	case 5:
+		r = v;
+		g = p;
+		b = q;
 		break;
 	}
 

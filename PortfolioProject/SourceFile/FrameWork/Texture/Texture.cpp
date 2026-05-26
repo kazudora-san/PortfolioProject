@@ -3,7 +3,7 @@
 #include	"Renderer/Renderer.h"
 #include	"Texture/Texture.h"
 
-std::unordered_map<std::string, ID3D11ShaderResourceView*>Texture::m_TexturePool	= {};
+std::unordered_map<std::string, ID3D11ShaderResourceView*>Texture::m_TexturePool = {};
 
 ID3D11ShaderResourceView* Texture::Load(const char* FileName)
 {
@@ -21,8 +21,13 @@ ID3D11ShaderResourceView* Texture::Load(const char* FileName)
 	ID3D11ShaderResourceView* texture;
 
 	LoadFromWICFile(wFileName, WIC_FLAGS_NONE, &metadata, image);
-	CreateShaderResourceView(Renderer::GetDevice(), image.GetImages(),
-		image.GetImageCount(), metadata, &texture);
+	CreateShaderResourceView(
+		Renderer::GetDevice(), 
+		image.GetImages(),
+		image.GetImageCount(), 
+		metadata, 
+		&texture
+	);
 
 	assert(texture);
 

@@ -1,61 +1,78 @@
-#ifndef ANIMATIONMODEL_H
-#define ANIMATIONMODEL_H
+#pragma once
 
 #include	"cimport.h"
 #include	"scene.h"
 #include	"postprocess.h"
 #include	"matrix4x4.h"
 
-#pragma comment (lib, "assimp-vc143-mt.lib")
+#pragma comment(lib, "assimp-vc143-mt.lib")
 
 #include	"Component/Component.h"
+
 #include	<unordered_map>
 
-
-//変形後頂点構造体
+// 変形後頂点構造体
 struct DEFORM_VERTEX
 {
-	aiVector3D		Position		= {};
-	aiVector3D		Normal			= {};
-	int				BoneNum			= {};
-	std::string		BoneName[4]		= {};//本来はボーンインデックスで管理するべき
-	float			BoneWeight[4]	= {};
+	aiVector3D Position = {};
+	aiVector3D Normal = {};
+
+	int BoneNum = {};
+
+	std::string BoneName[4] = {};	// 本来はボーンインデックスで管理するべき
+	float BoneWeight[4] = {};
 };
 
-//ボーン構造体
+// ボーン構造体
 struct BONE
 {
-	aiMatrix4x4 Matrix				= {};
-	aiMatrix4x4 AnimationMatrix		= {};
-	aiMatrix4x4 OffsetMatrix		= {};
+	aiMatrix4x4 Matrix = {};
+	aiMatrix4x4 AnimationMatrix = {};
+	aiMatrix4x4 OffsetMatrix = {};
 };
 
 class AnimationModel : public Component
 {
 private:
-	const aiScene*												m_AiScene		= nullptr;
-	std::unordered_map<std::string, const aiScene*>				m_Animation		= {};
+	const aiScene* m_AiScene = nullptr;
 
-	ID3D11Buffer**												m_VertexBuffer	= nullptr;
-	ID3D11Buffer**												m_IndexBuffer	= nullptr;
+	std::unordered_map<std::string, const aiScene*> m_Animation = {};
 
-	std::unordered_map<std::string, ID3D11ShaderResourceView*>	m_Texture		= {};
+	ID3D11Buffer** m_VertexBuffer = nullptr;
+	ID3D11Buffer** m_IndexBuffer = nullptr;
 
-	std::vector<DEFORM_VERTEX>*									m_DeformVertex	= {};//変形後頂点データ
-	std::unordered_map<std::string, BONE>						m_Bone			= {};//ボーンデータ（名前で参照）
+	std::unordered_map<std::string, ID3D11ShaderResourceView*> m_Texture = {};
 
-	void CreateBone			(aiNode* Node);
-	void UpdateBoneMatrix	(aiNode* Node, aiMatrix4x4 Matrix);
+	std::vector<DEFORM_VERTEX>* m_DeformVertex = {};	// 変形後頂点データ
+
+	std::unordered_map<std::string, BONE> m_Bone = {};	// ボーンデータ（名前で参照）
+
+	void CreateBone(aiNode* Node);
+
+	void UpdateBoneMatrix(
+		aiNode* Node,
+		aiMatrix4x4 Matrix
+	);
 
 public:
 	using Component::Component;
 
-	void Load			( const char	*FileName );
-	void LoadAnimation	( const char	*FileName,	const char*	Name );
-	void Uninit			() override;
-	void Update			(const char		*AnimationName1,	int			Frame1,
-							const char	*AnimationName2,	int			Frame2, float BlendRate);
-	void Draw			() override;
-};
+	void Load(const char* FileName);
 
-#endif // ANIMATIONMODE_H
+	void LoadAnimation(
+		const char* FileName,
+		const char* Name
+	);
+
+	void Uninit() override;
+
+	void Update(
+		const char* AnimationName1,
+		int Frame1,
+		const char* AnimationName2,
+		int Frame2,
+		float BlendRate
+	);
+
+	void Draw() override;
+};

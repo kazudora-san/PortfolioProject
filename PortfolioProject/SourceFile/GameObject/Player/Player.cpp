@@ -173,8 +173,8 @@ void Player::Attack()
 				hp -= m_CharacterStatus.GetAttack() * 2;
 			}
 
-			unsigned int enemyDefense = characterStatus.GetDefense();
-			unsigned int damage = m_CharacterStatus.GetAttack() - enemyDefense * 0.5;
+			int enemyDefense = characterStatus.GetDefense();
+			int damage = m_CharacterStatus.GetAttack() - enemyDefense * 0.5;
 			hp -= damage;
 
 			if (hp <= 0)

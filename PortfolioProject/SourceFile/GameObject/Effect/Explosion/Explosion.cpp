@@ -1,10 +1,10 @@
-#include	"Main.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Camera/Camera.h"
-#include	"Effect/Explosion/Explosion.h"
-#include	"Renderer/Renderer.h"
-#include	"Texture/Texture.h"
-#include	"Scene/Scene.h"
+#include    "Main.h"
+#include    "Manager/SceneManager/SceneManager.h"
+#include    "Camera/Camera.h"
+#include    "Effect/Explosion/Explosion.h"
+#include    "Renderer/Renderer.h"
+#include    "Texture/Texture.h"
+#include    "Scene/Scene.h"
 
 void Explosion::Init()
 {
@@ -30,36 +30,32 @@ void Explosion::Init()
 	vertex[3].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	vertex[3].TexCoord = XMFLOAT2(1.0f, 1.0f);
 
-	//頂点バッファ生成
+	// 頂点バッファ生成
 	D3D11_BUFFER_DESC bd{};
 	bd.Usage = D3D11_USAGE_DYNAMIC;
 	bd.ByteWidth = sizeof(VERTEX_3D) * 4;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;;
+	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
 	D3D11_SUBRESOURCE_DATA sd{};
 	sd.pSysMem = vertex;
 
 	Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 
-	//テクスチャの読み込み
-	//TexMetadata metadata;
-	//ScratchImage image;
-	//LoadFromWICFile(L"Asset\\Texture\\Explosion.png", WIC_FLAGS_NONE, &metadata, image);
-	//CreateShaderResourceView(Renderer::GetDevice(), image.GetImages(),
-	//	image.GetImageCount(), metadata, &m_Texture);
-
-	//assert(m_Texture);
-
+	// テクスチャ読み込み
 	m_Texture = Texture::Load("Asset\\Texture\\Explosion.png");
 
+	// シェーダー読み込み
+	Renderer::CreateVertexShader(
+		&m_VertexShader,
+		&m_VertexLayOut,
+		"shader\\CSOFile\\UnlitTextureVS.cso"
+	);
 
-	//シェーダー読み込み
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
-		"shader\\CSOFile\\UnlitTextureVS.cso");
-
-	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\CSOFile\\UnlitTexturePS.cso");
+	Renderer::CreatePixelShader(
+		&m_PixelShader,
+		"shader\\CSOFile\\UnlitTexturePS.cso"
+	);
 
 	m_Frame = 0;
 }
@@ -72,20 +68,29 @@ void Explosion::Uninit()
 	m_VertexLayOut->Release();
 	m_VertexShader->Release();
 	m_PixelShader->Release();
-
 }
+
 void Explosion::Update()
 {
 	m_Frame++;
+
 	if (m_Frame >= 16)
+	{
 		SetDestroy();
+	}
 }
 
 void Explosion::Draw()
 {
-	//頂点データ
+	// 頂点データ更新
 	D3D11_MAPPED_SUBRESOURCE msr;
-	Renderer::GetDeviceContext()->Map(m_VertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
+	Renderer::GetDeviceContext()->Map(
+		m_VertexBuffer,
+		0,
+		D3D11_MAP_WRITE_DISCARD,
+		0,
+		&msr
+	);
 
 	VERTEX_3D* vertex = (VERTEX_3D*)msr.pData;
 
@@ -116,15 +121,14 @@ void Explosion::Draw()
 
 	Renderer::GetDeviceContext()->Unmap(m_VertexBuffer, 0);
 
-	//入力レイアウト
+	// 入力レイアウト
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);
 
-	//シェーダー設定
+	// シェーダー設定
 	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
 
-
-	//マトリクス設定
+	// カメラ取得
 	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
 	if (!camera)
 	{
@@ -133,44 +137,69 @@ void Explosion::Draw()
 
 	XMMATRIX view = camera->GetViewMatrix();
 
-	//
+	// ビルボード用逆行列
 	XMMATRIX invView;
 	invView = XMMatrixInverse(nullptr, view);
+
 	invView.r[3].m128_f32[0] = 0.0f;
 	invView.r[3].m128_f32[1] = 0.0f;
 	invView.r[3].m128_f32[2] = 0.0f;
 
+	// ワールド行列
+	XMMATRIX world;
+	XMMATRIX scale;
+	XMMATRIX rot;
+	XMMATRIX trans;
 
-	XMMATRIX world, scale, rot, trans;
 	scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-	rot = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);
-	trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
+
+	rot = XMMatrixRotationRollPitchYaw(
+		m_Rotation.x,
+		m_Rotation.y,
+		m_Rotation.z
+	);
+
+	trans = XMMatrixTranslation(
+		m_Position.x,
+		m_Position.y,
+		m_Position.z
+	);
+
 	world = scale * invView * trans;
 
 	Renderer::SetWorldMatrix(world);
 
-	//マテリアル設定
+	// マテリアル設定
 	MATERIAL material{};
-	material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
+	material.Diffuse = { 1.0f, 1.0f, 1.0f, 1.0f };
 	material.TextureEnable = true;
+
 	Renderer::SetMaterial(material);
 
-	//頂点バッファ設定
+	// 頂点バッファ設定
 	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;
-	Renderer::GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
 
-	//テクスチャ設定
-	Renderer::GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture);
+	Renderer::GetDeviceContext()->IASetVertexBuffers(
+		0,
+		1,
+		&m_VertexBuffer,
+		&stride,
+		&offset
+	);
 
-	//プリミティブ設定
-	Renderer::GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	// テクスチャ設定
+	Renderer::GetDeviceContext()->PSSetShaderResources(
+		0,
+		1,
+		&m_Texture
+	);
 
-	//Renderer::SetDepthEnable(false);
+	// プリミティブ設定
+	Renderer::GetDeviceContext()->IASetPrimitiveTopology(
+		D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP
+	);
 
-	//ポリゴン設定
+	// ポリゴン描画
 	Renderer::GetDeviceContext()->Draw(4, 0);
-
-	//Renderer::SetDepthEnable(true);
-
 }

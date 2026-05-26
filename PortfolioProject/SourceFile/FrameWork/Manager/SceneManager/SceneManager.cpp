@@ -1,17 +1,16 @@
-#include	"Main.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Renderer/Renderer.h"
-#include	"Input/Input.h"
-#include	"Scene/Scene.h"
-#include	"Scene/Game/Game.h"
-#include	"Scene/Title/Title.h"
-#include	"Scene/Result/Result.h"
-#include	"Fade/FadeQuad.h"
+#include "Main.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Renderer/Renderer.h"
+#include "Input/Input.h"
+#include "Scene/Scene.h"
+#include "Scene/Game/Game.h"
+#include "Scene/Title/Title.h"
+#include "Scene/Result/Result.h"
+#include "Fade/FadeQuad.h"
 
-
-Scene*		SceneManager::m_Scene		= {};
-Scene*		SceneManager::m_SceneNext	= {};
-FadeQuad*	SceneManager::m_Fader		= {};
+Scene* SceneManager::m_Scene = {};
+Scene* SceneManager::m_SceneNext = {};
+FadeQuad* SceneManager::m_Fader = {};
 
 void SceneManager::Init()
 {
@@ -41,12 +40,14 @@ void SceneManager::Uninit()
 	{
 		m_Fader->Uninit();
 		delete m_Fader;
+
 		m_Fader = nullptr;
 	}
 
 	Input::Uninit();
 	Renderer::Uninit();
 }
+
 
 void SceneManager::Update()
 {
@@ -61,10 +62,11 @@ void SceneManager::Update()
 	m_Fader->Update();
 }
 
+
 void SceneManager::Draw()
 {
 	Renderer::Begin();
-	
+
 	if (!m_Scene)
 	{
 		return;
@@ -75,7 +77,7 @@ void SceneManager::Draw()
 
 	Renderer::End();
 
-	//‰æ–Ê‘JˆÚ
+	// ‰æ–Ê‘JˆÚ
 	if (m_SceneNext != nullptr)
 	{
 		m_Scene->Uninit();
@@ -86,5 +88,4 @@ void SceneManager::Draw()
 
 		m_SceneNext = nullptr;
 	}
-
 }
