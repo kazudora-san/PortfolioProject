@@ -1,19 +1,16 @@
-#ifndef		COMMANDCURSOR_H
-#define		COMMANDCURSOR_H
+#pragma once
 
-#include	"Cursor/CursorBase.h"
+#include "Cursor/CursorBase.h"
 
 class CommandCursor : public CursorBase
 {
 private:
-	
-public:
-	virtual void	Init()			override;
-	virtual void	Uninit()		override;
-	virtual void	Update()		override;
-	virtual void	Draw()			override;
-	virtual void	CursorMove()	override;
-	virtual void	Select()		override;
-};
 
-#endif
+public:
+	void Init() override;
+	void Uninit() override;
+	void Update() override;
+	void Draw() override;
+	void CursorMove() override;
+	void Select() override;
+};

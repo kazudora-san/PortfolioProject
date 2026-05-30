@@ -1,17 +1,18 @@
-#include	"Main.h"
-#include	"Renderer/Renderer.h"
-#include	"Cursor/CommandCursor/CommandCursor.h"
-#include	"Renderer/Polygon2D/Polygon2D.h"
-#include	"Input/Input.h"
+#include "Main.h"
+#include "Renderer/Renderer.h"
+#include "Cursor/CommandCursor/CommandCursor.h"
+#include "Renderer/Polygon2D/Polygon2D.h"
+#include "Input/Input.h"
 
 // ScaleÇÕ.hÇ…íuÇ´Ç‹ÇµÇΩ Å¶CommandWindowÇ≈égÇ§ÇΩÇﬂ
-constexpr XMFLOAT2	CommandCursorPosition		= { 70.0f, 50.0f};
-constexpr XMFLOAT2	CommandCursorMove			= { 130.0f, 50.0f};
+constexpr XMFLOAT2 CommandCursorPosition = { 70.0f, 50.0f };
+constexpr XMFLOAT2 CommandCursorMove = { 130.0f, 50.0f };
 
 void CommandCursor::Init()
 {
-	m_CursorPosition	= CommandCursorPosition;
-	m_CursorMove		= CommandCursorMove;
+	m_CursorPosition = CommandCursorPosition;
+	m_CursorMove = CommandCursorMove;
+
 	CursorBase::Init();
 }
 
@@ -42,6 +43,7 @@ void CommandCursor::CursorMove()
 			m_Position.x -= CommandCursorMove.x;
 		}
 	}
+
 	if (Input::CommandRight())
 	{
 		if (m_Position.x < CommandCursorMove.x)
@@ -49,6 +51,7 @@ void CommandCursor::CursorMove()
 			m_Position.x += CommandCursorMove.x;
 		}
 	}
+
 	if (Input::CommandUp())
 	{
 		if (m_Position.y > 0.0f)
@@ -56,6 +59,7 @@ void CommandCursor::CursorMove()
 			m_Position.y -= CommandCursorMove.y;
 		}
 	}
+
 	if (Input::CommandDown())
 	{
 		if (m_Position.y < CommandCursorPosition.y + CommandCursorMove.y)

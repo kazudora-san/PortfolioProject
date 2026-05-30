@@ -1,7 +1,6 @@
-#ifndef		MONEYWINDOW_H
-#define		MONEYWINDOW_H
+#pragma once
 
-#include	"UI.h"
+#include "UI.h"
 
 class Polygon2D;
 
@@ -10,10 +9,8 @@ class MoneyWindow : public UI
 private:
 
 public:
-	virtual void	Init()		override;
-	virtual void	Uninit()	override;
-	virtual void	Update()	override;
-	virtual void	Draw()		override;
+	void Init() override;
+	void Uninit() override;
+	void Update() override;
+	void Draw() override;
 };
-
-#endif

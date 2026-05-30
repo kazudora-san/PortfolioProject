@@ -1,7 +1,6 @@
 #include	"Main.h"
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"Renderer/Renderer.h"
-
 #include	"Game.h"
 #include	"Camera/Camera.h"
 #include	"Field/Field.h"
@@ -30,20 +29,20 @@ void Game::Init()
 	AddGameObject<Camera>(0);
 	MeshField* meshField = AddGameObject<MeshField>(0);
 	AddGameObject<SkyDorm>(0);
-	
+
 	// ÉåÉCÉÑÅ[î‘çÜÇP
 	//AddGameObject<Rock>(1);
 	AddGameObject<FighterEnemy>(1);
 	AddGameObject<Player>(1);
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		Vector3 position;
+		Vector3 position = {};
 		position.x = rand() % 100 - 50.0f;
 		position.z = rand() % 100 - 50.0f;
 		position.y = meshField->GetHeight(position);
 
-		Vector3 scale;
+		Vector3 scale = {};
 		scale.x = 1.0f + ((rand() % 100) / 100.0f);
 		scale.y = 1.0f + ((rand() % 100) / 100.0f);
 		scale.z = 1.0f;
@@ -66,16 +65,18 @@ void Game::Update()
 {
 	Scene::Update();
 
-	if ((m_NowFrame > m_StopFrame))
+	if (m_NowFrame > m_StopFrame)
 	{
 		if (auto* f = SceneManager::GetFade(); f && !f->IsBusy())
 		{
-			f->FadeOut(0.6f, { 0,0,0 }, []() {
-				SceneManager::SetScene<Result>();
-				if (auto* g = SceneManager::GetFade())
+			f->FadeOut(0.6f, { 0, 0, 0 }, []()
 				{
-					g->FadeIn(0.6f, { 0,0,0 });
-				}
+					SceneManager::SetScene<Result>();
+
+					if (auto* g = SceneManager::GetFade())
+					{
+						g->FadeIn(0.6f, { 0, 0, 0 });
+					}
 				});
 		}
 	}

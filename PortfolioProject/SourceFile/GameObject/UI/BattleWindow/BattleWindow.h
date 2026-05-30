@@ -1,22 +1,17 @@
-#ifndef		BATTLEWINDOW_H
-#define		BATTLEWINDOW_H
+#pragma once
 
-#include	"UI.h"
+#include "UI.h"
 
 class BattleCommandCursor;
 
 class BattleWindow : public UI
 {
 private:
-	BattleCommandCursor*	m_Cursor	= nullptr;
+	BattleCommandCursor* m_Cursor = {};
 
 public:
-	virtual void	Init()		override;
-	virtual void	Uninit()	override;
-	virtual void	Update()	override;
-	virtual void	Draw()		override;
-
-
+	void Init() override;
+	void Uninit() override;
+	void Update() override;
+	void Draw() override;
 };
-
-#endif

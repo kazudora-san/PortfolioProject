@@ -1,9 +1,9 @@
-#include	"Main.h"
-#include	"UI.h"
-#include	"Renderer/Polygon2D/Polygon2D.h"
-#include	"Player/Player.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Scene/Scene.h"
+#include "Main.h"
+#include "UI.h"
+#include "Renderer/Polygon2D/Polygon2D.h"
+#include "Player/Player.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Scene/Scene.h"
 
 void UI::Init()
 {
@@ -26,8 +26,7 @@ void UI::Uninit()
 }
 
 void UI::Update()
-{
-}
+{}
 
 void UI::Draw()
 {

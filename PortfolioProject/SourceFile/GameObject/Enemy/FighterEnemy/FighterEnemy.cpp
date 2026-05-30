@@ -84,11 +84,15 @@ void FighterEnemy::Update()
 		Attack();
 	}
 
-	// std::string型には、c_str()というconst char*型に変換してくれる！
-	// 二つ入れることで、合成（ブレンド）をしてくれる！（処理は中身を参照）
-	m_AnimationModel->Update(m_AnimationName.c_str(), m_Frame,
-		m_AnimationNameNext.c_str(), m_Frame,
-		m_AnimationBlend);
+	if (m_Frame % 2 == 0)
+	{
+		m_AnimationModel->Update(
+			m_AnimationName.c_str(), m_Frame / 2,
+			m_AnimationNameNext.c_str(), m_Frame / 2,
+			m_AnimationBlend
+		);
+	}
+
 	m_Frame++;
 
 	m_AnimationBlend += 0.007f;

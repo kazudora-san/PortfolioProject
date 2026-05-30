@@ -7,7 +7,7 @@ void AnimationModel::Draw()
 	// プリミティブトポロジ設定
 	Renderer::GetDeviceContext()->IASetPrimitiveTopology(
 		D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	
+
 	// マテリアル設定
 	MATERIAL material;
 	ZeroMemory(&material, sizeof(material));
@@ -177,7 +177,7 @@ void AnimationModel::Load( const char *FileName )
 	}
 
 	//テクスチャ読み込み
-	for(int i = 0; i < m_AiScene->mNumTextures; i++)
+	for(unsigned int i = 0; i < m_AiScene->mNumTextures; i++)
 	{
 		aiTexture* aitexture = m_AiScene->mTextures[i];
 

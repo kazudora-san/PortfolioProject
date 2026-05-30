@@ -296,7 +296,9 @@ void Heart::Draw()
 
 Vector3 HSVtoRGB(float h, float s, float v)
 {
-	float r, g, b;
+	float r = 1;
+	float g = 1;
+	float b = 1;
 
 	int i = static_cast<int>(h * 6);
 	float f = h * 6 - i;

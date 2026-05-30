@@ -1,19 +1,16 @@
-#ifndef		RESULT_H
-#define		RESULT_H
+#pragma once
 
-#include	"Scene/Scene.h"
+#include "Scene/Scene.h"
 
 class AudioManager;
 
 class Result : public Scene
 {
 private:
-	AudioManager*	m_Audio	= {};
-	unsigned int	m_Frame	= {};
+	AudioManager* m_Audio = {};
+	unsigned int m_Frame = {};
 
 public:
-	void	Init();
-	void	Update();
+	void Init();
+	void Update();
 };
-
-#endif // RESULT_H

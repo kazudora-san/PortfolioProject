@@ -12,13 +12,17 @@ void Rock::Init()
 	m_ModelRenderer = new ModelRenderer();
 	m_ModelRenderer->Load("Asset\\model\\Rock.obj");
 
-	//シェーダー読み込み
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
-		"shader\\CSOFile\\vertexLightingVS.cso");
+	// シェーダー読み込み
+	Renderer::CreateVertexShader(
+		&m_VertexShader,
+		&m_VertexLayOut,
+		"shader\\CSOFile\\vertexLightingVS.cso"
+	);
 
-	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\CSOFile\\vertexLightingPS.cso");
-
+	Renderer::CreatePixelShader(
+		&m_PixelShader,
+		"shader\\CSOFile\\vertexLightingPS.cso"
+	);
 }
 
 void Rock::Uninit()
@@ -28,37 +32,44 @@ void Rock::Uninit()
 	m_VertexLayOut->Release();
 	m_VertexShader->Release();
 	m_PixelShader->Release();
-
 }
 
 void Rock::Update()
-{
-}
+{}
 
 void Rock::Draw()
 {
-	//入力レイアウト
+	// 入力レイアウト
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);
 
-	//シェーダー設定
-	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
-	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
+	// シェーダー設定
+	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, nullptr, 0);
+	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, nullptr, 0);
 
+	// マトリクス設定
+	XMMATRIX world = {};
+	XMMATRIX scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
+	XMMATRIX rot = XMMatrixRotationRollPitchYaw(
+		m_Rotation.x,
+		m_Rotation.y,
+		m_Rotation.z
+	);
+	XMMATRIX trans = XMMatrixTranslation(
+		m_Position.x,
+		m_Position.y,
+		m_Position.z
+	);
 
-	//マトリクス設定
-	XMMATRIX world, scale, rot, trans;
-	scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-	rot = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);
-	trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
 	world = scale * rot * trans;
+
 	Renderer::SetWorldMatrix(world);
 
-	//マテリアル設定
-	MATERIAL material{};
-	material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
+	// マテリアル設定
+	MATERIAL material = {};
+	material.Diffuse = { 1.0f, 1.0f, 1.0f, 1.0f };
 	material.TextureEnable = true;
-	Renderer::SetMaterial(material);
 
+	Renderer::SetMaterial(material);
 
 	m_ModelRenderer->Draw();
 }

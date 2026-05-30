@@ -1,21 +1,18 @@
-#ifndef		COMMANDWINDOW_H
-#define		COMMANDWINDOW_H
+#pragma once
 
-#include	"UI.h"
-#include	<vector>
+#include "UI.h"
+#include <vector>
 
 class CommandCursor;
 
 class CommandWindow : public UI
 {
 private:
-	CommandCursor*	m_Cursor	= nullptr;
+	CommandCursor* m_Cursor = {};
 
 public:
-	virtual void	Init()		override;
-	virtual void	Uninit()	override;
-	virtual void	Update()	override;
-	virtual void	Draw()		override;
+	void Init() override;
+	void Uninit() override;
+	void Update() override;
+	void Draw() override;
 };
-
-#endif

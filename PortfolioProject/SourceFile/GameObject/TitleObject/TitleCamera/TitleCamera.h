@@ -1,25 +1,22 @@
-#ifndef		TITLECAMERA_H
-#define		TITLECAMERA_H
+#pragma once
 
 #include	"GameObject.h"
 
 class TitleCamera : public GameObject
 {
 private:
-	XMMATRIX	m_MtxView			= {};
-	XMMATRIX	m_MtxPerspective	= {};
+	XMMATRIX m_MtxView = {};
+	XMMATRIX m_MtxPerspective = {};
 
-	Vector3		m_Target			= { 0.0f,1.0f,0.0f };
+	Vector3 m_Target = {};
 
 public:
-	void		Init();
-	void		Uninit();
-	void		Update();
-	void		Draw();
+	void Init();
+	void Uninit();
+	void Update();
+	void Draw();
 
-	XMMATRIX	GetViewMatrix() { return m_MtxView; }
+	XMMATRIX GetViewMatrix() { return m_MtxView; }
 
-	Vector3		GetForward() override;
+	Vector3 GetForward() override;
 };
-
-#endif // TITLECAMERA_H

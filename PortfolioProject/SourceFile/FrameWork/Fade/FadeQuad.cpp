@@ -34,7 +34,7 @@ void FadeQuad::drawFullScreen(float alpha, const XMFLOAT3& rgb)
 	dc->Draw(4, 0);
 }
 
-float FadeQuad::easeInOutSine(float x) 
+float FadeQuad::easeInOutSine(float x)
 {
 	return -0.5f * (cosf(3.14159265f * x) - 1.0f);
 }
@@ -47,7 +47,7 @@ void FadeQuad::Init()
 	vertex[2].Position = XMFLOAT3(0.0f, (float)SCREEN_HEIGHT, 0.0f);
 	vertex[3].Position = XMFLOAT3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f);
 
-	for (int i = 0; i < 4; i++) 
+	for (int i = 0; i < 4; i++)
 	{
 		vertex[i].Normal = XMFLOAT3(0, 0, 0);
 		vertex[i].Diffuse = XMFLOAT4(1, 1, 1, 1);
@@ -78,7 +78,7 @@ void FadeQuad::Init()
 void FadeQuad::Uninit()
 {
 	m_TexWhite = nullptr;
-	if (m_VertexBuffer) 
+	if (m_VertexBuffer)
 	{
 		m_VertexBuffer->Release();
 		m_VertexBuffer = nullptr;

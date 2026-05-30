@@ -1,10 +1,10 @@
 #include	"Main.h"
 #include	"Input/Input.h"
 
-#define	TRUEINPUT	(0x80)
+constexpr auto TRUEINPUT = (0x80);
 
-BYTE Input::m_OldKeyState[256]	= {};
-BYTE Input::m_KeyState[256]		= {};
+BYTE Input::m_OldKeyState[256] = {};
+BYTE Input::m_KeyState[256] = {};
 
 void Input::Init()
 {
@@ -18,12 +18,10 @@ void Input::Init()
 void Input::Uninit()
 {
 
-
 }
 
 void Input::Update()
 {
-
 	memcpy(m_OldKeyState, m_KeyState, 256);
 
 	(void)GetKeyboardState(m_KeyState);

@@ -1,19 +1,19 @@
-#include	"Main.h"
-#include	"Renderer/Renderer.h"
-#include	"TitlePlayer.h"
-#include	"Renderer/ModelRenderer/ModelRenderer.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Manager/AudioManager/AudioManager.h"
-#include	"Camera/Camera.h"
-#include	"Input/Input.h"
-#include	"Bullet/Bullet.h"
-#include	"Enemy/FighterEnemy/FighterEnemy.h"
-#include	"Scene/Scene.h"
-#include	"AnimationModel/AnimationModel.h"
-#include	"Field/MeshField/MeshField.h"
-#include	"Effect/Explosion/Explosion.h"
-#include	"Score/Score.h"
-#include	"Effect/Heart/Heart.h"
+#include "Main.h"
+#include "Renderer/Renderer.h"
+#include "TitlePlayer.h"
+#include "Renderer/ModelRenderer/ModelRenderer.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Manager/AudioManager/AudioManager.h"
+#include "Camera/Camera.h"
+#include "Input/Input.h"
+#include "Bullet/Bullet.h"
+#include "Enemy/FighterEnemy/FighterEnemy.h"
+#include "Scene/Scene.h"
+#include "AnimationModel/AnimationModel.h"
+#include "Field/MeshField/MeshField.h"
+#include "Effect/Explosion/Explosion.h"
+#include "Score/Score.h"
+#include "Effect/Heart/Heart.h"
 
 void TitlePlayer::Init()
 {
@@ -37,8 +37,7 @@ void TitlePlayer::Init()
 }
 
 void TitlePlayer::Uninit()
-{
-}
+{}
 
 void TitlePlayer::Update()
 {
@@ -64,8 +63,6 @@ void TitlePlayer::Draw()
 	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
 
-	//XMMATRIX parentMatrix;
-
 	//親
 	{
 		//マトリクス設定
@@ -75,12 +72,11 @@ void TitlePlayer::Draw()
 		trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
 		world = scale * rot * trans;
 
-		//parentMatrix = world;
 		Renderer::SetWorldMatrix(world);
 
 		//マテリアル設定
 		MATERIAL material{};
-		material.Diffuse = { 1.0f,1.0f,1.0f,1.0f };
+		material.Diffuse = { 1.0f, 1.0f, 1.0f, 1.0f };
 		material.TextureEnable = true;
 		Renderer::SetMaterial(material);
 

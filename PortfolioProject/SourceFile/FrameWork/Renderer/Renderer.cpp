@@ -10,7 +10,7 @@ ID3D11DeviceContext* Renderer::m_DeviceContext = {};
 IDXGISwapChain* Renderer::m_SwapChain = {};
 ID3D11RenderTargetView* Renderer::m_RenderTargetView = {};
 ID3D11DepthStencilView* Renderer::m_DepthStencilView = {};
-													
+
 ID3D11Buffer* Renderer::m_WorldBuffer = {};
 ID3D11Buffer* Renderer::m_ViewBuffer = {};
 ID3D11Buffer* Renderer::m_ProjectionBuffer = {};
@@ -107,10 +107,10 @@ void Renderer::Init()
 	// ラスタライザステート設定
 	// 塗りつぶしの処理
 	D3D11_RASTERIZER_DESC rasterizerDesc{};
-	rasterizerDesc.FillMode = D3D11_FILL_SOLID; 
-	rasterizerDesc.CullMode = D3D11_CULL_BACK; 
-	rasterizerDesc.DepthClipEnable = TRUE; 
-	rasterizerDesc.MultisampleEnable = FALSE; 
+	rasterizerDesc.FillMode = D3D11_FILL_SOLID;
+	rasterizerDesc.CullMode = D3D11_CULL_BACK;
+	rasterizerDesc.DepthClipEnable = TRUE;
+	rasterizerDesc.MultisampleEnable = FALSE;
 
 	ID3D11RasterizerState *rs;
 	m_Device->CreateRasterizerState( &rasterizerDesc, &rs );

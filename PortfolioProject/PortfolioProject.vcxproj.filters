@@ -94,9 +94,6 @@
     <Filter Include="SourceFile\FrameWork\Component">
       <UniqueIdentifier>{8210611a-20df-43e5-8243-d5e6e3f4f536}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SourceFile\FrameWork\FadeQuad">
-      <UniqueIdentifier>{4102a89a-fb9d-4309-9a5d-e66927b7bab2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SourceFile\FrameWork\Manager">
       <UniqueIdentifier>{75d19acf-ef0a-45e6-94d0-2f36d9cfdf5f}</UniqueIdentifier>
     </Filter>
@@ -205,9 +202,11 @@
     <Filter Include="SourceFile\FrameWork\GameCharacter\State\MoveState">
       <UniqueIdentifier>{8b68bd9b-fd21-4761-8728-731b5f371454}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SourceFile\FrameWork\Fade">
+      <UniqueIdentifier>{4102a89a-fb9d-4309-9a5d-e66927b7bab2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
     <ClInclude Include="SourceFile\Main.h">
       <Filter>SourceFile</Filter>
     </ClInclude>
@@ -296,7 +295,7 @@
       <Filter>SourceFile\FrameWork\Manager\AudioManager</Filter>
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\Fade\FadeQuad.h">
-      <Filter>SourceFile\FrameWork\FadeQuad</Filter>
+      <Filter>SourceFile\FrameWork\Fade</Filter>
     </ClInclude>
     <ClInclude Include="SourceFile\FrameWork\Component\Component.h">
       <Filter>SourceFile\FrameWork\Component</Filter>
@@ -382,9 +381,7 @@
     <ClInclude Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.h">
       <Filter>SourceFile\FrameWork\GameCharacter\State\MoveState</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.inl" />
+    <ClInclude Include="DirectXTex.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\Field\FieldPS.hlsl">
@@ -501,7 +498,7 @@
       <Filter>SourceFile\FrameWork\Manager\AudioManager</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\Fade\FadeQuad.cpp">
-      <Filter>SourceFile\FrameWork\FadeQuad</Filter>
+      <Filter>SourceFile\FrameWork\Fade</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\FrameWork\Component\Component.cpp">
       <Filter>SourceFile\FrameWork\Component</Filter>
@@ -590,5 +587,8 @@
     <ClCompile Include="SourceFile\FrameWork\GameCharacter\State\MoveState\MoveState.cpp">
       <Filter>SourceFile\FrameWork\GameCharacter\State\MoveState</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DirectXTex.inl" />
   </ItemGroup>
 </Project>

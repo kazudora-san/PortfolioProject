@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.h" />
+    <ClInclude Include="DirectXTex.h" />
     <ClInclude Include="SourceFile\FrameWork\AnimationModel\AnimationModel.h" />
     <ClInclude Include="SourceFile\FrameWork\Audio\Audio.h" />
     <ClInclude Include="SourceFile\FrameWork\Component\Component.h" />
@@ -80,9 +80,6 @@
     <ClInclude Include="SourceFile\Scene\Scene.h" />
     <ClInclude Include="SourceFile\Scene\Title\Title.h" />
     <ClInclude Include="SourceFile\Vector3\Vector3.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\Downloads\私は神です\21_波とオブジェクト配置\DirectXTex.inl" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\Common.hlsl">
@@ -187,6 +184,9 @@
     <ClCompile Include="SourceFile\Scene\Scene.cpp" />
     <ClCompile Include="SourceFile\Scene\Title\Title.cpp" />
     <ClCompile Include="SourceFile\Vector3\Vector3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DirectXTex.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

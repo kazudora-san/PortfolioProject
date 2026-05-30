@@ -6,7 +6,6 @@
 #include	"Camera/Camera.h"
 #include	"Scene/Scene.h"
 
-
 void Score::Init()
 {
 	// 頂点バッファの情報を作る
@@ -33,27 +32,30 @@ void Score::Init()
 	vertex[3].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	vertex[3].TexCoord = XMFLOAT2(1.0f, 1.0f);
 
-
-	//頂点バッファ生成
-	D3D11_BUFFER_DESC bd{};
+	// 頂点バッファ生成
+	D3D11_BUFFER_DESC bd = {};
 	bd.Usage = D3D11_USAGE_DYNAMIC;
 	bd.ByteWidth = sizeof(VERTEX_3D) * 4;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
-	D3D11_SUBRESOURCE_DATA sd{};
+	D3D11_SUBRESOURCE_DATA sd = {};
 	sd.pSysMem = vertex;
 
 	Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 
-
 	m_Texture = Texture::Load("Asset\\Texture\\Number.png");
 
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayOut,
-		"shader\\CSOFile\\UnlitTextureVS.cso");
+	Renderer::CreateVertexShader(
+		&m_VertexShader,
+		&m_VertexLayOut,
+		"shader\\CSOFile\\UnlitTextureVS.cso"
+	);
 
-	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\CSOFile\\UnlitTexturePS.cso");
+	Renderer::CreatePixelShader(
+		&m_PixelShader,
+		"shader\\CSOFile\\UnlitTexturePS.cso"
+	);
 
 	m_Value = 0;
 }
@@ -68,65 +70,82 @@ void Score::Uninit()
 }
 
 void Score::Update()
-{
-}
+{}
 
 void Score::Draw()
 {
-	//入力レイアウト設定
+	// 入力レイアウト設定
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayOut);
 
-	//シェーダ設定
-	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
-	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
+	// シェーダ設定
+	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, nullptr, 0);
+	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, nullptr, 0);
 
-	// マトリクス設定
 	Camera* camera = SceneManager::GetScene()->GetGameObject<Camera>();
 	if (!camera)
 	{
 		return;
 	}
 
-	XMMATRIX view = camera->GetViewMatrix();
-
-	// マトリクス設定
 	Renderer::SetWorldViewProjection2D();
 
 	// 3Dマトリクス設定
-	XMMATRIX world, scale, rot, trans;
-	scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-	rot = XMMatrixRotationRollPitchYaw(0.0f, 0.0f, 0.0f);
-	trans = XMMatrixTranslation(m_Position.x, m_Position.y, m_Position.z);
+	XMMATRIX world = {};
+	XMMATRIX scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
+	XMMATRIX rot = XMMatrixRotationRollPitchYaw(0.0f, 0.0f, 0.0f);
+	XMMATRIX trans = XMMatrixTranslation(
+		m_Position.x,
+		m_Position.y,
+		m_Position.z
+	);
+
 	world = scale * rot * trans;
+
 	Renderer::SetWorldMatrix(world);
 
 	// マテリアル設定
-	MATERIAL material{};
+	MATERIAL material = {};
 	material.Diffuse = { 1.0f, 1.0f, 1.0f, 1.0f };
 	material.TextureEnable = true;
+
 	Renderer::SetMaterial(material);
 
 	// 頂点バッファ設定
 	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;
-	// VertexBufferで生成した情報を使って下さいという意味
-	Renderer::GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
+
+	Renderer::GetDeviceContext()->IASetVertexBuffers(
+		0,
+		1,
+		&m_VertexBuffer,
+		&stride,
+		&offset
+	);
 
 	// テクスチャ設定
 	Renderer::GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture);
 
-	// ブリミティブトボロジ設定
-	Renderer::GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	// プリミティブトポロジ設定
+	Renderer::GetDeviceContext()->IASetPrimitiveTopology(
+		D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP
+	);
 
 	int value = m_Value;
 
 	for (int i = 0; i < 4; i++)
 	{
 		// 頂点データ書き換え
-		D3D11_MAPPED_SUBRESOURCE msr;
-		Renderer::GetDeviceContext()->Map(m_VertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
+		D3D11_MAPPED_SUBRESOURCE msr = {};
 
-		VERTEX_3D* vertex = (VERTEX_3D*)msr.pData;
+		Renderer::GetDeviceContext()->Map(
+			m_VertexBuffer,
+			0,
+			D3D11_MAP_WRITE_DISCARD,
+			0,
+			&msr
+		);
+
+		VERTEX_3D* vertex = static_cast<VERTEX_3D*>(msr.pData);
 
 		float x = 50.0f * (4 - 1) - 50.0f * i;
 		float y = 0.0f;
@@ -136,8 +155,8 @@ void Score::Draw()
 		int num = value % 10;
 		value /= 10;
 
-		float tw = 1.0f / 5;
-		float th = 1.0f / 5;
+		float tw = 1.0f / 5.0f;
+		float th = 1.0f / 5.0f;
 		float tx = (num % 5) * tw;
 		float ty = (num / 5) * th;
 
@@ -159,11 +178,11 @@ void Score::Draw()
 		vertex[3].Position = XMFLOAT3(x + w, y + h, 0.0f);
 		vertex[3].Normal = XMFLOAT3(0.0f, 1.0f, 0.0f);
 		vertex[3].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[3].TexCoord = XMFLOAT2(tx + tw, th + ty);
+		vertex[3].TexCoord = XMFLOAT2(tx + tw, ty + th);
 
 		Renderer::GetDeviceContext()->Unmap(m_VertexBuffer, 0);
 
-		// ボリゴン描画
+		// ポリゴン描画
 		Renderer::GetDeviceContext()->Draw(4, 0);
 	}
 }

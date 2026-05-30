@@ -1,14 +1,12 @@
-#include	"Main.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Input/Input.h"
-#include	<thread>
+#include "Main.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Input/Input.h"
+#include <thread>
 
-const char*		CLASS_NAME		=	"AppClass";
-const char*		WINDOW_NAME		=	"DX11ÉQÅ[ÉÄ";
-
+const char* CLASS_NAME = "AppClass";
+const char* WINDOW_NAME = "DX11ÉQÅ[ÉÄ";
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
 
 HWND g_Window;
 
@@ -17,11 +15,8 @@ HWND GetWindow()
 	return g_Window;
 }
 
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-
-
 	WNDCLASSEX wcex;
 	{
 		wcex.cbSize = sizeof(WNDCLASSEX);
@@ -39,14 +34,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		RegisterClassEx(&wcex);
 
-
 		RECT rc = { 0, 0, (LONG)SCREEN_WIDTH, (LONG)SCREEN_HEIGHT };
 		AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
-		g_Window = CreateWindowEx(0, CLASS_NAME, WINDOW_NAME, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-			rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr);
-
-		
+		g_Window = CreateWindowEx(
+			0,
+			CLASS_NAME,
+			WINDOW_NAME,
+			WS_OVERLAPPEDWINDOW,
+			CW_USEDEFAULT,
+			CW_USEDEFAULT,
+			rc.right - rc.left,
+			rc.bottom - rc.top,
+			nullptr,
+			nullptr,
+			hInstance,
+			nullptr
+		);
 	}
 
 	RAWINPUTDEVICE rid;
@@ -62,16 +66,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	CoInitializeEx(nullptr, COINITBASE_MULTITHREADED);
 
-
 	SceneManager::Init();
-
-
 
 	ShowWindow(g_Window, nCmdShow);
 	UpdateWindow(g_Window);
-
-
-
 
 	DWORD dwExecLastTime;
 	DWORD dwCurrentTime;
@@ -79,14 +77,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	dwExecLastTime = timeGetTime();
 	dwCurrentTime = 0;
 
-
-
 	MSG msg;
-	while(1)
+
+	while (1)
 	{
-		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
-			if(msg.message == WM_QUIT)
+			if (msg.message == WM_QUIT)
 			{
 				break;
 			}
@@ -100,11 +97,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			dwCurrentTime = timeGetTime();
 
-			if((dwCurrentTime - dwExecLastTime) >= (1000 / 60))
+			if ((dwCurrentTime - dwExecLastTime) >= (1000 / 60))
 			{
 				dwExecLastTime = dwCurrentTime;
 
-				
 				SceneManager::Update();
 				SceneManager::Draw();
 			}
@@ -122,20 +118,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	return (int)msg.wParam;
 }
 
-
-
-
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-
-	switch(uMsg)
+	switch (uMsg)
 	{
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
 
 	case WM_KEYDOWN:
-		switch(wParam)
+		switch (wParam)
 		{
 		case VK_ESCAPE:
 			DestroyWindow(hWnd);
@@ -145,7 +137,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 	case WM_INPUT:
 	{
-		
 		RAWINPUT raw;
 		UINT size = sizeof(raw);
 
@@ -153,20 +144,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		{
 			if (raw.header.dwType == RIM_TYPEMOUSE)
 			{
-				LONG dx = raw.data.mouse.lLastX; // â°ÇÃà⁄ìÆó 
-				LONG dy = raw.data.mouse.lLastY; // ècÇÃà⁄ìÆó 
+				LONG dx = raw.data.mouse.lLastX;
+				LONG dy = raw.data.mouse.lLastY;
 
-				// É}ÉEÉXÇ™ìÆÇ¢ÇΩï™â¡éZ
 				Input::OnMouseMove(dx, dy);
 			}
 		}
 
 		break;
 	}
+
 	default:
 		break;
 	}
 
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
-

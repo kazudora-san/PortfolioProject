@@ -7,7 +7,7 @@
 
 void Scene::Init()
 {
-	
+
 }
 
 
@@ -57,7 +57,6 @@ void Scene::Update()
 
 void Scene::Draw()
 {
-
 	//Zソート
 	Camera* camera = GetGameObject<Camera>();
 
@@ -71,8 +70,8 @@ void Scene::Draw()
 
 	m_GameObject[1].sort([&](GameObject* object1, GameObject* object2)
 		{
-			return object1->GetZ(cameraPosition, cameraForward) > 
-					object2->GetZ(cameraPosition, cameraForward);
+			return object1->GetZ(cameraPosition, cameraForward) >
+				object2->GetZ(cameraPosition, cameraForward);
 		});
 
 	for (int i = 0; i < LAYER_MAX; i++)
@@ -87,5 +86,4 @@ void Scene::Draw()
 			gameObject->Draw();//ポリモーフィズム
 		}
 	}
-
 }

@@ -1,16 +1,14 @@
-#ifndef		GAME_H
-#define		GAME_H
+#pragma once
 
 #include	"Scene/Scene.h"
 
-class Game :public Scene
+class Game : public Scene
 {
 private:
-	unsigned	int		m_StopFrame		= {};
-	unsigned	int		m_NowFrame		= {};
-public:
-	void	Init()		override;
-	void	Update()	override;
-};
+	unsigned int	m_StopFrame = {};
+	unsigned int	m_NowFrame = {};
 
-#endif // GAME_H
+public:
+	void	Init() override;
+	void	Update() override;
+};

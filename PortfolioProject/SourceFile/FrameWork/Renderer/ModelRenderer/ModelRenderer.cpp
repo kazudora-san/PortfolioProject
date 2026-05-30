@@ -363,7 +363,7 @@ void ModelRenderer::LoadObj( const char *FileName, MODEL_OBJ *ModelObj )
 			}
 
 			sc++;
-			
+
 		}
 		else if( strcmp( str, "f" ) == 0 )
 		{
@@ -374,7 +374,7 @@ void ModelRenderer::LoadObj( const char *FileName, MODEL_OBJ *ModelObj )
 			{
 				fscanf( file, "%s", str );
 
-				s = strtok( str, "/" );	
+				s = strtok( str, "/" );
 				ModelObj->VertexArray[vc].Position = positionArray[ atoi( s ) - 1 ];
 				if( s[ strlen( s ) + 1 ] != '/' )
 				{
@@ -382,7 +382,7 @@ void ModelRenderer::LoadObj( const char *FileName, MODEL_OBJ *ModelObj )
 					s = strtok( nullptr, "/" );
 					ModelObj->VertexArray[vc].TexCoord = texcoordArray[ atoi( s ) - 1 ];
 				}
-				s = strtok( nullptr, "/" );	
+				s = strtok( nullptr, "/" );
 				ModelObj->VertexArray[vc].Normal = normalArray[ atoi( s ) - 1 ];
 
 				ModelObj->VertexArray[vc].Diffuse = XMFLOAT4( 1.0f, 1.0f, 1.0f, 1.0f );

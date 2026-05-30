@@ -1,9 +1,9 @@
-#ifndef		SCENE_H
-#define		SCENE_H
+#pragma once
 
-#include	<list>
+#include <list>
+#include <vector>
 
-#define		LAYER_MAX (4)
+constexpr auto LAYER_MAX = (4);
 
 // 初期シーンの設定は、Framework→Manager→SceneManager.cppにある
 
@@ -12,13 +12,13 @@ class GameObject;
 class Scene
 {
 protected:
-	std::list<GameObject*>	m_GameObject[LAYER_MAX] = {};//X層のレイヤー
+	std::list<GameObject*> m_GameObject[LAYER_MAX] = {}; // X層のレイヤー
 
 public:
-	virtual	void	Init();
-	virtual	void	Uninit();
-	virtual	void	Update();
-	virtual	void	Draw();
+	virtual void Init();
+	virtual void Uninit();
+	virtual void Update();
+	virtual void Draw();
 
 	template <typename T>
 	T* AddGameObject(int Layer)
@@ -30,9 +30,7 @@ public:
 		return gameObject;
 	}
 
-
 	template <typename T>
-
 	T* GetGameObject()
 	{
 		for (int i = 0; i < LAYER_MAX; i++)
@@ -41,7 +39,9 @@ public:
 			{
 				T* find = dynamic_cast<T*>(gameObject);
 				if (find != nullptr)
+				{
 					return find;
+				}
 			}
 		}
 		return nullptr;
@@ -58,12 +58,12 @@ public:
 			{
 				T* find = dynamic_cast<T*>(gameObject);
 				if (find != nullptr)
+				{
 					finds.push_back(find);
+				}
 			}
 		}
+
 		return finds;
 	}
-
 };
-
-#endif

@@ -30,7 +30,7 @@ bool MoveState::IsActive() const
 	{
 		return false;
 	}
-	
+
 	if (m_OwnerObject->GetCharacterStatus().GetHealth() > 0 &&
 											Input::MoveBack() ||
 											Input::MoveFront() ||

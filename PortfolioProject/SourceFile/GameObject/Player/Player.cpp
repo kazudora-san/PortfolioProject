@@ -5,6 +5,7 @@
 #include	"Manager/SceneManager/SceneManager.h"
 #include	"GameCharacter/StateMachine/StateMachine.h"
 #include	"GameCharacter/State/IdleState/IdleState.h"
+#include	"GameCharacter/State/MoveState/MoveState.h"
 #include	"Manager/AudioManager/AudioManager.h"
 #include	"Camera/Camera.h"
 #include	"Input/Input.h"
@@ -21,7 +22,14 @@ enum PlayerAnimatyonKey
 	PlayerJump,
 };
 
-const char*	AnimationKeyName[]	= { "Idle", "Run", "Attack", "Jump"};
+const char* AnimationKeyName[] =
+{
+	"Idle",
+	"Run",
+	"Attack",
+	"Jump"
+};
+
 const CharacterStatus PlayerStatus(
 	1000,	// HP
 	1000,	// MaxHP
@@ -40,16 +48,27 @@ void Player::Init()
 	m_CharacterStatus.InitCharacterStatus(PlayerStatus);
 
 	m_StateMachine = new StateMachine();
-	m_StateMachine->AddState<IdleState>(this);
-	
+	m_StateMachine->AddState<MoveState>(this);
+
 	// GameObjectを継承しているのでdeleteはNG
 	m_AnimationModel = new AnimationModel();
 	m_AnimationModel->Load("Asset\\Model\\Player\\Player_Model.fbx");
 
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Idle.fbx", AnimationKeyName[PlayerIdle]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Run.fbx", AnimationKeyName[PlayerRun]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Attack.fbx", AnimationKeyName[PlayerAttack]);
-	m_AnimationModel->LoadAnimation("Asset\\Model\\Player\\Player_Jump.fbx", AnimationKeyName[PlayerJump]);
+	m_AnimationModel->LoadAnimation(
+		"Asset\\Model\\Player\\Player_Idle.fbx",
+		AnimationKeyName[PlayerIdle]);
+
+	m_AnimationModel->LoadAnimation(
+		"Asset\\Model\\Player\\Player_Run.fbx",
+		AnimationKeyName[PlayerRun]);
+
+	m_AnimationModel->LoadAnimation(
+		"Asset\\Model\\Player\\Player_Attack.fbx",
+		AnimationKeyName[PlayerAttack]);
+
+	m_AnimationModel->LoadAnimation(
+		"Asset\\Model\\Player\\Player_Jump.fbx",
+		AnimationKeyName[PlayerJump]);
 
 	m_AnimationName = AnimationKeyName[PlayerIdle];
 	m_AnimationNameNext = AnimationKeyName[PlayerIdle];
@@ -63,10 +82,11 @@ void Player::Init()
 	m_Audio->Load("Asset\\Audio\\Run.wav", "RunSE");
 
 	Scene* scene = SceneManager::GetScene();
+
 	m_Camera = scene->GetGameObject<Camera>();
 	m_MeshField = scene->GetGameObject<MeshField>();
 
-	m_Scale = {0.01f,0.01f,0.01f };
+	m_Scale = { 0.01f, 0.01f, 0.01f };
 }
 
 void Player::Uninit()
@@ -88,6 +108,7 @@ void Player::Update()
 	if (!m_MeshField)
 	{
 		MeshField* meshField = SceneManager::GetScene()->GetGameObject<MeshField>();
+
 		if (!m_MeshField)
 		{
 			return;
@@ -110,19 +131,23 @@ void Player::Update()
 	}
 
 	m_Position.y = groundY;
-	
-	// std::string型には、c_str()というconst char*型に変換してくれる！
-	// 二つ入れることで、合成（ブレンド）をしてくれる！（処理は中身を参照）
-	m_AnimationModel->Update(m_AnimationName.c_str(), m_Frame,
-								m_AnimationNameNext.c_str(), m_Frame,
-								m_AnimationBlend);
+
+	if (m_Frame % 2 == 0)
+	{
+		m_AnimationModel->Update(
+			m_AnimationName.c_str(),
+			m_Frame / 2,
+			m_AnimationNameNext.c_str(),
+			m_Frame / 2,
+			m_AnimationBlend);
+	}
 
 	m_Frame++;
 
 	m_AnimationBlend += 0.15f;
+
 	if (m_AnimationBlend > 1.0f)
 	{
-		// 線形補間
 		m_AnimationBlend = 1.0f;
 	}
 }
@@ -143,6 +168,7 @@ void Player::Idle()
 		m_AnimationName = m_AnimationNameNext;
 		m_AnimationNameNext = AnimationKeyName[PlayerIdle];
 		m_AnimationBlend = 0.0f;
+
 		m_Audio->Stop("RunSE");
 	}
 }
@@ -150,6 +176,7 @@ void Player::Idle()
 void Player::Attack()
 {
 	auto enemies = SceneManager::GetScene()->GetGameObjects<FighterEnemy>();
+
 	for (FighterEnemy* enemy : enemies)
 	{
 		if (!enemy)
@@ -159,8 +186,8 @@ void Player::Attack()
 
 		CharacterStatus& characterStatus = enemy->GetCharacterStatus();
 
-		Vector3 d = enemy->GetPosition() - m_Position;
-		float dist = d.length();
+		Vector3 direction = enemy->GetPosition() - m_Position;
+		float dist = direction.length();
 
 		if (dist <= SearchRadius)
 		{
@@ -174,7 +201,8 @@ void Player::Attack()
 			}
 
 			int enemyDefense = characterStatus.GetDefense();
-			int damage = m_CharacterStatus.GetAttack() - enemyDefense * 0.5;
+			int damage = static_cast<int>(m_CharacterStatus.GetAttack() - enemyDefense * 0.5f);
+
 			hp -= damage;
 
 			if (hp <= 0)
@@ -205,23 +233,28 @@ void Player::Move()
 		m_Position += m_Camera->GetRight() * -0.1f;
 		m_Rotation.y = rotation.y - XM_PIDIV2;
 	}
+
 	if (Input::MoveRight())
 	{
 		m_Position += m_Camera->GetRight() * 0.1f;
 		m_Rotation.y = rotation.y + XM_PIDIV2;
 	}
+
 	if (Input::MoveFront())
 	{
 		Vector3 forward = m_Camera->GetForward();
+
 		forward.y = 0.0f;
 		forward.normalize();
 
 		m_Position += forward * 0.1f;
 		m_Rotation.y = rotation.y;
 	}
+
 	if (Input::MoveBack())
 	{
 		Vector3 forward = m_Camera->GetForward();
+
 		forward.y = 0.0f;
 		forward.normalize();
 
@@ -236,6 +269,7 @@ void Player::Move()
 		m_AnimationName = m_AnimationNameNext;
 		m_AnimationNameNext = AnimationKeyName[PlayerRun];
 		m_AnimationBlend = 0.0f;
+
 		//m_Audio->Play("RunSE", true);
 	}
 }

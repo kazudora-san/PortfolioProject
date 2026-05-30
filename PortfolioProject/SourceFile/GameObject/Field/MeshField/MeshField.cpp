@@ -40,9 +40,12 @@ void MeshField::Init()
 		{
 			for (int z = 0; z <= 20; z++)
 			{
-				float y = 0.0f;
-				m_Vertex[x][z].Position = XMFLOAT3((x - 10) * 5.0f, g_FieldHight[x][z], (z - 10) * -5.0f);
-				m_Vertex[x][z].Normal = XMFLOAT3(0.0f, 1.0f, 0.0f);//法線ベクトル
+				m_Vertex[x][z].Position = XMFLOAT3(
+					(x - 10) * 5.0f,
+					g_FieldHight[x][z],
+					(z - 10) * -5.0f);
+
+				m_Vertex[x][z].Normal = XMFLOAT3(0.0f, 1.0f, 0.0f);
 				m_Vertex[x][z].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 				m_Vertex[x][z].TexCoord = XMFLOAT2(x * 0.5f, z * 0.5f);
 			}
@@ -60,10 +63,10 @@ void MeshField::Init()
 			for (int z = 1; z < 20; z++)
 			{
 				Vector3 vx, vz, vn;
+
 				vx.x = m_Vertex[x + 1][z].Position.x - m_Vertex[x - 1][z].Position.x;
 				vx.y = m_Vertex[x + 1][z].Position.y - m_Vertex[x - 1][z].Position.y;
 				vx.z = m_Vertex[x + 1][z].Position.z - m_Vertex[x - 1][z].Position.z;
-
 
 				vz.x = m_Vertex[x][z - 1].Position.x - m_Vertex[x][z + 1].Position.x;
 				vz.y = m_Vertex[x][z - 1].Position.y - m_Vertex[x][z + 1].Position.y;
@@ -71,17 +74,17 @@ void MeshField::Init()
 
 				// 外積は順番をしっかり守る！
 				vn = Vector3::cross(vz, vx);
-				vn.normalize(); // 正規化をする
+				vn.normalize();
 
 				m_Vertex[x][z].Normal.x = vn.x;
 				m_Vertex[x][z].Normal.y = vn.y;
 				m_Vertex[x][z].Normal.z = vn.z;
-
 			}
 		}
 
 		D3D11_BUFFER_DESC bd;
 		ZeroMemory(&bd, sizeof(bd));
+
 		bd.Usage = D3D11_USAGE_DEFAULT;
 		bd.ByteWidth = sizeof(VERTEX_3D) * 21 * 21;
 		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
@@ -89,19 +92,21 @@ void MeshField::Init()
 
 		D3D11_SUBRESOURCE_DATA sd;
 		ZeroMemory(&sd, sizeof(sd));
+
 		sd.pSysMem = m_Vertex;
 
-		Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
+		Renderer::GetDevice()->CreateBuffer(
+			&bd,
+			&sd,
+			&m_VertexBuffer);
 	}
-
-
-
 
 	// インデックスバッファ生成
 	{
-		unsigned int index[(22 * 2) * 20 - 2 ];
+		unsigned int index[(22 * 2) * 20 - 2];
 
 		int i = 0;
+
 		for (int x = 0; x < 20; x++)
 		{
 			for (int z = 0; z < 21; z++)
@@ -114,7 +119,9 @@ void MeshField::Init()
 			}
 
 			if (x == 19)
+			{
 				break;
+			}
 
 			index[i] = (x + 1) * 21 + 20;
 			i++;
@@ -125,6 +132,7 @@ void MeshField::Init()
 
 		D3D11_BUFFER_DESC bd;
 		ZeroMemory(&bd, sizeof(bd));
+
 		bd.Usage = D3D11_USAGE_DEFAULT;
 		bd.ByteWidth = sizeof(unsigned int) * ((22 * 2) * 20 - 2);
 		bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
@@ -132,28 +140,31 @@ void MeshField::Init()
 
 		D3D11_SUBRESOURCE_DATA sd;
 		ZeroMemory(&sd, sizeof(sd));
+
 		sd.pSysMem = index;
 
-		Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_IndexBuffer);
+		Renderer::GetDevice()->CreateBuffer(
+			&bd,
+			&sd,
+			&m_IndexBuffer);
 	}
-
 
 	m_Texture = Texture::Load("Asset\\Texture\\Field_game.jpg");
 	m_TextureSoil = Texture::Load("Asset\\Texture\\Field.jpg");
 
-
 	// シェーダー読み込み
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
+	Renderer::CreateVertexShader(
+		&m_VertexShader,
+		&m_VertexLayout,
 		"shader\\CSOFile\\FieldVS.cso");
 
-	Renderer::CreatePixelShader(&m_PixelShader,
+	Renderer::CreatePixelShader(
+		&m_PixelShader,
 		"shader\\CSOFile\\FieldPS.cso");
 }
 
-
 void MeshField::Uninit()
 {
-
 	m_VertexBuffer->Release();
 	m_IndexBuffer->Release();
 	//m_Texture->Release();
@@ -161,78 +172,95 @@ void MeshField::Uninit()
 	m_VertexLayout->Release();
 	m_VertexShader->Release();
 	m_PixelShader->Release();
-
 }
-
 
 void MeshField::Update()
-{
-
-}
-
+{}
 
 void MeshField::Draw()
 {
-	//入力レイアウト設定
+	// 入力レイアウト設定
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayout);
 
-	//シェーダ設定
+	// シェーダ設定
 	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
 
 	// 3Dマトリクス設定
 	XMMATRIX world, scale, rot, trans;
+
 	scale = XMMatrixScaling(1.0f, 1.0f, 1.0f);
 	rot = XMMatrixRotationRollPitchYaw(0.0f, 0.0f, 0.0f);
 	trans = XMMatrixTranslation(0.0f, 0.0f, 0.0f);
+
 	world = scale * rot * trans;
+
 	Renderer::SetWorldMatrix(world);
 
 	// 頂点バッファ設定
-	UINT stride = sizeof( VERTEX_3D );
+	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;
-	Renderer::GetDeviceContext()->IASetVertexBuffers( 0, 1, &m_VertexBuffer, &stride, &offset );
+
+	Renderer::GetDeviceContext()->IASetVertexBuffers(
+		0,
+		1,
+		&m_VertexBuffer,
+		&stride,
+		&offset);
 
 	// インデックスバッファ設定
-	Renderer::GetDeviceContext()->IASetIndexBuffer( 
-		m_IndexBuffer, DXGI_FORMAT_R32_UINT, 0 );
+	Renderer::GetDeviceContext()->IASetIndexBuffer(
+		m_IndexBuffer,
+		DXGI_FORMAT_R32_UINT,
+		0);
 
 	// マテリアル設定
 	MATERIAL material;
-	ZeroMemory( &material, sizeof(material) );
-	material.Diffuse = XMFLOAT4( 1.0f, 1.0f, 1.0f, 1.0f );
+
+	ZeroMemory(&material, sizeof(material));
+
+	material.Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	material.TextureEnable = true;
-	Renderer::SetMaterial( material );
+
+	Renderer::SetMaterial(material);
 
 	// テクスチャ設定
 	Renderer::GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture);
 	Renderer::GetDeviceContext()->PSSetShaderResources(1, 1, &m_TextureSoil);
 
 	// プリミティブトポロジ設定
-	Renderer::GetDeviceContext()->IASetPrimitiveTopology( D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
+	Renderer::GetDeviceContext()->IASetPrimitiveTopology(
+		D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	// ポリゴン描画
 	Renderer::GetDeviceContext()->DrawIndexed(
-		(22 * 2) * 20 - 2, 0, 0);
-
+		(22 * 2) * 20 - 2,
+		0,
+		0);
 }
 
 float MeshField::GetHeight(Vector3 Position)
 {
-	int x, z;
+	int x;
+	int z;
 
 	// ブロック番号算出
 	x = static_cast<int>(Position.x / 5.0f + 10.0f);
 	z = static_cast<int>(Position.z / -5.0f + 10.0f);
 
-	XMFLOAT3 pos0, pos1, pos2, pos3;
+	XMFLOAT3 pos0;
+	XMFLOAT3 pos1;
+	XMFLOAT3 pos2;
+	XMFLOAT3 pos3;
 
 	pos0 = m_Vertex[x][z].Position;
 	pos1 = m_Vertex[x + 1][z].Position;
 	pos2 = m_Vertex[x][z + 1].Position;
 	pos3 = m_Vertex[x + 1][z + 1].Position;
 
-	Vector3 v12, v1p;
+	Vector3 v12;
+	Vector3 v1p;
+
 	v12.x = pos2.x - pos1.x;
 	v12.y = pos2.y - pos1.y;
 	v12.z = pos2.z - pos1.z;
@@ -246,10 +274,12 @@ float MeshField::GetHeight(Vector3 Position)
 
 	float py;
 	Vector3 n;
+
 	if (cy > 0.0f)
 	{
 		// 左上ポリゴン
 		Vector3 v10;
+
 		v10.x = pos0.x - pos1.x;
 		v10.y = pos0.y - pos1.y;
 		v10.z = pos0.z - pos1.z;
@@ -261,6 +291,7 @@ float MeshField::GetHeight(Vector3 Position)
 	{
 		// 右下ポリゴン
 		Vector3 v13;
+
 		v13.x = pos3.x - pos1.x;
 		v13.y = pos3.y - pos1.y;
 		v13.z = pos3.z - pos1.z;
@@ -270,10 +301,10 @@ float MeshField::GetHeight(Vector3 Position)
 	}
 
 	// 高さ取得
-	py = -((Position.x - pos1.x) * n.x + 
-		(Position.z - pos1.z) * n.z) / n.y + pos1.y;
+	py = -(
+		(Position.x - pos1.x) * n.x +
+		(Position.z - pos1.z) * n.z
+		) / n.y + pos1.y;
 
 	return py;
 }
-
-

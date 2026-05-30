@@ -20,7 +20,7 @@ const Vector3& GameObject::GetRight() const
 	XMMATRIX matrix;
 	matrix = XMMatrixRotationRollPitchYaw(m_Rotation.x, m_Rotation.y, m_Rotation.z);
 
-	Vector3 right;
+	Vector3 right = {};
 	XMStoreFloat3((XMFLOAT3*)&right, matrix.r[0]);
 
 	return right;

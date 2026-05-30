@@ -7,7 +7,6 @@
 #include	"Scene/Scene.h"
 #include	"Texture/Texture.h"
 
-
 Vector3 TitleHSVtoRGB(float h, float s, float v);
 
 void TitleHeart::Init()
@@ -36,25 +35,30 @@ void TitleHeart::Init()
 	vertex[3].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	vertex[3].TexCoord = XMFLOAT2(1.0f, 1.0f);
 
-	//頂点バッファ生成
-	D3D11_BUFFER_DESC bd{};
+	// 頂点バッファ生成
+	D3D11_BUFFER_DESC bd = {};
 	bd.Usage = D3D11_USAGE_DEFAULT;
 	bd.ByteWidth = sizeof(VERTEX_3D) * 4;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	bd.CPUAccessFlags = 0;
 
-	D3D11_SUBRESOURCE_DATA sd{};
+	D3D11_SUBRESOURCE_DATA sd = {};
 	sd.pSysMem = vertex;
 
 	Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 
 	m_Texture = Texture::Load("Asset\\Texture\\Particle.png");
 
-	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
-		"shader\\CSOFile\\UnlitTextureVS.cso");
+	Renderer::CreateVertexShader(
+		&m_VertexShader,
+		&m_VertexLayout,
+		"shader\\CSOFile\\UnlitTextureVS.cso"
+	);
 
-	Renderer::CreatePixelShader(&m_PixelShader,
-		"shader\\CSOFile\\UnlitTexturePS.cso");
+	Renderer::CreatePixelShader(
+		&m_PixelShader,
+		"shader\\CSOFile\\UnlitTexturePS.cso"
+	);
 
 	for (int i = 0; i < TitleHeartMax; i++)
 	{
@@ -66,9 +70,6 @@ void TitleHeart::Init()
 	// ====================================================
 	// https://www.desmos.com/calculator/uzjjw5ouzt?lang=ja
 	// ====================================================
-	
-	
-
 
 	m_Scale = Vector3(0.2f, 0.2f, 0.2f);
 }
@@ -101,16 +102,18 @@ void TitleHeart::Update()
 	m_Time += 0.01f;
 
 	float i = m_Time;
-	
+
 	// ベジェ曲線の計算
 	// 右側
-	m_StartPosition = (1.0f - i) * (1.0f - i) * (1.0f - i) * m_StartLine[0] +
+	m_StartPosition =
+		(1.0f - i) * (1.0f - i) * (1.0f - i) * m_StartLine[0] +
 		3.0f * (1.0f - i) * (1.0f - i) * i * m_StartLine[1] +
 		3.0f * (1.0f - i) * i * i * m_StartLine[2] +
 		i * i * i * m_StartLine[3];
 
 	// 左側
-	m_EndPosition = (1.0f - i) * (1.0f - i) * (1.0f - i) * m_EndLine[0] +
+	m_EndPosition =
+		(1.0f - i) * (1.0f - i) * (1.0f - i) * m_EndLine[0] +
 		3.0f * (1.0f - i) * (1.0f - i) * i * m_EndLine[1] +
 		3.0f * (1.0f - i) * i * i * m_EndLine[2] +
 		i * i * i * m_EndLine[3];
@@ -149,7 +152,7 @@ void TitleHeart::Update()
 			// ライフを引く
 			m_TitleHeartStart[i].Life--;
 
-			// ライフが０になったら消す
+			// ライフが0になったら消す
 			if (m_TitleHeartStart[i].Life <= 0)
 			{
 				m_TitleHeartStart[i].Enable = false;
@@ -161,7 +164,7 @@ void TitleHeart::Update()
 			// ライフを引く
 			m_TitleHeartEnd[i].Life--;
 
-			// ライフが０になったら消す
+			// ライフが0になったら消す
 			if (m_TitleHeartEnd[i].Life <= 0)
 			{
 				m_TitleHeartEnd[i].Enable = false;
@@ -178,10 +181,10 @@ void TitleHeart::Update()
 
 void TitleHeart::Draw()
 {
-	//入力レイアウト設定
+	// 入力レイアウト設定
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayout);
 
-	//シェーダ設定
+	// シェーダ設定
 	Renderer::GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	Renderer::GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
 
@@ -195,13 +198,10 @@ void TitleHeart::Draw()
 	XMMATRIX view = titleCamera->GetViewMatrix();
 
 	// ビューの逆行列
-	XMMATRIX invView;
-	invView = XMMatrixInverse(nullptr, view); // 逆行列
+	XMMATRIX invView = XMMatrixInverse(nullptr, view);
 	invView.r[3].m128_f32[0] = 0.0f;
 	invView.r[3].m128_f32[1] = 0.0f;
 	invView.r[3].m128_f32[2] = 0.0f;
-
-	
 
 	// 奥行処理をOFF
 	Renderer::SetDepthEnable(false);
@@ -211,8 +211,6 @@ void TitleHeart::Draw()
 	for (int i = 0; i < TitleHeartMax; i++)
 	{
 		// 虹色にする
-		// 左の値を大きくしすぎると、値が少ししか変わらなくて
-		// グラデーションに見えなくなる！
 		float hue = fmodf(static_cast<float>(i % 100) / 100.0f, 1.0f);
 		Vector3 rgb = TitleHSVtoRGB(hue, 1.0f, 1.0f);
 
@@ -225,75 +223,120 @@ void TitleHeart::Draw()
 		// 頂点バッファ設定
 		UINT stride = sizeof(VERTEX_3D);
 		UINT offset = 0;
-		// VertexBufferで生成した情報を使って下さいという意味
-		Renderer::GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
+
+		Renderer::GetDeviceContext()->IASetVertexBuffers(
+			0,
+			1,
+			&m_VertexBuffer,
+			&stride,
+			&offset
+		);
 
 		// テクスチャ設定
 		Renderer::GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture);
 
-		// ブリミティブトボロジ設定
-		Renderer::GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+		// プリミティブトポロジ設定
+		Renderer::GetDeviceContext()->IASetPrimitiveTopology(
+			D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP
+		);
 
-		float offset_y = 2.0f;
+		float offsetY = 2.0f;
 
-		if (m_TitleHeartStart[i].Enable == true)
+		if (m_TitleHeartStart[i].Enable)
 		{
-			// 3Dマトリクス設定
-			XMMATRIX world, scale, trans;
-			scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-			trans = XMMatrixTranslation(m_TitleHeartStart[i].Position.x,
-										m_TitleHeartStart[i].Position.y + offset_y,
-										m_TitleHeartStart[i].Position.z);
-			world = scale * invView * trans;
-			Renderer::SetWorldMatrix(world);
+			XMMATRIX world = {};
+			XMMATRIX scale = {};
+			XMMATRIX trans = {};
 
-			// ボリゴン描画
+			scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
+
+			trans = XMMatrixTranslation(
+				m_TitleHeartStart[i].Position.x,
+				m_TitleHeartStart[i].Position.y + offsetY,
+				m_TitleHeartStart[i].Position.z
+			);
+
+			world = scale * invView * trans;
+
+			Renderer::SetWorldMatrix(world);
 			Renderer::GetDeviceContext()->Draw(4, 0);
 		}
 
-		if (m_TitleHeartEnd[i].Enable == true)
+		if (m_TitleHeartEnd[i].Enable)
 		{
-			// 3Dマトリクス設定
-			XMMATRIX world, scale, trans;
-			scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
-			trans = XMMatrixTranslation(m_TitleHeartEnd[i].Position.x,
-										m_TitleHeartEnd[i].Position.y + offset_y,
-										m_TitleHeartEnd[i].Position.z);
-			world = scale * invView * trans;
-			Renderer::SetWorldMatrix(world);
+			XMMATRIX world = {};
+			XMMATRIX scale = {};
+			XMMATRIX trans = {};
 
-			// ボリゴン描画
+			scale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
+
+			trans = XMMatrixTranslation(
+				m_TitleHeartEnd[i].Position.x,
+				m_TitleHeartEnd[i].Position.y + offsetY,
+				m_TitleHeartEnd[i].Position.z
+			);
+
+			world = scale * invView * trans;
+
+			Renderer::SetWorldMatrix(world);
 			Renderer::GetDeviceContext()->Draw(4, 0);
 		}
 	}
+
 	Renderer::SetAddEnable(false);
+
 	// 奥行処理をON
 	Renderer::SetDepthEnable(true);
 }
 
 Vector3 TitleHSVtoRGB(float h, float s, float v)
 {
-	float r, g, b;
+	float r = 1.0f;
+	float g = 1.0f;
+	float b = 1.0f;
 
 	int i = static_cast<int>(h * 6);
-	float f = h * 6 - i;
-	float p = v * (1 - s);
-	float q = v * (1 - f * s);
-	float t = v * (1 - (1 - f) * s);
+	float f = h * 6.0f - i;
+	float p = v * (1.0f - s);
+	float q = v * (1.0f - f * s);
+	float t = v * (1.0f - (1.0f - f) * s);
 
 	switch (i % 6)
 	{
-	case 0: r = v; g = t; b = p;
+	case 0:
+		r = v;
+		g = t;
+		b = p;
 		break;
-	case 1: r = q; g = v; b = p; 
+
+	case 1:
+		r = q;
+		g = v;
+		b = p;
 		break;
-	case 2: r = p; g = v; b = t; 
+
+	case 2:
+		r = p;
+		g = v;
+		b = t;
 		break;
-	case 3: r = p; g = q; b = v; 
+
+	case 3:
+		r = p;
+		g = q;
+		b = v;
 		break;
-	case 4: r = t; g = p; b = v; 
+
+	case 4:
+		r = t;
+		g = p;
+		b = v;
 		break;
-	case 5: r = v; g = p; b = q; 
+
+	case 5:
+		r = v;
+		g = p;
+		b = q;
 		break;
 	}
 

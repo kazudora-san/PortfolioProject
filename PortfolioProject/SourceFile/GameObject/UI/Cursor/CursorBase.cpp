@@ -1,25 +1,27 @@
-#include	"Main.h"
-#include	"Renderer/Renderer.h"
-#include	"CursorBase.h"
-#include	"Renderer/Polygon2D/Polygon2D.h"
-#include	"Input/Input.h"
+#include "Main.h"
+#include "Renderer/Renderer.h"
+#include "CursorBase.h"
+#include "Renderer/Polygon2D/Polygon2D.h"
+#include "Input/Input.h"
 
 // Scale‚Í.h‚É’u‚«‚Ü‚µ‚½ ¦CommandWindow‚ÅŽg‚¤‚½‚ß
-constexpr XMFLOAT2	CommandCursorMove			= { 130.0f, 50.0f};
+constexpr XMFLOAT2 CommandCursorMove = { 130.0f, 50.0f };
 
 void CursorBase::Init()
 {
 	UI::Init();
 
-	m_CursorFileName	= { "Asset\\Texture\\Cursor.png" };
-	m_SelectIndex		= 0;
+	m_CursorFileName = { "Asset\\Texture\\Cursor.png" };
+	m_SelectIndex = 0;
 
 	Polygon2D* UIWindow = new Polygon2D();
-	UIWindow->Init(m_CursorPosition.x - m_CursorMove.x / 2.0f,
+	UIWindow->Init(
+		m_CursorPosition.x - m_CursorMove.x / 2.0f,
 		m_CursorPosition.y - m_CursorMove.y / 2.0f,
 		m_CursorMove.x,
 		m_CursorMove.y,
-		m_CursorFileName);
+		m_CursorFileName
+	);
 
 	m_UIWindows.push_back(UIWindow);
 }

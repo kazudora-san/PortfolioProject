@@ -22,10 +22,10 @@ ID3D11ShaderResourceView* Texture::Load(const char* FileName)
 
 	LoadFromWICFile(wFileName, WIC_FLAGS_NONE, &metadata, image);
 	CreateShaderResourceView(
-		Renderer::GetDevice(), 
+		Renderer::GetDevice(),
 		image.GetImages(),
-		image.GetImageCount(), 
-		metadata, 
+		image.GetImageCount(),
+		metadata,
 		&texture
 	);
 

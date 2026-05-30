@@ -1,22 +1,22 @@
-#include	"Main.h"
-#include	"Renderer/Renderer.h"
-#include	"BattleCommandCursor.h"
-#include	"Renderer/Polygon2D/Polygon2D.h"
-#include	"Input/Input.h"
-#include	"Player/Player.h"
+#include "Main.h"
+#include "Renderer/Renderer.h"
+#include "BattleCommandCursor.h"
+#include "Renderer/Polygon2D/Polygon2D.h"
+#include "Input/Input.h"
+#include "Player/Player.h"
 
 enum BattleCommandKey
 {
-	Battle_Attack = 0,
-	Battle_Skill,
-	Battle_Guard,
-	Battle_Escape,
-	Battle_Max,
+	BattleAttack = 0,
+	BattleSkill,
+	BattleGuard,
+	BattleEscape,
+	BattleMax,
 };
 
-constexpr	XMFLOAT2		BattleCommandCursorPosition	= { 100.0f, 420.0f };
-constexpr	XMFLOAT2		BattleCommandCursorMove		= { 0.0f, 50.0f };
-constexpr	unsigned int	MaxBattleCmdIndex			= { Battle_Max };	// コマンドによって選択番号を割り振る
+constexpr XMFLOAT2 BattleCommandCursorPosition = { 100.0f, 420.0f };
+constexpr XMFLOAT2 BattleCommandCursorMove = { 0.0f, 50.0f };
+constexpr unsigned int MaxBattleCmdIndex = { BattleMax };	// コマンドによって選択番号を割り振る
 
 void BattleCommandCursor::Init()
 {
@@ -24,11 +24,13 @@ void BattleCommandCursor::Init()
 
 	// 親クラスでdeleteする
 	Polygon2D* UIWindow = new Polygon2D();
-	UIWindow->Init(	BattleCommandCursorPosition.x - CursorScale.x / 2.0f, 
-					BattleCommandCursorPosition.y - CursorScale.y / 2.0f,
-					CursorScale.x, 
-					CursorScale.y,
-					m_CursorFileName);
+	UIWindow->Init(
+		BattleCommandCursorPosition.x - CursorScale.x / 2.0f,
+		BattleCommandCursorPosition.y - CursorScale.y / 2.0f,
+		CursorScale.x,
+		CursorScale.y,
+		m_CursorFileName
+	);
 
 	m_UIWindows.push_back(UIWindow);
 }
@@ -62,6 +64,7 @@ void BattleCommandCursor::CursorMove()
 			m_SelectIndex = 0;
 		}
 	}
+
 	if (Input::CommandDown())
 	{
 		m_SelectIndex++;
@@ -80,21 +83,20 @@ void BattleCommandCursor::Select()
 		// コマンド決定
 		switch (static_cast<BattleCommandKey>(m_SelectIndex))
 		{
-		case Battle_Attack:	// こうげき
+		case BattleAttack:	// こうげき
 		{
 			m_OwnerObject->Attack();
-
 			break;
 		}
-		case Battle_Skill:	// とくぎ
+		case BattleSkill:	// とくぎ
 		{
 			break;
 		}
-		case Battle_Guard:	// ぼうぎょ
+		case BattleGuard:	// ぼうぎょ
 		{
 			break;
 		}
-		case Battle_Escape:	// にげる
+		case BattleEscape:	// にげる
 		{
 			break;
 		}

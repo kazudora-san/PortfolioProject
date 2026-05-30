@@ -1,11 +1,10 @@
-#include	"Main.h"
-#include	"Renderer/Renderer.h"
-#include	"Tree/Tree.h"
-#include	"Camera/Camera.h"
-#include	"Manager/SceneManager/SceneManager.h"
-#include	"Scene/Scene.h"
-#include	"Texture/Texture.h"
-
+#include "Main.h"
+#include "Renderer/Renderer.h"
+#include "Tree/Tree.h"
+#include "Camera/Camera.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Scene/Scene.h"
+#include "Texture/Texture.h"
 
 void Tree::Init()
 {
@@ -45,7 +44,6 @@ void Tree::Init()
 
 	Renderer::GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 
-
 	m_Texture = Texture::Load("Asset\\Texture\\Tree.png");
 
 	Renderer::CreateVertexShader(&m_VertexShader, &m_VertexLayout,
@@ -69,12 +67,10 @@ void Tree::Uninit()
 }
 
 void Tree::Update()
-{
-}
+{}
 
 void Tree::Draw()
 {
-
 	//入力レイアウト設定
 	Renderer::GetDeviceContext()->IASetInputLayout(m_VertexLayout);
 
@@ -93,7 +89,7 @@ void Tree::Draw()
 
 	// ビューの逆行列
 	XMMATRIX invView;
-	invView = XMMatrixInverse(nullptr, view); // 逆行列
+	invView = XMMatrixInverse(nullptr, view);
 	invView.r[3].m128_f32[0] = 0.0f;
 	invView.r[3].m128_f32[1] = 0.0f;
 	invView.r[3].m128_f32[2] = 0.0f;
@@ -114,13 +110,12 @@ void Tree::Draw()
 	// 頂点バッファ設定
 	UINT stride = sizeof(VERTEX_3D);
 	UINT offset = 0;
-	// VertexBufferで生成した情報を使って下さいという意味
 	Renderer::GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
 
 	// テクスチャ設定
 	Renderer::GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture);
 
-	// ブリミティブトボロジ設定
+	// ブリミティブトポロジ設定
 	Renderer::GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	// 奥行情報

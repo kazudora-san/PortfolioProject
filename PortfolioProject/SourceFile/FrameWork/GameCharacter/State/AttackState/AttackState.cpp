@@ -25,6 +25,6 @@ void AttackState::Exit()
 
 bool AttackState::IsActive() const
 {
-	
+
 	return false;
 }

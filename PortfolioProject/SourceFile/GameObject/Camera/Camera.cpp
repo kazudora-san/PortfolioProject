@@ -64,13 +64,11 @@ void Camera::Update()
 
 	m_Target = player->GetPosition() + Vector3(0.0f, 1.0f, 0.0f);
 
-	m_Position =
-		m_Target +
-		Vector3(
-			-sinf(m_Rotation.y),
-			0.5f,
-			-cosf(m_Rotation.y)
-		) * 5.0f;
+	m_Position = m_Target + Vector3(
+		-sinf(m_Rotation.y) * cosf(m_Rotation.x),   // X
+		sinf(m_Rotation.x),               // Y (è„â∫)
+		-cosf(m_Rotation.y) * cosf(m_Rotation.x)    // Z
+	) * 5.0f;
 }
 
 void Camera::Draw()
