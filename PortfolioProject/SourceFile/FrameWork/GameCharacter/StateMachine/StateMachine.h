@@ -1,40 +1,47 @@
-#ifndef		STATEMACHINE_H
-#define		STATEMACHINE_H
-
-#include	<vector>
-#include	<memory>
+#include <functional>
+#include <memory>
 
 class State;
 class GameCharacter;
 
+// State‚Ì‘JˆÚæ‚ÆğŒ‚ğŠi”[‚·‚é
+struct Transition
+{
+    State* from;
+    State* to;
+    std::function<bool()> condition;
+};
+
 class StateMachine
 {
 private:
-	std::vector<std::unique_ptr<State>>	m_States		= {};
-	State*								m_CurrentState	= {};
+    std::vector<std::unique_ptr<State>> m_States;
+    std::vector<Transition> m_Transitions;
+    State* m_CurrentState = nullptr;
 
 public:
+    void Update();
 
-	void Update();
+    template <typename T>
+    T* AddState(GameCharacter* owner)
+    {
+        auto state = std::make_unique<T>(owner);
+        T* ptr = state.get();
+        m_States.push_back(std::move(state));
 
-	// Å‰‚Í‰½‚à‘€ì‚ğ‚µ‚È‚¢‚Ì‚ÅAIdle‚ğˆê”Ôã‚ÅéŒ¾‚·‚é‚±‚Æ
-	template <typename T>
-	T* AddState(GameCharacter* owner)
-	{
-		auto state = std::make_unique<T>(owner);
+        if (!m_CurrentState)
+        {
+            m_CurrentState = ptr;
+        }
 
-		T* ptr = state.get();
-		m_States.push_back(std::move(state));
+        return ptr;
+    }
 
-		if (!m_CurrentState)
-		{
-			m_CurrentState = ptr;
-		}
+    void AddTransition(State* from, State* to, std::function<bool()> condition)
+    {
+        // condition = ŠÖ”‚ğ“ü‚ê‚é
+        m_Transitions.push_back({ from, to, condition });
+    }
 
-		return ptr;
-	}
-
-	void	ChangeState(State* state);
+    void ChangeState(State* state);
 };
-
-#endif // STATEMACHINE_H

@@ -21,6 +21,7 @@ void SceneManager::Init()
 	m_Fader->Init();
 	m_Fader->FadeIn();
 
+	// ‰ŠúƒV[ƒ“Ý’è
 	m_Scene = new Game();
 	m_Scene->Init();
 }

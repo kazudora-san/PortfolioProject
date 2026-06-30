@@ -23,22 +23,3 @@ void MoveState::Update()
 void MoveState::Exit()
 {
 }
-
-bool MoveState::IsActive() const
-{
-	if (!m_OwnerObject)
-	{
-		return false;
-	}
-
-	if (m_OwnerObject->GetCharacterStatus().GetHealth() > 0 &&
-											Input::MoveBack() ||
-											Input::MoveFront() ||
-											Input::MoveLeft() ||
-											Input::MoveRight())
-	{
-		return true;
-	}
-
-	return false;
-}

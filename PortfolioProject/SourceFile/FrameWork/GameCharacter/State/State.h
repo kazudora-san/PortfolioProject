@@ -11,7 +11,7 @@ private:
 
 protected:
 	GameCharacter* m_OwnerObject = {};
-	std::string		m_StateName = {};
+	std::string m_StateName = {};
 	State* m_NextState = {};
 
 public:
@@ -23,7 +23,6 @@ public:
 	virtual void Enter() = 0;
 	virtual void Update() = 0;
 	virtual void Exit() = 0;
-	virtual bool IsActive() const = 0;
 
 	void SetStateOwner(GameCharacter* ownerObject) { m_OwnerObject = ownerObject; }
 	void SetStateName(const std::string& stateName) { m_StateName = stateName; }

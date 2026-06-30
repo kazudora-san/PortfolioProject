@@ -5,10 +5,10 @@
 class Game : public Scene
 {
 private:
-	unsigned int	m_StopFrame = {};
-	unsigned int	m_NowFrame = {};
+	unsigned int m_StopFrame = {};
+	unsigned int m_NowFrame = {};
 
 public:
-	void	Init() override;
-	void	Update() override;
+	void Init() override;
+	void Update() override;
 };

@@ -23,19 +23,3 @@ void IdleState::Update()
 void IdleState::Exit()
 {
 }
-
-bool IdleState::IsActive() const
-{
-	if (!m_OwnerObject)
-	{
-		return false;
-	}
-
-	// —v‰ü‘P
-	if (m_OwnerObject->GetCharacterStatus().GetHealth() < 0)
-	{
-		return false;
-	}
-
-	return true;
-}
