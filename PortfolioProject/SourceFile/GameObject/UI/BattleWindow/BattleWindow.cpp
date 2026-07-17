@@ -22,7 +22,7 @@ void BattleWindow::Init()
 	{
 		if (!BattleWindowFileName[i])
 		{
-			break;
+			continue;
 		}
 
 		Polygon2D* UIWindow = new Polygon2D();
